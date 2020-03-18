@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Deployments · anynines Kubernetes Training</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Kubernetes Deployment resource is desinged to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Deployments · anynines Kubernetes Training"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fischerjulian.github.io/a9s-kubernetes-training/"/><meta property="og:description" content="The Kubernetes Deployment resource is desinged to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets."/><meta property="og:image" content="https://fischerjulian.github.io/a9s-kubernetes-training/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fischerjulian.github.io/a9s-kubernetes-training/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/a9s-kubernetes-training/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/a9s-kubernetes-training/js/scrollSpy.js"></script><link rel="stylesheet" href="/a9s-kubernetes-training/css/main.css"/><script src="/a9s-kubernetes-training/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/a9s-kubernetes-training/"><img class="logo" src="/a9s-kubernetes-training/img/favicon.ico" alt="anynines Kubernetes Training"/><h2 class="headerTitleWithLogo">anynines Kubernetes Training</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/a9s-kubernetes-training/docs/containerization/container-overview" target="_self">Container Training</a></li><li class="siteNavGroupActive"><a href="/a9s-kubernetes-training/docs/kubernetes/kubernetes-overview" target="_self">Kubernetes Training</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Deployments</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Containerization</h3><ul class=""><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/containerization/container-overview">Container Overview</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/containerization/container-intro">Containers Basics</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Docker</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/installation">Docker Installation</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/docker-basics">Docker Basics</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/creating-images">Creating Container Images</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/simple-web-app">Containerizing a Simple Web App</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/publish-image">Publishing a Container Image</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/container-workflow">The Container Workflow</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/docker-cheatsheet">Docker Cheat Sheet</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Kubernetes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/kubernetes-overview">Kubernetes Overview</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/kubectl">kubectl Basics</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/namespaces">Namespaces</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/container-shell">Container Shell Access</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Pods</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/20-pods/introduction">Pods</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">ReplicaSets and Services</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/introduction">ReplicaSets and Services</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/replicasets">ReplicaSets</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/services">Services</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/ingress">Ingress</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/tidyup">Tyding Up</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Deployments</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/50-deployments/deployments">Deployments</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">ConfigMaps and Secrets</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-and-secrets">ConfigMaps and Secrets</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps">ConfigMaps</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/exercise-explanation">Exercise Explanation</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-volume-mounts">ConfigMap Volume Mounts</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/secrets">Secrets</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/secrets-exercise-explanation">Secrets Exercise Explanation</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Jobs</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/jobs">Jobs</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/advanced-jobs">Advanced Job Features</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/parallel-jobs">Parallel Jobs</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/cron-jobs">CronJobs</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Deployments</h1></header><article><div><span><p>The Kubernetes Deployment resource is desinged to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets.</p>
+<p>Using a Deployment, the deployment process is controlled by a deployment controller running within the Kubernetes cluster.</p>
+<h2><a class="anchor" aria-hidden="true" id="creating-the-first-deployment"></a><a href="#creating-the-first-deployment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating the First Deployment</h2>
+<p>Create the first deployment by deploying the application version <strong>&quot;blue&quot;</strong>.</p>
+<p>Create a file <code>20-deployment-blue.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">labels:</span>
+      <span class="hljs-attr">app:</span> <span class="hljs-string">app-gamma</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">matchLabels:</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">replicas:</span> <span class="hljs-number">1</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">labels:</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-blue</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">fischerjulian/smpl-go-web:blue</span>
+        <span class="hljs-attr">ports:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Apply it:</p>
+<pre><code class="hljs">kubectl create -f 20-deployment-blue.yaml
+</code></pre>
+<p>Verify the deployment has been successful:</p>
+<pre><code class="hljs">kubectl get deployments
+</code></pre>
+<p>It's also worth having a look at the list of ReplicaSets:</p>
+<pre><code class="hljs">kubectl get replicasets
+</code></pre>
+<p>You should also find a ReplicaSet <strong>blue</strong> as a Kubernetes Deployment internally creates a ReplicaSet which in turn creates one or more Pods creating one or more containers.
+So it's no surprise to find <strong>blue</strong> Pods:</p>
+<pre><code class="hljs">kubectl get pods
+</code></pre>
+<p>Now in order to access the application we also have to create a service and an ingress again, just like we did in the ReplicaSet lesson.</p>
+<p>Create a file <code>40-service.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-service</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">ports:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Apply it:</p>
+<pre><code class="hljs">kubectl apply -f 40-service.yaml
+</code></pre>
+<p>Create a file <code>50-ingress.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">networking.k8s.io/v1beta1</span> <span class="hljs-comment"># Kubernetes 1.13+</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Ingress</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-ingress</span>
+  <span class="hljs-attr">annotations:</span>
+    <span class="hljs-comment"># use the shared ingress-nginx</span>
+    <span class="hljs-attr">kubernetes.io/ingress.class:</span> <span class="hljs-string">"nginx"</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">tls:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">hosts:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">app-gamma-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu</span>
+      <span class="hljs-attr">secretName:</span> <span class="hljs-string">k9s-anynines-com-tls</span>
+  <span class="hljs-attr">rules:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">host:</span> <span class="hljs-string">app-gamma-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu</span>
+    <span class="hljs-attr">http:</span>
+      <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">path:</span> <span class="hljs-string">/</span>
+        <span class="hljs-attr">backend:</span>
+          <span class="hljs-attr">serviceName:</span> <span class="hljs-string">app-gamma-service</span>
+          <span class="hljs-attr">servicePort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Apply it:</p>
+<pre><code class="hljs">kubectl apply -f 50-ingress.yaml
+</code></pre>
+<p>Obtain the URL with:</p>
+<pre><code class="hljs">kubectl get ingresses
+</code></pre>
+<p>Browse to the url and it should say &quot;<strong>I am blue</strong>&quot;.</p>
+<h2><a class="anchor" aria-hidden="true" id="scaling-the-deployment"></a><a href="#scaling-the-deployment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scaling the Deployment</h2>
+<p>So far we have declared the desired state of our resources such as ReplicaSets, Services and Deployments using YAML files and applied them use <code>kubectl apply -f &lt;filename&gt;</code>. So this is what we will try again. A copy the file <code>20-deployment-blue.yaml</code> with an increased <code>replicas</code> setting can be found in <code>60-deployment-blue-scale-out.yaml</code>. All it does is to set <code>replicas: 2</code> indicating we desire two application instances to be running.</p>
+<p>So let's give it a try!</p>
+<p>Create a file <code>60-deployment-blue-scale-out.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">labels:</span>
+      <span class="hljs-attr">app:</span> <span class="hljs-string">app-gamma</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">matchLabels:</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">replicas:</span> <span class="hljs-number">3</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">labels:</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-blue</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">fischerjulian/smpl-go-web:blue</span>
+        <span class="hljs-attr">ports:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Apply it:</p>
+<pre><code class="hljs">kubectl apply -f 60-deployment-blue-scale-out.yaml
+</code></pre>
+<p>And you will see the following error message:</p>
+<pre><code class="hljs">Warning: kubectl apply should be used on resource created by either  kubectl create --save-config or kubectl apply deployment.extensions/app-gamma configured
+</code></pre>
+<p>Try the following command instead:</p>
+<pre><code class="hljs">kubectl replace -f 60-deployment-blue-scale-out.yaml --save-config
+</code></pre>
+<p>This overwrites the existing spec stored in the Kubernetes cluster with the newly provided one. See [1] for more details on this.</p>
+<p>Once <code>--save-config</code> has been used, subsequent updates can be performed using <code>kubectl apply -f</code> again.</p>
+<h3><a class="anchor" aria-hidden="true" id="exercise"></a><a href="#exercise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exercise</h3>
+<p>Change the replica count to 3 and update your deployment using <code>kubectl apply -f</code>. Did it work?</p>
+<h2><a class="anchor" aria-hidden="true" id="updating-the-deployment-with-a-new-application-version"></a><a href="#updating-the-deployment-with-a-new-application-version" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Updating the Deployment with a new Application Version</h2>
+<p>A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions reguarily.</p>
+<p>The new software version is delived by creating a new container version. Compare the YAML file <code>70-deployment-green.yaml</code> with the previous version and look for differences. You will see that the container name and container image (tag) have changed. Hence, the team had to build a new container version and upload it to the default container registry of the Kubernetes cluster which is <a href="https://hub.docker.com/">https://hub.docker.com/</a>, by default.</p>
+<p>Create a file <code>70-deployment-green.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">labels:</span>
+      <span class="hljs-attr">app:</span> <span class="hljs-string">app-gamma</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">matchLabels:</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">replicas:</span> <span class="hljs-number">3</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">labels:</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-green</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">fischerjulian/smpl-go-web:green</span>
+        <span class="hljs-attr">ports:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Perform the update:</p>
+<pre><code class="hljs">kubectl apply -f 70-deployment-green.yaml
+</code></pre>
+<p>Try running the following command directly after running the update:</p>
+<pre><code class="hljs">kubectl describe deployment app-gamma
+</code></pre>
+<p>You should see that the fields <code>OldReplicaSets</code> and <code>NewReplicaSet</code> both have a value, e.g. <code>app-gamma-7464575685</code> and <code>app-gamma-75457966b7</code>.
+After the deployment has been completed successfully this will be different: <code>OldReplicaSets: &lt;none&gt;</code>. This also tells <strong>how the rollout works: by replacing underlying ReplicaSets</strong>. At this point it becomes clear what the added value of a Deployment is. Deployments stay, ReplicaSets come and go. <strong>The Deployment provides an Kubernetes entity that allows you to manage the lifecycle of an application across application versions each represented by a dedicated ReplicaSet</strong>.</p>
+<p>The status of a rollout can be retrieved by executing:</p>
+<pre><code class="hljs">kubectl rollout status deployments app-gamma
+</code></pre>
+<p>Which will provide you with a brief success message such as <code>deployment &quot;app-gamma&quot; successfully rolled out</code>.</p>
+<p>Reloading the app in your browser should now tell you <code>&quot;I am green.&quot;</code>.</p>
+<p><strong>Note, if you reload your browser repeatedly you may see both blue and green application versions alternating.</strong> This is due to the default <em>Deployment Strategy</em> which will be covered later in detail.</p>
+<h2><a class="anchor" aria-hidden="true" id="controlling-a-rollout"></a><a href="#controlling-a-rollout" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controlling a Rollout</h2>
+<p>More control is offered with commands such as</p>
+<pre><code class="hljs">kubectl rollout pause deployments app-gamma
+</code></pre>
+<p>and</p>
+<pre><code class="hljs">kubectl rollout resume deployments app-gamma
+</code></pre>
+<p>which become handy if the rollout produces unpredicated behavior, for example.</p>
+<h2><a class="anchor" aria-hidden="true" id="rollout-history"></a><a href="#rollout-history" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rollout History</h2>
+<p>Deployments also collect metadata on which rollouts have been performed in the past:</p>
+<pre><code class="hljs">kubectl rollout history deployment app-gamma
+</code></pre>
+<p>This allows you to dig into a particular revision:</p>
+<pre><code class="hljs">kubectl rollout history deployment app-gamma --revision 1
+</code></pre>
+<p>And provides you information about the structure and annotation of the
+ReplicaSet corresponding to the given revision.</p>
+<h2><a class="anchor" aria-hidden="true" id="ups-kaputt-undoing-a-rollout"></a><a href="#ups-kaputt-undoing-a-rollout" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ups, Kaputt! Undoing a Rollout</h2>
+<p>While it is possible to pause and resume a rollout, sometimes it may be necessary to undo it. <strong>Undoing a rollout is another major advantage of using a Deployment over plain ReplicaSets</strong>. As the Deployment knows which ReplicaSets have been representing previous versions it's easy to bring them back to &quot;life&quot;.</p>
+<pre><code class="hljs">kubectl rollout undo deployments app-gamma
+</code></pre>
+<p>And the browser should turn from the &quot;green&quot; back to the &quot;blue&quot; version.</p>
+<p>While the <code>rollout undo</code> option does the trick of going back to the last rollout, it has a bad taste to it. The command modifies the live Kubernetes objects without reflicting this in our local YAML files.</p>
+<p><strong>The preferable alternative would be to deploy the &quot;green&quot; version by applying it's original YAML file</strong> and thus creating another rollout instead of a rollback.</p>
+<pre><code class="hljs">kubectl apply -f 20-deployment-blue.yaml
+</code></pre>
+<p>Check the status of the deployment:</p>
+<pre><code class="hljs">kubectl rollout status deployments app-gamma
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tidying-up---part-1-of-2"></a><a href="#tidying-up---part-1-of-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tidying Up - Part 1 of 2</h2>
+<p>Remove the Deployment:</p>
+<pre><code class="hljs">kubectl delete -f 20-deployment-blue.yaml
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deployment-strategies"></a><a href="#deployment-strategies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deployment Strategies</h2>
+<p>The deployment strategy determines how the Kubernetes deployment controller starts and stops ReplicaSets during an application rollout.</p>
+<p>Two strategies are provided by default:</p>
+<ul>
+<li>Recreate</li>
+<li>RollingUpgrade</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="recreate-strategy"></a><a href="#recreate-strategy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Recreate Strategy</h3>
+<p>The Recreate strategy is straight forward. The existing ReplicaSet with all its belonging Pods is destroyed and only after the termination of the last Pod, Pods of the new ReplicaSet will be started.</p>
+<p>For this reason the <code>Recreate</code>-strategy is not recommended for productive use. However, there are <strong>cases where this strategy makes sense</strong>. For example, <strong>if avoiding the coexistence of two application version is necessary</strong>.</p>
+<p>Create a first deployment with a file <code>80-deployment-blue-recreate.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">labels:</span>
+      <span class="hljs-attr">app:</span> <span class="hljs-string">app-gamma</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">matchLabels:</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">replicas:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">strategy:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">Recreate</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">labels:</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-blue</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">fischerjulian/smpl-go-web:blue</span>
+        <span class="hljs-attr">ports:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>Apply it:</p>
+<pre><code class="hljs">kubectl create -f 80-deployment-blue-recreate.yaml --save-config
+</code></pre>
+<p>Update the deployment by creating a file <code>90-deployment-green-recreate.yaml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">labels:</span>
+      <span class="hljs-attr">app:</span> <span class="hljs-string">app-gamma</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">selector:</span>
+    <span class="hljs-attr">matchLabels:</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+  <span class="hljs-attr">replicas:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">strategy:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">Recreate</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">labels:</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">app-gamma</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app-gamma-green</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">fischerjulian/smpl-go-web:green</span>
+        <span class="hljs-attr">ports:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">containerPort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>And apply it:</p>
+<pre><code class="hljs">kubectly apply -f 90-deployment-green-recreate.yaml
+</code></pre>
+<p>The complete termination of all Pods of one ReplicaSet before creating the new ReplicaSet with new Pods <strong>leads to a downtime of the application during the deployment</strong>. This is the case even when the number of replicas is set to a value greater than 1. You can find a great <a href="https://github.com/ContainerSolutions/k8s-deployment-strategies/tree/master/recreate">illustration of the Recrate deployment strategy here</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="rollingupdate-strategy"></a><a href="#rollingupdate-strategy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RollingUpdate Strategy</h3>
+<p>The RollingUpdate strategy terminates a number of Pods from the old (blue) ReplicaSet and start a number of new Pods with the new version (green). So gradually the new application version is rolled out.</p>
+<p><strong>Be aware:</strong> The grudual or &quot;rolling&quot; update means that <strong>Pods of both the old (blue) and new (green) versions are being served traffic simultaneously</strong>. This implies that two adjacent application versions need to coexist peacefully.
+If the new (green) version requires a different database schema, for example, this may become problematic as a schema migration can either be executed or not. The application therefore should be architected in a way that schema migrations happen gradually over mulitple versions while maintaining compatibility among adjacent versions.</p>
+<p>Engineers must decide yourself whether the increased application availability is worth the increased efford in development.</p>
+<h3><a class="anchor" aria-hidden="true" id="other-strategies"></a><a href="#other-strategies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Strategies</h3>
+<p>There are many more possible deployment patterns. They do not represent strategies in the sense that they can be pasted as a <code>strategy: &lt;my-strategy&gt;</code> into the deployment specification but rather represent higher level methodologies on how to perform a rollout [3][4]. This includes patterns such as blue-green and canary deployments.</p>
+<h2><a class="anchor" aria-hidden="true" id="tyding-up---part-2-of-2"></a><a href="#tyding-up---part-2-of-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tyding Up - Part 2 of 2</h2>
+<p>All resources of this lesson can be deleted:</p>
+<pre><code class="hljs">kubectl delete deployment app-gamma
+kubectl delete -f 50-ingress.yaml
+kubectl delete -f 40-service.yaml
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="links"></a><a href="#links" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Links</h2>
+<ol>
+<li>Kuberentes Documentation, Conecepts, Working With Objects, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/">https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/</a></li>
+<li>Kubernetes Up &amp; Running, 2nd Edition, O'Reilly, 2019, <a href="https://learning.oreilly.com/library/view/kubernetes-up-and/9781492046523/">https://learning.oreilly.com/library/view/kubernetes-up-and/9781492046523/</a></li>
+<li>Deployment Strategies, ContainerSolutions, <a href="https://blog.container-solutions.com/kubernetes-deployment-strategies">https://blog.container-solutions.com/kubernetes-deployment-strategies</a></li>
+<li>Kubernetes Patterns, O'Reilly, 2019, <a href="https://learning.oreilly.com/library/view/kubernetes-patterns/9781492050278/">https://learning.oreilly.com/library/view/kubernetes-patterns/9781492050278/</a></li>
+</ol>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/tidyup"><span class="arrow-prev">← </span><span>Tyding Up</span></a><a class="docs-next button" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-and-secrets"><span class="function-name-prevnext">ConfigMaps and Secrets</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-the-first-deployment">Creating the First Deployment</a></li><li><a href="#scaling-the-deployment">Scaling the Deployment</a><ul class="toc-headings"><li><a href="#exercise">Exercise</a></li></ul></li><li><a href="#updating-the-deployment-with-a-new-application-version">Updating the Deployment with a new Application Version</a></li><li><a href="#controlling-a-rollout">Controlling a Rollout</a></li><li><a href="#rollout-history">Rollout History</a></li><li><a href="#ups-kaputt-undoing-a-rollout">Ups, Kaputt! Undoing a Rollout</a></li><li><a href="#tidying-up---part-1-of-2">Tidying Up - Part 1 of 2</a></li><li><a href="#deployment-strategies">Deployment Strategies</a><ul class="toc-headings"><li><a href="#recreate-strategy">Recreate Strategy</a></li><li><a href="#rollingupdate-strategy">RollingUpdate Strategy</a></li><li><a href="#other-strategies">Other Strategies</a></li></ul></li><li><a href="#tyding-up---part-2-of-2">Tyding Up - Part 2 of 2</a></li><li><a href="#links">Links</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/a9s-kubernetes-training/" class="nav-home"><img src="/a9s-kubernetes-training/img/favicon.ico" alt="anynines Kubernetes Training" width="66" height="58"/></a><div><h5>Docs</h5><a href="/a9s-kubernetes-training/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/a9s-kubernetes-training/docs/en/doc2.html">Guides (or other categories)</a><a href="/a9s-kubernetes-training/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/a9s-kubernetes-training/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/a9s-kubernetes-training/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/a9s-kubernetes-training/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 anynines GmbH</section></footer></div></body></html>

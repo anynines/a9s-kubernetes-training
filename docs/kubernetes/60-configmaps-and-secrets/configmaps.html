@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ConfigMaps · anynines Kubernetes Training</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="ConfigMaps · anynines Kubernetes Training"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fischerjulian.github.io/a9s-kubernetes-training/"/><meta property="og:description" content="ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close."/><meta property="og:image" content="https://fischerjulian.github.io/a9s-kubernetes-training/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fischerjulian.github.io/a9s-kubernetes-training/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/a9s-kubernetes-training/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/a9s-kubernetes-training/js/scrollSpy.js"></script><link rel="stylesheet" href="/a9s-kubernetes-training/css/main.css"/><script src="/a9s-kubernetes-training/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/a9s-kubernetes-training/"><img class="logo" src="/a9s-kubernetes-training/img/favicon.ico" alt="anynines Kubernetes Training"/><h2 class="headerTitleWithLogo">anynines Kubernetes Training</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/a9s-kubernetes-training/docs/containerization/container-overview" target="_self">Container Training</a></li><li class="siteNavGroupActive"><a href="/a9s-kubernetes-training/docs/kubernetes/kubernetes-overview" target="_self">Kubernetes Training</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>ConfigMaps and Secrets</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Containerization</h3><ul class=""><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/containerization/container-overview">Container Overview</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/containerization/container-intro">Containers Basics</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Docker</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/installation">Docker Installation</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/docker-basics">Docker Basics</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/creating-images">Creating Container Images</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/simple-web-app">Containerizing a Simple Web App</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/publish-image">Publishing a Container Image</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/container-workflow">The Container Workflow</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/docker/docker-cheatsheet">Docker Cheat Sheet</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Kubernetes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/kubernetes-overview">Kubernetes Overview</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/kubectl">kubectl Basics</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/namespaces">Namespaces</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/10-basics/container-shell">Container Shell Access</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Pods</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/20-pods/introduction">Pods</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">ReplicaSets and Services</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/introduction">ReplicaSets and Services</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/replicasets">ReplicaSets</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/services">Services</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/ingress">Ingress</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/tidyup">Tyding Up</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Deployments</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/50-deployments/deployments">Deployments</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">ConfigMaps and Secrets</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-and-secrets">ConfigMaps and Secrets</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps">ConfigMaps</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/exercise-explanation">Exercise Explanation</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-volume-mounts">ConfigMap Volume Mounts</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/secrets">Secrets</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/secrets-exercise-explanation">Secrets Exercise Explanation</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Jobs</h4><ul><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/jobs">Jobs</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/advanced-jobs">Advanced Job Features</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/parallel-jobs">Parallel Jobs</a></li><li class="navListItem"><a class="navItem" href="/a9s-kubernetes-training/docs/kubernetes/70-jobs/cron-jobs">CronJobs</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">ConfigMaps</h1></header><article><div><span><p>ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.</p>
+<h2><a class="anchor" aria-hidden="true" id="creating-a-configmap"></a><a href="#creating-a-configmap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a ConfigMap</h2>
+<p>There are multiple ways of creating a ConfigMap. They can be created from files, directories or by providing values directly using the command line [3].</p>
+<p>Although ConfigMap are key value pairs, this does not mean that values have to be very short. In fact, a value can contain content <strong>up to 1 megabyte of non-binary UTF-8 text</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="creating-a-configmap-from-a-configuration-file"></a><a href="#creating-a-configmap-from-a-configuration-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a ConfigMap from a Configuration File</h3>
+<p>The example <code>20-config-file.conf</code> contains an imaginary configuration file:</p>
+<pre><code class="hljs"># This is an exemplary config file
+
+number-of-requests = 20
+very-import-switch = true
+</code></pre>
+<p>To import the config file into a ConfigMap execute the following command:</p>
+<pre><code class="hljs">kubectl create configmap config-example-1 --from-file=20-config-file.conf
+</code></pre>
+<p>To verify that the ConfigMap has been created successfully:</p>
+<pre><code class="hljs">kubectl get configmaps config-example-1 -o yaml
+</code></pre>
+<p>The <code>-o yaml</code> switch has the effect that not only the ConfigMap is listed but also its content shown. You should see a section <code>data</code> contain the content of the imported configuration file.</p>
+<h3><a class="anchor" aria-hidden="true" id="creating-a-configmap-from-command-line-literals"></a><a href="#creating-a-configmap-from-command-line-literals" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a ConfigMap from Command Line Literals</h3>
+<p>It is also possible to specify ConfigMaps using command line literals:</p>
+<pre><code class="hljs">kubectl create configmap config-example-2 --from-literal=number-of-requests=20 --from-literal=very-important-switch=true 
+</code></pre>
+<p>See yourself how the key values pairs have been joined into a ConfigMap:</p>
+<pre><code class="hljs">kubectl create configmap config-example-1 --from-file=20-config-file.conf
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deleting-a-configmap"></a><a href="#deleting-a-configmap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deleting a ConfigMap</h2>
+<p>Deleting a ConfigMap is simple:</p>
+<pre><code class="hljs">kubectl delete configmap config-example-1
+kubectl delete configmap config-example-2
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="accessing-configmaps"></a><a href="#accessing-configmaps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Accessing ConfigMaps</h2>
+<p>Once a ConfigMap is created Kubernetes offers several access mechanisms to applications.</p>
+<ul>
+<li>Env Variable</li>
+<li>Filesystem</li>
+</ul>
+<p>In order to grand an application access to a ConfigMap it must best told which ConfigMap to access and which mechanism is to be used. This is done in the Pod spec:</p>
+<p>See YAML file: <code>40-pod-with-config-map-env.yml</code>:</p>
+<pre><code class="hljs css language-YAML"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Pod</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">busybox-config</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">containers:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">busybox</span> 
+      <span class="hljs-attr">name:</span> <span class="hljs-string">busybox-config-container</span>
+      <span class="hljs-attr">command:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">"env"</span>        
+      <span class="hljs-attr">env:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">NUMBER_OF_REQUESTS</span>
+          <span class="hljs-attr">valueFrom:</span>
+            <span class="hljs-attr">configMapKeyRef:</span>
+              <span class="hljs-attr">name:</span> <span class="hljs-string">config-example-1</span>
+              <span class="hljs-attr">key:</span> <span class="hljs-string">number-of-requests</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">VERY_IMPORTANT_SWITCH</span>
+          <span class="hljs-attr">valueFrom:</span>
+            <span class="hljs-attr">configMapKeyRef:</span>
+              <span class="hljs-attr">name:</span> <span class="hljs-string">config-example-1</span>
+              <span class="hljs-attr">key:</span> <span class="hljs-string">very-important-switch</span>
+  <span class="hljs-attr">restartPolicy:</span> <span class="hljs-string">Never</span>
+</code></pre>
+<p>Apply the YAML file:</p>
+<pre><code class="hljs">kubectl apply -f 40-pod-with-config-map-env.yml
+</code></pre>
+<p>Verify whether the Pod has been created successfully:</p>
+<pre><code class="hljs">kubectl get pod busybox-config
+</code></pre>
+<p>You should see an error with the <code>STATUS</code> field indicating <code>CreateContainerConfigError</code>. This gives you the opportunity to think about how a failing Pod can be investigated. Maybe it's worth having a look at the Pod's log output:</p>
+<pre><code class="hljs">kubectl logs busybox-config
+</code></pre>
+<p>But the output is disappointing:</p>
+<pre><code class="hljs">error: the server doesn't have a resource type &quot;logs&quot;
+</code></pre>
+<p>Why are there no logs?</p>
+<p>The answer is because there is no Pod that could produce logs as <strong>the Pod creation failed</strong>. At this stage the <code>kubectl log</code> command is not helpful.</p>
+<p>As a general utility to investigate Kubernetes objects - not only Pod objects - the <code>kubectl describe</code> command is very handy:</p>
+<pre><code class="hljs">kubectl describe Pod busybox-config
+</code></pre>
+<p>At the end of the output a tabular paragraph <code>Events</code> tells us about the lifecycle events of our <code>busybox-config</code> Pod:</p>
+<pre><code class="hljs">Error: configmap &quot;config-example-3&quot; not found
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="exercise"></a><a href="#exercise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exercise</h2>
+<p>Try to fix the above <em>configmap not found</em> issue.</p>
+<p>If you have fixed the issue, the container named <code>busybox-config</code> should have been started successfully.</p>
+<p>Then:</p>
+<pre><code class="hljs">kubectl logs busybox-config
+</code></pre>
+<p>Should return the environment variables seen by the container inside the <code>busybox-config</code> Pod. The listing should include:</p>
+<pre><code class="hljs">NUMBER_OF_REQUESTS=20
+VERY_IMPORTANT_SWITCH=true
+</code></pre>
+<p>Also have a look at all the other environment variables added by Kubernetes:</p>
+<pre><code class="hljs">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=busybox-config
+APP_GAMMA_SERVICE_PORT_8080_TCP_PORT=8080
+KUBERNETES_SERVICE_HOST=10.100.200.1
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+APP_GAMMA_SERVICE_SERVICE_HOST=10.100.200.246
+APP_GAMMA_SERVICE_PORT_8080_TCP=tcp://10.100.200.246:8080
+KUBERNETES_SERVICE_PORT_HTTPS=443
+APP_GAMMA_SERVICE_PORT_8080_TCP_PROTO=tcp
+APP_GAMMA_SERVICE_PORT_8080_TCP_ADDR=10.100.200.246
+KUBERNETES_PORT=tcp://10.100.200.1:443
+KUBERNETES_PORT_443_TCP_ADDR=10.100.200.1
+APP_GAMMA_SERVICE_SERVICE_PORT=8080
+APP_GAMMA_SERVICE_PORT=tcp://10.100.200.246:8080
+KUBERNETES_SERVICE_PORT=443
+KUBERNETES_PORT_443_TCP=tcp://10.100.200.1:443
+KUBERNETES_PORT_443_TCP_PORT=443
+HOME=/root  
+</code></pre>
+<p>It's worth remembering that Kubernetes provides you with context information of the execution environment.</p>
+<h2><a class="anchor" aria-hidden="true" id="links"></a><a href="#links" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Links</h2>
+<ol>
+<li>The Twelve Factor App, <a href="https://12factor.net/">https://12factor.net/</a></li>
+<li>Environment Variables, Wikipedia, <a href="https://en.wikipedia.org/wiki/Environment_variable">https://en.wikipedia.org/wiki/Environment_variable</a></li>
+<li>Kubernetes Documentation, Tasks, Configure a Pod to Use a ConfigMap, <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/</a></li>
+</ol>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/configmaps-and-secrets"><span class="arrow-prev">← </span><span class="function-name-prevnext">ConfigMaps and Secrets</span></a><a class="docs-next button" href="/a9s-kubernetes-training/docs/kubernetes/60-configmaps-and-secrets/exercise-explanation"><span>Exercise Explanation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-a-configmap">Creating a ConfigMap</a><ul class="toc-headings"><li><a href="#creating-a-configmap-from-a-configuration-file">Creating a ConfigMap from a Configuration File</a></li><li><a href="#creating-a-configmap-from-command-line-literals">Creating a ConfigMap from Command Line Literals</a></li></ul></li><li><a href="#deleting-a-configmap">Deleting a ConfigMap</a></li><li><a href="#accessing-configmaps">Accessing ConfigMaps</a></li><li><a href="#exercise">Exercise</a></li><li><a href="#links">Links</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/a9s-kubernetes-training/" class="nav-home"><img src="/a9s-kubernetes-training/img/favicon.ico" alt="anynines Kubernetes Training" width="66" height="58"/></a><div><h5>Docs</h5><a href="/a9s-kubernetes-training/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/a9s-kubernetes-training/docs/en/doc2.html">Guides (or other categories)</a><a href="/a9s-kubernetes-training/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/a9s-kubernetes-training/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/a9s-kubernetes-training/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/a9s-kubernetes-training/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 anynines GmbH</section></footer></div></body></html>
