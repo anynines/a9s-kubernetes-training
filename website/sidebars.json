@@ -1,0 +1,87 @@
+{
+  "docs": {
+    "Containerization": [    
+      "containerization/container-overview",  
+      "containerization/container-intro",
+      {
+        "type": "subcategory",
+        "label": "Docker",
+        "ids": [
+          "docker/installation",
+          "docker/docker-basics",
+          "docker/creating-images",
+          "docker/simple-web-app",
+          "docker/publish-image",
+          "docker/container-workflow",
+          "docker/docker-cheatsheet"
+
+        ]
+      }
+    ],
+    "Kubernetes": [
+      "kubernetes/kubernetes-overview",
+      {
+        "type": "subcategory",
+        "label": "Basics",
+        "ids": [
+          "kubernetes/10-basics/kubectl",
+          "kubernetes/10-basics/namespaces",
+          "kubernetes/10-basics/container-shell"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Pods",
+        "ids": [
+          "kubernetes/20-pods/introduction"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "ReplicaSets and Services",
+        "ids": [
+          "kubernetes/40-replicaset-and-service/introduction",
+          "kubernetes/40-replicaset-and-service/replicasets",
+          "kubernetes/40-replicaset-and-service/services",
+          "kubernetes/40-replicaset-and-service/ingress",
+          "kubernetes/40-replicaset-and-service/tidyup"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Deployments",
+        "ids": [
+          "kubernetes/50-deployments/deployments"          
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "ConfigMaps and Secrets",
+        "ids": [
+          "kubernetes/60-configmaps-and-secrets/configmaps-and-secrets",
+          "kubernetes/60-configmaps-and-secrets/configmaps",
+          "kubernetes/60-configmaps-and-secrets/exercise-explanation",
+          "kubernetes/60-configmaps-and-secrets/configmaps-volume-mounts",
+          "kubernetes/60-configmaps-and-secrets/secrets",
+          "kubernetes/60-configmaps-and-secrets/secrets-exercise-explanation"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Jobs",
+        "ids": [
+          "kubernetes/70-jobs/jobs",
+          "kubernetes/70-jobs/advanced-jobs",
+          "kubernetes/70-jobs/parallel-jobs",
+          "kubernetes/70-jobs/cron-jobs"
+        ]
+      }
+    ]
+  },
+  "docs-other": {
+    "First Category": [
+      "doc4", 
+      "doc5"
+    ]
+  }
+}
