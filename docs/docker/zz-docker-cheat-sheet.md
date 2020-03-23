@@ -69,5 +69,9 @@ To include stopped containers.
 
     docker container logs --tail 200 sobusy
 
+** Reattach a Container **
+
+    docker attach <container-name | container-id>
+
 ## Links
 1. Linux Programmer's Manual, SIGNAL(7), POSIX Signals, http://www.man7.org/linux/man-pages/man7/signal.7.html
