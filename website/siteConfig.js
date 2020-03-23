@@ -23,15 +23,15 @@ const users = [
 const siteConfig = {
   title: 'anynines Kubernetes Training', // Title for your website.
   tagline: 'Learn how to containerize and deploy your apps to Kubernetes.',
-  url: 'https://learn.anynines.com/k8s', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  url: 'https://fischerjulian.github.io', //'https://learn.anynines.com/k8s', // Your website URL
+  baseUrl: '/a9s-kubernetes-training/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'a9s-k8s-training',
-  organizationName: 'facebook',
+  projectName: 'a9s-kubernetes-training',
+  organizationName: 'fischerjulian',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
