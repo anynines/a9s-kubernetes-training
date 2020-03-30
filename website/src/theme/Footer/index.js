@@ -90,22 +90,6 @@ function Footer() {
         )}
         {(logo || copyright) && (
           <div className="text--center">
-            {logo && logo.src && (
-              <div className="margin-bottom--sm">
-                {logo.href ? (
-                  <a
-                    href={logo.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.footerLogoLink}>
-                    <FooterLogo alt={logo.alt} url={logoUrl} />
-                  </a>
-                ) : (
-                  <FooterLogo alt={logo.alt} url={logoUrl} />
-                )}
-              </div>
-            )}
-
             <div
               dangerouslySetInnerHTML={{
                 __html: copyright,
