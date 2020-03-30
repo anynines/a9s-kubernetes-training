@@ -42,15 +42,15 @@ This assumes the Service to be within the `k8s-training` namespace, be reachable
 
 In the first step of this lession a **ReplicaSet with one (1)** replica has been deployed. This lead to the creation of a single Pod with a single container running the desired web application.
 
-By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service has *discovered* the `app-gamma` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `app-gamma` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if mulitple endpoints are available - load balancer.
+By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service has *discovered* the `smpl-go-web-a` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `smpl-go-web` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if mulitple endpoints are available - load balancer.
 
 You can verify the connection of the Service with its application by:
 
-    kubectl describe service app-gamma-service
+    kubectl describe service smpl-go-web-s
 
 And (Don't forget to replace the Pod's ID):
 
-    kubectl describe pod app-gamma-75457966b7-742sr
+    kubectl describe pod smpl-go-web-75457966b7-742sr
 
 The `endpoints` section of the service description should contain the Pod's IP address.
 
@@ -71,7 +71,7 @@ In order to check the labels of your Pod you can obtain this information by exec
 
     kubectl describe Pod smpl-go-web-rs-kmqrd
 
-Where `smpl-go-web-rs-kmqrd` must be replaced with your Pod's name. 
+Where `smpl-go-web-rs-kmqrd` must be replaced with your Pod's name.
 
 Look for the field `Labels` in the output. Only if there is a match between the label and the Service's selector, the Service will "know" to which Pods it belongs.
 

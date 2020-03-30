@@ -52,4 +52,4 @@ From now on all kubectl commands will be executed within the `k8s-training` name
 
 ## Links
 
-* Kubernetes Documenntation, Tasks, Share a Cluster with Namespaces, https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+* Kubernetes Documentation, Tasks, Share a Cluster with Namespaces, https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
