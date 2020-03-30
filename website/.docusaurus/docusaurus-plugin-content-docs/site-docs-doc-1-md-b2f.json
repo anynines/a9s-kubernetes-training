@@ -1,8 +1,0 @@
-{
-  "id": "doc1",
-  "title": "Latin-ish",
-  "description": "Check the [documentation](https://docusaurus.io) for how to use Docusaurus.",
-  "source": "@site/docs/doc1.md",
-  "permalink": "/a9s-kubernetes-training/docs/doc1",
-  "sidebar_label": "Latin-ish"
-}
