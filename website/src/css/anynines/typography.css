@@ -1,4 +1,6 @@
 :root {
   --a9s-font-family-base: 'Lato', Helvetica, sans-serif;
   --a9s-font-size-base: 16px;
+  --a9s-font-weight-base: 400;
+  --a9s-font-weight-header: 700;
 }

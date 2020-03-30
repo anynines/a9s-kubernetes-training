@@ -1,5 +1,5 @@
-@import url('./a9s-colors.css');
-@import url('./a9s-typography.css');
+@import url('./anynines/colors.css');
+@import url('./anynines/typography.css');
 
 :root {
   /* Overriding the framework */
@@ -33,4 +33,12 @@ html[data-theme=""] {
   --ifm-font-base-color: var(--a9s-blue);
   --ifm-menu-color-background-active: var(--a9s-orange);
   --ifm-menu-color-active: var(--white);
+}
+
+body {
+  font-weight: var(--a9s-font-weight-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--a9s-font-weight-header);
 }

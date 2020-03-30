@@ -52,7 +52,9 @@ const siteConfig = {
           sidebarPath: require.resolve('./sidebars.json'),
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css')
+          ]
         },
       }
     ],
