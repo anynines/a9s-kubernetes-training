@@ -4,9 +4,9 @@
       "containerization/container-overview",  
       "containerization/container-intro",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Docker",
-        "ids": [
+        "items": [
           "docker/installation",
           "docker/docker-basics",
           "docker/creating-images",
@@ -21,25 +21,25 @@
     "Kubernetes": [
       "kubernetes/kubernetes-overview",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Basics",
-        "ids": [
+        "items": [
           "kubernetes/10-basics/kubectl",
           "kubernetes/10-basics/namespaces",
           "kubernetes/10-basics/container-shell"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Pods",
-        "ids": [
+        "items": [
           "kubernetes/20-pods/introduction"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "ReplicaSets and Services",
-        "ids": [
+        "items": [
           "kubernetes/40-replicaset-and-service/introduction",
           "kubernetes/40-replicaset-and-service/replicasets",
           "kubernetes/40-replicaset-and-service/services",
@@ -48,16 +48,16 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Deployments",
-        "ids": [
+        "items": [
           "kubernetes/50-deployments/deployments"          
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "ConfigMaps and Secrets",
-        "ids": [
+        "items": [
           "kubernetes/60-configmaps-and-secrets/configmaps-and-secrets",
           "kubernetes/60-configmaps-and-secrets/configmaps",
           "kubernetes/60-configmaps-and-secrets/exercise-explanation",
@@ -67,21 +67,15 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Jobs",
-        "ids": [
+        "items": [
           "kubernetes/70-jobs/jobs",
           "kubernetes/70-jobs/advanced-jobs",
           "kubernetes/70-jobs/parallel-jobs",
           "kubernetes/70-jobs/cron-jobs"
         ]
       }
-    ]
-  },
-  "docs-other": {
-    "First Category": [
-      "doc4", 
-      "doc5"
     ]
   }
 }

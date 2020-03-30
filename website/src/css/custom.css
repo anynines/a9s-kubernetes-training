@@ -1,0 +1,44 @@
+@import url('./anynines/colors.css');
+@import url('./anynines/typography.css');
+
+:root {
+  /* Overriding the framework */
+  --ifm-color-primary: var(--a9s-orange);
+  --ifm-color-primary-dark: var(--a9s-blue-dark-01);
+  --ifm-color-primary-darker: var(--a9s-blue-dark-02);
+  --ifm-color-primary-darkest: var(--a9s-blue-dark-03);
+  --ifm-color-primary-light: var(--a9s-blue-light-01);
+  --ifm-color-primary-lighter: var(--a9s-blue-light-02);
+  --ifm-color-primary-lightest: var(--a9s-blue-light-04);
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: var(--a9s-font-family-base);
+  --ifm-font-size-base: var(--a9s-font-size-base);
+}
+
+html[data-theme="dark"] {
+  --ifm-background-color: var(--a9s-blue-dark-05);
+  --ifm-navbar-background-color: var(--a9s-blue-dark-05);
+  --ifm-heading-color: var(--white);
+  --ifm-font-base-color: var(--a9s-gray-light-01);
+  --ifm-menu-color-background-active: var(--a9s-orange);
+  --ifm-menu-color-active: var(--white);
+  --ifm-footer-background-color: var(--a9s-blue-dark-05);
+}
+
+html[data-theme=""] {
+  --ifm-navbar-background-color: var(--a9s-blue);
+  --ifm-navbar-link-color: var(--a9s-gray-light-01);
+  --ifm-navbar-link-hover-color: var(--white);
+  --ifm-heading-color: var(--a9s-blue-dark-05);
+  --ifm-font-base-color: var(--a9s-blue);
+  --ifm-menu-color-background-active: var(--a9s-orange);
+  --ifm-menu-color-active: var(--white);
+}
+
+body {
+  font-weight: var(--a9s-font-weight-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--a9s-font-weight-header);
+}
