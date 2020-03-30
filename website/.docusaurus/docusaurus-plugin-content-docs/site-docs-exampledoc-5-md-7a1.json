@@ -1,0 +1,7 @@
+{
+  "id": "doc5",
+  "title": "Fifth Document",
+  "description": "Another one",
+  "source": "@site/docs/exampledoc5.md",
+  "permalink": "/a9s-kubernetes-training/docs/doc5"
+}

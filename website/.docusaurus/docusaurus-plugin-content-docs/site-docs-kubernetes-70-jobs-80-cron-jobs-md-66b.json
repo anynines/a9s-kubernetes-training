@@ -1,0 +1,12 @@
+{
+  "id": "kubernetes/70-jobs/cron-jobs",
+  "title": "CronJobs",
+  "description": "Cron [1] is an daemon available as a package for most unix/linux operating systems and is a time-based job scheduler.",
+  "source": "@site/docs/kubernetes/70-jobs/80-cron-jobs.md",
+  "permalink": "/a9s-kubernetes-training/docs/kubernetes/70-jobs/cron-jobs",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Parallel Jobs",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/70-jobs/parallel-jobs"
+  }
+}

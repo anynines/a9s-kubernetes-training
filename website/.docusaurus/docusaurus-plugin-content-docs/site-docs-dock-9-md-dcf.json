@@ -1,0 +1,7 @@
+{
+  "id": "doc9",
+  "title": "This is Doc 9",
+  "description": "I can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).",
+  "source": "@site/docs/dock9.md",
+  "permalink": "/a9s-kubernetes-training/docs/doc9"
+}

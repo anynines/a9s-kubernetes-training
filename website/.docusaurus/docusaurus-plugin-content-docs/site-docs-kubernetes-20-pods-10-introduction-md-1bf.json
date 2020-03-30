@@ -1,0 +1,16 @@
+{
+  "id": "kubernetes/20-pods/introduction",
+  "title": "Pods",
+  "description": "After making first steps with containers most likely by using Docker on a local machine, it is normal to think in containers as the subject to deployments. Building a container image and starting a container from it is the idea with Docker. Not in Kubernetes.",
+  "source": "@site/docs/kubernetes/20-pods/10-introduction.md",
+  "permalink": "/a9s-kubernetes-training/docs/kubernetes/20-pods/introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Container Shell Access",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/10-basics/container-shell"
+  },
+  "next": {
+    "title": "ReplicaSets and Services",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/introduction"
+  }
+}

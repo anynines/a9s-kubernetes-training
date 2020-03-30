@@ -1,0 +1,16 @@
+{
+  "id": "kubernetes/10-basics/container-shell",
+  "title": "Container Shell Access",
+  "description": "Sometimes you may want to run commands from within a container and feel how it is to be inside the Kubernetes cluster. This makes it easier to access internal services before anything is exposed to the oustide world, for example.",
+  "source": "@site/../docs/kubernetes/10-basics/40-shell-to-container.md",
+  "permalink": "/a9s-kubernetes-training/docs/kubernetes/10-basics/container-shell",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Namespaces",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/10-basics/namespaces"
+  },
+  "next": {
+    "title": "Pods",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/20-pods/introduction"
+  }
+}

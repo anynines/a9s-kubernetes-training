@@ -1,0 +1,12 @@
+{
+  "id": "containerization/container-overview",
+  "title": "Container Overview",
+  "description": "The goal of the Container lessons are to enable developers to create container images as a **preparation for the Kubernetes Training**.",
+  "source": "@site/../docs/containerization/05-overview.md",
+  "permalink": "/a9s-kubernetes-training/docs/containerization/container-overview",
+  "sidebar": "docs",
+  "next": {
+    "title": "Containers Basics",
+    "permalink": "/a9s-kubernetes-training/docs/containerization/container-intro"
+  }
+}

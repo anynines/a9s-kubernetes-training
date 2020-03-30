@@ -1,0 +1,16 @@
+{
+  "id": "docker/installation",
+  "title": "Docker Installation",
+  "description": "In order to learn creating containers we start with a local Docker installation.",
+  "source": "@site/../docs/docker/10-installation.md",
+  "permalink": "/a9s-kubernetes-training/docs/docker/installation",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Containers Basics",
+    "permalink": "/a9s-kubernetes-training/docs/containerization/container-intro"
+  },
+  "next": {
+    "title": "Docker Basics",
+    "permalink": "/a9s-kubernetes-training/docs/docker/docker-basics"
+  }
+}

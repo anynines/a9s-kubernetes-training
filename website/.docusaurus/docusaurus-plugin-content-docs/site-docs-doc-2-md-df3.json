@@ -1,0 +1,7 @@
+{
+  "id": "doc2",
+  "title": "document number 2",
+  "description": "This is a link to [another document.](doc3.md)  ",
+  "source": "@site/docs/doc2.md",
+  "permalink": "/a9s-kubernetes-training/docs/doc2"
+}

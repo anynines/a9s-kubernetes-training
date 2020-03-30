@@ -1,0 +1,16 @@
+{
+  "id": "docker/docker-basics",
+  "title": "Docker Basics",
+  "description": "In this lesson you will start, stop, list and access containers in various ways.",
+  "source": "@site/docs/docker/20-docker-basics.md",
+  "permalink": "/a9s-kubernetes-training/docs/docker/docker-basics",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Docker Installation",
+    "permalink": "/a9s-kubernetes-training/docs/docker/installation"
+  },
+  "next": {
+    "title": "Creating Container Images",
+    "permalink": "/a9s-kubernetes-training/docs/docker/creating-images"
+  }
+}

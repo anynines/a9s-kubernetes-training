@@ -1,0 +1,16 @@
+{
+  "id": "kubernetes/kubernetes-overview",
+  "title": "Kubernetes Overview",
+  "description": "The goal of the Kubernetes lessons is to enable you to deploy workloads to Kubernetes clusters. The training will guide you through the most frequently used Kubernetes resources and make you familiar with interacting with Kubernetes.",
+  "source": "@site/../docs/kubernetes/05-overview.md",
+  "permalink": "/a9s-kubernetes-training/docs/kubernetes/kubernetes-overview",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Docker Cheat Sheet",
+    "permalink": "/a9s-kubernetes-training/docs/docker/docker-cheatsheet"
+  },
+  "next": {
+    "title": "kubectl Basics",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/10-basics/kubectl"
+  }
+}

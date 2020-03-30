@@ -1,0 +1,16 @@
+{
+  "id": "kubernetes/40-replicaset-and-service/services",
+  "title": "Services",
+  "description": "In the ReplicaSet lessons we have encountered *service discovery*, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.",
+  "source": "@site/../docs/kubernetes/40-replicaset-and-service/30-service.md",
+  "permalink": "/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/services",
+  "sidebar": "docs",
+  "previous": {
+    "title": "ReplicaSets",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/replicasets"
+  },
+  "next": {
+    "title": "Ingress",
+    "permalink": "/a9s-kubernetes-training/docs/kubernetes/40-replicaset-and-service/ingress"
+  }
+}
