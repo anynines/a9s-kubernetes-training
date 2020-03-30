@@ -23,7 +23,7 @@ After starting the container as described previously, run the following command:
 
     docker container ls
 
-To list running containers. 
+To list running containers.
 
 **Do you see that no container is running?**
 
@@ -77,20 +77,20 @@ You can terminate the interactive terminal with the `CTRL+D` shortcut. The conta
 
 ## Starting a Detached Container
 
-You can start a container and detach the terminal from it: 
+You can start a container and detach the terminal from it:
 
     docker container run -d busybox sleep 600
 
 This will start a container that sits there for 10 minutes and return its full `CONTAINER ID`. The container ids you see in most CLI commands such as `docker container ls` is just the a truncated tail of the actual id.
 
-### Obtaining am Interactive Shell to a Detached Container
+### Obtaining an Interactive Shell to a Detached Container
 
 You can obtain an interactive shell and access the container assuming its `CONTAINER ID` is `dc1945b3fa961f556d059c569460e18ba16a10c8bb5524653d27df101de49d73`:
 
     docker exec -it affectionate_wright /bin/sh
 
 In the shell you can enter `ps` to list running linux processes and you see something similar to:
-    
+
     PID   USER     TIME  COMMAND
      1 root      0:00 sleep 600
      6 root      0:00 /bin/sh
@@ -110,7 +110,7 @@ Stop the container:
 
 [Poof! It's gone!](https://www.youtube.com/watch?v=NmFo-LKHGY0) Containers do not persist changes made to the filesystem.
 
-Docker supports so called `volumes` [7] to persist files if no data service such as a database or persisting message broker is being used. 
+Docker supports so called `volumes` [7] to persist files if no data service such as a database or persisting message broker is being used.
 
 However, as this training does not aim to use Docker but Kubernetes, **persistency will be covered in the subsequent Kubernetes Training**.
 
