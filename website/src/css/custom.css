@@ -1,47 +1,36 @@
-:root {
-  /* a9s Variables */
-  --a9s-brand-blue: #505d78;
-  --a9s-brand-orange: #e4833e;
-  --a9s-gray: #a7adbb;
-  --a9s-light-gray: #eaecee;
-  --a9s-lighter-gray: #f1f2f3;
-  --a9s-lightest-gray: #f8f8f8;
-  --a9s-success-green: #22e4bc;
-  --a9s-error-red: #e84242;
-  --a9s-navy: #062035;
-  --a9s-font-family-base: 'Lato', Helvetica, sans-serif;
-  --a9s-font-size-base: 16px;
-  --white: #fff;
+@import url('./a9s-colors.css');
+@import url('./a9s-typography.css');
 
+:root {
   /* Overriding the framework */
-  --ifm-color-primary: var(--a9s-brand-orange);
-  --ifm-color-primary-dark: #424d64;
-  --ifm-color-primary-darker: #3c4559;
-  --ifm-color-primary-darkest: #353d4f;
-  --ifm-color-primary-light: #647597;
-  --ifm-color-primary-lighter:  #7887a5;
-  --ifm-color-primary-lightest: #8c99b3;
+  --ifm-color-primary: var(--a9s-orange);
+  --ifm-color-primary-dark: var(--a9s-blue-dark-01);
+  --ifm-color-primary-darker: var(--a9s-blue-dark-02);
+  --ifm-color-primary-darkest: var(--a9s-blue-dark-03);
+  --ifm-color-primary-light: var(--a9s-blue-light-01);
+  --ifm-color-primary-lighter: var(--a9s-blue-light-02);
+  --ifm-color-primary-lightest: var(--a9s-blue-light-04);
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: var(--a9s-font-family-base);
   --ifm-font-size-base: var(--a9s-font-size-base);
 }
 
 html[data-theme="dark"] {
-  --ifm-background-color: var(--a9s-navy);
-  --ifm-navbar-background-color: var(--a9s-navy);
+  --ifm-background-color: var(--a9s-blue-dark-05);
+  --ifm-navbar-background-color: var(--a9s-blue-dark-05);
   --ifm-heading-color: var(--white);
-  --ifm-font-base-color: var(--a9s-light-gray);
-  --ifm-menu-color-background-active: var(--a9s-brand-orange);
+  --ifm-font-base-color: var(--a9s-gray-light-01);
+  --ifm-menu-color-background-active: var(--a9s-orange);
   --ifm-menu-color-active: var(--white);
-  --ifm-footer-background-color: var(--a9s-navy);
+  --ifm-footer-background-color: var(--a9s-blue-dark-05);
 }
 
 html[data-theme=""] {
-  --ifm-navbar-background-color: var(--a9s-brand-blue);
-  --ifm-navbar-link-color: var(--a9s-light-gray);
+  --ifm-navbar-background-color: var(--a9s-blue);
+  --ifm-navbar-link-color: var(--a9s-gray-light-01);
   --ifm-navbar-link-hover-color: var(--white);
-  --ifm-heading-color: var(--a9s-navy);
-  --ifm-font-base-color: var(--a9s-brand-blue);
-  --ifm-menu-color-background-active: var(--a9s-brand-orange);
+  --ifm-heading-color: var(--a9s-blue-dark-05);
+  --ifm-font-base-color: var(--a9s-blue);
+  --ifm-menu-color-background-active: var(--a9s-orange);
   --ifm-menu-color-active: var(--white);
 }
