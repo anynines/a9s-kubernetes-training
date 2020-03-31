@@ -1,5 +1,8 @@
 {
   "docs": {
+    "Introduction": [
+      "training-overview"
+    ],
     "Containerization": [    
       "containerization/container-overview",  
       "containerization/container-intro",
