@@ -4,6 +4,27 @@
 
 See https://docusaurus.io/
 
+## Website App
+
+### Build
+
+    cd website
+    yarn run build
+
+### Run
+
+    cd website
+    yarn run start
+
+## Container Image
+
+Build the container image:
+
+    docker image build -t a9s-kubernetes-training:0.1.0 .
+
+This assumes you are in the root-folder of the project (not the website sub-folder).
+
+
 ## Publish
 
 See https://docusaurus.io/docs/en/tutorial-publish-site
