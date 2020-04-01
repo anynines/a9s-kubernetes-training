@@ -15,8 +15,8 @@ const siteConfig = {
         src: 'img/logo.svg',
       },
       links: [
-        {to: 'docs/containerization/container-overview', label: 'Container Training', position: 'left'},
-        {to: 'docs/kubernetes/kubernetes-overview', label: 'Kubernetes Training', position: 'left'},
+        {to: 'containerization/container-overview', label: 'Container Training', position: 'left'},
+        {to: 'kubernetes/kubernetes-overview', label: 'Kubernetes Training', position: 'left'},
         {
           href: 'https://github.com/anynines',
           label: 'GitHub',
@@ -48,7 +48,8 @@ const siteConfig = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          path: 'docs',
+          // path: 'docs',
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.json'),
         },
         theme: {
