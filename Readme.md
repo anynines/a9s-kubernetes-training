@@ -23,13 +23,11 @@ Build the container image:
     docker image build -t a9s-kubernetes-training:0.1.0 .
 
 This assumes you are in the root-folder of the project (not the website sub-folder).
-
-
 ## Publish
 
-See https://docusaurus.io/docs/en/tutorial-publish-site
+See https://docusaurus.io/docs/en/tutorial-publish-site (here the settings are correct) but actually we use v2 (https://v2.docusaurus.io/docs/deployment):
 
-    GIT_USER=fischerjulian CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages
+    GIT_USER=fischerjulian USE_SSH=true BRANCH="master" yarn deploy
 
 ## Proposal
 
