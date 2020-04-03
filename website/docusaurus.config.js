@@ -13,6 +13,7 @@ const siteConfig = {
       logo: {
         alt: 'anynines',
         src: 'img/logo.svg',
+        href: '/training-overview'
       },
       links: [
         {to: 'containerization/container-overview', label: 'Container Training', position: 'left'},
