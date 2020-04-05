@@ -11,7 +11,7 @@ title: Persistent Volumes
 
 This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes.
 
-Persistent Volumes are introduced in this chapter although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and in fact many Kubernetes users do that. However, applications should be kept as stateless as possible and state should be managed by stateful data services as proposed in the 12 factor manifest [14].
+Persistent Volumes are introduced in this chapter although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and - although many Kubernetes users do that  applications should be kept as stateless as possible. Therefore, note that state should be managed by stateful data services as proposed in the 12 factor manifest [14].
 
 ## Volumes
 **Volumes bring persistency to containers**. Containers are stateless in so far as changes to their filesystem will be lost if a container is restarted - more precicely rescheduled. Rescheduling means that the container is destroyed but a new container of the same kind is started somewhere in the cluster. This freshly created container will be derived from the given container image and hence won't reflect any changes made in prior existing containers.
