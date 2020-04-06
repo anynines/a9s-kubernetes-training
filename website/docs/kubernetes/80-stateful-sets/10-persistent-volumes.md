@@ -92,4 +92,8 @@ The documentation [2] also mentions manual provisioning. In this case Persistent
 11. Google Cloud Platform, https://cloud.google.com/
 12. Alibaba Cloud, https://eu.alibabacloud.com/
 13. Kubernetes ocumentation, Concepts, Storage Classes, https://kubernetes.io/docs/concepts/storage/storage-classes/
+<<<<<<< HEAD
 14. The Tvelve Factor App, https://12factor.net/
+=======
+14. The Tvelve Factor App, https://12factor.net/
+>>>>>>> Intermediary; added example for PersistentVolumes
