@@ -3,7 +3,7 @@ id: stateful-sets
 title: StatefulSets
 ---
 
-* **JF** To this point the reader has not seen anything related to volumes. So volumes should be explained as well.
+* **JF**f To this point the reader has not seen anything related to volumes. So volumes should be explained as well.
     * Neither did the container tutorial mention them.
         * [Decision] Either 
             * describe Docker volumes here 

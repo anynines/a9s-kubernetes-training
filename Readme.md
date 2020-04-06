@@ -4,6 +4,15 @@
 
 See https://docusaurus.io/
 
+## Install Node
+
+To install Node.js and npm on a Mac:
+
+    brew install npm
+
+This obviously assumes homebrew (https://brew.sh/) to be installed.
+In any other case get yourself a decent node.js version (12+) and you should be fine.
+
 ## Website App
 
 ### Build
@@ -29,12 +38,16 @@ See https://docusaurus.io/docs/en/tutorial-publish-site (here the settings are c
 
     GIT_USER=fischerjulian USE_SSH=true BRANCH="master" yarn deploy
 
-## Proposal
+## Proposals
 
-### 10-basics 10-kubectl
+### Containers - Docker
+
+Also show how Docker volumes are used to experiment with databases, locally.
+
+### kubernetes - 10-basics 10-kubectl
 
 Add where to get or how to generate `kube.conf`.
 
-### 10-basics 40-shell-to-container
+### kubernetes 10-basics 40-shell-to-container
 
 Make explicit where to the image runs. Locally or inside the Kubernetes cluster.
