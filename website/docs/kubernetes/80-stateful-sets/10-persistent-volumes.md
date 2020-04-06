@@ -9,7 +9,9 @@ title: Persistent Volumes
         * EBS vs EFS
 * Create PV examples / exercises.
 
-This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes. The theoretical lessons is then followed by a set simple exercises.
+This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes.
+
+Persistent Volumes are introduced in this chapter although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and in fact many Kubernetes users do that. However, applications should be kept as stateless as possible and state should be managed by stateful data services as proposed in the 12 factor manifest [14].
 
 ## Volumes
 **Volumes bring persistency to containers**. Containers are stateless in so far as changes to their filesystem will be lost if a container is restarted - more precicely rescheduled. Rescheduling means that the container is destroyed but a new container of the same kind is started somewhere in the cluster. This freshly created container will be derived from the given container image and hence won't reflect any changes made in prior existing containers.
@@ -91,3 +93,4 @@ The documentation [2] also mentions manual provisioning. In this case Persistent
 11. Google Cloud Platform, https://cloud.google.com/
 12. Alibaba Cloud, https://eu.alibabacloud.com/
 13. Kubernetes ocumentation, Concepts, Storage Classes, https://kubernetes.io/docs/concepts/storage/storage-classes/
+14. The Tvelve Factor App, https://12factor.net/
