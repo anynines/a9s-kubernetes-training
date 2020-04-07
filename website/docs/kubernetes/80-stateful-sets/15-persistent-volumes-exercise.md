@@ -9,18 +9,18 @@ After going through the theory of Volumes and Persistent Volumes it's time to ge
 
 Create a file `05-storage-class.yaml`:
 
-```YAML
-    apiVersion: storage.k8s.io/v1
-    kind: StorageClass
-    metadata:
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
     name: default
-    parameters:
+parameters:
     encrypted: "false"
     type: gp2
-    provisioner: kubernetes.io/aws-ebs
-    reclaimPolicy: Delete
-    volumeBindingMode: Immediate
-    allowVolumeExpansion: false
+provisioner: kubernetes.io/aws-ebs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: false
 ```
 
 This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1]. 
@@ -118,7 +118,7 @@ Create another Pod, mount the same Persistent Volume and read the data printing 
 
 Create a file `30-pod-reading-from-volume.yaml`:
 
-```YAML
+```yaml
     apiVersion: v1
     kind: Pod
     metadata:
