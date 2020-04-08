@@ -78,6 +78,16 @@
           "kubernetes/70-jobs/parallel-jobs",
           "kubernetes/70-jobs/cron-jobs"
         ]
+      },
+      {
+        "type": "category",
+        "label": "StatefulSets",
+        "items": [
+          "kubernetes/80-stateful-sets/persistent-volumes",          
+          "kubernetes/80-stateful-sets/persistent-volumes-exercise",          
+          "kubernetes/80-stateful-sets/stateful-sets",          
+          "kubernetes/80-stateful-sets/stateful-set-postgresql"                    
+        ]
       }
     ]
   }

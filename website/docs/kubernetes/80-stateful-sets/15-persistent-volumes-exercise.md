@@ -3,10 +3,13 @@ id: persistent-volumes-exercise
 title: Persistent Volumes Excercise
 ---
 
+After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this involves a few preliminary steps. The exercise executes on a Kubernetes cluster using `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS [1]. Storage is one of the places where rubber meets the road in the sense that there is a comparitively large contact surfe with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprsingly complicated.
+
 ## Creating a Storage Class
 
 Create a file `05-storage-class.yaml`:
 
+```YAML
     apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -18,6 +21,7 @@ Create a file `05-storage-class.yaml`:
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
     allowVolumeExpansion: false
+```
 
 This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1]. 
 
@@ -114,6 +118,7 @@ Create another Pod, mount the same Persistent Volume and read the data printing 
 
 Create a file `30-pod-reading-from-volume.yaml`:
 
+```YAML
     apiVersion: v1
     kind: Pod
     metadata:
@@ -132,6 +137,7 @@ Create a file `30-pod-reading-from-volume.yaml`:
             - mountPath: "/my-persistent-data"
             name: simple-pv-storage
     restartPolicy: Never
+```
 
 And retrieve the Pods logs:
 
@@ -153,6 +159,16 @@ Execute:
     kubectl get pvc
 
 Can you see that the Persistent Volume Claim and the Persistent Volume still exists? Their lifecycle is independent from the lifecycle of the Pods you have created. So it's worth keeping in mind that the lifecycle is a major difference between Volumes and Persistent Volumes.
+
+Delete the Persistent Volume Claim:
+
+    kubectl delete pvc simple-pv-claim
+
+And ensure that the associated persistent volume has been deleted, too:
+
+    kubectl get pv
+
+And it's gone.
 
 You have learned how to create a Persistent Volume using a Persistent Volume Claim. Although this example uses a Pod for illustration purposes, you are more likely to use Persistent Volumes as part of StatefulSets.
 

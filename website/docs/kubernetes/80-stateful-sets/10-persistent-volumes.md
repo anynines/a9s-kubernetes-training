@@ -28,7 +28,6 @@ Within a Pod-definition volumes can be mounted to containers by using a so calle
 
 If you are familiar with Docker Volumes you may already recognized the difference between Kubernetes and Docker Volumes. In Kubernetes there are many more types of Volumes and the way to use them is more flexible. For example, in Kubernetes it is possible to mount multiple containers of multiple types into a single container. Additionally, the lifecycle of Volumes is clearly defined in Kubernetes. Volumes share the lifecycle of their Pods. They are created with their Pods and cease to exist when their Pods cease to exist. You will see that there are concepts such as the *Persistent Volume* with lifetimes exceeding the lifetime of their Pods.
 
-
 ## Persistent Volumes (PV)
 
 It may appear intuitive that Persistent Volumes (PV) are special types of Volumes but in fact there are two distinct Kubernetes resources.

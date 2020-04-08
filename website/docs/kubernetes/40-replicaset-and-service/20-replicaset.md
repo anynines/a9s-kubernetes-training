@@ -76,12 +76,14 @@ Kubernetes provides the concept of a `Service` enabling a number of ways to deal
 
 Have you noticed that the container specification of the app contains an explicit port declaration?
 
+```YAML
     spec:
       containers:
         - name: smpl-go-web-c
           image: "fischerjulian/smpl-go-web:1.0.0"
           ports:
             - containerPort: 8080
+```
 
 The Kubernetes documentation says:
 
