@@ -37,7 +37,7 @@ Verify its creation:
 
 In order to provide a stable network identity to address the PostgreSQL server create a headless services by creating the file `10-service.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -89,7 +89,7 @@ So in constrast to a standard Service, **a headless Service does not perform loa
 
 Now, with the preliminaries covered, the actual StatefulSet can be created in `30-stateful-set.yaml`:
 
-```YAML
+```yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

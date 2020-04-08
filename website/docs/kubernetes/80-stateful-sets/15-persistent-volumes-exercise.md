@@ -9,18 +9,32 @@ After going through the theory of Volumes and Persistent Volumes it's time to ge
 
 Create a file `05-storage-class.yaml`:
 
+<<<<<<< HEAD
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
+=======
+```YAML
+    apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+>>>>>>> Continues StatefulSets
     name: default
 parameters:
     encrypted: "false"
     type: gp2
+<<<<<<< HEAD
 provisioner: kubernetes.io/aws-ebs
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: false
+=======
+    provisioner: kubernetes.io/aws-ebs
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: false
+>>>>>>> Continues StatefulSets
 ```
 
 This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1]. 
