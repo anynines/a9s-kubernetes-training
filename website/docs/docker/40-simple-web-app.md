@@ -14,6 +14,7 @@ In this lesson you will containerize a simple web application to illustrate esse
 **Create a new container image working directory**:
 
     mkdir 20-simple-web-app
+    cd 20-simple-web-app
 
 ## The Web App
 
@@ -33,7 +34,7 @@ That's your web app.
 
 Optionally and in case you have Ruby [2] installed you could run the app locally by installing the Sinatra gem:
 
-    gem install sintra
+    gem install sinatra
 
 And then execute:
 
@@ -88,7 +89,7 @@ You should see the app starting up:
 
 It doesn't work. But why?
 
-The reason why it is not working is a **missing port mapping**. The local container using Docker Desktop [7] runs a light-weight virtual machine (VM) or your computer. So your container has been started within a VM. That's why a port mapping is necessary. The purpose of the port mapping is to map the container port `4567` to a local port of your machine. 
+The reason why it is not working is a **missing port mapping**. The local container using Docker Desktop [7] runs a light-weight virtual machine (VM) or your computer. So your container has been started within a VM. That's why a port mapping is necessary. The purpose of the port mapping is to map the container port `4567` to a local port of your machine.
 
 So press `CTRL+C` and stop the existing container. The web app will be shutdown along with the container.
 
@@ -114,13 +115,13 @@ Now, start the container again with a port mapping:
 
 **Excercise**:
 
-1. Determine the container id by using `docker container ps``
+1. Determine the container id by using `docker container ps`
 2. Get a shell access into your container with `docker container exec -it <container-id> /bin/sh`. **Obviously, you have to insert your container id**.
 3. Within the container execute `wget localhost:4567` and `cat index.html`.
 
 To your surprise the content of `index.html` says `Hello Container World` which means that the app works fine. Which brings us back to the idea that something is wrong with the container mapping. But it still isn't! So what is going on?
 
-Admittedly, there is nothing wrong with neither the container image nor the `container run` command. In fact, **it's an application configuration issue** but the issue is very common and therefore it makes sense to know about it.
+Admittedly, there is nothing wrong with either the container image or the `container run` command. In fact, **it's an application configuration issue** but the issue is very common and therefore it makes sense to know about it.
 
 The current version of our web app binds to the loopback network device [8] referred to by the IP address `127.0.0.1` inside the container. While you are within the container, e.g. using a shell `/bin/sh` and issue a command against the loop device such as `wget localhost:4567` the application responds as you are accessing it through the network device it is bound to.
 
@@ -165,7 +166,7 @@ And run it:
 
     docker container run -p 8081:4567 simple-web-app:0.2.0
 
-**Voilà! It works!**
+**Point your browser to `http://localhost:8081`. Voilà! It works!**
 
 ## Takeaways
 
