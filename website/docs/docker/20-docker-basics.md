@@ -42,7 +42,7 @@ This will show you the container along with some meta data such as:
 
 In case the process to start within the container opens a port, the container port may interfere with a daemon running on your local computer. For this reason a port mapping is required that maps the container port to a vacant port on your machine:
 
-    docker container run -p 8081:8080 smpl-go-web
+    docker container run -p 8081:8080 fischerjulian/smpl-go-web:1.0.0
 
 This will map the port `8080`of the container to the port `8081`. Open your browser and navigate to `http://localhost:8081`. You should see a simple web app.
 
