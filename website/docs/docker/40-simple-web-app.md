@@ -121,7 +121,7 @@ Now, start the container again with a port mapping:
 
 To your surprise the content of `index.html` says `Hello Container World` which means that the app works fine. Which brings us back to the idea that something is wrong with the container mapping. But it still isn't! So what is going on?
 
-Admittedly, there is nothing wrong with either the container image or the `container run` command. In fact, **it's an application configuration issue** but the issue is very common and therefore it makes sense to know about it.
+Admittedly, there is nothing wrong with neither the container image nor the `container run` command. In fact, **it's an application configuration issue** but the issue is very common and therefore it makes sense to know about it.
 
 The current version of our web app binds to the loopback network device [8] referred to by the IP address `127.0.0.1` inside the container. While you are within the container, e.g. using a shell `/bin/sh` and issue a command against the loop device such as `wget localhost:4567` the application responds as you are accessing it through the network device it is bound to.
 
