@@ -14,6 +14,7 @@ In this lesson you will containerize a simple web application to illustrate esse
 **Create a new container image working directory**:
 
     mkdir 20-simple-web-app
+    cd 20-simple-web-app
 
 ## The Web App
 
@@ -33,7 +34,7 @@ That's your web app.
 
 Optionally and in case you have Ruby [2] installed you could run the app locally by installing the Sinatra gem:
 
-    gem install sintra
+    gem install sinatra
 
 And then execute:
 
@@ -88,7 +89,7 @@ You should see the app starting up:
 
 It doesn't work. But why?
 
-The reason why it is not working is a **missing port mapping**. The local container using Docker Desktop [7] runs a light-weight virtual machine (VM) or your computer. So your container has been started within a VM. That's why a port mapping is necessary. The purpose of the port mapping is to map the container port `4567` to a local port of your machine. 
+The reason why it is not working is a **missing port mapping**. The local container using Docker Desktop [7] runs a light-weight virtual machine (VM) or your computer. So your container has been started within a VM. That's why a port mapping is necessary. The purpose of the port mapping is to map the container port `4567` to a local port of your machine.
 
 So press `CTRL+C` and stop the existing container. The web app will be shutdown along with the container.
 
@@ -114,7 +115,7 @@ Now, start the container again with a port mapping:
 
 **Excercise**:
 
-1. Determine the container id by using `docker container ps``
+1. Determine the container id by using `docker container ps`
 2. Get a shell access into your container with `docker container exec -it <container-id> /bin/sh`. **Obviously, you have to insert your container id**.
 3. Within the container execute `wget localhost:4567` and `cat index.html`.
 
@@ -165,7 +166,7 @@ And run it:
 
     docker container run -p 8081:4567 simple-web-app:0.2.0
 
-**Voilà! It works!**
+**Point your browser to `http://localhost:8081`. Voilà! It works!**
 
 ## Takeaways
 
