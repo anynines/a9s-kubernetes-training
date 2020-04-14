@@ -7,7 +7,7 @@ Here is a brief list of frequently used `docker` commands.
 
 ## Building Images
 
-**Building a image** from a Dockerfile in the current working directory (`.`) tagged with `1.0.0`.
+**Building an image** from a Dockerfile in the current working directory (`.`) tagged with `1.0.0`.
 
     docker build -t imagename:1.0.0 .
 
@@ -35,7 +35,7 @@ Here is a brief list of frequently used `docker` commands.
 
 ## Starting Containers
 
-**Run a container** using the `simple-web-app` image tagged with `0.1.0`. The container name will be `myapp`. Expose the local port `8081` to port `4567` within the container. You can then access port 4567 of the container by typing `http://localhost:8081`:
+**Run a container** using the `simple-web-app` image tagged with `0.1.0`. The container name will be `myapp`. Expose the local port `8081` to port `4567` within the container. You can then access port `4567` of the container by typing `http://localhost:8081`:
 
     docker container run --name myapp -p 8081:4567 simple-web-app:0.1.0
 
@@ -74,4 +74,5 @@ To include stopped containers.
     docker container attach <container-name | container-id>
 
 ## Links
+
 1. Linux Programmer's Manual, SIGNAL(7), POSIX Signals, http://www.man7.org/linux/man-pages/man7/signal.7.html
