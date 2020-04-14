@@ -7,7 +7,7 @@ In this lesson you will learn about executing tasks in parallel by running multi
 
 ## Job Completion Count
 
-In the previous example using `kubectl get jobs` you may have noticed the field `COMPLETIONS` whose value was `1/1` in case a Job has been completed successfully. More precisely, the count determines the number of successful Pod executions as part of the Job. In case of a failing a Job, the failing Pod has been recreated and the completion count has been reached even though the source code describe the task has been very unreliable.
+In the previous example using `kubectl get jobs` you may have noticed the field `COMPLETIONS` whose value was `1/1` in case a Job has been completed successfully. More precisely, the count determines the number of successful Pod executions as part of the Job. In case of a failing Job, the failing Pod has been recreated and the completion count has been reached even though the source code describe the task has been very unreliable.
 
 There are tasks requiring more than one iteration to fully accomplish the underlying objective. For this purpose Kubernetes Jobs allow to specify the number of desired completions, e.g. 2 completions by adding `completions: 2`.
 
@@ -100,7 +100,7 @@ The output looks similar to:
     one-off-job-two-completions-parallel-s2j5k   0/1     Completed           0          3s
     one-off-job-two-completions-parallel-qknz4   0/1     Completed           0          3s
 
-Compare the outputs of the *first non-parallel* and *second parallel* run. 
+Compare the outputs of the *first non-parallel* and *second parallel* run.
 
 The *first run* the sequence was: `Pending, Pending, ContainerCreating, Completed, ContainerCreating, Completed` which implies sequential execution.
 

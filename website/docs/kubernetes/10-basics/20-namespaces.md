@@ -34,7 +34,7 @@ and applied
 
 ## Creating a kubectl Context to Work Within a Namespace
 
-While it is possible to specify namespaces explicitly this would obstruct the portability of a workload description. Hence, it is recommendable to avoid speciying namespaces in YAML files if possible.
+While it is possible to specify namespaces explicitly this would obstruct the portability of a workload description. Hence, it is recommended to avoid specifying namespaces in YAML files if possible.
 
 In order to avoid the necessity to specify a `--namespace k8s-training` for each kubectl command, it is handy to create a so called `context`.
 

@@ -3,7 +3,7 @@ id: deployments
 title: Deployments
 ---
 
-The Kubernetes Deployment resource is desinged to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets.
+The Kubernetes Deployment resource is designed to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets.
 
 Using a Deployment, the deployment process is controlled by a deployment controller running within the Kubernetes cluster.
 
@@ -49,7 +49,7 @@ It's also worth having a look at the list of ReplicaSets:
 
     kubectl get replicasets
 
-You should also find a ReplicaSet **blue** as a Kubernetes Deployment internally creates a ReplicaSet which in turn creates one or more Pods creating one or more containers. 
+You should also find a ReplicaSet **blue** as a Kubernetes Deployment internally creates a ReplicaSet which in turn creates one or more Pods creating one or more containers.
 So it's no surprise to find **blue** Pods:
 
     kubectl get pods
@@ -69,6 +69,7 @@ spec:
   ports:
   - port: 8080
 ```
+
 Apply it:
 
     kubectl apply -f 40-service.yaml
@@ -110,9 +111,9 @@ Browse to the url and it should say "**I am blue**".
 
 ## Scaling the Deployment
 
-So far we have declared the desired state of our resources such as ReplicaSets, Services and Deployments using YAML files and applied them use `kubectl apply -f <filename>`. So this is what we will try again. A copy the file `20-deployment-blue.yaml` with an increased `replicas` setting can be found in `60-deployment-blue-scale-out.yaml`. All it does is to set `replicas: 2` indicating we desire two application instances to be running. 
+So far we have declared the desired state of our resources such as ReplicaSets, Services and Deployments using YAML files and applied them use `kubectl apply -f <filename>`. So this is what we will try again. A copy of the file `20-deployment-blue.yaml` with an increased `replicas` setting can be found in `60-deployment-blue-scale-out.yaml`. All it does is to set `replicas: 2` indicating we desire two application instances to be running.
 
-So let's give it a try! 
+So let's give it a try!
 
 Create a file `60-deployment-blue-scale-out.yaml`:
 
@@ -127,7 +128,7 @@ spec:
   selector:
     matchLabels:
       run: app-gamma
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -139,6 +140,7 @@ spec:
         ports:
             - containerPort: 8080
 ```
+
 Apply it:
 
     kubectl apply -f 60-deployment-blue-scale-out.yaml
@@ -153,7 +155,7 @@ Try the following command instead:
 
 This overwrites the existing spec stored in the Kubernetes cluster with the newly provided one. See [1] for more details on this.
 
-Once `--save-config` has been used, subsequent updates can be performed using `kubectl apply -f` again. 
+Once `--save-config` has been used, subsequent updates can be performed using `kubectl apply -f` again.
 
 ### Exercise
 
@@ -161,7 +163,7 @@ Change the replica count to 3 and update your deployment using `kubectl apply -f
 
 ## Updating the Deployment with a new Application Version
 
-A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions reguarily.
+A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions regularly.
 
 The new software version is delived by creating a new container version. Compare the YAML file `70-deployment-green.yaml` with the previous version and look for differences. You will see that the container name and container image (tag) have changed. Hence, the team had to build a new container version and upload it to the default container registry of the Kubernetes cluster which is https://hub.docker.com/, by default.
 
@@ -178,7 +180,7 @@ spec:
   selector:
     matchLabels:
       run: app-gamma
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -199,8 +201,8 @@ Try running the following command directly after running the update:
 
     kubectl describe deployment app-gamma
 
-You should see that the fields `OldReplicaSets` and `NewReplicaSet` both have a value, e.g. `app-gamma-7464575685` and `app-gamma-75457966b7`. 
-After the deployment has been completed successfully this will be different: `OldReplicaSets:  <none>`. This also tells **how the rollout works: by replacing underlying ReplicaSets**. At this point it becomes clear what the added value of a Deployment is. Deployments stay, ReplicaSets come and go. **The Deployment provides an Kubernetes entity that allows you to manage the lifecycle of an application across application versions each represented by a dedicated ReplicaSet**.
+You should see that the fields `OldReplicaSets` and `NewReplicaSet` both have a value, e.g. `app-gamma-7464575685` and `app-gamma-75457966b7`.
+After the deployment has been completed successfully this will be different: `OldReplicaSets:  <none>`. This also tells **how the rollout works: by replacing underlying ReplicaSets**. At this point it becomes clear what the added value of a Deployment is. Deployments stay, ReplicaSets come and go. **The Deployment provides a Kubernetes entity that allows you to manage the lifecycle of an application across application versions each represented by a dedicated ReplicaSet**.
 
 The status of a rollout can be retrieved by executing:
 
@@ -208,7 +210,7 @@ The status of a rollout can be retrieved by executing:
 
 Which will provide you with a brief success message such as `deployment "app-gamma" successfully rolled out`.
 
-Reloading the app in your browser should now tell you `"I am green."`. 
+Reloading the app in your browser should now tell you `"I am green."`.
 
 **Note, if you reload your browser repeatedly you may see both blue and green application versions alternating.** This is due to the default *Deployment Strategy* which will be covered later in detail.
 
@@ -234,8 +236,7 @@ This allows you to dig into a particular revision:
 
     kubectl rollout history deployment app-gamma --revision 1
 
-And provides you information about the structure and annotation of the 
-ReplicaSet corresponding to the given revision.
+And provides you information about the structure and annotation of the ReplicaSet corresponding to the given revision.
 
 ## Ups, Kaputt! Undoing a Rollout
 
@@ -245,7 +246,7 @@ While it is possible to pause and resume a rollout, sometimes it may be necessar
 
 And the browser should turn from the "green" back to the "blue" version.
 
-While the `rollout undo` option does the trick of going back to the last rollout, it has a bad taste to it. The command modifies the live Kubernetes objects without reflicting this in our local YAML files.
+While the `rollout undo` option does the trick of going back to the last rollout, it has a bad taste to it. The command modifies the live Kubernetes objects without reflecting this in our local YAML files.
 
 **The preferable alternative would be to deploy the "green" version by applying it's original YAML file** and thus creating another rollout instead of a rollback.
 
@@ -338,18 +339,18 @@ spec:
 
 And apply it:
 
-    kubectly apply -f 90-deployment-green-recreate.yaml
+    kubectl apply -f 90-deployment-green-recreate.yaml
 
-The complete termination of all Pods of one ReplicaSet before creating the new ReplicaSet with new Pods **leads to a downtime of the application during the deployment**. This is the case even when the number of replicas is set to a value greater than 1. You can find a great [illustration of the Recrate deployment strategy here](https://github.com/ContainerSolutions/k8s-deployment-strategies/tree/master/recreate).
+The complete termination of all Pods of one ReplicaSet before creating the new ReplicaSet with new Pods **leads to a downtime of the application during the deployment**. This is the case even when the number of replicas is set to a value greater than 1. You can find a great [illustration of the Recreate deployment strategy here](https://github.com/ContainerSolutions/k8s-deployment-strategies/tree/master/recreate).
 
 ### RollingUpdate Strategy
 
-The RollingUpdate strategy terminates a number of Pods from the old (blue) ReplicaSet and start a number of new Pods with the new version (green). So gradually the new application version is rolled out. 
+The RollingUpdate strategy terminates a number of Pods from the old (blue) ReplicaSet and start a number of new Pods with the new version (green). So gradually the new application version is rolled out.
 
 **Be aware:** The grudual or "rolling" update means that **Pods of both the old (blue) and new (green) versions are being served traffic simultaneously**. This implies that two adjacent application versions need to coexist peacefully.
-If the new (green) version requires a different database schema, for example, this may become problematic as a schema migration can either be executed or not. The application therefore should be architected in a way that schema migrations happen gradually over mulitple versions while maintaining compatibility among adjacent versions. 
+If the new (green) version requires a different database schema, for example, this may become problematic as a schema migration can either be executed or not. The application therefore should be architected in a way that schema migrations happen gradually over multiple versions while maintaining compatibility among adjacent versions.
 
-Engineers must decide yourself whether the increased application availability is worth the increased efford in development.
+Engineers must decide yourself whether the increased application availability is worth the increased effort in development.
 
 ### Other Strategies
 
@@ -363,7 +364,7 @@ All resources of this lesson can be deleted:
     kubectl delete -f 50-ingress.yaml
     kubectl delete -f 40-service.yaml
 
-## Links 
+## Links
 
 1. Kuberentes Documentation, Conecepts, Working With Objects, https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/
 2. Kubernetes Up & Running, 2nd Edition, O'Reilly, 2019, https://learning.oreilly.com/library/view/kubernetes-up-and/9781492046523/

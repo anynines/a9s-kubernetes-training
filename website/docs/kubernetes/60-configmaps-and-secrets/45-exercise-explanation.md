@@ -68,10 +68,10 @@ metadata:
   name: busybox-config
 spec:
   containers:
-    - image: busybox 
+    - image: busybox
       name: busybox-config-container
       command:
-        - "env"        
+        - "env"
       env:
         - name: NUMBER_OF_REQUESTS
           valueFrom:
@@ -88,8 +88,8 @@ spec:
 
 ## So why Going Through This Hassle?
 
-Sometimes you want to access several parameters individually. In this case the definition of distinct key-value pairs is necessary. However, if you want to store an entire config file as a value, reading the config file into a ConfigMap associtated with a 
-filename-like key such as `config-file.conf` is helpful.
+Sometimes you want to access several parameters individually. In this case the definition of distinct key-value pairs is necessary. However, if you want to store an entire config file as a value, reading the config file into a ConfigMap associtated with a filename-like key such as `config-file.conf` is helpful.
 
 ## Links
+
 1. YAML Multiline, https://yaml-multiline.info/

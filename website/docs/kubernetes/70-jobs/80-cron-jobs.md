@@ -3,11 +3,11 @@ id: cron-jobs
 title: CronJobs
 ---
 
-Cron [1] is an daemon available as a package for most unix/linux operating systems and is a time-based job scheduler.
+Cron [1] is a daemon available as a package for most unix/linux operating systems and is a time-based job scheduler.
 
 ## Linux/Unix Cron Jobs and Cron Tab
 
-A so called Cron Job is represented as an entry in a Cron Tab describen when a particular command is to be executed. A Cron Tab entry may look like this [1]:
+A so called Cron Job is represented as an entry in a Cron Tab describing when a particular command is to be executed. A Cron Tab entry may look like this [1]:
 
     # ┌───────────── minute (0 - 59)
     # │ ┌───────────── hour (0 - 23)
@@ -27,9 +27,9 @@ The following entry, for example, writes `Hello World` to `/var/log/hello.log` a
 
 In Kubernetes a Cron Job is a Kubernetes Job that is executed according to a given schedule described in the classical Cron Tab format. The Cron Tab format is quite expressive and there are online tools helping to express a particular schedule such as [2].
 
-Respectively the pattern `1 0 * * *` also schedules a CronJob for daily execution at 00:01 (12:01 a.m.).
+Respectively, the pattern `1 0 * * *` also schedules a CronJob for daily execution at 00:01 (12:01 a.m.).
 
-The following example runs a CRON Job every 2 minutes. This frequence is most likely inappriate for a Kubernetes CRON Job but good to observe what CRON Jobs do.
+The following example runs a CRON Job every 2 minutes. This frequence is most likely inappropriate for a Kubernetes CRON Job but good to observe what CRON Jobs do.
 
 Create the file `90-cron-job.yaml`:
 
@@ -48,7 +48,7 @@ spec:
   jobTemplate:
     spec:
       template:
-        spec:      
+        spec:
           containers:
           - name: simple-one-off-job-container
             image: busybox
@@ -56,7 +56,7 @@ spec:
             command: ["echo"]
             args:
             - "I represent a very important maintenance task"
-          restartPolicy: OnFailure      
+          restartPolicy: OnFailure
 ```
 
 And apply it:
@@ -69,9 +69,9 @@ Verify its creation:
 
 And obtain CRON Job details:
 
-    kubectl decribe cronjob cron-job-hello-world
+    kubectl describe cronjob cron-job-hello-world
 
-The `Events` section will list a number of Jobs. **Apperently, CRON Jobs are used to derive Jobs which in turn create Pods.**
+The `Events` section will list a number of Jobs. **Appearently, CRON Jobs are used to derive Jobs which in turn create Pods.**
 
 The CRON Job should be executed periodically every 2 minutes.
 
@@ -114,5 +114,6 @@ Have a look at Jobs and Pods:
 You will notice that **deleting the CRON Job will also delete corresponding Jobs and Pods**.
 
 ## Links
+
 1. Wikipedia, cron, https://en.wikipedia.org/wiki/Cron
 2. crontab guru, https://crontab.guru/
