@@ -58,7 +58,7 @@ In order to grand an application access to a ConfigMap it must best told which C
 
 See YAML file: `40-pod-with-config-map-env.yml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

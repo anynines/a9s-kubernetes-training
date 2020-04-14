@@ -13,7 +13,7 @@ Create the first deployment by deploying the application version **"blue"**.
 
 Create a file `20-deployment-blue.yaml`:
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -58,7 +58,7 @@ Now in order to access the application we also have to create a service and an i
 
 Create a file `40-service.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -75,7 +75,7 @@ Apply it:
 
 Create a file `50-ingress.yaml`:
 
-```YAML
+```yaml
 apiVersion: networking.k8s.io/v1beta1 # Kubernetes 1.13+
 kind: Ingress
 metadata:
@@ -116,7 +116,7 @@ So let's give it a try!
 
 Create a file `60-deployment-blue-scale-out.yaml`:
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -167,7 +167,7 @@ The new software version is delived by creating a new container version. Compare
 
 Create a file `70-deployment-green.yaml`:
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -278,7 +278,7 @@ For this reason the `Recreate`-strategy is not recommended for productive use. H
 
 Create a first deployment with a file `80-deployment-blue-recreate.yaml`:
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -310,7 +310,7 @@ Apply it:
 
 Update the deployment by creating a file `90-deployment-green-recreate.yaml`:
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:

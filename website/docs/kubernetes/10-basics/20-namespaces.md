@@ -21,7 +21,7 @@ Create your own namespace using kubectl
 
 Alternatively, a YAML file can be created, e.g. `30-namespace.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:

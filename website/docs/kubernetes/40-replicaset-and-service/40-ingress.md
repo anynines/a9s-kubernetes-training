@@ -39,7 +39,7 @@ The configuration of DNS entries varies across DNS providers. Their manuals will
 
 This works on an a9s K8s cluster by creating the file `40-ingress-hello-world-a9s.yaml`:
 
-```YAML
+```yaml
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:

@@ -13,7 +13,7 @@ There are tasks requiring more than one iteration to fully accomplish the underl
 
 Let's try it out! Create the file `60-simple-job-two-completions.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -60,7 +60,7 @@ Luckily Kubernets supports parallel Job execution out of the box. Changing the J
 
 Create the Job description in file `70-simple-job-two-completions-parallel.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
