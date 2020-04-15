@@ -43,19 +43,19 @@ It is therefore recommended to go through the **container-training**, first.
 
 Learning is an iterative if not recursive process. It is hardly possible to grasp complex concepts in a single learning step. Often, a first impression is made and by revisiting a topic many times a more complete mental model is created.
 
-Consequently, this training does not aim to provide Kubernetes with all its facets and features. Depending on previous knowledge flooding a learner with architectural details and a large number of nunanced features may be rather confusing or even frustrating. 
+Consequently, this training does not aim to provide Kubernetes with all its facets and features. Depending on previous knowledge flooding a learner with architectural details and a large number of nuanced features may be rather confusing or even frustrating.
 
 When drawing a Koch snowflake fractal [1] the first iteration draws the outer shape. In subsequent iterations more depth is added. Similar to this, the main goal of this training is therefore to draw the outline of what Kubernetes is. More depth can be added with subsequent trainings.
 
-The first iteration also **does not cover the Kubernetes architecture** in-depth. A few comments are made where a concept is relevenat to the lesson at hand but the idea is to **focus on providing a learner with a maxium of utility**. 
+The first iteration also **does not cover the Kubernetes architecture** in-depth. A few comments are made where a concept is relevant to the lesson at hand but the idea is to **focus on providing a learner with a maxium of utility**.
 
 **At the end of this training you will be able to deploy and operate a stateful, distributed application system with Kubernetes.**
 
 In order to achieve this goal corners will be cut and nuances be omitted. This way you should be able to follow the common theme.
 
-The training also contains **exercises** proving you with tiny challenges to avoid falling into a cognitive cut-and-paste paralysis. Solutions to most of the exercises can be found in the training so that you can see how to solve a potential problem yourself.
+The training also contains **exercises** providing you with tiny challenges to avoid falling into a cognitive cut-and-paste paralysis. Solutions to most of the exercises can be found in the training so that you can see how to solve a potential problem yourself.
 
-A few common mistakes are provoked during the training. These mistakess have been selected by observing a few trainings. Be prepared to make your own mistakes though. The more time you spend thinking about something, the more you will learn. Therefore, embrace your mistakes.
+A few common mistakes are provoked during the training. These mistakes have been selected by observing a few trainings. Be prepared to make your own mistakes though. The more time you spend thinking about something, the more you will learn. Therefore, embrace your mistakes.
 
 The training has been tested on `https://paas.anynines.com` but any Kubernetes distribution will do the trick although minor modifcations may be necessary. Especially in the context of Ingresses this is to be expected.
 

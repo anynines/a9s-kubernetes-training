@@ -15,9 +15,9 @@ In order to determine the version of both your Kubernetes client (CLI) and Kuber
 
 When working with several Kubernetes clusters it is important to point `kubectl` to the right Kubernetes cluster. A simple way to figure out which Kubernetes cluster is currently selected for the usage with `kubectl` is:
 
-     kubectl cluster-info
+    kubectl cluster-info
 
-It's tell you the API endpoint of the selected Kubernetes cluser which should provide you the information to see whether this is the one you intend to use.
+It's telling you the API endpoint of the selected Kubernetes cluster which should provide you the information to see whether this is the one you intend to use.
 
 The Kubernetes documentation explains [how to configure multiple clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
 
@@ -27,7 +27,7 @@ By using
 
     kubectl proxy --port 8001
 
-a local proxy running on your computer is started which can be accessed via `http://localhost:8001`. 
+a local proxy running on your computer is started which can be accessed via `http://localhost:8001`.
 
 The `kubectl` command takes care of the authentication against the Kubernetes API. The communication between the local proxy and the remote Kubernetes API is SSL encrypted while the local communication to the local proxy isn't.
 
