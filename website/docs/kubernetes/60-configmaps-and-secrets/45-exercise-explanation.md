@@ -61,7 +61,7 @@ In contrast to this, in `config-example-2` the structure is different. There is 
 
 Here is how the fixed ConfigMap should look like:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

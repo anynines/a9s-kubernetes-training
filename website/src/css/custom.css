@@ -1,5 +1,6 @@
 @import url('./anynines/colors.css');
 @import url('./anynines/typography.css');
+@import url('./prism/material-dark.css');
 
 :root {
   /* Overriding the framework */

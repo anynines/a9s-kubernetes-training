@@ -13,7 +13,7 @@ The sample application can be found on github: https://github.com/fischerjulian/
 
 In order to creating the ReplicaSet using `kubectl` create a file `20-rs-hello-world.yaml`:
 
-```YAML
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:

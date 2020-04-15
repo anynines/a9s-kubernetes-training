@@ -13,7 +13,7 @@ The Job concept in Kubernetes provides options when a container has not been exe
 
 Run the following Job which will fail with certainty. Create the file `30-failing-job.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -78,7 +78,7 @@ Use this version of you want to try it without existing your shell:
 
 Create the file `40-flaky-job.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
