@@ -35,6 +35,12 @@ Here is a brief list of frequently used `docker` commands.
 
 ## Starting Containers
 
+**Run an Interactive Container**:
+
+Running a container opening a Shell and binding a terminal:
+
+    docker container run -it busybox /bin/sh
+
 **Run a container** using the `simple-web-app` image tagged with `0.1.0`. The container name will be `myapp`. Expose the local port `8081` to port `4567` within the container. You can then access port `4567` of the container by typing `http://localhost:8081`:
 
     docker container run --name myapp -p 8081:4567 simple-web-app:0.1.0
