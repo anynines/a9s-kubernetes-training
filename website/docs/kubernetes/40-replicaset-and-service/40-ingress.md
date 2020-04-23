@@ -4,9 +4,9 @@ title: Ingress
 ---
 Pods and ReplicaSets can be used to start and operate containers. Services can be handy to provide named access to and distribute and load balance requests across Pods, **internally**.
 
-Most application systems have a publicly facing interface, too. In order to expose a web service or web application to outside world, an additional Kubernetes resource comes is useful: **the Ingress**.
+Most application systems have a public facing interface, too. In order to expose a web service or web application to outside world, an additional Kubernetes resource comes is useful: **the Ingress**.
 
-In contrast to Kubernetes Services which operate on layer 4 (transport) of the ISO OSI model (https://en.wikipedia.org/wiki/OSI_model), Ingresses operate on layer 7 (application). This means that an Ingress knows the HTTP protocol and is able to read and interpret incoming HTTP requests enabling a number of additional options. A major benefit is the ability to create **virtual hosts**. 
+In contrast to Kubernetes Services which operate on layer 4 (transport) of the [ISO OSI model](https://en.wikipedia.org/wiki/OSI_model), Ingresses operate on layer 7 (application). This means that an Ingress knows the HTTP protocol and is able to read and interpret incoming HTTP requests enabling a number of additional options. A major benefit is the ability to create **virtual hosts**.
 
 Virtual hosts address the challenge of pointing multiple domain names to a single IP address in a way that the "web server" is able to map domain names to the corresponding applications.
 
@@ -16,17 +16,17 @@ So with the Ingress concept it is possible to map incoming requests based on the
 
 While Ingress is a Kubernetes concept, there is no built-in Kubernetes implementation. In Kubernetes terminology: **Kubernetes does not ship with a default Ingress Controller**. Therefore, each Kubernetes implementation may come with a different Ingress Controller which in turn may offer slightly different features and configuration options but generally they are likely to cover the same core functionality.
 
-One reason for this is that load balancing is a non-trivial problem to solve. It is highly available applications and has is related to topics such as networking, DNS and SSL certificate management. 
+One reason for this is that load balancing is a non-trivial problem to solve. It is used to enable highly available applications and is related to topics such as networking, DNS and SSL certificate management.
 
 At some point there must be one or more highly available load balancers distributing incoming requests. These load balancers can be Kubernetes or infrastructure (e.g. AWS) provided software load balancers or even good old hardware appliances.
 
-As a takaway, it is worth spending a few minutes on looking at a particular Ingress implementation when using a particular Kubernets distribution for the first time.
+As a takeaway, it is worth spending a few minutes on looking at a particular Ingress implementation when using a particular Kubernetes distribution for the first time.
 
 ### DNS Entries and SSL Certificates
 
 It is easy to use `kubectl proxy` to access Kubernetes workloads as it does not require much configuration. However, exposing an application to the outside world usually requires the configuration of a domain or sub-domain dedicated to the application such as `myapp.example.org`.
 
-This it very Kubernetes can't do much for you as controlling DNS entries is out of its scope and so is requesting and issuing SSL certificates.
+This is why Kubernetes can't do much for you as controlling DNS entries is out of its scope and so is requesting and issuing SSL certificates.
 
 For the creation of DNS entries you might want to create:
 
@@ -61,6 +61,7 @@ spec:
           serviceName: smpl-go-web-s
           servicePort: 8080
 ```
+
 Apply it:
 
     kubectl apply -f 40-ingress-hello-world-a9s.yaml

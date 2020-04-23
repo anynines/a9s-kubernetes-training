@@ -3,7 +3,7 @@ id: advanced-jobs
 title: Advanced Job Features
 ---
 
-Admitedly, running a simple Job as in the earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
+Admittedly, running a simple Job as earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
 
 ## Automatic Retry-Logic
 
@@ -35,13 +35,11 @@ Apply it:
 
     kubectl apply -f 30-failing-job.yaml
 
-Which will provide the insight: `0 of 1 COMPLETIONS`.
-
 As usual a `kubectl describe` is executed to obtain more information:
 
     kubectl describe job simple-one-off-job-from-yaml
 
-Interestingly, this produces an event `SuccessfulCreate` originating from the `job-controller`. Everything seems normal although we know that the Job must have failed. A closer look reveals there is not contradiction. The event informs that the Pod `simple-one-off-job-from-yaml-5x2xt` has been created successfully and in fact is has. It's just that the container inside the Pod has failed. So a closer look at the pod is necessary:
+Interestingly, this produces an event `SuccessfulCreate` originating from the `job-controller`. Everything seems normal although we know that the Job must have failed. A closer look reveals there is no contradiction. The event informs that the Pod `simple-one-off-job-from-yaml-5x2xt` has been created successfully and in fact it has been. It's just that the container inside the Pod has failed. So a closer look at the pod is necessary:
 
     kubectl get pods -l job-name=simple-one-off-job-from-yaml
 
@@ -56,7 +54,7 @@ And an even closer look with:
 
 Reveals a warning: `Back-off restarting failed container` which indicated a non-zero return value from starting the container. For those new to linux/unix systems [2]:
 
-> For the shell’s purposes, a command which exits with a zero exit status has succeeded. A non-zero exit status indicates failure. This seemingly counter-intuitive scheme is used so there is one well-defined way to indicate success and a variety of ways to indicate various failure modes. When a command terminates on a fatal signal whose number is N, Bash uses the value 128+N as the exit status.
+> For the shell's purposes, a command which exits with a status code of zero has succeeded. A non-zero exit status indicates failure. This seemingly counter-intuitive scheme is used so there is one well-defined way to indicate success and a variety of ways to indicate various failure modes. When a command terminates on a fatal signal whose number is N, Bash uses the value 128+N as the exit status.
 
 Without further specification Kubernetes determines the success of a container start by looking at the exit value of the container startup command to be zero. **Any non-zero value will be considered a failing container start**.
 
@@ -64,7 +62,7 @@ Without further specification Kubernetes determines the success of a container s
 
 But there is more to the previous example. The field `RESTARTS: 4` suggests that Kubernetes has not given up immediately but only after four (4) failed attempts. This means that if a failure is sporadic, the retry logic can help to accomplish a Job nevertheless.
 
-**Consider a Job that sometimes fails and sometimes succeeds**. While such as case calls for a bugfix by the developer, it is also nice if Kubernetes can help so that the developer does not have to get up at night.
+**Consider a Job that sometimes fails and sometimes succeeds**. While such a case calls for a bugfix by the developer, it is also nice if Kubernetes can help so that the developer does not have to get up at night.
 
 We simulate a flaky Job with the folling shell command:
 
@@ -84,9 +82,9 @@ kind: Job
 metadata:
   name: flaky-job
 spec:
+  backoffLimit: 5
   template:
     spec:
-      maxRetries: 5
       containers:
       - name: flaky-job-container
         image: ubuntu
@@ -120,5 +118,6 @@ As the containers are failing randomly you may have to delete and create the Job
 You can see from the output that the Pod has failed two times before it succeeded. This is free robustness for workloads when using Kubernets Jobs.
 
 ## Links
+
 1. Kubernetes Documentation, Tasks, Jobs, https://kubernetes.io/docs/tasks/job/
 2. gnu.org, Bash Manual, https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html

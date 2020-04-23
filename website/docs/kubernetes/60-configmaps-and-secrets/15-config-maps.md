@@ -7,9 +7,9 @@ ConfigMaps are used to store non-sensitive application configuration parameters.
 
 ## Creating a ConfigMap
 
-There are multiple ways of creating a ConfigMap. They can be created from files, directories or by providing values directly using the command line [3]. 
+There are multiple ways of creating a ConfigMap. They can be created from files, directories or by providing values directly using the command line [3].
 
-Although ConfigMap are key value pairs, this does not mean that values have to be very short. In fact, a value can contain content **up to 1 megabyte of non-binary UTF-8 text**.
+Although ConfigMaps are key value pairs, this does not mean that values have to be very short. In fact, a value can contain content **up to 1 megabyte of non-binary UTF-8 text**.
 
 ### Creating a ConfigMap from a Configuration File
 
@@ -38,11 +38,11 @@ It is also possible to specify ConfigMaps using command line literals:
 
 See yourself how the key values pairs have been joined into a ConfigMap:
 
-    kubectl create configmap config-example-1 --from-file=20-config-file.conf
+    kubectl get configmaps config-example-2 -o yaml
 
 ## Deleting a ConfigMap
 
-Deleting a ConfigMap is simple: 
+Deleting a ConfigMap is simple:
 
     kubectl delete configmap config-example-1
     kubectl delete configmap config-example-2
@@ -51,10 +51,10 @@ Deleting a ConfigMap is simple:
 
 Once a ConfigMap is created Kubernetes offers several access mechanisms to applications.
 
-  * Env Variable 
+  * Env Variable
   * Filesystem
 
-In order to grand an application access to a ConfigMap it must best told which ConfigMap to access and which mechanism is to be used. This is done in the Pod spec:
+In order to grant an application access to a ConfigMap it must be told which ConfigMap to access and which mechanism is to be used. This is done in the Pod spec:
 
 See YAML file: `40-pod-with-config-map-env.yml`:
 
@@ -65,20 +65,20 @@ metadata:
   name: busybox-config
 spec:
   containers:
-    - image: busybox 
+    - image: busybox
       name: busybox-config-container
       command:
-        - "env"        
+        - "env"
       env:
         - name: NUMBER_OF_REQUESTS
           valueFrom:
             configMapKeyRef:
-              name: config-example-1
+              name: config-example-2
               key: number-of-requests
         - name: VERY_IMPORTANT_SWITCH
           valueFrom:
             configMapKeyRef:
-              name: config-example-1
+              name: config-example-2
               key: very-important-switch
   restartPolicy: Never
 ```
@@ -99,7 +99,7 @@ But the output is disappointing:
 
     error: the server doesn't have a resource type "logs"
 
-Why are there no logs? 
+Why are there no logs?
 
 The answer is because there is no Pod that could produce logs as **the Pod creation failed**. At this stage the `kubectl log` command is not helpful.
 
@@ -109,7 +109,7 @@ As a general utility to investigate Kubernetes objects - not only Pod objects - 
 
 At the end of the output a tabular paragraph `Events` tells us about the lifecycle events of our `busybox-config` Pod:
 
-    Error: configmap "config-example-3" not found
+    Error: configmap "config-example-2" not found
 
 ## Exercise
 

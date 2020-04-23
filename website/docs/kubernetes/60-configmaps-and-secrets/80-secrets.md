@@ -13,7 +13,7 @@ Secrets are represented as key value pair and thus are very similar to ConfigMap
 
 You may have noticed that - compared to the creation of ConfigMaps - there's an additional argument named `generic`.
 
-Secrets have an additional `type`-field that may tell other Kubernetes components to deal a particular Secret in a particular way.
+Secrets have an additional `type`-field that tells other Kubernetes components to deal with a particular Secret in a particular way.
 
 The following Secret Types are often supported:
 
@@ -23,14 +23,15 @@ The following Secret Types are often supported:
 
 ### Generic
 
-**The most common secret type is `generic` / `opaque`** and is meant for creating secrets from a local file, local directory or a fixed value as provided with a literal. 
+**The most common secret type is `generic` / `opaque`** and is meant for creating secrets from a local file, local directory or a fixed value as provided with a literal.
 
 This lesson focuses the secret type `generic` and you will find practical examples below.
 
 ### TLS
+
 Kubernetes offers a tooling to manage TLS Certificates as proposed in the ACME draft [6].
 
-Kubernetes: 
+Kubernetes:
 
 > lets you provision TLS certificates signed by a Certificate Authority (CA) that you control. These CA and certificates can be used by your workloads to establish trust. [7]
 
@@ -38,7 +39,7 @@ See [7] to learn more about managing TLS Certificates with Kubernetes as the top
 
 ### Docker Registry
 
-So far all container images have been pulled from dockerhub[5], the Kubernetes default registry. Often there are reasons to use alternative container registries. One reason may be to chose a registry being within the same network as the Kubernetes cluser so that traffic of pulling container images is contained within the private network.
+So far all container images have been pulled from dockerhub[5], the Kubernetes default registry. Often there are reasons to use alternative container registries. One reason may be to chose a registry being within the same network as the Kubernetes cluster so that traffic of pulling container images is contained within the private network.
 
 In the case a private registry is to be used Kubernetes has to authenticate requests issued towards the registry. This is the purpose of Docker Registry Secrets.
 
@@ -70,7 +71,7 @@ Once created secrets can be listed as usual using `kubectl get`:
 
     kubectl get secrets
 
-Note that Kubernetes refers to the generic type as `Opaque` which means that the Secret is a list of arbitrary key value pairs. This is in contrast to purpose bound types such as TLS and Docker Registry Secrets which are associated with additional behavor of the Kubernetes cluster.
+Note that Kubernetes refers to the generic type as `Opaque` which means that the Secret is a list of arbitrary key value pairs. This is in contrast to purpose bound types such as TLS and Docker Registry Secrets which are associated with additional behavior of the Kubernetes cluster.
 
 In order to get more information about the Secret `kubectl describe` helps:
 
@@ -82,8 +83,7 @@ This won't print the Secret's values but it will show its metadata and keys.
 
     kubectl get secret area51 -o yaml
 
-Generally speaking **it is a bad idea to store secrets in a plain text file that can be purposely or accidentally checked into a source control system such as Git.** Do not store your secrets outside of an encrypted password store. 
-If you are aware of this and take care of excluding YAML definitions of your Secrets from source control, it is ok to have YAML files though.
+Generally speaking **it is a bad idea to store secrets in a plain text file that can be purposely or accidentally checked into a source control system such as Git.** Do not store your secrets outside of an encrypted password store. If you are aware of this and take care of excluding YAML definitions of your Secrets from source control, it is ok to have YAML files though.
 
 **Did you recognize that the values of the Secret do not match the values that have been passed during their creation?**
 
@@ -99,7 +99,7 @@ Saving the edited Secret will automatically `replace` the secret as if `kubectl 
 
 ### Exercise
 
-**Try to change the value of corresponding to the key `username` and save it.**
+**Try to change the value corresponding to the key `username` and save it.**
 
 Do you receive the following error?
 
@@ -136,11 +136,12 @@ Hints:
 
 While Secrets are meant to deal with access credentials such as certificates and passwords, it surprises that - by default - **Kubernetes stores Secrets into its etcd[1] data store without encryption**. However, it is possible to configure a Kubernetes cluster to encrypt Secrets [2].
 
-**Using Secrets makes it then easier to apply encryption as a cluster wide setting**. It is also to be expected that the handling of Secrets becomes more secure with future Kubernetes releaes.
+**Using Secrets makes it easier to apply encryption as a cluster wide setting**. It is also to be expected that the handling of Secrets becomes more secure with future Kubernetes releaes.
 
 Hence, **even when Secrets are unencrypted, it is a best practise to use them**.
 
 ## Links
+
 1. etcd, https://etcd.io/
 2. Kubernetes Documentation, Tasks, Encrypting Secret Data at Rest, https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
 3. Kubernetes Documentation, Concepts, Secrets, https://kubernetes.io/docs/concepts/configuration/secret/

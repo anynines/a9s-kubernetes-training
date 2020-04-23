@@ -14,10 +14,10 @@ metadata:
   name: busybox-secrets
 spec:
   containers:
-    - image: busybox 
+    - image: busybox
       name: busybox-secrets-container
       command:
-        - "env"        
+        - "env"
       env:
         - name: USERNAME
           valueFrom:
@@ -41,13 +41,13 @@ metadata:
   name: busybox-secrets-files
 spec:
   containers:
-    - image: busybox 
+    - image: busybox
       name: busybox-secrets-files-container
       command:
         - "sh"
-        - "-c"        
-      args:   
-        - "ls /secrets; cat /secrets/90-username.txt; echo \" \"; cat /secrets/AA-password.txt"             
+        - "-c"
+      args:
+        - "ls /secrets; cat /secrets/90-username.txt; echo \" \"; cat /secrets/AA-password.txt"
       volumeMounts:
         - name: secrets-volume
           mountPath: /secrets
