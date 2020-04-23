@@ -51,7 +51,7 @@ Which reveals that the headless Service `postgresql-svc` has the label `Labels: 
 
 And:
 
-  kubectl describe service postgresql-svc
+    kubectl describe service postgresql-svc
 
 Produces an output similar to:
 
