@@ -33,7 +33,7 @@ The following example runs a CRON Job every 2 minutes. This frequence is most li
 
 Create the file `90-cron-job.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:

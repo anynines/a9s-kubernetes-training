@@ -46,7 +46,7 @@ To delete the Pod run:
 
 Alternatively, the Pod can be created from a Pod Manifest `10-pod.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

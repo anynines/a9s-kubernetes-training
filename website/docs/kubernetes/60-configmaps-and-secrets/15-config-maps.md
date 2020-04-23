@@ -58,7 +58,7 @@ In order to grant an application access to a ConfigMap it must be told which Con
 
 See YAML file: `40-pod-with-config-map-env.yml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

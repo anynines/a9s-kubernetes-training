@@ -13,21 +13,23 @@ Look again at the ConfigMap `config-example-1`:
 
 The output is something like:
 
-    apiVersion: v1
-    data:
-        20-config-file.conf: |-
-            # This is an exemplary config file
+```yaml
+apiVersion: v1
+data:
+    20-config-file.conf: |-
+        # This is an exemplary config file
 
-            number-of-requests = 20
-            very-import-switch = true
-    kind: ConfigMap
-    metadata:
-        creationTimestamp: "2020-03-04T17:54:19Z"
-        name: config-example-1
-        namespace: default
-        resourceVersion: "6128955"
-        selfLink: /api/v1/namespaces/default/configmaps/config-example-1
-        uid: 2ef0fc0d-e128-47d7-be57-766d2b023612
+        number-of-requests = 20
+        very-import-switch = true
+kind: ConfigMap
+metadata:
+    creationTimestamp: "2020-03-04T17:54:19Z"
+    name: config-example-1
+    namespace: default
+    resourceVersion: "6128955"
+    selfLink: /api/v1/namespaces/default/configmaps/config-example-1
+    uid: 2ef0fc0d-e128-47d7-be57-766d2b023612
+```
 
 Now compare it to the output of `config-example-2`. Can you see the subtle difference?
 
@@ -35,25 +37,27 @@ Now compare it to the output of `config-example-2`. Can you see the subtle diffe
 
 The output looks like this:
 
-    apiVersion: v1
-    data:
-        number-of-requests: "20"
-        very-import-switch: "true"
-    kind: ConfigMap
-    metadata:
-        creationTimestamp: "2020-03-04T17:40:48Z"
-        name: config-example-2
-        namespace: default
-        resourceVersion: "6126817"
-        selfLink: /api/v1/namespaces/default/configmaps/config-example-2
-        uid: 3366244e-da8e-4ac8-8cf4-dc21fca7ff56
+```yaml
+apiVersion: v1
+data:
+    number-of-requests: "20"
+    very-import-switch: "true"
+kind: ConfigMap
+metadata:
+    creationTimestamp: "2020-03-04T17:40:48Z"
+    name: config-example-2
+    namespace: default
+    resourceVersion: "6126817"
+    selfLink: /api/v1/namespaces/default/configmaps/config-example-2
+    uid: 3366244e-da8e-4ac8-8cf4-dc21fca7ff56
+```
 
 If you compare the indentation you may recognize that in `config-example-1` the section `data` contains only one key: `20-config-file.conf`. This implies that for Kubernetes this ConfigMap has one key and its value is a string:
 
-            # This is an exemplary config file
+    # This is an exemplary config file
 
-            number-of-requests = 20
-            very-import-switch = true
+    number-of-requests = 20
+    very-import-switch = true
 
 This string is literally put into the ConfigMap value corresponding to the key `20-config-file.conf`. A sign for this is the special annotation `|-` indicating that a multi-line string folllows and that newlines at the end of the string are to be stripped [1]. Consequently, Kubernetes does not parse the value associated with the key `20-config-file.conf`. It doesn't know about its structure although it is obvious to the humand mind. Exactly that's the gotcha.
 
@@ -61,7 +65,7 @@ In contrast to this, in `config-example-2` the structure is different. There is 
 
 Here is how the fixed ConfigMap should look like:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

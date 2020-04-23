@@ -7,7 +7,7 @@ Here you can find possible solutions to the previous exercise.
 
 **Create a Pod and consume the previously created Secret `area51` as environment variables**:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -34,7 +34,7 @@ spec:
 
 **Create a Pod and consume the previously created Secret `area52` as a mounted volume**:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

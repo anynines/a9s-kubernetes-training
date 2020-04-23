@@ -11,7 +11,7 @@ Alternatively, Kubernetes allows **file based access to ConfigMaps**. With this 
 
 Have a look at the Pod definition in the file `70-pod-with-config-map-volume.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

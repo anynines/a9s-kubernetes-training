@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-pv-pod
+spec:
+  volumes:
+    - name: simple-pv-storage
+      persistentVolumeClaim:
+        claimName: simple-pv-claim
+  containers:
+    - name: simple-pv-container
+      image: busybox
+      command: ["/bin/sh"]
+      args: ["-c", "echo Hello World > /my-persistent-data/helloworld.txt"]
+      volumeMounts:
+        - mountPath: "/my-persistent-data"
+          name: simple-pv-storage
+  restartPolicy: Never
+
+

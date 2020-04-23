@@ -31,12 +31,56 @@ const siteConfig = {
       ],
     },   
     footer: {
-      logo: {
-        alt: 'anynines',
-        src: 'img/logo.svg',
-        href: 'https://anynines.com',
-      },
       copyright: `Copyright © ${new Date().getFullYear()} anynines GmbH.`, // You can also put own HTML here
+      links: [{
+          title: "More from anynines",
+          items: [{
+            label: "anynines.com",
+            to: "https://anynines.com/?utm_source=k8s-tutorial&utm_medium=web",
+            target: "_blank"
+          },
+          {
+            label: "anynines PaaS",
+            to: "https://paas.anynines.com/?utm_source=k8s-tutorial&utm_medium=web",
+            target: "_blank"
+          },
+          {
+            label: "Jobs at anynines",
+            to: "https://anynines.com/jobs/?utm_source=k8s-tutorial&utm_medium=web",
+            target: "_blank"
+          }]
+        },
+        {
+          title: "Follow us",
+          items: [{
+            label: "Twitter",
+            to: "https://twitter.com/anynines",
+            target: "_blank"
+          },
+          {
+            label: "LinkedIn",
+            to: "https://www.linkedin.com/company/anynines/",
+            target: "_blank"
+          },
+          {
+            label: "Instagram",
+            to: "https://instagram.com/anyninescom",
+            target: "_blank"
+          }]
+        },
+        {
+          title: "Legal",
+          items: [{
+            label: "Imprint",
+            to: "https://www.anynines.com/imprint",
+            target: "_blank"
+          },
+          {
+            label: "Privacy Policy",
+            to: "https://www.anynines.com/data-privacy",
+            target: "_blank"
+          }]
+      }]
     },
     image: 'img/logo.svg',
     // Equivalent to `docsSideNavCollapsible`

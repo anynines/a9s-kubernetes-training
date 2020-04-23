@@ -11,12 +11,11 @@ Creating the service is simple.
 
 Create a file `30-service-hello-world.yaml`:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: smpl-go-web-s
-#  namespace: default
 spec:
   selector:
     app: smpl-go-web-a-cant-work
@@ -79,7 +78,7 @@ Look for the field `Labels` in the output. Only if there is a match between the 
 
 The fixed version of `30-service-hello-world.yaml` then looks like this:
 
-```YAML
+```yaml
 apiVersion: v1
 kind: Service
 metadata:

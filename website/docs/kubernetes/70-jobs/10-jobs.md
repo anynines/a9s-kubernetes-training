@@ -52,7 +52,7 @@ As you can see there is no job because `kubectl run` doesn't create one. It's ju
 
 Now proceed with creating a real Job in file `20-simple-job.yaml`:
 
-```YAML
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:

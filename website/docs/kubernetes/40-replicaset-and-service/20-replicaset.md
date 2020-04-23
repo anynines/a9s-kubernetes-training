@@ -13,7 +13,7 @@ The sample application can be found on github: https://github.com/fischerjulian/
 
 In order to create the ReplicaSet using `kubectl` create a file `20-rs-hello-world.yaml`:
 
-```YAML
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -76,12 +76,14 @@ Kubernetes provides the concept of a `Service` enabling a number of ways to deal
 
 Have you noticed that the container specification of the app contains an explicit port declaration?
 
-    spec:
-      containers:
-        - name: smpl-go-web-c
-          image: "fischerjulian/smpl-go-web:1.0.0"
-          ports:
-            - containerPort: 8080
+```yaml
+spec:
+  containers:
+    - name: smpl-go-web-c
+      image: "fischerjulian/smpl-go-web:1.0.0"
+      ports:
+        - containerPort: 8080
+```
 
 The Kubernetes documentation says:
 
