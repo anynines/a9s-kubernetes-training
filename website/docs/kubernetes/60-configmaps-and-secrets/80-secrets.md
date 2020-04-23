@@ -54,7 +54,7 @@ The syntax for creating a `generic` Secret is close to creating a ConfigMap. The
 
 Or from files (or a mixture of both):
 
-      kubectl create secret generic area52 --from-file=./90-username.txt --from-file=AA-password.txt
+    kubectl create secret generic area52 --from-file=./90-username.txt --from-file=AA-password.txt
 
 Where `90-username.txt` may look like:
 

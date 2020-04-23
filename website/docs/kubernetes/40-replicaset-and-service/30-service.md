@@ -16,7 +16,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: smpl-go-web-s
-#  namespace: default
 spec:
   selector:
     app: smpl-go-web-a-cant-work
