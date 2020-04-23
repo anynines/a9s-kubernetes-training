@@ -3,6 +3,13 @@ id: training-overview
 title: Kubernetes Training Overview
 ---
 
+## Status: Under Development
+
+* This training is still under development. 
+* Smaller changes - mostly spelling and fixes - will be applied throughout the tutorial.
+* Content will be mostly appended to late chapters.
+* Currently the chapter **StatefulSets** is under development.
+
 ## Goal
 
 The goal of this training is to enable you with the skills necessary to containerize your applications in order to run them in a Kubernetes cluster.

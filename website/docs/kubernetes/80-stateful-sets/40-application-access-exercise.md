@@ -1,6 +1,6 @@
 ---
-id: sfs-pg-app-access
-title: App Access to PostgreSQL
+id: stateful-set-postgresql-5
+title: PostgreSQL Exercise - 5
 ---
 
 ## Application Access
@@ -9,7 +9,7 @@ After setting up the database and connecting to it using the `psql` utility, the
 
 At this point we should rember that Kubernetes is not a fully featured platform but rather platform for building platforms [4]. So in contrast to technologies such as Cloud Foundry [5] there is no such thing as a Service Binding as defined in the Open Service Broker API [6] where application developers can bind apps to service instances such as PostgreSQL with a single command. This will then create a dedicated database user which will be deleted if the application is unbound from the service. Obviously, this requires a service broker such as the a9s Data Services [7] to be implemented and integrated with Cloud Foundry, to be fair. To be even more fair, it is possible to integrate Service Brokers to Kubernetes using the Service Catalog extension [8]. However, this training is about bare Kubernetes. 
 
-With the absense of Service Bindings we fall back to using Kubernetes Secrets as covered in earlier chapters. But who creates the Secrets? Exactly, you do!
+With the absense of Service Bindings we fall back to using Kubernetes Secrets as covered in earlier chapters. But who you have to create and manage these Secrets by yourself.
 
 {POD using the existing secret}
 

@@ -1,15 +1,31 @@
 ---
-id: stateful-set-postgresql
-title: PostgreSQL Exercise
+id: stateful-set-postgresql-1
+title: PostgreSQL Exercise - 1
 ---
+
+In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the databse is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
+
+## Designing the StatefulSet
+
+In order to create the PostgreSQL StatefulSet we proceed with the following steps:
+
+* Identify or build (a) container image(s)
+* Specify a headless Service
+* Specify a StatefulSet
+* Provision the Service and StatefulSet
+* Conduct simple experiments
+
+Start with finding a container image.
 
 ## The Container Image
 
-An essential part of the StatefulSet for PostgreSQL is the database server itself. Luckily, there is not need to containerize PostgreSQL as this as already been done. Hence, use the official PostgreSQL Docker Image found at DockerHub [1]. Pause this tutorial for a second and have a quick look at the [description of the container image](https://hub.docker.com/_/postgres). This is where you find how the container image can be parameterized which forms the main challenge of creating the StatefulSet. In particular, this is where you find out how to set a proper password. Try to find the corresponding setting yourself so that you understand the structure of the Secret described in the next section.
+An essential part of the StatefulSet for PostgreSQL is the database server itself. Luckily, there is no need to containerize PostgreSQL as this as already been done. Hence, use the official PostgreSQL Docker Image found at DockerHub [1]. Pause this tutorial for a second and have a quick look at the [description of the container image](https://hub.docker.com/_/postgres). This is where you'll find how the container image can be parameterized - a major challenge when creating the PostgreSQL StatefulSet. In particular, this is where you find out how to set a proper password. Try to find the corresponding setting yourself so that you understand the structure of the Secret described in the next section.
 
 ## Creating a Secret
 
-Create a PostgreSQL secret containing the password for the admin user:
+Starting PostgreSQL requires an administator password which will be stored as a Secret.
+
+Create a PostgreSQL Secret containing the password for the admin user:
 
     kubectl create secret generic postgresql-secrets --from-literal=POSTGRES_PASSWORD=tes6Aev8
 
@@ -22,24 +38,52 @@ Verify its creation:
 In order to provide a stable network identity to address the PostgreSQL server create a headless services by creating the file `10-service.yaml`:
 
 ```YAML
-    apiVersion: v1
-    kind: Service
-    metadata:
-    name: postgresql-svc
-    labels:
-        app: postgresql-a
-    spec:
-    ports:
-    - port: 5432
-        name: postgresql-port
-    clusterIP: None
-    selector:
-        app: postgresql-a
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-svc
+  labels:
+    app: postgresql-a
+spec:
+  ports:
+  - port: 5432
+    name: postgresql-port
+  clusterIP: None
+  selector:
+      app: postgresql-a
 ```
 
-Create the service:
+The attribute `clusterIP: None` of the Service specification denotes that this is a **headless Service**.
+
+Create the Service:
 
     kubectl apply -f 10-service.yaml
+
+Inspect the Service:
+
+    kubectl describe service postgresql-svc
+
+The output should be similar to:
+
+    Name:              postgresql-svc
+    Namespace:         default
+    Labels:            app=postgresql-a
+    Annotations:       Selector:  app=postgresql-a
+    Type:              ClusterIP
+    IP:                None
+    Port:              postgresql-port  5432/TCP
+    TargetPort:        5432/TCP
+    Endpoints:         172.17.0.5:5432
+    Session Affinity:  None
+    Events:            <none
+
+Pay attention to the `IP` attribute.
+
+Normally, a Kubernetes Service has a cluster-internal IP address as seen in the [Service example](/kubernetes/40-replicaset-and-service/services) of the [ReplicaSet lesson](/kubernetes/40-replicaset-and-service/introduction). Requests to the Service IP are then load balanced across the Service endpoints, e.g. Pods binding to the Service by using matching Labels.
+
+In constrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
+
+So in constrast to a standard Service, **a headless Service does not perform load balancing**. Depending on the selectors defined for the Service cluster-internal **DNS entries will be created**.
 
 ## Creating the StatefulSet
 
@@ -87,9 +131,9 @@ spec:
         requests:
           storage: 1Gi
 ```
-Have you noticed how the secret is mounted as an environment variable as described in the container image description [1]?
+Have you noticed how the Secret is mounted as an environment variable as described in the container image description [1]?
 
-Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Volume Claim. Consider the StatefulSet has specified more than mulitple `replicas`, let's say three (3). In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
+Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified mulitple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
 
 Execute the spec:
 
@@ -198,118 +242,7 @@ And by executing:
 
 You should see the StatefulSet being `RUNNING`.
 
-## Accessing the Database using `psql`
-
-After deploying the PostgreSQL server it's time to verify whether there's actually a database running.
-
-For the purpose of a brief test it would be nice to have an interactive container running the `psql` command, the command line tool to access PostgreSQL.
-
-    kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=tes6Aev8" -- psql -h postgresql-svc.k8s-training-test.svc.cluster.local -U postgres
-  
-This starts an interactive container (`-i --tty`) based on the same container image you have used for the database server (`postgres:12.2`). The container shall never restart (`--restart=Never`). The container is not started with the default command configured in the container image. Instead, the option `-- psql` (not the space) replaces the default start command (the PostgreSQL server) with the PostgreSQL command line client. There is no PostgreSQL server running in this container, so that you have to tell `psql` where to connect and how to authenticate. Noete, that `psql` read the password from a different environment variable as the container image does for the server. Details on how to use `psql` can be found in the official PostgreSQL documentation [3]. While it is possible to pass a server host using the `-h` option as well as a user using the `-U` option, the password has to be passed as an environment variable. Among other reasons, this avoids listing the password in a shell history file.
-
-Have a close look at the DNS name used to connect to the PostgreSQL Kubernetes Service we have created earlier:
-
-    postgresql-svc.k8s-training-test.svc.cluster.local
-
-This implies that the internal default URL of your Kubernetes cluster is `cluster.local` which may be different in other Kubernetes environments. Try to capture the canonical naming scheme of the DNS entry:
-
-    <service-name>.<namespace>.svc.<internal-cluster-default-domain>
-
-Remember this pattern as it allows you to build your own ad-hoc host-names and throw-away access containers for testing purposes like this.
-
-After creating the container you should see a promt. Type `\l` and you should see a list of databases:
-
-    postgres=# \l
-                                    List of databases
-      Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
-    -----------+----------+----------+------------+------------+-----------------------
-    postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
-    template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
-              |          |          |            |            | postgres=CTc/postgres
-    template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
-              |          |          |            |            | postgres=CTc/postgres
-    (3 rows)
-
-    postgres=#
-
-### Write to the Database
-
-While still being in the `psql` terminal select the `postgresql` database by typing `\c`:
-
-    postgres=# \c postgres;
-    You are now connected to database "postgres" as user "postgres".
-    postgres=#
-
-Let's create a table by pasting the following SQL command:
-
-    CREATE TABLE COMPANY(
-      ID INT PRIMARY KEY     NOT NULL,
-      NAME           TEXT    NOT NULL
-    );  
-
-And also a first record:
-
-    INSERT INTO COMPANY (ID, NAME) VALUES (1, 'anynines GmbH');
-
-Type `\q` to quit `psql` and terminate the Pod.
-
-Delete the Pod:
-
-    kubectl delete pod pg-psql
-
-Now your database still exists.
-
-## Disturbing the StatefulSet
-
-Similar to a ReplicaSet, a StatefulSet is more than just a (collection of) Pods. There is a StatefulSet Controller watching your Pods like guardian angel. Let's put the guardian angel to a test!
-
-Obtain the name of the StatefulSet's Pod:
-
-    kubectl get pods -l app=postgresql-a
-
-Now, simulate the failure of a Pod by destroying it:
-
-    kubectl delete pod postgresql-sfs-0
-
-And watch what happens - but be fast as the show is over quickly:
-
-    kubectl get pods -l app=postgresql-a -w
-
-You should first see that the container is creating again:
-
-    NAME               READY   STATUS              RESTARTS   AGE
-    postgresql-sfs-0   0/1     ContainerCreating   0          0s
-
-And soon after that it has been fully recovered:
-
-    NAME               READY   STATUS    RESTARTS   AGE
-    postgresql-sfs-0   1/1     Running   0          35s
-
-Now 
-
-    kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=tes6Aev8" -- psql -h postgresql-svc.k8s-training-test.svc.cluster.local -U postgres
-
-And in ´psql`:
-
-    \c postgres
-    SELECT * FROM COMPANIES;
-
-You should see:
-
-    postgres=# SELECT * FROM COMPANY;
-    id |     name
-    ----+---------------
-      1 | anynines GmbH
-    (1 row)
-
-Which means that the data stored in the PostgreSQL container has surved the failure of it's Pod although the Pod itself is stateless. This is possible as you have mounted the data directory of PostgreSQL to the mounted Persistent Volume whose lifecycle goes beyond that of a Pod. When you manually deleted the Pod, **the actual state of the StatefulSet** has been changed and caused a deviation from **the desired state of the StatefulSet**. This deviation has been noticed by the StatefulSet controller which has then taken corrective measures and told the Kubernetes system to create another Pod - with the same identity and the mounting the same Persistent Volume. **Welcome to the world of declarative configuration**! The description of the StatefulSet is declarative as a user declares how the StatefulSet should look like rather than that Kubernetes should create a Pod and a Persistent Volume. The StatefulSet controller is put in charge of taking all actions necessary to ensure a minimum deviation from the desired state. **This way your database gets self-healing capabilities with a disaster recovery time of a few seconds**!
-
-## Conclusions
-
-StatefulSets and Persistent Volumes are the Kubernetes means to operate data services. Especially in conjunction with Persistent Volume Provisioners [2] the creation of data service instances becomes manageable as Persistent Volumes are being created on-demand.
-
-However, creating and managing a larget set of StatefulSet and Persistent Volumes become a tideous task as the templates above need to be modified and kept track of.
+Congratulations! You have deployed your first StatefulSet.
 
 ## Links
 1. PostgreSQL Docker Image at DockerHub, https://hub.docker.com/_/postgres
@@ -321,3 +254,5 @@ However, creating and managing a larget set of StatefulSet and Persistent Volume
 7. anynines, a9s Data Services, https://www.anynines.com/data-services
 8. Kubernetes Documentation, Concepts, ServiceCatalog, https://kubernetes.io/docs/concepts/extend-kubernetes/service-catalog/
 9. Wikipedia, Principle of Least Privilege, https://en.wikipedia.org/wiki/Principle_of_least_privilege
+10. Kubernetes Documentation, Concepts, Services Networking, Service, https://kubernetes.io/docs/concepts/services-networking/service/#headless-services 
+11. PostgreSQL, https://www.postgresql.org/

@@ -35,83 +35,13 @@ However, one restriction of (most) block devices is that they can only be used b
 
 Imagine a StatefulSet with three Pods `pod-1`, `pod-2` and `pod-3`. Three Persistent Volume Claims will then create three Persistent Volumes. The StatefulSet then ensures that each PV will be mounted to a particular Pod. There's a 1:1 mapping from Persistent Volume to a Pod identity. So even when a Pod is lost, the newly created Pod will be bound to the Persistent Volume associated with the identity of the former Pod.
 
-* What is a headless service?
+## Stable Network Identity 
 
-* What is a StatefulSet
-    * Manages the deployment and sclaing of a set of Pods[1]
+A stable network identity can be provided to a StatefulSet by using a headless Service which will be covered in a later exercise in greater detail.
 
-    * Pods of a StatefulSet are based on the same container spec.
-    * A StatefulSet maintains a *sticky identity* for each of the Pods. [1]
-        * They are created from the same spec but they are not interchangeable. [1]
-        * Each Pod has a persistent idenfier that it maintains across any rescheduling. [1]
-        * TODO Why does the identity matter?
-    * But in contrast to Deployments - **provides guarantees about the ording and uniquness of these Pods**
-        * TODO Why does ordinality matter?
+## Hands-On
 
-* When to use StatefulSets? Should be used when applications need 1 or more:
-    * Stable, unique network identifiers
-        * TODO Example
-    * Stable, persistent storage.
-        * TODO explain!
-    * Ordered, graceful deployment and scaling.
-        * TODO Explain
-    * Ordered, automated rolling updates.
-        * TODO Explain
-
-If this is not needed, use a Deployment or ReplicaSet.
-
-Deployments and ReplicaSets are for stateless or light-weight stateful workloads.
-StatefulSets are for heavy-weight stateful workloads such as data services including databases, message queues, etc.
-
-* Creating a StatefulSet
-    * Where does the volume come from.
-        * PersistentVolume Provisioner
-    * Require a Headless Service > Network identity
-        * The Service has to be created manually
-            * TODO Demonstrate!
-    * RollingUpdates, default PodManagementPolicy (OrderedReady), it's possible to get into a broken state that requires manual intervention to repair!
-        * TODO What the fucking fuck?
-
-* Deleting a StatefulSet
-    * Does not delete volumes
-
-* Pod Selector
-    * You must set the `.spec.selector`field of a StatefulSet to match the labels of its `.spec.template.metadata.labels`.
-    * Failing to specify a matching Pod Selector will result in a validation error during StatefulSet creation.
-
-* PodIdentity
-    * Ordinal - A unique number for each Pod within the StatefulSet
-    * A stable network identity 
-        * (using a Service)
-        * name network id, dns name
-    * Stable storage
-        * Each Pod has its own volume
-        * Each Pods always keeps the same volume
-
-* Deployment and Scaling Gurantees
-    * For aStatefulSet with N replicas, when Pods are being deployed, they created sequentially, in order from 0 .. N-1
-    * When pods are being deleted, they are terminated in reverse order, from N-1 ... 0
-    Before a scaling operation is applied to a Pod, all of its predecessors must be Running and Redy
-    * Before a Pod is terminated, all of its successors must be completely shutdown.
-    * Pod Managagement Gurantees may be relaxed using the `.spec.podManagementPolicy`.
-    * Parralel Pod Management
-        * Pods can be launced in parallel if `Parallel` is specified.
-
-******************
-
-* Single instance data service
-    * Multi-instance is for the advanced lesson
-* Persistent Volumes
-    * What is it? Relationship between Kubernetes Volumes and Docker Volumes.
-    * Dynamic Volume provisioning.
-
-* Example Service.
-    * This example does not explain how to containerize a stateful service. Most likely, a container image will be present.
-    * This example is about using a StatefulSet not about how to create a container image.
-    * Decide which data services to use
-        * Definitely not mongodb!
-        * PostgreSQL?
-            https://hub.docker.com/_/postgres
+There is more to know about StatefulSet but this is enough theory for now. The next lessons are more hands-on with practical examples and exercies along with additional information about StatefulSets.
 
 ## Links
 1. Kubernetes Documentation, Concepts, StatefulSets, https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
