@@ -106,7 +106,7 @@ With a single Pod (`replicas: 1`) in a StatefulSet the mapping from the headless
 
 This raises the question **what happens if there are mulitple Pods in the StatefulSet?**
 
-Let's try it out!
+Let's try it!
 
 First, we need a Statefulset with mulitple replicas. So we modify the StatefulSet definition of the previous example by **editing** the file `30-stateful-set.yaml`.
 

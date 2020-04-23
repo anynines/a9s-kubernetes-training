@@ -11,7 +11,7 @@ In the previous example using `kubectl get jobs` you may have noticed the field 
 
 There are tasks requiring more than one iteration to fully accomplish the underlying objective. For this purpose Kubernetes Jobs allow to specify the number of desired completions, e.g. 2 completions by adding `completions: 2`.
 
-Let's try it out! Create the file `60-simple-job-two-completions.yaml`:
+Let's give it a try! Create the file `60-simple-job-two-completions.yaml`:
 
 ```yaml
 apiVersion: batch/v1

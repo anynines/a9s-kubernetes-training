@@ -5,6 +5,7 @@ title: Kubernetes Training Overview
 
 ## Status: Under Development
 
+* Last updated: 2020-04-23
 * This training is still under development. 
 * Smaller changes - mostly spelling and fixes - will be applied throughout the tutorial.
 * Content will be mostly appended to late chapters.

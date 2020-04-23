@@ -183,7 +183,7 @@ The PostgreSQL Image description [1] says:
 
 This means we have to tell PostgreSQL to change it's data directory to something like `/var/lib/postgresql/data/pgdata` by passing the path using the `PGDATA` environment variable.
 
-```YAML
+```yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

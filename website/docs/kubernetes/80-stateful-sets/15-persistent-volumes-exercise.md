@@ -91,24 +91,26 @@ Hence, it's time to create a Pod and mount the Persistent Volume.
 
 Create a file `20-pod-writing-to-volume.yaml`:
 
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    name: simple-pv-pod
-    spec:
-    volumes:
-        - name: simple-pv-storage
-        persistentVolumeClaim:
-            claimName: simple-pv-claim
-    containers:
-        - name: simple-pv-container
-        image: busybox
-        command: ["/bin/sh"]
-        args: ["-c", "echo Hello World > /my-persistent-data/helloworld.txt"]
-        volumeMounts:
-            - mountPath: "/my-persistent-data"
-            name: simple-pv-storage
-    restartPolicy: Never
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+name: simple-pv-pod
+spec:
+volumes:
+    - name: simple-pv-storage
+    persistentVolumeClaim:
+        claimName: simple-pv-claim
+containers:
+    - name: simple-pv-container
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "echo Hello World > /my-persistent-data/helloworld.txt"]
+    volumeMounts:
+        - mountPath: "/my-persistent-data"
+        name: simple-pv-storage
+restartPolicy: Never
+```
 
 Which creates a Pod writing a simple text file `/my-persistent-data/helloworld.txt` containing the String `Hello World`.
 
@@ -119,24 +121,24 @@ Create another Pod, mount the same Persistent Volume and read the data printing 
 Create a file `30-pod-reading-from-volume.yaml`:
 
 ```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    name: simple-pv-pod-reader
-    spec:
-    volumes:
-        - name: simple-pv-storage
-        persistentVolumeClaim:
-            claimName: simple-pv-claim
-    containers:
-        - name: simple-pv-container
-        image: busybox
-        command: ["/bin/sh"]
-        args: ["-c", "cat /my-persistent-data/helloworld.txt"]
-        volumeMounts:
-            - mountPath: "/my-persistent-data"
-            name: simple-pv-storage
-    restartPolicy: Never
+apiVersion: v1
+kind: Pod
+metadata:
+name: simple-pv-pod-reader
+spec:
+volumes:
+    - name: simple-pv-storage
+    persistentVolumeClaim:
+        claimName: simple-pv-claim
+containers:
+    - name: simple-pv-container
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "cat /my-persistent-data/helloworld.txt"]
+    volumeMounts:
+        - mountPath: "/my-persistent-data"
+        name: simple-pv-storage
+restartPolicy: Never
 ```
 
 And retrieve the Pods logs:
