@@ -1,6 +1,6 @@
 ---
 id: stateful-set-postgresql-5
-title: PostgreSQL Exercise - 5
+title: Application Access to a StatefulSet
 ---
 
 ## Application Access

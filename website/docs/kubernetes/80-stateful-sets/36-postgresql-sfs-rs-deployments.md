@@ -1,6 +1,6 @@
 ---
 id: stateful-set-postgresql-3
-title: PostgreSQL Exercise - 3
+title: StatefulSet vs. ReplicaSets
 ---
 
 In the last lession you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.

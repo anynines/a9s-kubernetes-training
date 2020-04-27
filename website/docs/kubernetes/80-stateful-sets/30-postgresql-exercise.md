@@ -1,6 +1,6 @@
 ---
 id: stateful-set-postgresql-1
-title: PostgreSQL Exercise - 1
+title: PostgreSQL StatefulSet
 ---
 
 In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the databse is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.

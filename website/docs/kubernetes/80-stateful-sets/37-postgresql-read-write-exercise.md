@@ -1,6 +1,6 @@
 ---
 id: stateful-set-postgresql-4
-title: PostgreSQL Exercise - 4
+title: PSQL Access to PostgreSQL
 ---
 
 ## Accessing the Database using `psql`

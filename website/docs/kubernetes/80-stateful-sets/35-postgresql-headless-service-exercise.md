@@ -1,6 +1,6 @@
 ---
 id: stateful-set-postgresql-2
-title: PostgreSQL Exercise - 2
+title: Headless Service
 ---
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
