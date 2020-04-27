@@ -12,6 +12,8 @@ title: Kubernetes Training Overview
 
 ## Changelog
 
+The following changes have been made:
+
 ### 2020-04-27: StatefulSet Chapters Renamed
 
 * Renamed Chapters from "PostgreSQL Exercise {n}" to more titles describing the content of the chapters in greater detail.
