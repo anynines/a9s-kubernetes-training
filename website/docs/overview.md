@@ -5,11 +5,21 @@ title: Kubernetes Training Overview
 
 ## Status: Under Development
 
-* Last updated: 2020-04-23
 * This training is still under development. 
 * Smaller changes - mostly spelling and fixes - will be applied throughout the tutorial.
 * Content will be mostly appended to late chapters.
 * Currently the chapter **StatefulSets** is under development.
+
+## Changelog
+
+### 2020-04-27: StatefulSet Chapters Renamed
+
+* Renamed Chapters from "PostgreSQL Exercise {n}" to more titles describing the content of the chapters in greater detail.
+
+### 2020-04-23: StatefulSets
+
+* Added large parts of the StatefulSet section. Still incomplete.
+
 
 ## Goal
 
