@@ -1,5 +1,5 @@
 ---
-id: stateful-set-postgresql-2
+id: stateful-set-headless-service
 title: Headless Service
 ---
 

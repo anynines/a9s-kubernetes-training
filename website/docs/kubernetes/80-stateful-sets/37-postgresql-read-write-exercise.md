@@ -1,5 +1,5 @@
 ---
-id: stateful-set-postgresql-4
+id: stateful-set-psql-access-to-postgresql
 title: PSQL Access to PostgreSQL
 ---
 
