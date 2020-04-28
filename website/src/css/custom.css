@@ -2,6 +2,8 @@
 @import url('./anynines/typography.css');
 @import url('./prism/material-dark.css');
 
+@import url('./anynines/cookie-consent.css');
+
 :root {
   /* Overriding the framework */
   --ifm-color-primary: var(--a9s-orange);
