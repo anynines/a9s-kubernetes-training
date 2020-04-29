@@ -35,9 +35,59 @@ For the creation of DNS entries you might want to create:
 
 The configuration of DNS entries varies across DNS providers. Their manuals will guide you through the process.
 
+## Creating a Self-Signed SSL Certificate
+
+Securing websites with SSL encryption (`HTTPS` instead of `HTTP`) [1] has become a defacto standard. Therefore, it is worth dealing with the additional complexity here and show how an application on Kubernetes can be SSL encrypted.
+
+First, it should be mentioned that the termination of the SSL certificate happens within the Ingress controller, in this example the `ngninx` ingress [2][3]. While most of this training has been applicable to most Kubernetes flavors, the Ingress is often specific to a particular Kubernetes distribution. So be prepared to search the documentation in case you want to apply this tutorial to a different Kubernetes cluster.
+
+In order to enable the Ingress controller to terminate an SSL certificate, you either have to create one. If you want to get a free SSL certificate that will be ok for most browsers and surely better than a self-signed certificate have a look at [Let's Encrypt [4]](https://letsencrypt.org/).
+
+For this example, a self-signed certificate will be good enough as the process of setting up the certificate is the same for trusted certificates.
+
+Assuming you have installed `openssl` creating a self-signed SSL certificate for the domain `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu` can be achieved by issuing the following command:
+
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout k9s.key -out k9s.crt -subj "/CN=smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu/O=smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu"
+
+This will create the files `k9s.key` and `k9s.crt` which you will need during the creation of a TLS Secret.
+
+## Creating the TLS Secret
+
+Creating a TLS Secret is straight forward:
+
+    kubectl create secret tls k9s-anynines-com-tls --key k9s.key --cert k9s.crt
+
+This will read the files `k9s.key` and `k9s.crt`. As you can see the TLS Secret is a special type of a Kubernetes Secret. Secrets will be covered in a later lesson in greater detail. For now, it's enough to know that a Secret is a set of key-value pairs managed by the Kubernetes API and stored in the Kubernetes etcd. The TLD Secret is special in so far that its keys are fixed to `key` and `cert`. This ensures that the Ingress knows where to look for both the key and certificate requires to utilize the SSL certificate.
+
+Check whether the Secret has been created successfully:
+
+    kubectl get secrets
+
+And describe it:
+
+    kubectl describe secret k9s-anynines-com-tls
+
+You should see an output similar to:
+
+    Name:         k9s-anynines-com-tls
+    Namespace:    k8s-training
+    Labels:       <none>
+    Annotations:  <none>
+
+    Type:  kubernetes.io/tls
+
+    Data
+    ====
+    tls.crt:  1322 bytes
+    tls.key:  1704 bytes
+
+You can see that both the key and certificate have been stored as `tls.crt` and `tls.key`. The Ingress controller will then retrieve these files by mounting them as files.
+
+Now you are ready to create the actual Ingress object.
+
 ## Creating an Ingress
 
-This works on an a9s K8s cluster by creating the file `40-ingress-hello-world-a9s.yaml`:
+On an a9s Kubernetes cluster creating an Ingress can be done by creating the file `40-ingress-hello-world-a9s.yaml`:
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -50,10 +100,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - smpl-go-web-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu
+      - smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu
       secretName: k9s-anynines-com-tls
   rules:
-  - host: smpl-go-web-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu
+  - host: smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu
     http:
       paths:
       - path: /
@@ -61,6 +111,16 @@ spec:
           serviceName: smpl-go-web-s
           servicePort: 8080
 ```
+
+Again: You may have to search the documentation of your Kubernetes cluster as the Ingress may require a different specification.
+
+You can also see that `annotations` contains an element `kubernetes.io/ingress.class: "nginx"` declaring that the `nginx`-Ingress is to be used.
+
+The `tls` section declares a list of hosts, in this case the domain `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu`. Recognized how the SSL certificate for the domain is passed to the Ingress as a Secret with `secretName: k9s-anynines-com-tls`. As the TLS Secret type has a well known structure no further arguments are required.
+
+Lastly, the actual web application is connected to the Ingress by mounting the application to the path `/`. When using many microservice apps, it can be handy to mount a set of microservices to a domain which will create the impression of a single application to the outside user. In our case, there is only one application. Note that there is no reference to a Pod, ReplicaSet or Deployment. Instead, the reference is to a Service `smpl-go-web-s` and its port `8080`.
+
+The Ingress is responsible for mapping external HTTP requests to particular applications. This connection is done by the Service. In other words: the Ingress - a layer 7 proxy - read the HTTP requests, extracts the host information and maps the incoming request to a layer 4 load balancer - the Service which in turn distributes the requests across its endpoints. In this case, our singe instance web app.
 
 Apply it:
 
@@ -70,6 +130,14 @@ In order to verify whether the Ingress has been created list existing Ingresses:
 
     kubectl get ingress
 
-In the output you can obtain the url in the `HOSTS` attribute it may look similar to `smpl-go-web-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu`. **Paste the url into your browser and you should see the output from the example web app**.
+In the output you can obtain the url in the `HOSTS` attribute it may look similar to `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu`. **Paste the url into your browser and you should see the output from the example web app**.
 
 Congratulations! You have successfully deployed a web application.
+
+## Links
+
+1. Google Guidelines, Secure your site with HTTPS, https://support.google.com/webmasters/answer/6073543?hl=en
+2. Nginx, https://nginx.org
+3. Nginx Ingress, https://kubernetes.github.io/ingress-nginx/
+4. Let's Encrypt, https://letsencrypt.org/
+5. OpenSSL, https://www.openssl.org/
