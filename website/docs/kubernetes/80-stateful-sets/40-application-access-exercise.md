@@ -137,7 +137,7 @@ Verify your Secret with:
 Check whether the desired key-value-pairs have been created:
 
     Name:         postgresql-secret-2
-    Namespace:    default
+    Namespace:    k8s-training
     Labels:       <none>
     Annotations:  <none>
 
