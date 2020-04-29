@@ -5,7 +5,7 @@ title: Headless Service
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
-## The StatefuleSet and its Headless Service
+## The StatefulSet and its Headless Service
 
 In the previous chapter you have learned that a StatefulSet has a stable network identity. As mentioned before, the PostgreSQL StatefulSet will be accessed by an application. As applications may change during version updates or being rescheduled in the Cluster, so could be Pods of a StatefulSet. With both the application Deployments and the StatefulSet being fast moving targets, it is the StatefulSet's headless Service providing a stable entry point for the application to reach out to the PostgreSQL StatefulSet.
 
