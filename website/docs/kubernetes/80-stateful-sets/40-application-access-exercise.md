@@ -99,7 +99,25 @@ The `-W` makes `psql` prompt for the password to authenticate the `postgresql` u
 Then the `gaeMo6di` is the `[ROLENAME]` from the command pattern describe above. It's a bit confusing as you may read `-W gaeMo6di` as if `gaeMo6di` is an argument to the option `-W` but this is a false friend. `-W` is an option and `gaeMo6di` a stand-alone argument.
 Finally, the `-P` makes the `createuser` command prompt for the password of the `gaeMo6di` user. Use the password `UaGu5chu` - or your alternative for it.
 
-### Test the Database User
+### Grand the New User Acces Privileges
+
+Now, there is a user `gaeMo6di` but it is lacking of appropriate access privileges. If you try to access the `postgres` database, you'll see an error message such as:
+
+    permission denied for table user 
+
+Therefore, you need to grand the user `gaeMo6di` privileges to access the `postgres` database which can be done using `psql`.
+
+Execute:
+
+    psql -U postgresql
+
+Execute the following SQL commands:
+
+    GRANT ALL PRIVILEGES ON DATABASE "postgres" to "gaeMo6di";
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "public" TO "gaeMo6di";
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA "public" TO "gaeMo6di";
+
+### Testing the User Access
 
 Note that, with the default config of PostgreSQL, using `psql` locally to verify the created user is pointless as PostgreSQL does not require a password authentication and trusts anybody connecting from `localhost`. This setting is not safe for productive use and means that you can't verify your password with it.
 
@@ -109,8 +127,11 @@ So to test the credentials we need a remote Pod:
 
 You should see a `psql` prompt similar to:
 
-    postgres=>
-
+    postgres=> SELECT * FROM COMPANY;
+     id |     name
+    ----+---------------
+      1 | anynines GmbH
+    (1 row)
 Done.
 
 Ok, now that you have collected all pieces of information necessary, you can proceed with creating the Secret.
@@ -230,11 +251,32 @@ spec:
 
     kubectl apply -f pgapp.yaml
 
-    http://localhost:8001/api/v1/namespaces/k8s-training/services/http:postgresql-app-svc:8080/proxy/
+### Application Service
+
+As we have seen in earlier lessons it is useful to have a Service in front of an application. This will provide a stable network entry point in form of a DNS name as well as an IP address. Also it will enable a load balancing if further Pods will be added.
+
+Create a file `50-pg-app-svc.yaml` with the following content:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg-app-svc
+  labels:
+    app: postgresql-app
+spec:
+  ports:
+  - port: 8080
+    name: http-port
+  selector:
+    app: postgresql-app
+```
+
+    http://localhost:8001/api/v1/namespaces/k8s-training/services/http:pg-app-svc:8080/proxy/
 
     kubectl run -i --tty nspct --image=fischerjulian/nspct --restart=Never -- bash
 
-    nslookup postgresql-app-svc.k8s-training.svc.cluster.local
+    nslookup pg-app-svc.k8s-training.svc.cluster.local
     nslookup postgresql-svc.k8s-training.svc.cluster.local
 
 > TODO Once, the Pod is created, ....
