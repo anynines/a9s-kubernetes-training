@@ -115,6 +115,14 @@ The resulting string can be pasted into the Secret during editting.
 
 As with ConfigMaps changes to Secrets are automatically available in consuming Pods after a few seconds **if the Secret has been mounted as a volume**.
 
+## Showing a Secret Value
+
+Assuming you have the command `base64` installed retrieving the decoded value from a Secret can be done with:
+
+    kubectl get secret area51 -o jsonpath="{.data.username}" | base64 --decode
+
+Where `username` is the key of the Secret to which the value should be retrieved and decoded.
+
 ## Consuming Secrets from Applications
 
 Using Secrets from a Pod is similar to using ConfigMaps.
