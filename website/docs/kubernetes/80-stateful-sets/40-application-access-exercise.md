@@ -272,16 +272,40 @@ spec:
     app: postgresql-app
 ```
 
+Start the `kubectl proxy`:
+
+    kubectl proxy
+
+And access the web application by browsing to the URL:
+
     http://localhost:8001/api/v1/namespaces/k8s-training/services/http:pg-app-svc:8080/proxy/
 
+Alternatively, you can use an auxiliary Pod to execute a `curl` command to issue an HTTP request to the app:
+
     kubectl run -i --tty nspct --image=fischerjulian/nspct --restart=Never -- bash
+
+Once withing the Pod, you can verify that all necessary Services resolve:
 
     nslookup pg-app-svc.k8s-training.svc.cluster.local
     nslookup postgresql-svc.k8s-training.svc.cluster.local
 
-> TODO Once, the Pod is created, ....
-ReplicaSet ... Once the ReplicaSet is created ... Deployment.
+And issue the HTTP request:
 
+    curl localhost:8080
+
+Which should return something like:
+
+    <h1>Simple PostgreSQL Web App</h1><h2>Company: anynines GmbH<h2>
+
+## Exercise
+
+Based on the Pod specification for the `postgres-application` perform the following steps:
+
+1. Create a ReplicaSet with `replicas: 1`.
+2. Set `replicas: 3`.
+3. Create a Deployment.
+
+The ReplicaSet will replace your Pod. The Deployment will replace your ReplicaSet. So before creating the ReplicaSet delete the `postgresql-application` Pod. Let your ReplicaSet create it. Then delete your ReplicaSet and create a Deployment that will create your ReplicaSet and Pods.
 
 ## Links
 
