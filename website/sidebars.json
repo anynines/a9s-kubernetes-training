@@ -94,6 +94,16 @@
           "kubernetes/80-stateful-sets/stateful-set-conclusions"          
         ]
       }
+    ],
+    "PostgreSQL on Kubernetes": [
+      "postgresql/postgresql-overview",
+      {
+        "type": "category",
+        "label": "StatefulSets Revisited",
+        "items": [
+          "postgresql/50-stateful-sets-revisited/stateful-sets-revisited"          
+        ]
+      }
     ]
   }
 }
