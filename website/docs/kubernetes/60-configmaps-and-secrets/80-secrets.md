@@ -121,7 +121,7 @@ Assuming you have the command `base64` installed retrieving the decoded value fr
 
     kubectl get secret area51 -o jsonpath="{.data.username}" | base64 --decode
 
-Where `username` is the key of the Secret to which the value should be retrieved and decoded.
+Where `username` is the key of the `area51` Secret to which the value should be retrieved and decoded.
 
 ## Consuming Secrets from Applications
 
