@@ -19,7 +19,7 @@ How to run a distributed application system in Kubernetes covering topics such a
 * Ingresses
 * ConfigMaps and Secrets
 * Jobs and CRONJobs
-* StatefuleSets
+* StatefulSets
 
 At the end of the training a final exam is described which provides you with the opportunity to test your freshly learned skills.
 

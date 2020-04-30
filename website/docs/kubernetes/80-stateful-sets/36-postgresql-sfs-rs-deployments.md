@@ -1,5 +1,5 @@
 ---
-id: stateful-set-postgresql-3
+id: stateful-set-vs-replicasets
 title: StatefulSet vs. ReplicaSets
 ---
 
