@@ -1,11 +1,11 @@
 ---
-id: stateful-set-postgresql-2
+id: stateful-set-headless-service
 title: Headless Service
 ---
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
-## The StatefuleSet and its Headless Service
+## The StatefulSet and its Headless Service
 
 In the previous chapter you have learned that a StatefulSet has a stable network identity. As mentioned before, the PostgreSQL StatefulSet will be accessed by an application. As applications may change during version updates or being rescheduled in the Cluster, so could be Pods of a StatefulSet. With both the application Deployments and the StatefulSet being fast moving targets, it is the StatefulSet's headless Service providing a stable entry point for the application to reach out to the PostgreSQL StatefulSet.
 
@@ -23,7 +23,7 @@ And:
 Produces an output similar to:
 
     Name:              postgresql-svc
-    Namespace:         default
+    Namespace:         k8s-training
     Labels:            app=postgresql-a
     Annotations:       Selector:  app=postgresql-a
     Type:              ClusterIP
@@ -56,7 +56,7 @@ And:
 Produces an output similar to:
 
     Name:              postgresql-svc
-    Namespace:         default
+    Namespace:         k8s-training
     Labels:            app=postgresql-a
     Annotations:       Selector:  app=postgresql-a
     Type:              ClusterIP
@@ -74,7 +74,7 @@ This shows `Annotations: Selector:  app=postgresql-a` indicating that the Servic
 
 The output shows that the Pod `postgresql-sfs-0` has the `IP: 172.17.0.5` which means that the Pod is set as the endpoint of the headless Service.
 
-Along with the headless Service `postgresql-svc` Kubernetes will create a cluster-internal DNS entry: `postgresql-svc.default.svc.cluster.local`. 
+Along with the headless Service `postgresql-svc` Kubernetes will create a cluster-internal DNS entry: `postgresql-svc.k8s-training.svc.cluster.local`. 
 
 **Go and see yourself!**
 
@@ -86,14 +86,14 @@ The `nspct` image provides a few handy tools such as `nslookup` - a utility to q
 
 Inside of the `nspct` Pod check wether the resolver can resolve the service url:
 
-    nslookup postgresql-svc.default.svc.cluster.local.
+    nslookup postgresql-svc.k8s-training.svc.cluster.local
 
 Which will produce a response similar to:
 
     Server:		10.96.0.10
     Address:	10.96.0.10#53
 
-    Name:	 postgresql-svc.default.svc.cluster.local
+    Name:	 postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.5
 
 So the DNS entry has been created and resolves to the IP address of the only Pod inside of the StatefulSet. 
@@ -127,7 +127,7 @@ Now check on the Service again:
 Which should produce an output similar to:
 
     Name:              postgresql-svc
-    Namespace:         default
+    Namespace:         k8s-training
     Labels:            app=postgresql-a
     Annotations:       Selector:  app=postgresql-a
     Type:              ClusterIP
@@ -146,18 +146,18 @@ Pay attention how the `Endpoints` attribute of the Service has changed without t
 
 Within the utility Pod perform another domain lookup:
 
-    nslookup postgresql-svc.default.svc.cluster.local
+    nslookup postgresql-svc.k8s-training.svc.cluster.local
 
 Which this time will produce:
 
     Server:		10.96.0.10
     Address:	10.96.0.10#53
 
-    Name:	postgresql-svc.default.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.7
-    Name:	postgresql-svc.default.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.5
-    Name:	postgresql-svc.default.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.8
 
 As you can see all StatefulSet Pods are present in the response.

@@ -14,6 +14,13 @@ title: Kubernetes Training Overview
 
 The following changes have been made:
 
+### 2020-04-30: StatefulSet and Fixes
+
+* Adds generating a self-signed SSL Certificate to the Ingress lesson.
+* Adds a command on how to retrieve and decode a Secret's value for a given key.
+* Fixes some spelling mistakes.
+* Fixes namespaces inconsistencies to `k8s-training`.
+
 ### 2020-04-27: StatefulSet Chapters Renamed
 
 * Renamed Chapters from "PostgreSQL Exercise {n}" to more titles describing the content of the chapters in greater detail.

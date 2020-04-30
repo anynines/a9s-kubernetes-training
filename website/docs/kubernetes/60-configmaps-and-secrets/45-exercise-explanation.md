@@ -25,9 +25,9 @@ kind: ConfigMap
 metadata:
     creationTimestamp: "2020-03-04T17:54:19Z"
     name: config-example-1
-    namespace: default
+    namespace: k8s-training
     resourceVersion: "6128955"
-    selfLink: /api/v1/namespaces/default/configmaps/config-example-1
+    selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-1
     uid: 2ef0fc0d-e128-47d7-be57-766d2b023612
 ```
 
@@ -46,9 +46,9 @@ kind: ConfigMap
 metadata:
     creationTimestamp: "2020-03-04T17:40:48Z"
     name: config-example-2
-    namespace: default
+    namespace: k8s-training
     resourceVersion: "6126817"
-    selfLink: /api/v1/namespaces/default/configmaps/config-example-2
+    selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-2
     uid: 3366244e-da8e-4ac8-8cf4-dc21fca7ff56
 ```
 

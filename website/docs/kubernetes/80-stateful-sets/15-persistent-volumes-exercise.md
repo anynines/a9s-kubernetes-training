@@ -61,13 +61,13 @@ The `kubernetes.io/aws-ebs` Provisionier has created a Persistent Volume accordi
 The output should look like this:
 
     Name:          simple-pv-claim
-    Namespace:     k8s-training-test
+    Namespace:     k8s-training
     StorageClass:  default
     Status:        Bound
     Volume:        pvc-7a0e4339-9e64-4740-9adb-a509a6aac328
     Labels:        <none>
     Annotations:   kubectl.kubernetes.io/last-applied-configuration:
-                    {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"simple-pv-claim","namespace":"k8s-training-test"},"...
+                    {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"simple-pv-claim","namespace":"k8s-training"},"...
                 pv.kubernetes.io/bind-completed: yes
                 pv.kubernetes.io/bound-by-controller: yes
                 volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
