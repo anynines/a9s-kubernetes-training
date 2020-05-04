@@ -11,7 +11,7 @@ In this lesson you will conduct more experiments to become familiar with the par
 
 The most obvious similiarity between StatefulSets and ReplicaSets is their name as both contain the word "Set".
 
-Just like a ReplicaSet a StatefulSet is more than just a collection of Pods. Similar to a ReplicaSet Controller is watchinv over the Pods of a ReplicaSet, a StatefulSet Controller is watching all Pods of a StatefulSet.
+Just like a ReplicaSet a StatefulSet is more than just a collection of Pods. Similar to a ReplicaSet Controller is watching over the Pods of a ReplicaSet, a StatefulSet Controller is watching all Pods of a StatefulSet.
 
 **Let's see this in action!**
 

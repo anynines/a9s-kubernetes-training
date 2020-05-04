@@ -11,7 +11,7 @@ This chapter directly connects to the [StatefulSet chapters](/kubernetes/80-stat
 
 ## A StatefulSet with Mulitple Replicas
 
-A highgly available PostgreSQL cluster should have `2n+1 | n>= 1` cluster Pods. These Pods have to discover another as they need to establish network connections as part of the replication and cluster management communication.
+A highly available PostgreSQL cluster should have `2n+1 | n>= 1` cluster Pods. These Pods have to discover one another as they need to establish network connections as part of the replication and cluster management communication.
 
 ### The Default is Replicas: 3
 
@@ -93,7 +93,7 @@ Output:
 
 ## Cluster Connectivity
 
-As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with another. 
+As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with one another. 
 
 Your first thought could be to create three headless Services, one for each member of the 3-replica StatefulSet but in fact this is not necessary. Kubernetes will automatically propagate `SRV` records [1] in its DNS system [2]. Go and see yourself:
 
