@@ -1,26 +1,34 @@
-import { Component } from 'react';
-import ReactGA from 'react-ga';
+import { React, Component } from 'react';
+import TagManager from 'react-gtm-module';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default class Analytics extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.gaID = 'UA-40204156-9';
+    this.tagManagerArgs = {
+      gtmId: 'GTM-000000'
+    };
   }
 
   componentDidMount() {
-    window.addEventListener('oil_optin_done', this.addAnalytics.bind(this));
-    window.addEventListener('oil_has_optedin', this.addAnalytics.bind(this));
+    if (ExecutionEnvironment.canUseEventListeners) {
+      console.log('Add event listeners');
+      window.addEventListener('oil_optin_done', this.addAnalytics);
+      window.addEventListener('oil_has_optedin', this.addAnalytics);
+    }
   }
 
   componentWillUnmount() {
-    window.addEventListener('oil_optin_done', this.addAnalytics.bind(this));
-    window.addEventListener('oil_has_optedin', this.addAnalytics.bind(this));
+    if (ExecutionEnvironment.canUseEventListeners) {
+      window.removeEventListener('oil_optin_done', this.addAnalytics);
+      window.removeEventListener('oil_has_optedin', this.addAnalytics);
+    }
   }
 
   addAnalytics() {
-    console.log("[GA:✅] Analytics added.");
-    ReactGA.initialize(this.gaID);
+    console.log("[GTM:✅] Analytics added.");
+    TagManager.initialize(this.tagManagerArgs);
   }
 
   render() {

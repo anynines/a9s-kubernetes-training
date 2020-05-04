@@ -13,7 +13,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 import Oil from '../Oil/oil';
-import Analytics from '../Analytics/analytics';
 
 function FooterLink({to, href, label, ...props}) {
   const toUrl = useBaseUrl(to);
@@ -100,9 +99,8 @@ function Footer() {
           </div>
         )}
       </div>
-
+      
       <Oil />
-      <Analytics />
     </footer>
   );
 }
