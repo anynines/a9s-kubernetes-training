@@ -14,7 +14,7 @@ Create the first deployment by deploying the application version **"blue"**.
 Create a file `20-deployment-blue.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -118,7 +118,7 @@ So let's give it a try!
 Create a file `60-deployment-blue-scale-out.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -170,7 +170,7 @@ The new software version is delived by creating a new container version. Compare
 Create a file `70-deployment-green.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -280,7 +280,7 @@ For this reason the `Recreate`-strategy is not recommended for productive use. H
 Create a first deployment with a file `80-deployment-blue-recreate.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -312,7 +312,7 @@ Apply it:
 Update the deployment by creating a file `90-deployment-green-recreate.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
