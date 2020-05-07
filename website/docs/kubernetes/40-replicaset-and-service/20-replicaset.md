@@ -20,18 +20,18 @@ metadata:
   name: smpl-go-web-rs
   labels:
       app: smpl-go-web-a
-      tier: fontend
+      tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: fontend
+      tier: frontend
   template:
     metadata:
       labels:
         app: smpl-go-web-a
         version: "1"
-        tier: fontend  
+        tier: frontend  
     spec:
       containers:
         - name: smpl-go-web-c
