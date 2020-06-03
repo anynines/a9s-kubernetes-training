@@ -1,6 +1,6 @@
 @import url('./anynines/colors.css');
 @import url('./anynines/typography.css');
-@import url('./prism/material-dark.css');
+@import url('./prism/prism-a9s.css');
 
 :root {
   /* Overriding the framework */
@@ -14,6 +14,8 @@
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: var(--a9s-font-family-base);
   --ifm-font-size-base: var(--a9s-font-size-base);
+  --a9s-code-block-bg: rgb(1, 22, 39);
+  --a9s-code-block-text: rgb(214, 222, 235); 
 }
 
 html[data-theme="dark"] {
@@ -48,4 +50,9 @@ h1, h2, h3, h4, h5, h6 {
   --ifm-h2-vertical-rhythm-top: 1.5;
   --ifm-h3-vertical-rhythm-top: 1.5;
   --ifm-heading-vertical-rhythm-top: 1.5;
+}
+
+code {
+  background: var(--a9s-code-block-bg);
+  color: var(--a9s-code-block-text); 
 }
