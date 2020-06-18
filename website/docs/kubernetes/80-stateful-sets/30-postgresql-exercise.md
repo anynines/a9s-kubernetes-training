@@ -1,5 +1,5 @@
 ---
-id: stateful-set-postgresql-1
+id: stateful-set-postgresql
 title: PostgreSQL StatefulSet
 ---
 

@@ -18,6 +18,9 @@
   --ifm-font-size-base: var(--a9s-font-size-base);
   --a9s-code-block-bg: rgb(1, 22, 39);
   --a9s-code-block-text: rgb(214, 222, 235); 
+  --ifm-h2-vertical-rhythm-top: 1.5;
+  --ifm-h3-vertical-rhythm-top: 1.5;
+  --ifm-heading-vertical-rhythm-top: 1.5;
 }
 
 html[data-theme="dark"] {

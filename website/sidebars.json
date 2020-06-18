@@ -85,12 +85,12 @@
         "items": [
           "kubernetes/80-stateful-sets/persistent-volumes",          
           "kubernetes/80-stateful-sets/persistent-volumes-exercise",          
-          "kubernetes/80-stateful-sets/stateful-sets",          
-          "kubernetes/80-stateful-sets/stateful-set-postgresql-1",
-          "kubernetes/80-stateful-sets/stateful-set-postgresql-2",
-          "kubernetes/80-stateful-sets/stateful-set-postgresql-3",
-          "kubernetes/80-stateful-sets/stateful-set-postgresql-4",
-          "kubernetes/80-stateful-sets/stateful-set-postgresql-5",
+          "kubernetes/80-stateful-sets/stateful-sets",        
+          "kubernetes/80-stateful-sets/stateful-set-postgresql",                  
+          "kubernetes/80-stateful-sets/stateful-set-headless-service",
+          "kubernetes/80-stateful-sets/stateful-set-vs-replicasets",
+          "kubernetes/80-stateful-sets/stateful-set-psql-access-to-postgresql",
+          "kubernetes/80-stateful-sets/stateful-set-application-access",
           "kubernetes/80-stateful-sets/stateful-set-conclusions"          
         ]
       }
