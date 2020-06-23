@@ -10,7 +10,6 @@ export default function Oil() {
   const publicPath = `${hostURL + useBaseUrl('js/')}`;
   const vendorList = `${hostURL + useBaseUrl('js/vendorlist.json')}`;
   const customVendorListUrl = `${hostURL + useBaseUrl('js/vendors.json')}`;
-  const localeURL = `${hostURL + useBaseUrl('js/oiljs-de.json')}`;
 
   return (
     <>
@@ -32,7 +31,6 @@ export default function Oil() {
             "timeout": -1,
             "iabVendorListUrl": "${vendorList}",
             "customVendorListUrl": "${customVendorListUrl}",
-            "locale_url": "${localeURL}"
           }
         `}
       </script>
