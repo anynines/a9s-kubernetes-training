@@ -10,7 +10,9 @@
     "@docusaurus/preset-classic": "^2.0.0-alpha.48",
     "classnames": "^2.2.6",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "react-gtm-module": "^2.0.8",
+    "react-helmet": "^6.0.0"
   },
   "browserslist": {
     "production": [

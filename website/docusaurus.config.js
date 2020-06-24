@@ -82,6 +82,11 @@ const siteConfig = {
           }]
       }]
     },
+    prism: {
+      defaultLanguage: 'bash',
+      theme: require('prism-react-renderer/themes/nightOwl'),
+      darkTheme: require('prism-react-renderer/themes/nightOwl')
+    },
     image: 'img/logo.svg',
     // Equivalent to `docsSideNavCollapsible`
     sidebarCollapsible: false,

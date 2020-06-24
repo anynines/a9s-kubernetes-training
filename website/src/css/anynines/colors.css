@@ -29,4 +29,12 @@
   --a9s-success-green: #22e4bc;
   --a9s-error-red: #e84242;
   --white: #fff;
+
+  --a9s-background-color: var(--a9s-gray-light-03);
+  --a9s-text-color: var(--a9s-blue);
+  --a9s-text-muted-color: var(--a9s-blue-light-02);
+  --a9s-separator-color: var(--a9s-gray-light-02);
+  --a9s-btn-primary-bg: var(--a9s-orange);
+  --a9s-btn-primary-border-color: var(--a9s-orange);
+  --a9s-btn-primary-color: var(--white);
 }
