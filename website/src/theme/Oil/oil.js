@@ -3,10 +3,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Head from '@docusaurus/Head';
 import Analytics from '../Analytics/Analytics';
 
-export default function Oil() {
+const Oil = () => {
   const oilVersion = 'oil.1.3.5-RELEASE.min.js';
   const oilURL = useBaseUrl(`js/${oilVersion}`);
-  const hostURL = '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+  
+  let hostURL = null;
+
+  React.useEffect(() => {
+    hostURL = '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+  }, [])
+  console.log("Does render Oil")
+  
   const publicPath = `${hostURL + useBaseUrl('js/')}`;
   const vendorList = `${hostURL + useBaseUrl('js/vendorlist.json')}`;
   const customVendorListUrl = `${hostURL + useBaseUrl('js/vendors.json')}`;
@@ -39,3 +46,5 @@ export default function Oil() {
     </>
   );
 }
+
+export default Oil
