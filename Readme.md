@@ -23,7 +23,7 @@ In any other case get yourself a decent node.js version (12+) and you should be 
 ### Run
 
     cd website
-    yarn run start
+    npm start
 
 ## Container Image
 

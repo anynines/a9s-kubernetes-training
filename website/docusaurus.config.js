@@ -18,6 +18,7 @@ const siteConfig = {
       links: [
         {to: 'containerization/container-overview', label: 'Container Training', position: 'left'},
         {to: 'kubernetes/kubernetes-overview', label: 'Kubernetes Training', position: 'left'},
+        { to: 'postgresql/postgresql-overview', label: 'PostgreSQL on Kubernetes', position: 'left' },
         {
           href: 'https://github.com/anynines',
           label: 'GitHub',

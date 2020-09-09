@@ -94,6 +94,32 @@
           "kubernetes/80-stateful-sets/stateful-set-conclusions"          
         ]
       }
+    ],
+    "PostgreSQL on Kubernetes": [
+      "postgresql/postgresql-overview",
+      {
+        "type": "category",
+        "label": "PostgreSQL Replication",
+        "items": [
+          "postgresql/20-postgresql-theory/why-use-replication",
+          "postgresql/20-postgresql-theory/replication-outline",
+          "postgresql/20-postgresql-theory/streaming-replication",
+          "postgresql/20-postgresql-theory/setting-up-streaming-replication"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "StatefulSet with Replication",
+        "items": [
+          "postgresql/30-stateful-sets-revisited/stateful-sets-revisited",
+          "postgresql/40-building-the-pg-stateful-set/pg-service-primary",
+          "postgresql/40-building-the-pg-stateful-set/streaming-replication-configmaps",
+          "postgresql/40-building-the-pg-stateful-set/streaming-replication-sfs-init",
+          "postgresql/40-building-the-pg-stateful-set/replication-user",
+          "postgresql/40-building-the-pg-stateful-set/verify-replication"
+        ]
+      },
+      "postgresql/postgresql-outro"
     ]
   }
 }
