@@ -66,7 +66,7 @@ spec:
 
 Apply it:
 
-    kubectl apply -f `10-statefulset.yaml`
+    kubectl apply -f 10-statefulset.yaml
 
 You should now see a StatefulSet with three Pods:
 
