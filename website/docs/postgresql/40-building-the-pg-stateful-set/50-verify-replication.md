@@ -71,13 +71,13 @@ At this point, the PostreSQL automation sets up a streaming replication what wil
 
 As long as the cluster is healthy, the streaming replication will provide a near real-time backup of the Primary database. However, there is much more work to be done which goes beyond the scope of this lesson.
 
-Beside of some security related improvements, there is more to add to the automation so that the streaming replication take full effect in production.
+Beside some security related improvements, there is more to add to the automation so that the streaming replication take full effect in production.
 
 ### Failure Detection, Leader Election and Leader Promotion
 
 Currently, there is no mechanism in place that detects a failing Primary. Theoretically there are two Secondaries which may be up to date with the failed Primary or they may lag a little behind resulting into a data loss of the replication lag's size.
 
-Detecting a failed Primary seems to be a simple task but as we are dealing with a distributed syste, sadly this is a non-trivial problem going back to the Byzantine General Problem [1]. The health monitor should be fault tolerant itself which means that it should be spread equally across cluster nodes. If the health manager itself is distributed it becomes hard to distinguish a failed Primary from a failed connection between a Secondary and the Primary. Especially in the case of network segmentation, applications may still have access to the Primary while a Secondary may think it's his time to take over leadership. There are algorithms solving leader election problem with a satisfying level of reliability. These so called [consensus algorithms](https://en.wikipedia.org/wiki/Consensus_algorithm) [2] can be rather complex. The most popular two algorithms include [Paxos](https://en.wikipedia.org/wiki/Paxos_(computer_science)) [3] and [RAFT](https://en.wikipedia.org/wiki/Raft_(computer_science)) [4].
+Detecting a failed Primary seems to be a simple task but as we are dealing with a distributed system, sadly this is a non-trivial problem going back to the Byzantine General Problem [1]. The health monitor should be fault tolerant itself which means that it should be spread equally across cluster nodes. If the health manager itself is distributed it becomes hard to distinguish a failed Primary from a failed connection between a Secondary and the Primary. Especially in the case of network segmentation, applications may still have access to the Primary while a Secondary may think it's his time to take over leadership. There are algorithms solving leader election problem with a satisfying level of reliability. These so called [consensus algorithms](https://en.wikipedia.org/wiki/Consensus_algorithm) [2] can be rather complex. The most popular two algorithms include [Paxos](https://en.wikipedia.org/wiki/Paxos_(computer_science)) [3] and [RAFT](https://en.wikipedia.org/wiki/Raft_(computer_science)) [4].
 
 ## Sources and Links
 1. https://en.wikipedia.org/wiki/Byzantine_fault

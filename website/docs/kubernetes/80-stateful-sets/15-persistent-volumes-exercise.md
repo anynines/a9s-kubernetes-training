@@ -39,11 +39,11 @@ Create a Persistent Volume Claim:
 
     kubectl apply -f 10-persistent-volume-claim.yaml
 
-Verify that the Persistent Volume Claim has been created successfull and - most importantly - that a Persistent Volume has been claimed:
+Verify that the Persistent Volume Claim has been created successfully and - most importantly - that a Persistent Volume has been claimed:
 
     kubectl get pvc -w
 
-The `-w` option will update the the output continuously. You can interupt it using `<CTRL>+C`.
+The `-w` option will update the output continuously. You can interrupt it using `<CTRL>+C`.
 
 Output should look similar to:
 
@@ -52,7 +52,7 @@ Output should look similar to:
 
 The `STATUS` field should say `BOUND`and thus indicate that an actual Persistent Volume has been found and "bound" to the Persistent Volume Claim.
 
-In this case - with knowledge about the `default` Storage Clase you have created before, we know how this has happened.
+In this case - with knowledge about the `default` Storage Class you have created before, we know how this has happened.
 
 The `kubernetes.io/aws-ebs` Provisionier has created a Persistent Volume according to the needs specified in the Persistent Volume Claim. This is illustrated when describing the PVC:
 

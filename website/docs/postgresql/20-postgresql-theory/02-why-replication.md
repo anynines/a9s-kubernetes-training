@@ -7,7 +7,7 @@ In previous chapters of the Kubernetes training a StatefulSet has been developed
 
 ## Limitations of the Previously Created PostgreSQL StatefulSet
 
-This PostgreSQL StatefuSet can provide a single PostgreSQL Pod meaningfully. The single PostgreSQL pod is meaningful as it can be used to store data and can be accessed by application. While it is possible to set the number of `replicas` to more then `1` this doesn't make sense as there is not replication among the pods of the StatefulSet. Having `3` unrelated PostgreSQL servers doesn't really provide any benefit.
+This PostgreSQL StatefulSet can provide a single PostgreSQL Pod meaningfully. The single PostgreSQL pod is meaningful as it can be used to store data and can be accessed by an application. While it is possible to set the number of `replicas` to more then `1` this doesn't make sense as there is not replication among the pods of the StatefulSet. Having `3` unrelated PostgreSQL servers doesn't really provide any benefit.
 
 This leads to two questions:
 
@@ -16,7 +16,7 @@ This leads to two questions:
 
 ## Why Replicate at all?
 
-Experienced database adminstrators may find this question disturbing as a highly available database seem to be impossible without replication. However, there is more to this question than meets the eye.
+Experienced database adminstrators may find this question disturbing as a highly available database seems to be impossible without replication. However, there is more to this question than meets the eye.
 
 Experience shows that in a physical server setup, a failed PostgreSQL has a certain average time to repair (TTR). If hardware needs to be replaced, for example, this may take up to several hours - without the necessary spare parts - even days or weeks. Having a standby-server to failover to is therefore crucial. This will reduce the TTR down to minutes or even seconds.
 
@@ -34,4 +34,4 @@ In these cases a recovery from a backup may be necessary which implies a corresp
 
 ## Summary
 
-In order to allow a fast failover and reduce to the potential data loss to a minum, **replication can be used to keep spare standby servers across availability zones**. For most infrastructures, this also implies using disjunct storage servers.
+In order to allow a fast failover and reduce to the potential data loss to a minimum, **replication can be used to keep spare standby servers across availability zones**. For most infrastructures, this also implies using disjunct storage servers.

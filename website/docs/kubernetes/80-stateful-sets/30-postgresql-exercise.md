@@ -3,7 +3,7 @@ id: stateful-set-postgresql
 title: PostgreSQL StatefulSet
 ---
 
-In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the databse is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
+In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the database is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
 
 ## Designing the StatefulSet
 
@@ -23,7 +23,7 @@ An essential part of the StatefulSet for PostgreSQL is the database server itsel
 
 ## Creating a Secret
 
-Starting PostgreSQL requires an administator password which will be stored as a Secret.
+Starting PostgreSQL requires an administrator password which will be stored as a Secret.
 
 Create a PostgreSQL Secret containing the password for the admin user:
 
@@ -81,9 +81,9 @@ Pay attention to the `IP` attribute.
 
 Normally, a Kubernetes Service has a cluster-internal IP address as seen in the [Service example](/kubernetes/40-replicaset-and-service/services) of the [ReplicaSet lesson](/kubernetes/40-replicaset-and-service/introduction). Requests to the Service IP are then load balanced across the Service endpoints, e.g. Pods binding to the Service by using matching Labels.
 
-In constrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
+In contrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
 
-So in constrast to a standard Service, **a headless Service does not perform load balancing**. Depending on the selectors defined for the Service cluster-internal **DNS entries will be created**.
+So in contrast to a standard Service, **a headless Service does not perform load balancing**. Depending on the selectors defined for the Service cluster-internal **DNS entries will be created**.
 
 ## Creating the StatefulSet
 
@@ -133,7 +133,7 @@ spec:
 ```
 Have you noticed how the Secret is mounted as an environment variable as described in the container image description [1]?
 
-Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified mulitple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
+Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified multiple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
 
 Execute the spec:
 

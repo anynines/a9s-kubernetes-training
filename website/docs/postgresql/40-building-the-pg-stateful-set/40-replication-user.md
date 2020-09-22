@@ -34,7 +34,7 @@ CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'aREPL1C4Ti0NxLI6Eeth
 
 Obviously - as with all passwords in this tutorial - a different password should be chosen.
 
-The replication user `replicator` will be created in a seaparate container. Note, that the usage of initContainers here is tricky as the initContainer is executed before PostgreSQL has been started. This doesn't work as creating a user obviously require the database to be running. Theoretically, PostgreSQL could be started temporarily but this appears to be inelegant. We'll come back to this matter later.
+The replication user `replicator` will be created in a separate container. Note, that the usage of initContainers here is tricky as the initContainer is executed before PostgreSQL has been started. This doesn't work as creating a user obviously requires the database to be running. Theoretically, PostgreSQL could be started temporarily but this appears to be inelegant. We'll come back to this matter later.
 
 In order to prepare each Pod to become the Primary, the replication user will be created in all Pods of the StatefulSet. Before such a container can be instantiated, an idempotent script for creating the replication user needs to be created.
 
@@ -187,8 +187,8 @@ Then a container image must be created and published. Finally, the container ima
 For executing Ruby the official Docker images can be used [2].
 They come in different variants such as the default (`<version>`), slim (`<version>-slim`) and alpine (`<version>-alpine`).
 
-The default and slim variants are based on Debian. They provide many useful tools and the full power of `apt`. However, they are very bug.
-For this reason the preferred base image variant is `alpine`. Use it whenever possible with meaningful effort.
+The default and slim variants are based on Debian. They provide many useful tools and the full power of `apt`. However, they are sizable images.
+For this reason the preferred smaller image variant is `alpine`. Use it whenever possible if the situation permits.
 
 In order to build the `pg` Gem [3] the regular Debian base image is convenient to use as it ships the necessary dependencies.
 
@@ -304,7 +304,7 @@ We have now covered all necessary steps to set up the streaming replication.
 
 ## Summary
 
-After defining the StatefulSet with its `3` replicas, a script to create the replication user had to be created. The script has been implemented to be idempotent which allows running it several times while the replication user is only created once. We had to make a decision how to deliver the script to the StatefulSet's Pods and chose to use containerize it as a *utility* container image. This makes sense as the script will be shared across all data service instances and is unlikely to be changed very often.
+After defining the StatefulSet with its `3` replicas, a script to create the replication user had to be created. The script has been implemented to be idempotent which allows running it several times while the replication user is only created once. We had to make a decision how to deliver the script to the StatefulSet's Pods and chose to containerize it as a *utility* container image. This makes sense as the script will be shared across all data service instances and is unlikely to be changed very often.
 
 With all the work you have invested so far, it is now time to use the streaming replication and verify that it's working as expected.
 

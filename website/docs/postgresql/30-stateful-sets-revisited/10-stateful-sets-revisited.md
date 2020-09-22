@@ -3,13 +3,13 @@ id: stateful-sets-revisited
 title: StatefulSets Revisited
 ---
 
-Equipped with a understanding of how PostgreSQL streaming replication works and how it is set up, the next step is to think about its automation. As a preliminary step - to sharpen the knives so to say - a closer look at the behavior of StatefulSets will help to find solutions to upcoming automation challenges quicker.
+Equipped with an understanding of how PostgreSQL streaming replication works and how it is set up, the next step is to think about its automation. As a preliminary step - to sharpen the knives so to say - a closer look at the behavior of StatefulSets will help to find solutions to upcoming automation challenges quicker.
 
 Note: This chapter connects to the [StatefulSet chapters](/kubernetes/80-stateful-sets/stateful-sets) of the Kubernetes tutorial. **So in case you have deleted these resources go back and re-create the final PostgreSQL StatefulSet presented there in the `pg` namespace.**
 
 ## A StatefulSet with Mulitple Replicas
 
-A highgly available PostgreSQL cluster should have `2n+1 | n>= 1` Pods. These Pods have to discover another as they need to establish network connections as part of the replication and cluster management communication.
+A highly available PostgreSQL cluster should have `2n+1 | n>= 1` Pods. These Pods have to discover another as they need to establish network connections as part of the replication and cluster management communication.
 
 ### The Default is Replicas: 3
 
@@ -91,7 +91,7 @@ Output:
 
 ## Cluster Connectivity
 
-As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with eachother. 
+As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with each other.
 
 A first thought could be to create three headless Services, one for each member of the 3-replica StatefulSet but in fact this isn't necessary. Kubernetes will automatically propagate `SRV` records [1] in its DNS system [2]. Go and see yourself:
 

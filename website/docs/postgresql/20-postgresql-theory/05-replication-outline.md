@@ -31,14 +31,14 @@ The simplest approach is to determine the roles of primary and secondary servers
 
 ## Automatic Failure Detection
 
-Detecting a failure in a distributed system is a non-trivial problem which can be traced by to the well known Byzantine Generals Problem [1]. Overly simplifying, it is hard to distinguish between a failed server and a failing network connection.
+Detecting a failure in a distributed system is a non-trivial problem which can be traced back to the well known Byzantine Generals Problem [1]. Overly simplifying, it is hard to distinguish between a failed server and a failing network connection.
 
 Consider a simple scenario where the Primary server has failed due to the failure of the underlying infrastructure availability zone. In this scenario, the failed Primary is down and will stay down. No other Pod can replace it as the entire availability zone is affected.
-In such as case a surving Secondary pod could detect that the Primary is missing and initiate a leader election. But how can the Secondary be sure that the Primary is really down and distinguish this scenario from the scenario where only the Secondary can't reach the Primary? In the latter case, a falsely triggered leader election could do harm. The worst case would be to have multiple Primaries receving incoming requests resulting into data inconsistencies which cannot be resolve automatically.
+In such a case a surviving Secondary pod could detect that the Primary is missing and initiate a leader election. But how can the Secondary be sure that the Primary is really down and distinguish this scenario from the scenario where only the Secondary can't reach the Primary? In the latter case, a falsely triggered leader election could do harm. The worst case would be to have multiple Primaries receiving incoming requests resulting in data inconsistencies which cannot be resolved automatically.
 
 ## Consensus and Leader Election
 
-In distrbuted systems engineering the solution to the Byzantine Generals Problems is sometimes referred to as **consensus algorithms**. Without going too much into details two algorithms dominate the scene: *Paxos* and *RAFT* [2]. The essence here is: a cluster requires an odd number of nodes (3, 5, ...) to reach consensus by forming a quorum - imagine it as a majority vote.
+In distributed systems engineering the solution to the Byzantine Generals Problems is sometimes referred to as **consensus algorithms**. Without going too much into details two algorithms dominate the scene: *Paxos* and *RAFT* [2]. The essence here is: a cluster requires an odd number of nodes (3, 5, ...) to reach consensus by forming a quorum - imagine it as a majority vote.
 
 Implementations of consensus algorithms are all over the place. Kubernetes itself, etcd, Zookeeper and the alike are all equipped with them.
 
@@ -46,11 +46,11 @@ With an implementation of a consensus algorithm at hand, being certain of a fail
 
 ## Leader Promotion
 
-Once a leader has been elected, it also has to be promoted. In technical terms: during leader promition it is ensured that database clients will exclusively connect to the newly promoted Primary. Not to the old Primary (which may still be around) and not to any of the Secondaries.
+Once a leader has been elected, it also has to be promoted. In technical terms: during leader promotion it is ensured that database clients will exclusively connect to the newly promoted Primary. Not to the old Primary (which may still be around) and not to any of the Secondaries.
 
 ## Summary
 
-As you can see: things get complicated quickly. Therefore, following the *divide and conquer* paradigm, the PostgreSQL replication endeavour is split into manageble steps.
+As you can see: things get complicated quickly. Therefore, following the *divide and conquer* paradigm, the PostgreSQL replication endeavour is split into manageable steps.
 
 In the next step, you'll look into how replication works with PostgreSQL and **the first milestone is to setup a static three node Primary / Secondary StatefulSet** that will replicate changes to the Primary to all it's Secondaries.
 

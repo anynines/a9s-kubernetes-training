@@ -9,13 +9,13 @@ As mentioned previously, the `postgresql.conf` needs refinement to activate the 
 
 Beside of getting the configuration files `postgresql.conf` and `pg_hba.conf` right, it is also necessary to inject these configuration files into the StatefulSet while having the option to update these config files throughout the lifecycle of the StatefulSet. As there can be use cases requiring the modification of config files but do not require a modification of the underlying container, configs should be maintained separately from the container images. Even a dedicated container image would be too inflexible. So as the name implies, the Kubernets ConfigMap is a suitable tool to handle this demand well.
 
-Each ConfigMap may contain a mulitple key value pairs. As seen in previous lessons, it is possible to create such ConfigMaps from files where the filename becomes the key and their contents are turned into the corresponding values.
+Each ConfigMap may contain a multiple key value pairs. As seen in previous lessons, it is possible to create such ConfigMaps from files where the filename becomes the key and their contents are turned into the corresponding values.
 
 Once such a ConfigMap is created, it can be mounted into containers as a Volume. This will expose keys as files. To the container these config files will appear as ordinary files. In the StatefulSet definition we will then mount the ConfigMap into the `/etc/postgresql` directory.
 
 ## `postgresql.conf`
 
-We assume the PostgreSQL cluster to have one (1) primary and two (2) secondaries with a total number of three (3) Pods in the StatefulSet. For production usage, the number of replicas must be configurable in a `m = 2n+1` fashion with `n>=1` which means `1, 3, 5, ...` Pods in the StatefulSet. 
+We assume the PostgreSQL cluster to have one (1) primary and two (2) secondaries with a total number of three (3) Pods in the StatefulSet. For production usage, the number of replicas must be configurable in a `m = 2n+1` fashion with `n>=1` which means `1, 3, 5, ...` Pods in the StatefulSet.
 
 This requires setting values in config files dynamically which is not only required to set up the streaming replication but also to dynamically adapt PostgreSQL settings to container memory and CPU limits as well as the size of the Persistent Volumes. However, this needs to be covered in a later stage. For now, we are focused on getting the streaming replication going.
 

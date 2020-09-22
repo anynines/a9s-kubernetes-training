@@ -7,11 +7,11 @@ Before the replication user can be created, the StatefulSet has to be created. O
 
 As discussed before, bootstrapping an empty PostgreSQL StatefulSet with `3` replicas requires executing `initdb` on the primary and `pg_basebackup` on the secondary.
 
-Once the Primary is up and running, the Secondaries have to be brought in sync with it which can be accomplished executing `pg_basebackup` [1] on all Secondaries. This will create the `$PGDATA` directories and retrieve the data set from the Primary. 
+Once the Primary is up and running, the Secondaries have to be brought in sync with it which can be accomplished by executing `pg_basebackup` [1] on all Secondaries. This will create the `$PGDATA` directories and retrieve the data set from the Primary.
 
-Once these directories have been created, the StatefulSet shall not execute the `pg_basebackup` command on subsequent restarts. As part of the StatefulSet's lifecycle it will surely happen that the Pods will be re-created. This may happen during Kubernetes Node failures or StatefulSet updates, for example. The Pods will then start with a Persistent Volume that does not need initializiation. Therefore, the initialization logic requires nested conditionals and must recognize the Pod's role in the cluster by knowing whether the Pod is the primary or not and whether the data directory has already been created.
+Once these directories have been created, the StatefulSet shall not execute the `pg_basebackup` command on subsequent restarts. As part of the StatefulSet's lifecycle it will surely happen that the Pods will be recreated. This may happen during Kubernetes Node failures or StatefulSet updates, for example. The Pods will then start with a Persistent Volume that does not need initialization. Therefore, the initialization logic requires nested conditionals and must recognize the Pod's role in the cluster by knowing whether the Pod is the primary or not and whether the data directory has already been created.
 
-While theoretically a complex container command with appropriate args could be pasted into the StatefulSet YAML description, this would be hard to debug. On the other hand, modifying the PostgreSQL base image or creating a separate container image to execute a single script seems to be unnecessary overhead. If more scripts accumulate over time, collecting them in a CI/CD backed container image makes sense. For now, a script stored into another ConfigMap will help us to get going and interate quickly during development.
+While theoretically a complex container command with appropriate args could be pasted into the StatefulSet YAML description, this would be hard to debug. On the other hand, modifying the PostgreSQL base image or creating a separate container image to execute a single script seems to be unnecessary overhead. If more scripts accumulate over time, collecting them in a CI/CD backed container image makes sense. For now, a script stored into another ConfigMap will help us to get going and iterate quickly during development.
 
 The first hurdle to overcome is to make the Pod introspect itself. In particular the Pod's role must be determined. For now the cluster topology is static, the first Pod is declared as the Primary. Hence, if the label information was available in the Pod, this helps determining its role.
 
@@ -32,7 +32,7 @@ volumes:
 [...]
 ```
 
-Equipped with access to the Pod labels, the following BASH script accomplishes the initalization as described above:
+Equipped with access to the Pod labels, the following BASH script accomplishes the initialization as described above:
 
 ```bash
 #!/bin/bash
