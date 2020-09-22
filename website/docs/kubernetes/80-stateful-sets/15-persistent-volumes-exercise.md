@@ -3,7 +3,7 @@ id: persistent-volumes-exercise
 title: Persistent Volumes Excercise
 ---
 
-After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this involves a few preliminary steps. The exercise executes on a Kubernetes cluster using `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS [1]. Storage is one of the places where rubber meets the road in the sense that there is a comparitively large contact surfe with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprsingly complicated.
+After going through the theory of Volumes and Persistent Volumes it's time to get your hands dirty. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this involves a few preliminary steps. The exercise executes on a Kubernetes cluster using `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS [1]. Storage is one of the places where rubber meets the road in the sense that there is a comparitively large contact surfe with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprsingly complicated.
 
 ## Creating a Storage Class
 
@@ -34,6 +34,22 @@ Create the Storage Class:
     kubectl apply -f 05-storage-class.yaml
 
 ## Creating a Persistent Volume Claim
+
+Create a file `10-persistent-volume-claim.yaml`:
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: simple-pv-claim
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
 
 Create a Persistent Volume Claim:
 
