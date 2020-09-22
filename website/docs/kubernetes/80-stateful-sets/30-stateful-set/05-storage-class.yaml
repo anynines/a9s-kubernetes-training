@@ -1,11 +1,13 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
   name: default
 parameters:
-  encrypted: "false"
+  fsType: ext4
+  iopsPerGB: "10"
   type: gp2
 provisioner: kubernetes.io/aws-ebs
 reclaimPolicy: Delete
-volumeBindingMode: Immediate
-allowVolumeExpansion: false
+volumeBindingMode: WaitForFirstConsumer

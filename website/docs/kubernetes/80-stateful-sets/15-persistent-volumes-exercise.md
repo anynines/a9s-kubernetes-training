@@ -13,14 +13,16 @@ Create a file `05-storage-class.yaml`:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-    name: default
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  name: default
 parameters:
-    encrypted: "false"
-    type: gp2
+  fsType: ext4
+  iopsPerGB: "10"
+  type: gp2
 provisioner: kubernetes.io/aws-ebs
 reclaimPolicy: Delete
-volumeBindingMode: Immediate
-allowVolumeExpansion: false
+volumeBindingMode: WaitForFirstConsumer
 ```
 
 This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1]. 
