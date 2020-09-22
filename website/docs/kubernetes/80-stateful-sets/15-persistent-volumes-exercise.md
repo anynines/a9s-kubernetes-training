@@ -111,21 +111,21 @@ Create a file `20-pod-writing-to-volume.yaml`:
 apiVersion: v1
 kind: Pod
 metadata:
-name: simple-pv-pod
+  name: simple-pv-pod
 spec:
-volumes:
-    - name: simple-pv-storage
+  volumes:
+  - name: simple-pv-storage
     persistentVolumeClaim:
         claimName: simple-pv-claim
-containers:
-    - name: simple-pv-container
+  containers:
+  - name: simple-pv-container
     image: busybox
     command: ["/bin/sh"]
     args: ["-c", "echo Hello World > /my-persistent-data/helloworld.txt"]
     volumeMounts:
-        - mountPath: "/my-persistent-data"
-        name: simple-pv-storage
-restartPolicy: Never
+    - name: simple-pv-storage
+      mountPath: "/my-persistent-data"
+  restartPolicy: Never
 ```
 
 Which creates a Pod writing a simple text file `/my-persistent-data/helloworld.txt` containing the String `Hello World`.
@@ -140,21 +140,21 @@ Create a file `30-pod-reading-from-volume.yaml`:
 apiVersion: v1
 kind: Pod
 metadata:
-name: simple-pv-pod-reader
+  name: simple-pv-pod-reader
 spec:
-volumes:
-    - name: simple-pv-storage
+  volumes:
+  - name: simple-pv-storage
     persistentVolumeClaim:
         claimName: simple-pv-claim
-containers:
-    - name: simple-pv-container
+  containers:
+  - name: simple-pv-container
     image: busybox
     command: ["/bin/sh"]
     args: ["-c", "cat /my-persistent-data/helloworld.txt"]
     volumeMounts:
-        - mountPath: "/my-persistent-data"
-        name: simple-pv-storage
-restartPolicy: Never
+    - name: simple-pv-storage
+      mountPath: "/my-persistent-data"
+  restartPolicy: Never
 ```
 
 And retrieve the Pods logs:
