@@ -11,7 +11,7 @@ export default class Analytics extends Component {
     super(props);
 
     this.tagManagerArgs = {
-      gtmId: 'GTM-KFW8C8L'
+      gtmId: 'GTM-5XSJGVJ'
     };
   }
 
