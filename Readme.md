@@ -1,29 +1,10 @@
-# a9s-kubernetes-training
+# a9s Kubernetes Training
 
-## Docusaurus
+---
 
-See https://docusaurus.io/
+## Writing new Content
 
-## Install Node
-
-To install Node.js and npm on a Mac:
-
-    brew install npm
-
-This obviously assumes homebrew (https://brew.sh/) to be installed.
-In any other case get yourself a decent node.js version (12+) and you should be fine.
-
-## Website App
-
-### Build
-
-    cd website
-    yarn run build
-
-### Run
-
-    cd website
-    npm start
+See [How to write new Content](website/README.md)
 
 ## Container Image
 
@@ -32,6 +13,7 @@ Build the container image:
     docker image build -t a9s-kubernetes-training:0.1.0 .
 
 This assumes you are in the root-folder of the project (not the website sub-folder).
+
 ## Publish
 
 See https://docusaurus.io/docs/en/tutorial-publish-site (here the settings are correct) but actually we use v2 (https://v2.docusaurus.io/docs/deployment):
