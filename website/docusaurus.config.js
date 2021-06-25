@@ -26,6 +26,7 @@ const siteConfig = {
           label: "Kubernetes Training",
           position: "left"
         },
+        { to: 'postgresql/postgresql-overview', label: 'PostgreSQL on Kubernetes', position: 'left' },
         {
           href: "https://github.com/anynines",
           label: "GitHub",

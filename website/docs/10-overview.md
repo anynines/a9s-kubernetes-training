@@ -14,6 +14,10 @@ title: Kubernetes Training Overview
 
 The following changes have been made:
 
+### 2020-08-31: PostgreSQL Streaming Replication
+
+* Adds a PostgreSQL tutorial on how to build a simple, three node PostgreSQL Streaming Replication with Kubernetes StatefulSets.
+
 ### 2020-04-30: StatefulSet and Fixes
 
 * Adds generating a self-signed SSL Certificate to the Ingress lesson.
