@@ -14,9 +14,11 @@ To build the container image you can use the code below. It will then assume you
 
 ## Publish
 
-You will find the correct settings in the link that follows,
-* However we use v2 and you can find this version in the link
-* ```GIT_USER=fischerjulian USE_SSH=true BRANCH="master" yarn deploy```
+You will find the correct settings in the link that follows, https://docusaurus.io/docs/en/tutorial-publish-site
+
+However we use v2 and you can find this version in the link https://v2.docusaurus.io/docs/deployment
+
+    GIT_USER=fischerjulian USE_SSH=true BRANCH="master" yarn deploy
 
 
 ## Proposals
