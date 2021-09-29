@@ -1,8 +1,8 @@
 const siteConfig = {
   title: "Kubernetes Training", // Title for your website.
   tagline: "Learn how to containerize and deploy your apps to Kubernetes.",
-  url: "https://anynines.github.io/a9s-kubernetes-training/", // 'https://learn.anynines.com/k8s', // Your website URL
-  baseUrl: "/", // '/' // Base URL for your project */
+  url: "https://anynines.github.io", // 'https://learn.anynines.com/k8s', // Your website URL
+  baseUrl: "/a9s-kubernetes-training/", // '/' // Base URL for your project */
   favicon: "img/favicon.ico",
   projectName: "a9s-kubernetes-training", // anynines.github.io
   organizationName: "anynines",
