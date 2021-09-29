@@ -79,7 +79,7 @@ The output should be similar to:
 
 Pay attention to the `IP` attribute.
 
-Normally, a Kubernetes Service has a cluster-internal IP address as seen in the [Service example](/kubernetes/40-replicaset-and-service/services) of the [ReplicaSet lesson](/kubernetes/40-replicaset-and-service/introduction). Requests to the Service IP are then load balanced across the Service endpoints, e.g. Pods binding to the Service by using matching Labels.
+Normally, a Kubernetes Service has a cluster-internal IP address as seen in the [Service example](/kubernetes/replicaset-and-service/services) of the [ReplicaSet lesson](/kubernetes/replicaset-and-service/introduction). Requests to the Service IP are then load balanced across the Service endpoints, e.g. Pods binding to the Service by using matching Labels.
 
 In constrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
 
@@ -254,5 +254,5 @@ Congratulations! You have deployed your first StatefulSet.
 7. anynines, a9s Data Services, https://www.anynines.com/data-services
 8. Kubernetes Documentation, Concepts, ServiceCatalog, https://kubernetes.io/docs/concepts/extend-kubernetes/service-catalog/
 9. Wikipedia, Principle of Least Privilege, https://en.wikipedia.org/wiki/Principle_of_least_privilege
-10. Kubernetes Documentation, Concepts, Services Networking, Service, https://kubernetes.io/docs/concepts/services-networking/service/#headless-services 
+10. Kubernetes Documentation, Concepts, Services Networking, Service, https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
 11. PostgreSQL, https://www.postgresql.org/
