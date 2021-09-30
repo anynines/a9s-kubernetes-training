@@ -2,7 +2,7 @@ const siteConfig = {
   title: "Kubernetes Training", // Title for your website.
   tagline: "Learn how to containerize and deploy your apps to Kubernetes.",
   url: "https://anynines.github.io", // 'https://learn.anynines.com/k8s', // Your website URL
-  baseUrl: "/", // '/' // Base URL for your project */
+  baseUrl: "/a9s-kubernetes-training/", // '/' // Base URL for your project */
   favicon: "img/favicon.ico",
   projectName: "a9s-kubernetes-training", // anynines.github.io
   organizationName: "anynines",
@@ -26,7 +26,11 @@ const siteConfig = {
           label: "Kubernetes Training",
           position: "left"
         },
-        { to: 'postgresql/postgresql-overview', label: 'PostgreSQL on Kubernetes', position: 'left' },
+        {
+          to: "postgresql/postgresql-overview",
+          label: "PostgreSQL on Kubernetes",
+          position: "left"
+        },
         {
           href: "https://github.com/anynines",
           label: "GitHub",
@@ -107,9 +111,8 @@ const siteConfig = {
       theme: require("prism-react-renderer/themes/nightOwl"),
       darkTheme: require("prism-react-renderer/themes/nightOwl")
     },
-    image: "img/logo.svg",
+    image: "img/logo.svg"
     // Equivalent to `docsSideNavCollapsible`
-    sidebarCollapsible: false
     // ...
   },
 
@@ -118,7 +121,8 @@ const siteConfig = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          // path: 'docs',
+          path: "docs",
+          sidebarCollapsible: false,
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.json")
         },

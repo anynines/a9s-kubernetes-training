@@ -17,4 +17,4 @@ You should have processed the Kubernetes tutorial with special attention to the 
 
 The namespace for this training is `pg`.
 
-Create the namespace and set it as a default as described in the [Kubernetes Tutorial](/kubernetes/10-basics/namespaces).
+Create the namespace and set it as a default as described in the [Kubernetes Tutorial](/kubernetes/basics/namespaces).

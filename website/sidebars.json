@@ -1,10 +1,8 @@
 {
   "docs": {
-    "Introduction": [
-      "training-overview"
-    ],
-    "Containerization": [    
-      "containerization/container-overview",  
+    "Introduction": ["training-overview"],
+    "Containerization": [
+      "containerization/container-overview",
       "containerization/container-intro",
       {
         "type": "category",
@@ -17,7 +15,6 @@
           "docker/publish-image",
           "docker/container-workflow",
           "docker/docker-cheatsheet"
-
         ]
       }
     ],
@@ -27,71 +24,67 @@
         "type": "category",
         "label": "Basics",
         "items": [
-          "kubernetes/10-basics/kubectl",
-          "kubernetes/10-basics/namespaces",
-          "kubernetes/10-basics/container-shell"
+          "kubernetes/basics/kubectl",
+          "kubernetes/basics/namespaces",
+          "kubernetes/basics/container-shell"
         ]
       },
       {
         "type": "category",
         "label": "Pods",
-        "items": [
-          "kubernetes/20-pods/introduction"
-        ]
+        "items": ["kubernetes/pods/introduction"]
       },
       {
         "type": "category",
         "label": "ReplicaSets and Services",
         "items": [
-          "kubernetes/40-replicaset-and-service/introduction",
-          "kubernetes/40-replicaset-and-service/replicasets",
-          "kubernetes/40-replicaset-and-service/services",
-          "kubernetes/40-replicaset-and-service/ingress",
-          "kubernetes/40-replicaset-and-service/tidyup"
+          "kubernetes/replicaset-and-service/introduction",
+          "kubernetes/replicaset-and-service/replicasets",
+          "kubernetes/replicaset-and-service/services",
+          "kubernetes/replicaset-and-service/ingress",
+          "kubernetes/replicaset-and-service/tidyup"
         ]
       },
       {
         "type": "category",
         "label": "Deployments",
-        "items": [
-          "kubernetes/50-deployments/deployments"          
-        ]
+        "items": ["kubernetes/deployments/deployments"]
       },
       {
         "type": "category",
         "label": "ConfigMaps and Secrets",
         "items": [
-          "kubernetes/60-configmaps-and-secrets/configmaps-and-secrets",
-          "kubernetes/60-configmaps-and-secrets/configmaps",
-          "kubernetes/60-configmaps-and-secrets/exercise-explanation",
-          "kubernetes/60-configmaps-and-secrets/configmaps-volume-mounts",
-          "kubernetes/60-configmaps-and-secrets/secrets",
-          "kubernetes/60-configmaps-and-secrets/secrets-exercise-explanation"
+          "kubernetes/configmaps-and-secrets/configmaps-and-secrets",
+          "kubernetes/configmaps-and-secrets/configmaps",
+          "kubernetes/configmaps-and-secrets/exercise-explanation",
+          "kubernetes/configmaps-and-secrets/configmaps-volume-mounts",
+          "kubernetes/configmaps-and-secrets/secrets",
+          "kubernetes/configmaps-and-secrets/secrets-exercise-explanation"
         ]
       },
       {
         "type": "category",
         "label": "Jobs",
         "items": [
-          "kubernetes/70-jobs/jobs",
-          "kubernetes/70-jobs/advanced-jobs",
-          "kubernetes/70-jobs/parallel-jobs",
-          "kubernetes/70-jobs/cron-jobs"
+          "kubernetes/jobs/jobs",
+          "kubernetes/jobs/advanced-jobs",
+          "kubernetes/jobs/parallel-jobs",
+          "kubernetes/jobs/cron-jobs"
         ]
       },
       {
         "type": "category",
         "label": "StatefulSets",
         "items": [
-          "kubernetes/80-stateful-sets/persistent-volumes",          
-          "kubernetes/80-stateful-sets/persistent-volumes-exercise",          
-          "kubernetes/80-stateful-sets/stateful-sets",        
-          "kubernetes/80-stateful-sets/stateful-set-postgresql",                  
-          "kubernetes/80-stateful-sets/stateful-set-headless-service",
-          "kubernetes/80-stateful-sets/stateful-set-vs-replicasets",
-          "kubernetes/80-stateful-sets/stateful-set-psql-access-to-postgresql",
-          "kubernetes/80-stateful-sets/stateful-set-application-access",
-          "kubernetes/80-stateful-sets/stateful-set-conclusions"          
+          "kubernetes/stateful-sets/persistent-volumes",
+          "kubernetes/stateful-sets/persistent-volumes-exercise",
+          "kubernetes/stateful-sets/stateful-sets",
+          "kubernetes/stateful-sets/stateful-set-postgresql",
+          "kubernetes/stateful-sets/stateful-set-headless-service",
+          "kubernetes/stateful-sets/stateful-set-vs-replicasets",
+          "kubernetes/stateful-sets/stateful-set-psql-access-to-postgresql",
+          "kubernetes/stateful-sets/stateful-set-application-access",
+          "kubernetes/stateful-sets/stateful-set-conclusions"
         ]
       }
     ],
@@ -101,22 +94,22 @@
         "type": "category",
         "label": "PostgreSQL Replication",
         "items": [
-          "postgresql/20-postgresql-theory/why-use-replication",
-          "postgresql/20-postgresql-theory/replication-outline",
-          "postgresql/20-postgresql-theory/streaming-replication",
-          "postgresql/20-postgresql-theory/setting-up-streaming-replication"
+          "postgresql/postgresql-theory/why-use-replication",
+          "postgresql/postgresql-theory/replication-outline",
+          "postgresql/postgresql-theory/streaming-replication",
+          "postgresql/postgresql-theory/setting-up-streaming-replication"
         ]
       },
       {
         "type": "category",
         "label": "StatefulSet with Replication",
         "items": [
-          "postgresql/30-stateful-sets-revisited/stateful-sets-revisited",
-          "postgresql/40-building-the-pg-stateful-set/pg-service-primary",
-          "postgresql/40-building-the-pg-stateful-set/streaming-replication-configmaps",
-          "postgresql/40-building-the-pg-stateful-set/streaming-replication-sfs-init",
-          "postgresql/40-building-the-pg-stateful-set/replication-user",
-          "postgresql/40-building-the-pg-stateful-set/verify-replication"
+          "postgresql/stateful-sets-revisited/stateful-sets-revisited",
+          "postgresql/building-the-pg-stateful-set/pg-service-primary",
+          "postgresql/building-the-pg-stateful-set/streaming-replication-configmaps",
+          "postgresql/building-the-pg-stateful-set/streaming-replication-sfs-init",
+          "postgresql/building-the-pg-stateful-set/replication-user",
+          "postgresql/building-the-pg-stateful-set/verify-replication"
         ]
       },
       "postgresql/postgresql-outro"
