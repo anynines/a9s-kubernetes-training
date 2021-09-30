@@ -3,6 +3,8 @@ id: stateful-set-application-access
 title: Application Access to a StatefulSet
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fR-DKkvhLRA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Application Access
 
 After setting up the database and connecting to it using the `psql` utility, the next step is to access the database with an application running on Kubernetes.

@@ -3,6 +3,8 @@ id: configmaps
 title: ConfigMaps
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7iU4uz-oaAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.
 
 ## Creating a ConfigMap

@@ -3,6 +3,8 @@ id: stateful-set-vs-replicasets
 title: StatefulSet vs. ReplicaSets
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YQZJpezPyFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 In the last lession you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.
 
 In this lesson you will conduct more experiments to become familiar with the particularities and similarities of StatefulSets compared to other resource types such as ReplicaSets and Deployments.

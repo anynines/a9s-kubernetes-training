@@ -3,6 +3,8 @@ id: persistent-volumes-exercise
 title: Persistent Volumes Excercise
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/uSXqAr83ljs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this involves a few preliminary steps. The exercise executes on a Kubernetes cluster using `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS [1]. Storage is one of the places where rubber meets the road in the sense that there is a comparitively large contact surfe with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprsingly complicated.
 
 ## Creating a Storage Class
@@ -34,6 +36,8 @@ Create the Storage Class:
     kubectl apply -f 05-storage-class.yaml
 
 ## Creating a Persistent Volume Claim
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Create a Persistent Volume Claim:
 

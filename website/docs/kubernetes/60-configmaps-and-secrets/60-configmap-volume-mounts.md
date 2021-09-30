@@ -3,6 +3,8 @@ id: configmaps-volume-mounts
 title: ConfigMap Volume Mounts
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7iU4uz-oaAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 In the past lesson you have learned how to map ConfigMaps to environment variables. While this is a valid approach to separate configuration information from application source code, it comes with a slight drawback.
 
 **Environment variables are injected into a Pod during its creation and therefore changes to a ConfigMap won't be reflected during the Pod's lifetime. In other words, to update the ConfigMaps of a Pod, the Pod has to be restarted.**

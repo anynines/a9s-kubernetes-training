@@ -2,6 +2,9 @@
 id: persistent-volumes
 title: Persistent Volumes
 ---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yKHC8Mhzra4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes.
 
 Persistent Volumes are introduced in this chapter although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and - although many Kubernetes users do that  applications should be kept as stateless as possible. Therefore, note that state should be managed by stateful data services as proposed in the 12 factor manifest [14].
@@ -22,6 +25,8 @@ Within a Pod-definition volumes can be mounted to containers by using a so calle
 If you are familiar with Docker Volumes you may already recognized the difference between Kubernetes and Docker Volumes. In Kubernetes there are many more types of Volumes and the way to use them is more flexible. For example, in Kubernetes it is possible to mount multiple containers of multiple types into a single container. Additionally, the lifecycle of Volumes is clearly defined in Kubernetes. Volumes share the lifecycle of their Pods. They are created with their Pods and cease to exist when their Pods cease to exist. You will see that there are concepts such as the *Persistent Volume* with lifetimes exceeding the lifetime of their Pods.
 
 ## Persistent Volumes (PV)
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/83RfSH0CrrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 It may appear intuitive that Persistent Volumes (PV) are special types of Volumes but in fact there are two distinct Kubernetes resources.
 

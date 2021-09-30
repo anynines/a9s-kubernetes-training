@@ -3,6 +3,8 @@ id: stateful-set-psql-access-to-postgresql
 title: PSQL Access to PostgreSQL
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tjZCX4wU0VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Accessing the Database using `psql`
 
 After deploying the PostgreSQL server it's time to verify whether there's actually a database running.

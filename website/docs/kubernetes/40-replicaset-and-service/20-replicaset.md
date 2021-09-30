@@ -3,6 +3,8 @@ id: replicasets
 title: ReplicaSets
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JP-YsSCpBlg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 
 ## Hello World Web App
@@ -10,6 +12,8 @@ This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 The sample application can be found on github: https://github.com/fischerjulian/smpl-go-web
 
 ## Creating the ReplicaSet
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In order to create the ReplicaSet using `kubectl` create a file `20-rs-hello-world.yaml`:
 
@@ -61,6 +65,8 @@ Now the application is deployed. However, it can only be accessed from within th
 
 ## Exercise: Access the Sample Web App from Withing the Cluster
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/irPUCRGY8k4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 A straight forward way to access the web app is to directly access the corresponding Pod:
 
 * Run `kubectl describe pod smpl-go-web-rs-pkqwd` (replace *pkqwd* with your Pod's suffix) and extract the IP address of the `smpl-go-web-rs-pkqwd`-Pod, e.g. 100.96.14.17
@@ -73,6 +79,8 @@ However, this approach comes with some signficant disadvantages. Possibly the bi
 Kubernetes provides the concept of a `Service` enabling a number of ways to deal with *service discovery*, gracefully.
 
 ## Pods and Ports
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wSPb_TWGIfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Have you noticed that the container specification of the app contains an explicit port declaration?
 

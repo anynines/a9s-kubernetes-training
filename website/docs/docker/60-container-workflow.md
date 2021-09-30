@@ -3,6 +3,8 @@ id: container-workflow
 title: The Container Workflow
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HQ2pZENTVQk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 To summarize the previous lessons a simple workflow of creating container images may look like this:
 
 1. Login with `docker login <your-dockerhub-username>`

@@ -3,6 +3,8 @@ id: stateful-set-headless-service
 title: Headless Service
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
 ## The StatefulSet and its Headless Service

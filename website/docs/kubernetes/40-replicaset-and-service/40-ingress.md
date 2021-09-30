@@ -2,6 +2,9 @@
 id: ingress
 title: Ingress
 ---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7MmJQpoPr4s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Pods and ReplicaSets can be used to start and operate containers. Services can be handy to provide named access to and distribute and load balance requests across Pods, **internally**.
 
 Most application systems have a public facing interface, too. In order to expose a web service or web application to outside world, an additional Kubernetes resource comes is useful: **the Ingress**.
@@ -36,6 +39,9 @@ For the creation of DNS entries you might want to create:
 The configuration of DNS entries varies across DNS providers. Their manuals will guide you through the process.
 
 ## Creating a Self-Signed SSL Certificate
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KV3XheQDRuk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 Securing websites with SSL encryption (`HTTPS` instead of `HTTP`) [1] has become a defacto standard. Therefore, it is worth dealing with the additional complexity here and show how an application on Kubernetes can be SSL encrypted.
 
@@ -86,6 +92,8 @@ You can see that both the key and certificate have been stored as `tls.crt` and 
 Now you are ready to create the actual Ingress object.
 
 ## Creating an Ingress
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0QpZL6NOam4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 On an a9s Kubernetes cluster creating an Ingress can be done by creating the file `40-ingress-hello-world-a9s.yaml`:
 

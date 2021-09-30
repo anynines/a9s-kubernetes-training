@@ -3,6 +3,8 @@ id: secrets-exercise-explanation
 title: Secrets Exercise Explanation
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vFGlpm1ctYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Here you can find possible solutions to the previous exercise.
 
 **Create a Pod and consume the previously created Secret `area51` as environment variables**:

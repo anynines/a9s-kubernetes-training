@@ -3,6 +3,8 @@ id: namespaces
 title: Namespaces
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
 
 By default all operations are executed in the *default* namespace.
@@ -31,6 +33,9 @@ metadata:
 and applied
 
     kubectl apply -f 30-namespace.yaml
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Creating a kubectl Context to Work Within a Namespace
 

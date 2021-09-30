@@ -6,6 +6,9 @@ title: Containers Basics
 Before diving into Kubernetes it is necessary to understand containerization basics. This chapter aims to provide a first mental model about what containers, container images and container registries are.
 
 ## What is a Container
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 The concept of a container carries some aspects of a virtual machine (VM) but also from a software package (such as a Debian dpkg package). 
 
 The main idea of a container - just like its physical counterpart - is to achieve a standardization of software packaging. In this regard a container is similar to a Debian package [1].
@@ -15,6 +18,9 @@ Once a container has been started it represents a somewhat isolated runtime envi
 The term container gained much popularity in the context of Docker [2], the most popular open source container runtime. Kubernetes is often configured to use Docker as a container runtime but alternative drivers exist [3]. So let's stick with Docker and focus on grasping container concepts.
 
 ## Container vs. VMs
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 The question may come to mind what the difference between a container and a virtual machine is. A virtual machine (VM) is usually what the name suggests - a flexible, virtual version of a physical server.
 
 VMs usually come with a local disk that behaves like an ordinary hard disk. The VM itself - depending on the underlying architecture - a comparativley high overhead compared to a bare metall machine. It usally takes minutes to start a VM. Also if there's a full operating system running inside a VM this creates a signficant memory and CPU overhead.
@@ -34,6 +40,8 @@ Most container runtimes also offer some sort of persistent volumes that can be u
 It depends on the container runtime configuration how these volumes are presented. They could be partitions of the underlying host - being vulnerable to container host failures - or preferably they could be remotely attached block devices with increased availability and durability.
 
 ## Container Images
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 A container specification contains a reference to the container image to be used. Additionally, there may be a specification of which command to be executed along with arguments to be passed to the command. But where does the command come from? **The software run inside a container comes from the underlying container image**.
 

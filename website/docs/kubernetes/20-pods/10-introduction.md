@@ -3,6 +3,8 @@ id: introduction
 title: Pods
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BjXiO0NLO5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 After making first steps with containers most likely by using Docker on a local machine, it is normal to think in containers as the subject to deployments. Building a container image and starting a container from it is the idea with Docker. Not in Kubernetes.
 
 ## From Containers to Pods
@@ -44,6 +46,8 @@ To delete the Pod run:
 
 ### Creating a Pod From a Pod Manifest
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4-5psDE9tBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Alternatively, the Pod can be created from a Pod Manifest `10-pod.yaml`:
 
 ```yaml
@@ -73,6 +77,8 @@ Or use the command from above:
     kubectl delete Pod busybox
 
 ### Declarative vs. Imperative Configuration
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wiXQkoKM07g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 The usage of a Manifest file is part of a central Kubernetes paradigm of *declarative configuration*. With the declarative approach the *desired state* of a system is described. In this case the desired state is that a Pod should be running. Notice that it is not specified where the Pod should be running as this is up to Kubernetes to decide. All we care is that the Pod is running.
 In contrast to the declarative configuration an *imperative approach* would be to tell the cluster to start a Pod on Node XY which means more responsibility for the client than the server.

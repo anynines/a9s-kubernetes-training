@@ -3,9 +3,11 @@ id: training-overview
 title: Kubernetes Training Overview
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/H5OY7IDjPZU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Status: Under Development
 
-* This training is still under development. 
+* This training is still under development.
 * Smaller changes - mostly spelling and fixes - will be applied throughout the tutorial.
 * Content will be mostly appended to late chapters.
 * Currently the chapter **StatefulSets** is under development.

@@ -3,6 +3,8 @@ id: services
 title: Services
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 In the ReplicaSet lessons we have encountered *service discovery*, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.
 
 ## Creating a Service
@@ -38,6 +40,8 @@ Then navigate a browser to:
 This assumes the Service to be within the `k8s-training` namespace, be reachable via `http` and listen on port `8080`. The trailing `/proxy` is mandatory.
 
 ## What Does the Service do?
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BEXU7KyXI-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In the first step of this lession a **ReplicaSet with one (1)** replica has been deployed. This lead to the creation of a single Pod with a single container running the desired web application.
 

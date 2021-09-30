@@ -3,6 +3,8 @@ id: stateful-sets
 title: StatefulSets
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yRMV5pnzcrk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Now that you have made your first experience with Persistent Volumes, it is time to introduce a closely related Kubernetes concept called StatefulSets.
 
 While it is possible to use Persistent Volume with Pods, ReplicaSets and Deployments, possible the best use of a Persistent Volume is the StatefulSet. While other resources may go with objects stores instead of Persistent Volumes where possible, this is not an option for heavy-weight stateful data services such as databases, message queues, analytics servers, etc.

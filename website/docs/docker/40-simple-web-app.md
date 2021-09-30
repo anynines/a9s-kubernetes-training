@@ -3,6 +3,8 @@ id: simple-web-app
 title: Containerizing a Simple Web App
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/12c8ziarCqE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 In the previous lesson you have created your first container image. This trivial examples has outlined the workflow on how to create a container image.
 
 In this lesson you will containerize a simple web application to illustrate essential aspects of the `Dockerfile` notation.
