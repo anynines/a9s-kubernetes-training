@@ -3,7 +3,13 @@ id: container-overview
 title: Container Overview
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ",
+   title: "Kubernetes Training - Container Overview"
+  }]}
+/>
 
 The goal of the Container lessons are to enable developers to create container images as a **preparation for the Kubernetes Training**.
 

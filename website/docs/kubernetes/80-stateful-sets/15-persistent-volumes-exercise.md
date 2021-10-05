@@ -3,7 +3,16 @@ id: persistent-volumes-exercise
 title: Persistent Volumes Excercise
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/uSXqAr83ljs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
+   title: "Kubernetes Training - Persistent Volume Exercise Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw",
+   title: "Kubernetes Training - Persistent Volume Exercise Part 2"
+  }]}
+/>
 
 After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this involves a few preliminary steps. The exercise executes on a Kubernetes cluster using `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS [1]. Storage is one of the places where rubber meets the road in the sense that there is a comparitively large contact surfe with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprsingly complicated.
 
@@ -25,7 +34,7 @@ volumeBindingMode: Immediate
 allowVolumeExpansion: false
 ```
 
-This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1]. 
+This Storage Class makes use of the provisioner `kubernetes.io/aws-ebs`. In this particular example, the provisionier uses storage services of the Amazon Web Services [1].
 
 You may ask yourself how the provisioner authenticates against the AWS API. As this is beyond the scope of this training it should suffice to say that the Kubernetes cluster administrator - or a proper automation respectively - has configured a so called Cloud Provider [2]. A Cloud Provider enables access to multiple services offered by the corresponding vendor often including infrastructure affine services such as load balancing and storage.
 
@@ -36,8 +45,6 @@ Create the Storage Class:
     kubectl apply -f 05-storage-class.yaml
 
 ## Creating a Persistent Volume Claim
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Create a Persistent Volume Claim:
 
@@ -83,7 +90,7 @@ The output should look like this:
     Type       Reason                 Age   From                         Message
     ----       ------                 ----  ----                         -------
     Normal     ProvisioningSucceeded  7m6s  persistentvolume-controller  Successfully provisioned volume pvc-7a0e4339-9e64-4740-9adb-a509a6aac328 using kubernetes.io/aws-ebs
-    Mounted By:  <none>        
+    Mounted By:  <none>
 
 This provides you with the information that:
 

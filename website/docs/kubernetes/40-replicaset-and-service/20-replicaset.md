@@ -3,7 +3,22 @@ id: replicasets
 title: ReplicaSets
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JP-YsSCpBlg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
+   title: "Kubernetes Training - ReplicaSets Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
+   title: "Kubernetes Training - ReplicaSets Part 2"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
+   title: "Kubernetes Training - ReplicaSets Part 3"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
+   title: "Kubernetes Training - ReplicaSets Part 4"
+  }]}
+/>
 
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 
@@ -12,8 +27,6 @@ This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 The sample application can be found on github: https://github.com/fischerjulian/smpl-go-web
 
 ## Creating the ReplicaSet
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In order to create the ReplicaSet using `kubectl` create a file `20-rs-hello-world.yaml`:
 
@@ -35,7 +48,7 @@ spec:
       labels:
         app: smpl-go-web-a
         version: "1"
-        tier: fontend  
+        tier: fontend
     spec:
       containers:
         - name: smpl-go-web-c
@@ -57,15 +70,13 @@ You should see a running pod names something like `smpl-go-web-rs-pkqwd` where t
 
 In case you seen the *status* `ContainerCreating` you can use:
 
-    kubectl get pods --watch 
+    kubectl get pods --watch
 
 To observe the current Pod state until completion.
 
 Now the application is deployed. However, it can only be accessed from within the cluster.
 
 ## Exercise: Access the Sample Web App from Withing the Cluster
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/irPUCRGY8k4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 A straight forward way to access the web app is to directly access the corresponding Pod:
 
@@ -79,8 +90,6 @@ However, this approach comes with some signficant disadvantages. Possibly the bi
 Kubernetes provides the concept of a `Service` enabling a number of ways to deal with *service discovery*, gracefully.
 
 ## Pods and Ports
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wSPb_TWGIfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Have you noticed that the container specification of the app contains an explicit port declaration?
 

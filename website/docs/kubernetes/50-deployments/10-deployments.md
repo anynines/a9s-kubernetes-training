@@ -3,7 +3,20 @@ id: deployments
 title: Deployments
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DoQIvm8dBw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<VideoContainer
+title="Videomaterial for this Chapter"
+list={
+[
+{src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", title: "Kubernetes Training - Deployments Part 1"},
+{src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", title: "Kubernetes Training - Deployments Part 2"},
+{src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", title: "Kubernetes Training - Deployments Part 3"},
+{src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", title: "Kubernetes Training - Deployments Part 4"},
+{src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", title: "Kubernetes Training - Deployments Part 5"},
+{src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", title: "Kubernetes Training - Deployments Part 6"},
+{src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", title: "Kubernetes Training - Deployments Part 7"}
+]
+}></VideoContainer>
 
 The Kubernetes Deployment resource is designed to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets.
 
@@ -113,7 +126,6 @@ Browse to the url and it should say "**I am blue**".
 
 ## Scaling the Deployment
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cpzs02iu-RE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 So far we have declared the desired state of our resources such as ReplicaSets, Services and Deployments using YAML files and applied them use `kubectl apply -f <filename>`. So this is what we will try again. A copy of the file `20-deployment-blue.yaml` with an increased `replicas` setting can be found in `60-deployment-blue-scale-out.yaml`. All it does is to set `replicas: 2` indicating we desire two application instances to be running.
 
@@ -167,7 +179,6 @@ Change the replica count to 3 and update your deployment using `kubectl apply -f
 
 ## Updating the Deployment with a new Application Version
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/l8FrEoibmGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions regularly.
 
@@ -222,7 +233,6 @@ Reloading the app in your browser should now tell you `"I am green."`.
 
 ## Controlling a Rollout
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/sd_dmHCTfrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 More control is offered with commands such as
 
@@ -236,7 +246,6 @@ which become handy if the rollout produces unpredicated behavior, for example.
 
 ## Rollout History
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VYlC2yK2r7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Deployments also collect metadata on which rollouts have been performed in the past:
 
@@ -250,7 +259,6 @@ And provides you information about the structure and annotation of the ReplicaSe
 
 ## Ups, Kaputt! Undoing a Rollout
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zXLsl-4l0yw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 While it is possible to pause and resume a rollout, sometimes it may be necessary to undo it. **Undoing a rollout is another major advantage of using a Deployment over plain ReplicaSets**. As the Deployment knows which ReplicaSets have been representing previous versions it's easy to bring them back to "life".
 
@@ -270,7 +278,6 @@ Check the status of the deployment:
 
 ## Tidying Up - Part 1 of 2
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VjLheCWpAM8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Remove the Deployment:
 

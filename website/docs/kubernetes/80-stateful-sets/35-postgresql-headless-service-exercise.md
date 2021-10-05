@@ -3,7 +3,13 @@ id: stateful-set-headless-service
 title: Headless Service
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y",
+   title: "Kubernetes Training - Headless Services"
+  }]}
+/>
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
@@ -76,7 +82,7 @@ This shows `Annotations: Selector:  app=postgresql-a` indicating that the Servic
 
 The output shows that the Pod `postgresql-sfs-0` has the `IP: 172.17.0.5` which means that the Pod is set as the endpoint of the headless Service.
 
-Along with the headless Service `postgresql-svc` Kubernetes will create a cluster-internal DNS entry: `postgresql-svc.k8s-training.svc.cluster.local`. 
+Along with the headless Service `postgresql-svc` Kubernetes will create a cluster-internal DNS entry: `postgresql-svc.k8s-training.svc.cluster.local`.
 
 **Go and see yourself!**
 
@@ -98,13 +104,13 @@ Which will produce a response similar to:
     Name:	 postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.5
 
-So the DNS entry has been created and resolves to the IP address of the only Pod inside of the StatefulSet. 
+So the DNS entry has been created and resolves to the IP address of the only Pod inside of the StatefulSet.
 
 Hence, the headless Service provides a stable network identity for the StatefulSet as the Service couples to the StatefulSet loosely by using a selector in the Service referring to the label `app=postgresql-a` in the StatefulSet.
 
 ## Headless Service for StatefulSets with Mulitple Replicas
 
-With a single Pod (`replicas: 1`) in a StatefulSet the mapping from the headless Service to the Pod is unambiguous: `service -> Pod`. 
+With a single Pod (`replicas: 1`) in a StatefulSet the mapping from the headless Service to the Pod is unambiguous: `service -> Pod`.
 
 This raises the question **what happens if there are mulitple Pods in the StatefulSet?**
 

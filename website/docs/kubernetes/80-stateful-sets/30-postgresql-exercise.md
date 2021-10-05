@@ -3,7 +3,13 @@ id: stateful-set-postgresql
 title: PostgreSQL StatefulSet
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ewku1iuQQ-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A",
+   title: "Kubernetes Training - PostgreSQL StatefulSet"
+  }]}
+/>
 
 In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the databse is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
 

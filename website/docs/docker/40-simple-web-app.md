@@ -3,7 +3,13 @@ id: simple-web-app
 title: Containerizing a Simple Web App
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/12c8ziarCqE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
+   title: "Kubernetes Training - Containerizing a Simple Web App"
+  }]}
+/>
 
 In the previous lesson you have created your first container image. This trivial examples has outlined the workflow on how to create a container image.
 
@@ -68,7 +74,7 @@ Within the container we define a working directory `/app`.
 
 Now we face a **challenge: how to get our application into the container**?
 
-That's what the line `COPY simple-sinatra-app.rb /app` does. It's important to understand that the container image during its building interacts with your local filesystem. Copy transfers a file from your container image working directory into the container image and thus - later - into the running container. 
+That's what the line `COPY simple-sinatra-app.rb /app` does. It's important to understand that the container image during its building interacts with your local filesystem. Copy transfers a file from your container image working directory into the container image and thus - later - into the running container.
 
 The line `CMD ["ruby", "simple-sinatra-app.rb"]` starts the application on container startup.
 
@@ -177,7 +183,7 @@ This section contains a few lessons worth pointing out:
 1. By using existing images as base images, it is fairly easy to provide the required runtime environment for an application.
 2. If you want expose a port, ensure that the process to be exposed is bound to the right network interface and not only to the loopback device.
 
-## `Dockerfile` Reference 
+## `Dockerfile` Reference
 There are many more instructions allowed in a `Dockerfile`. The Docker documentation contains a Dockerfile Reference section [6] which is worth a read.
 
 ## Links

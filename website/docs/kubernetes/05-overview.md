@@ -3,13 +3,19 @@ id: kubernetes-overview
 title: Kubernetes Overview
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6dTdprPESvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/6dTdprPESvw",
+   title: "Kubernetes Training - Kubernetes Overview"
+  }]}
+/>
 
 The goal of the Kubernetes training is to enable you to deploy workloads to Kubernetes clusters. The training will guide you through the most frequently used Kubernetes resources and make you familiar with interacting with Kubernetes.
 
 ## Scope of the Training
 
-Areas covered in this training: 
+Areas covered in this training:
 
 How to run a distributed application system in Kubernetes covering topics such as:
 

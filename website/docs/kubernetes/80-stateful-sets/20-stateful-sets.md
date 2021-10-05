@@ -3,7 +3,13 @@ id: stateful-sets
 title: StatefulSets
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yRMV5pnzcrk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/yRMV5pnzcrk",
+   title: "Kubernetes Training - StatefulSets"
+  }]}
+/>
 
 Now that you have made your first experience with Persistent Volumes, it is time to introduce a closely related Kubernetes concept called StatefulSets.
 
@@ -21,13 +27,13 @@ A stable identity of Pods in a StatefulSet is useful as the Pods may change, e.g
 
 ## Pod Ordinality
 
-The ordinality requires Pods of a StatefulSet to having associated numbers such as `pod-1`, `pod-2` and `pod-3`. Using numbers it is possible to sort the list of Pods and process them *in order*. 
+The ordinality requires Pods of a StatefulSet to having associated numbers such as `pod-1`, `pod-2` and `pod-3`. Using numbers it is possible to sort the list of Pods and process them *in order*.
 
 A common scenario where ordinality - or at least individual node identities - are essential is asynchronous replication with a primary node to which all write commands are directed and a set of secondary nodes which replicate all operations beformed on the master and be used as read-only-nodes. In these cases certain administrative tasks need to performed on the primary node only. An example for a more complex workflow involving node identities it the upgrade from PostgreSQL 11.x to 12.x [2] which requires orchestration of actions in a particular sequence applied to indivudal or groups of nodes. Concepts such as ReplicaSets where all Pods are considered equal therefore work for statless apps but not for stateful databases.
 
 ## When to Use a StatefulSet?
 
-The answer is implied by the aforementioned differences to alternative Kubernetes resources such as Pods, ReplicaSets and Deployments. 
+The answer is implied by the aforementioned differences to alternative Kubernetes resources such as Pods, ReplicaSets and Deployments.
 StatefulSets are helpful when Pods require a stable identity, when the order in which Pod lifecycle actions are executed matter and in particular when persistency beyond the lifecycle of Pods is desired.
 
 ## Pod Identity and Persistent Volumes
@@ -37,7 +43,7 @@ However, one restriction of (most) block devices is that they can only be used b
 
 Imagine a StatefulSet with three Pods `pod-1`, `pod-2` and `pod-3`. Three Persistent Volume Claims will then create three Persistent Volumes. The StatefulSet then ensures that each PV will be mounted to a particular Pod. There's a 1:1 mapping from Persistent Volume to a Pod identity. So even when a Pod is lost, the newly created Pod will be bound to the Persistent Volume associated with the identity of the former Pod.
 
-## Stable Network Identity 
+## Stable Network Identity
 
 A stable network identity can be provided to a StatefulSet by using a headless Service which will be covered in a later exercise in greater detail.
 

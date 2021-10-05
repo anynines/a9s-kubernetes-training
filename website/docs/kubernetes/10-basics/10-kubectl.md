@@ -3,7 +3,13 @@ id: kubectl
 title: kubectl Basics
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ",
+   title: "Kubernetes Training - kubectl Basics"
+  }]}
+/>
 
 In this lesson you will learn how to interact with a Kubernetes cluster using the Kubernetes CLI called `kubectl`.
 

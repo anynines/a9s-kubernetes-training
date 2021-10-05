@@ -3,7 +3,16 @@ id: jobs
 title: Jobs
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-I8z8RTAa5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
+   title: "Kubernetes Training - Jobs Part 1"
+  }, {
+   src: "https://www.youtube-nocookie.com/embed/VgrMcXXon1U",
+   title: "Kubernetes Training - Jobs Part 2"
+  }]}
+/>
 
 ReplicaSets and Deployments are Kubernetes resources to describe long running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
 
@@ -31,8 +40,6 @@ Note that these tasks may be "long" running in dimension of hours or even days b
 The following examples will help you understand the concept of Jobs in greater details.
 
 ## Creating Jobs
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VgrMcXXon1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Let's start creating Job by creating the simplest Job: a single container one-off Task.
 

@@ -3,7 +3,13 @@ id: parallel-jobs
 title: Parallel Jobs
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/A9c07XS9go4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/A9c07XS9go4",
+   title: "Kubernetes Training - Parallel Jobs"
+  }]}
+/>
 
 In this lesson you will learn about executing tasks in parallel by running multiple Pods simultaneously.
 

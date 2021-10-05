@@ -3,7 +3,13 @@ id: advanced-jobs
 title: Advanced Job Features
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ",
+   title: "Kubernetes Training - Advanced Job Features"
+  }]}
+/>
 
 Admittedly, running a simple Job as earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
 

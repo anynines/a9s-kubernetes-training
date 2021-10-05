@@ -3,7 +3,13 @@ id: configmaps-volume-mounts
 title: ConfigMap Volume Mounts
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7iU4uz-oaAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+   title: "Kubernetes Training - ConfigMaps Part 2"
+  }]}
+/>
 
 In the past lesson you have learned how to map ConfigMaps to environment variables. While this is a valid approach to separate configuration information from application source code, it comes with a slight drawback.
 

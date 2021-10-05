@@ -3,7 +3,13 @@ id: stateful-set-vs-replicasets
 title: StatefulSet vs. ReplicaSets
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YQZJpezPyFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/YQZJpezPyFQ",
+   title: "Kubernetes Training - StatefulSets vs ReplicaSets"
+  }]}
+/>
 
 In the last lession you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.
 
@@ -28,7 +34,7 @@ This will produce an output such as:
     postgresql-sfs-1   1/1     Running   0          24s
     postgresql-sfs-2   1/1     Running   0          23s
 
-And it will also block the terminal window. **Place the windows so that you can keep an eye on it and open another terminal window**. You should now see both terminal windows simultaneously. 
+And it will also block the terminal window. **Place the windows so that you can keep an eye on it and open another terminal window**. You should now see both terminal windows simultaneously.
 
 In the new window disturb the StatefulSet by deleting one of its Pods:
 
@@ -45,13 +51,13 @@ Watch what's happening:
     postgresql-sfs-1   0/1     ContainerCreating   0          0s
     postgresql-sfs-1   1/1     Running             0          1s
 
-**The delete Pod has been recreated**. 
+**The delete Pod has been recreated**.
 
 Check the StatefulSet:
 
     kubectl get statefulset postgresql-sfs
 
-All three Pods are back and `Running`. So what happened here? 
+All three Pods are back and `Running`. So what happened here?
 
 The StatefulSet Controller has been told to nurse three (3) Pods and that's what it does. As a "higher ranked officer" it does not care why a Pod has been lost. All it does is to apply the `desired state vs actual state`-comparison, recognize that a Pod is missing and take a corrective action: creating the missing Pod.
 
@@ -59,7 +65,7 @@ Another takeaway from this example is how the Pod identity in a StatefulSet is r
 
 ## StatefulSets vs. Deployments
 
-In contrast to ReplicaSets but similar to Deployments, StatefulSets support update stragies such as `RollingUpdate` and `OnDelete`. 
+In contrast to ReplicaSets but similar to Deployments, StatefulSets support update stragies such as `RollingUpdate` and `OnDelete`.
 
 For this reason, **StatefulSets are neither stateful ReplicaSets nor stateful Deployments. They are entities on their own sharing similarities with both**.
 
@@ -71,6 +77,6 @@ Apply the changes by executing:
 
     kubectl apply -f 30-stateful-set.yaml
 
-## Links 
+## Links
 
 1. Kubernetes Documentation - Tutorials - StatefulSet Basics, https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set

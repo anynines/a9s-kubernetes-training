@@ -3,7 +3,13 @@ id: configmaps
 title: ConfigMaps
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7iU4uz-oaAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+   title: "Kubernetes Training - ConfigMaps Part 2"
+  }]}
+/>
 
 ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.
 
@@ -36,7 +42,7 @@ The `-o yaml` switch has the effect that not only the ConfigMap is listed but al
 
 It is also possible to specify ConfigMaps using command line literals:
 
-    kubectl create configmap config-example-2 --from-literal=number-of-requests=20 --from-literal=very-important-switch=true 
+    kubectl create configmap config-example-2 --from-literal=number-of-requests=20 --from-literal=very-important-switch=true
 
 See yourself how the key values pairs have been joined into a ConfigMap:
 
@@ -96,7 +102,7 @@ Verify whether the Pod has been created successfully:
 You should see an error with the `STATUS` field indicating `CreateContainerConfigError`. This gives you the opportunity to think about how a failing Pod can be investigated. Maybe it's worth having a look at the Pod's log output:
 
     kubectl logs busybox-config
-  
+
 But the output is disappointing:
 
     error: the server doesn't have a resource type "logs"
@@ -147,7 +153,7 @@ Also have a look at all the other environment variables added by Kubernetes:
     KUBERNETES_SERVICE_PORT=443
     KUBERNETES_PORT_443_TCP=tcp://10.100.200.1:443
     KUBERNETES_PORT_443_TCP_PORT=443
-    HOME=/root  
+    HOME=/root
 
 It's worth remembering that Kubernetes provides you with context information of the execution environment.
 

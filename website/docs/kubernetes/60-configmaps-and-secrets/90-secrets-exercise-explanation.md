@@ -3,7 +3,13 @@ id: secrets-exercise-explanation
 title: Secrets Exercise Explanation
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vFGlpm1ctYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
+   title: "Kubernetes Training - Secrets"
+  }]}
+/>
 
 Here you can find possible solutions to the previous exercise.
 

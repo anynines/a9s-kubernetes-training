@@ -3,7 +3,13 @@ id: training-overview
 title: Kubernetes Training Overview
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/H5OY7IDjPZU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+title="Videomaterial for this Chapter"
+list={
+[
+{src: "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU", title: "Kubernetes Training - Overview"},
+]
+}></VideoContainer>
 
 ## Status: Under Development
 
@@ -57,6 +63,6 @@ The first part *Containerization* covers container basics such as containers, co
 
 The second part *Kubernetes* then introduces the `kubectl` command followed by core Kubernetes concepts such as Pods, ReplicaSets, Deployments, ConfigMaps, Securities, Jobs and StatefulSets. Practical examples show their basic usage. Additionally, a few common failure scenarios are included illustrating how these issues can be fixed.
 
-## `paas.anynines.com`
+## [paas.anynines.com](https://paas.anynines.com)
 
 The training has been written using `a9s Kubernetes` as offered at https://paas.anynines.com. Reach out to the [support](mailto:support@anynines.com) to get an early access.

@@ -3,7 +3,16 @@ id: persistent-volumes
 title: Persistent Volumes
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yKHC8Mhzra4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
+   title: "Kubernetes Training - Persistent Volumes Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
+   title: "Kubernetes Training - Persistent Volumes Part 2"
+  }]}
+/>
 
 This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes.
 
@@ -25,8 +34,6 @@ Within a Pod-definition volumes can be mounted to containers by using a so calle
 If you are familiar with Docker Volumes you may already recognized the difference between Kubernetes and Docker Volumes. In Kubernetes there are many more types of Volumes and the way to use them is more flexible. For example, in Kubernetes it is possible to mount multiple containers of multiple types into a single container. Additionally, the lifecycle of Volumes is clearly defined in Kubernetes. Volumes share the lifecycle of their Pods. They are created with their Pods and cease to exist when their Pods cease to exist. You will see that there are concepts such as the *Persistent Volume* with lifetimes exceeding the lifetime of their Pods.
 
 ## Persistent Volumes (PV)
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/83RfSH0CrrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 It may appear intuitive that Persistent Volumes (PV) are special types of Volumes but in fact there are two distinct Kubernetes resources.
 
@@ -50,7 +57,7 @@ The Persistent Volume concept implies two important questions:
 
 ### Persistent Volume Claim (PCV)
 
-Similar to Volumes, Persistent Volumes [2] are also mounted using the `volumeMount` field in the specification of a container. The volume mount basiscally says "mount the persistent volume `x` to the path `y` of my container `z`. But **before a volume mount can happen, the Persistent Volume must be requested using a Persistent Volume Claim**. Think of storage as "territory" and a Persistent Volume Claim as a claim to a particular part of that "territory" or storage. Hence, **a Persistent Volume Claim is a declarative description of a piece of storage requested by the user**. In this sense, a PVC may sound like 
+Similar to Volumes, Persistent Volumes [2] are also mounted using the `volumeMount` field in the specification of a container. The volume mount basiscally says "mount the persistent volume `x` to the path `y` of my container `z`. But **before a volume mount can happen, the Persistent Volume must be requested using a Persistent Volume Claim**. Think of storage as "territory" and a Persistent Volume Claim as a claim to a particular part of that "territory" or storage. Hence, **a Persistent Volume Claim is a declarative description of a piece of storage requested by the user**. In this sense, a PVC may sound like
 
 Give me:
 

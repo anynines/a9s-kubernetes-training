@@ -3,9 +3,16 @@ id: docker-basics
 title: Docker Basics
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5L_i-WxhQr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
+   title: "Kubernetes Training - Docker Basics Part 2"
+},{
+   src: "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y",
+   title: "Kubernetes Training - Docker Basics Part 3"
+  }]}
+/>
 
 In this lesson you will start, stop, list and access containers in various ways.
 

@@ -3,19 +3,25 @@ id: stateful-set-application-access
 title: Application Access to a StatefulSet
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fR-DKkvhLRA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA",
+   title: "Kubernetes Training - Application Access to a StatefulSet"
+  }]}
+/>
 
 ## Application Access
 
 After setting up the database and connecting to it using the `psql` utility, the next step is to access the database with an application running on Kubernetes.
 
-At this point we should rember that Kubernetes is not a fully featured platform but rather platform for building platforms [4]. So in contrast to technologies such as Cloud Foundry [5] there is no such thing as a Service Binding as defined in the Open Service Broker API [6] where application developers can bind apps to service instances such as PostgreSQL with a single command. This will then create a dedicated database user which will be deleted if the application is unbound from the service. This requires a so called Service Broker such as implemented by the a9s Data Services [7] which can then be integrated with Cloud Foundry and Kubernetes. The integration of Service Brokers with Kubernetes requires the Service Catalog extension [8]. However, this lesson is about core Kubernetes so Service Bindings won't be covered in detail. 
+At this point we should rember that Kubernetes is not a fully featured platform but rather platform for building platforms [4]. So in contrast to technologies such as Cloud Foundry [5] there is no such thing as a Service Binding as defined in the Open Service Broker API [6] where application developers can bind apps to service instances such as PostgreSQL with a single command. This will then create a dedicated database user which will be deleted if the application is unbound from the service. This requires a so called Service Broker such as implemented by the a9s Data Services [7] which can then be integrated with Cloud Foundry and Kubernetes. The integration of Service Brokers with Kubernetes requires the Service Catalog extension [8]. However, this lesson is about core Kubernetes so Service Bindings won't be covered in detail.
 
 With the absense of Service Bindings we fall back to using Kubernetes Secrets as covered in earlier chapters. Hence, with a bare Kubernetes it is up to the user to manage Secrets to grand and/or revoke access to StatefulSets.
 
 You may ask yourself **why not use the existing `postgres` user**?
 
-In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the *least privilege principle* [9]. According to this principle, the application user should be limited to the minimum set of privileges necesseary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary. 
+In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the *least privilege principle* [9]. According to this principle, the application user should be limited to the minimum set of privileges necesseary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary.
 Another major drawback of using shared credentials among users is that the credentials have to be changed if a user is removed. Think about a team member who knew the `postgresql` password and then left the team. In order to secure access to the database, the password needs to be changed. If the password is used by ten other users including application machine users, the effort for updating the password is highly wasteful.
 With a dedicated set of credentials - a database username and password - per user is therefore much simpler. It allows revoking access or modifying privileges on a per user level easily.
 
@@ -45,7 +51,7 @@ postgresHost := os.Getenv("POSTGRES_HOST")
 connStr := "user=" + postgresUsername + " dbname=postgres sslmode=disable password=" + postgresPassword + " host=" + postgresHost
 ```
 
-This reads the environment variables `POSTGRES_USERNAME`, `POSTGRES_PASSWORD` and `POSTGRES_HOST`. 
+This reads the environment variables `POSTGRES_USERNAME`, `POSTGRES_PASSWORD` and `POSTGRES_HOST`.
 
 We do not plan to share the PostgreSQL instance so hardcoding the database name `postgresql` is ok, at least for this example.
 
@@ -57,7 +63,7 @@ In order to keep the application independent from a particular instance of the P
 * Password
 * Hostname
 
-The username and password can be created along with the Secret. 
+The username and password can be created along with the Secret.
 
 As this is a machine user, using a cryptic username makes it harder to guess and the application doesn't care about the password complexity.
 
@@ -93,7 +99,7 @@ Which leads to the following command:
 
     createuser --username=postgres -W gaeMo6di -P
 
-This needs explanation. 
+This needs explanation.
 
 The `--username=postgres` option is to authenticate the `createuser` command. You don't want anybody with shell access to create users and therefore authentication is necessary. The `postgres` user has sufficient rights to create new users.
 The `-W` makes `psql` prompt for the password to authenticate the `postgresql` user. Use the `tes6Aev8` password - or your version of it - that you used during the creation of the PostgreSQL StatefulSet.
@@ -105,7 +111,7 @@ Finally, the `-P` makes the `createuser` command prompt for the password of the 
 
 Now, there is a user `gaeMo6di` but it is lacking of appropriate access privileges. If you try to access the `postgres` database, you'll see an error message such as:
 
-    permission denied for table user 
+    permission denied for table user
 
 Therefore, you need to grand the user `gaeMo6di` privileges to access the `postgres` database which can be done using `psql`.
 
@@ -140,7 +146,7 @@ Ok, now that you have collected all pieces of information necessary, you can pro
 
 ### Creating the Application Secret
 
-First, create a separate Secret. As this is an additional Secret a unique name is required: `postgresql-secret-2`. 
+First, create a separate Secret. As this is an additional Secret a unique name is required: `postgresql-secret-2`.
 
 You can see where this is going if a large number of StatefulSets and a large number of users is necessary. You will have to manage many Secrets.
 
@@ -176,7 +182,7 @@ With the Secret being ready, it's time to think about the application deployment
 
 ### Deploying the Application
 
-Before thinking about more complex structures such as ReplicaSets or StatefulSets, you can start with a simple Pod. 
+Before thinking about more complex structures such as ReplicaSets or StatefulSets, you can start with a simple Pod.
 This will allow you to focus on mounting the Secret into the Pod. The idea is to start simple and take little steps. This keeps frustration low. Solving each little challenge also provides a little reward. Later if you are well practices, these little steps may become wasteful and larget steps become more economic.
 
 In order to get the Secrets into the Pod you can use the Secret example from an early chapter which you will then modify incrementally.

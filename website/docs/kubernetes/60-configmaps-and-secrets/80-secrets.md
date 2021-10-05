@@ -3,7 +3,13 @@ id: secrets
 title: Secrets
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vFGlpm1ctYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
+   title: "Kubernetes Training - Secrets"
+  }]}
+/>
 
 Secrets are represented as key value pair and thus are very similar to ConfigMaps. However, ConfigMaps are meant for non-sensitive configuration data aiming at making application code portable across environments. So - analog to ConfigMaps - **Secrets are key value sets but for sensitive data**.
 

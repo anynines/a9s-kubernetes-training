@@ -3,7 +3,13 @@ id: configmaps-and-secrets
 title: ConfigMaps and Secrets
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6hNC66uImgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/6hNC66uImgs",
+   title: "Kubernetes Training - Introduction & ConfigMaps Part 1"
+  }]}
+/>
 
 ConfigMaps and Secrets are utilities provided by Kubernetes to fascilitate the development of cloud-native - or 12 factor [1] compliant - applications. In particular, ConfigMaps relate to chapter 3 *Config* of the 12 factor manifest. This best practice suggests to store application configuration outside the application, e.g. by using environment variables [2]. This allows a strict separation of functionality and configuration which increases the portability of applications. An application can thus be operated from the same code base among different environments such as staging & production or the application could even be deployed *per customer* still using a single source code version.
 

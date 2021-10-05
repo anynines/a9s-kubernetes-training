@@ -3,7 +3,13 @@ id: tidyup
 title: Tyding Up
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ss1GDK93qn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<VideoContainer
+  title="Videomaterial for this Chapter"
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
+   title: "Kubernetes Training - Tyding Up"
+  }]}
+/>
 
 Removing all artefacts is simple: replace `apply` with `delete` in all `kubectl`-commands and execute them in reverse order:
 
