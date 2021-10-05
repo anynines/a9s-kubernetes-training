@@ -27,7 +27,7 @@ const Video = ({ src, title, size, faded }) => {
             position: 'absolute'
           }}
           width='320'
-          src={src}
+          src={src + '?rel=0&modestbranding=1&playsinline=0&controls=2'}
           title='YouTube video player'
           frameBorder='0'
           allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
