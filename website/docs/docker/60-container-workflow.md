@@ -3,11 +3,11 @@ id: container-workflow
 title: The Container Workflow
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
-   title: "Kubernetes Training - Publishing a Container Image & The Workflow"
+   title: "Publishing a Container Image & The Workflow"
   }]}
 />
 

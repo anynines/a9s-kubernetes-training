@@ -3,14 +3,14 @@ id: jobs
 title: Jobs
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
-   title: "Kubernetes Training - Jobs Part 1"
+   title: "Jobs Part 1"
   }, {
    src: "https://www.youtube-nocookie.com/embed/VgrMcXXon1U",
-   title: "Kubernetes Training - Jobs Part 2"
+   title: "Jobs Part 2"
   }]}
 />
 

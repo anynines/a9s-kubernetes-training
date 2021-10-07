@@ -3,11 +3,11 @@ id: secrets-exercise-explanation
 title: Secrets Exercise Explanation
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
-   title: "Kubernetes Training - Secrets"
+   title: "Secrets"
   }]}
 />
 

@@ -3,11 +3,11 @@ id: configmaps
 title: ConfigMaps
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
-   title: "Kubernetes Training - ConfigMaps Part 2"
+   title: "ConfigMaps Part 2"
   }]}
 />
 

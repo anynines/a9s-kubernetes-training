@@ -2,12 +2,11 @@
 id: installation
 title: Docker Installation
 ---
-
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/4KpQOz_rSRc",
-   title: "Kubernetes Training - Installation and Basics Part 1"
+   title: "Installation and Basics Part 1"
   }]}
 />
 

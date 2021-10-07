@@ -3,17 +3,18 @@ id: container-intro
 title: Containers Basics
 ---
 
+## Related Videos
+
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU",
-   title: "Kubernetes Training - What is a container?"
+   title: "What is a container?"
   },{
    src: "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
-   title: "Kubernetes Training - Container vs. VMs"
+   title: "Container vs. VMs"
   },{
    src: "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
-   title: "Kubernetes Training - Container Images & Container Registry"
+   title: "Container Images & Container Registry"
   }]}
 />
 

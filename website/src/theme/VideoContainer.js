@@ -1,9 +1,17 @@
 import React from 'react'
 import { Divider, Grid, Typography } from '@anynines/a9s-design-system'
 
+function isDarkModeActive() {
+  return document.querySelectorAll('html[data-theme="dark"]').length > 0
+}
+
 const Video = ({ src, title, size, faded }) => {
   let klass
-  if (faded) klass = 'fadedVideo'
+  if (faded) {
+    klass = 'fadedVideo'
+  } else {
+    title = null
+  }
   return (
     <Grid item lg={size.lg} sm={size.sm} xs={12}>
       <div
@@ -43,12 +51,12 @@ export default function VideoContainer({ title, list }) {
   let size, faded
   switch (list.length) {
     case 1:
-      size = { lg: 12, sm: 12 }
+      size = { lg: 6, sm: 12 }
       faded = false
       break
     case 2:
       size = { lg: 6, sm: 12 }
-      faded = false
+      faded = true
       break
     case 3:
       size = { lg: 4, sm: 12 }
@@ -69,14 +77,11 @@ export default function VideoContainer({ title, list }) {
     ></Video>
   ))
   return (
-    <div>
-      <Typography gutterBottom variant='h4'>
-        {title}
-      </Typography>
+    <div style={{ paddingTop: 10, paddingBottom: '1.8em' }}>
       <Grid container spacing={4}>
         {videos}
       </Grid>
-      <Divider style={{ padding: '1.8em 0' }}> </Divider>
+      <Divider style={{ paddingTop: '1.8em' }} variant='fullWidth'></Divider>
     </div>
   )
 }

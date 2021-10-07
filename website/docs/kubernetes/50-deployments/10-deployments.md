@@ -3,18 +3,16 @@ id: deployments
 title: Deployments
 ---
 
-
+## Related Videos
 <VideoContainer
-title="Videomaterial for this Chapter"
-list={
-[
-{src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", title: "Kubernetes Training - Deployments Part 1"},
-{src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", title: "Kubernetes Training - Deployments Part 2"},
-{src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", title: "Kubernetes Training - Deployments Part 3"},
-{src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", title: "Kubernetes Training - Deployments Part 4"},
-{src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", title: "Kubernetes Training - Deployments Part 5"},
-{src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", title: "Kubernetes Training - Deployments Part 6"},
-{src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", title: "Kubernetes Training - Deployments Part 7"}
+  list={[
+{src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", title: "Deployments Part 1"},
+{src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", title: "Deployments Part 2"},
+{src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", title: "Deployments Part 3"},
+{src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", title: "Deployments Part 4"},
+{src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", title: "Deployments Part 5"},
+{src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", title: "Deployments Part 6"},
+{src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", title: "Deployments Part 7"}
 ]
 }></VideoContainer>
 

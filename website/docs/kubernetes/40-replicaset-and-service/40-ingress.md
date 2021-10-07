@@ -3,17 +3,17 @@ id: ingress
 title: Ingress
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
-   title: "Kubernetes Training - Ingress Part 1"
+   title: "Ingress Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
-   title: "Kubernetes Training - Ingress Part 2"
+   title: "Ingress Part 2"
   },{
    src: "https://www.youtube-nocookie.com/embed/0QpZL6NOam4",
-   title: "Kubernetes Training - Ingress Part 3"
+   title: "Ingress Part 3"
   }]}
 />
 

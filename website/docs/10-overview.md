@@ -3,13 +3,11 @@ id: training-overview
 title: Kubernetes Training Overview
 ---
 
+## Related Videos
 <VideoContainer
-title="Videomaterial for this Chapter"
-list={
-[
-{src: "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU", title: "Kubernetes Training - Overview"},
-]
-}></VideoContainer>
+list={[
+{src: "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU", title: "Overview"},
+]}></VideoContainer>
 
 ## Status: Under Development
 

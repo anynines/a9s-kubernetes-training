@@ -3,11 +3,11 @@ id: advanced-jobs
 title: Advanced Job Features
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ",
-   title: "Kubernetes Training - Advanced Job Features"
+   title: "Advanced Job Features"
   }]}
 />
 

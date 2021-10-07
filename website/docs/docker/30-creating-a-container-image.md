@@ -3,11 +3,11 @@ id: creating-images
 title: Creating Container Images
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/AOg8a1z8BIY",
-   title: "Kubernetes Training - Creating Container Images"
+   title: "Creating Container Images"
   }]}
 />
 

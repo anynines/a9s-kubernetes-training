@@ -3,14 +3,14 @@ id: persistent-volumes
 title: Persistent Volumes
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
-   title: "Kubernetes Training - Persistent Volumes Part 1"
+   title: "Persistent Volumes Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
-   title: "Kubernetes Training - Persistent Volumes Part 2"
+   title: "Persistent Volumes Part 2"
   }]}
 />
 

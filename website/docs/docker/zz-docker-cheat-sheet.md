@@ -3,11 +3,10 @@ id: docker-cheatsheet
 title: Docker Cheat Sheet
 ---
 
+## Related Videos
 <VideoContainer
-title="Videomaterial for this Chapter"
-list={
-[
-{src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk", title: "Kubernetes Training - Publishing a Container Image & The Workflow"},
+list={[
+{src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk", title: "Publishing a Container Image & The Workflow"},
 ]
 }></VideoContainer>
 

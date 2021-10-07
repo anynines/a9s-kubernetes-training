@@ -3,14 +3,14 @@ id: services
 title: Services
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8",
-   title: "Kubernetes Training - Services Part 1"
+   title: "Services Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/BEXU7KyXI-U",
-   title: "Kubernetes Training - Services Part 2"
+   title: "Services Part 2"
   }]}
 />
 

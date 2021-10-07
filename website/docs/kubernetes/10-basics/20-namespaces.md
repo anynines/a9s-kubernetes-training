@@ -3,14 +3,14 @@ id: namespaces
 title: Namespaces
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
-   title: "Kubernetes Training - Namespaces Part 1"
+   title: "Namespaces Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA",
-   title: "Kubernetes Training - Namespaces Part 2"
+   title: "Namespaces Part 2"
   }]}
 />
 

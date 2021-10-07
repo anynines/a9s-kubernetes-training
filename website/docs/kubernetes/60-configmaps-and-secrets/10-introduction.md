@@ -3,11 +3,11 @@ id: configmaps-and-secrets
 title: ConfigMaps and Secrets
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/6hNC66uImgs",
-   title: "Kubernetes Training - Introduction & ConfigMaps Part 1"
+   title: "Introduction & ConfigMaps Part 1"
   }]}
 />
 

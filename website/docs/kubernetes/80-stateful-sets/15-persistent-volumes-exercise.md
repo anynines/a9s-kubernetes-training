@@ -3,14 +3,14 @@ id: persistent-volumes-exercise
 title: Persistent Volumes Excercise
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
-   title: "Kubernetes Training - Persistent Volume Exercise Part 1"
+   title: "Persistent Volume Exercise Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw",
-   title: "Kubernetes Training - Persistent Volume Exercise Part 2"
+   title: "Persistent Volume Exercise Part 2"
   }]}
 />
 

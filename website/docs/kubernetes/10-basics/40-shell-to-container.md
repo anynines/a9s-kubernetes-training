@@ -3,11 +3,11 @@ id: container-shell
 title: Container Shell Access
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/IAEVI559jaA",
-   title: "Kubernetes Training - Container Shell Access"
+   title: "Container Shell Access"
   }]}
 />
 

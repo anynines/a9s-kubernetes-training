@@ -3,11 +3,11 @@ id: stateful-set-application-access
 title: Application Access to a StatefulSet
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA",
-   title: "Kubernetes Training - Application Access to a StatefulSet"
+   title: "Application Access to a StatefulSet"
   }]}
 />
 

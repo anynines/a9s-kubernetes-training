@@ -3,11 +3,11 @@ id: simple-web-app
 title: Containerizing a Simple Web App
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
-   title: "Kubernetes Training - Containerizing a Simple Web App"
+   title: "Containerizing a Simple Web App"
   }]}
 />
 

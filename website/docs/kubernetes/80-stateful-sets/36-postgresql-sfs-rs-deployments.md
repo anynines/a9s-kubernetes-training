@@ -3,11 +3,11 @@ id: stateful-set-vs-replicasets
 title: StatefulSet vs. ReplicaSets
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/YQZJpezPyFQ",
-   title: "Kubernetes Training - StatefulSets vs ReplicaSets"
+   title: "StatefulSets vs ReplicaSets"
   }]}
 />
 

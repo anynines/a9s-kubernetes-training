@@ -3,11 +3,11 @@ id: stateful-set-postgresql
 title: PostgreSQL StatefulSet
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A",
-   title: "Kubernetes Training - PostgreSQL StatefulSet"
+   title: "PostgreSQL StatefulSet"
   }]}
 />
 

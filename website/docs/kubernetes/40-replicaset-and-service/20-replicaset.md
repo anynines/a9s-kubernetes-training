@@ -3,20 +3,20 @@ id: replicasets
 title: ReplicaSets
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
-   title: "Kubernetes Training - ReplicaSets Part 1"
+   title: "ReplicaSets Part 1"
   },{
    src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
-   title: "Kubernetes Training - ReplicaSets Part 2"
+   title: "ReplicaSets Part 2"
   },{
    src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
-   title: "Kubernetes Training - ReplicaSets Part 3"
+   title: "ReplicaSets Part 3"
   },{
    src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
-   title: "Kubernetes Training - ReplicaSets Part 4"
+   title: "ReplicaSets Part 4"
   }]}
 />
 

@@ -124,7 +124,7 @@ const siteConfig = {
       {
         docs: {
           path: 'docs',
-          sidebarCollapsible: false,
+          sidebarCollapsible: true,
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.json')
         },

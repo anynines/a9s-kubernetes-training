@@ -3,11 +3,11 @@ id: stateful-set-psql-access-to-postgresql
 title: PSQL Access to PostgreSQL
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM",
-   title: "Kubernetes Training - PSQL Access to Postgres"
+   title: "PSQL Access to Postgres"
   }]}
 />
 

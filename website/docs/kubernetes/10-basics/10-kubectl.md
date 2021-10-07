@@ -3,11 +3,11 @@ id: kubectl
 title: kubectl Basics
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ",
-   title: "Kubernetes Training - kubectl Basics"
+   title: "kubectl Basics"
   }]}
 />
 

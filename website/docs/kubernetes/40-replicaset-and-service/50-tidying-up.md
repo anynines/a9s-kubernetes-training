@@ -3,11 +3,11 @@ id: tidyup
 title: Tyding Up
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
-   title: "Kubernetes Training - Tyding Up"
+   title: "Tyding Up"
   }]}
 />
 

@@ -3,14 +3,14 @@ id: docker-basics
 title: Docker Basics
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
-   title: "Kubernetes Training - Docker Basics Part 2"
+   title: "Docker Basics Part 2"
 },{
    src: "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y",
-   title: "Kubernetes Training - Docker Basics Part 3"
+   title: "Docker Basics Part 3"
   }]}
 />
 

@@ -3,11 +3,11 @@ id: kubernetes-overview
 title: Kubernetes Overview
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/6dTdprPESvw",
-   title: "Kubernetes Training - Kubernetes Overview"
+   title: "Kubernetes Overview"
   }]}
 />
 

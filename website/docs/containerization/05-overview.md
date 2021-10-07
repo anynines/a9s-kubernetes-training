@@ -2,12 +2,12 @@
 id: container-overview
 title: Container Overview
 ---
+## Related Videos
 
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ",
-   title: "Kubernetes Training - Container Overview"
+   title: "Container Overview"
   }]}
 />
 

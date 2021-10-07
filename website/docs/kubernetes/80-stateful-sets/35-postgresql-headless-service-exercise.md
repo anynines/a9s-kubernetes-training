@@ -3,11 +3,11 @@ id: stateful-set-headless-service
 title: Headless Service
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y",
-   title: "Kubernetes Training - Headless Services"
+   title: "Headless Services"
   }]}
 />
 

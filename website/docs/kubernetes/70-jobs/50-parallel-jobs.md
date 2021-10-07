@@ -3,11 +3,11 @@ id: parallel-jobs
 title: Parallel Jobs
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/A9c07XS9go4",
-   title: "Kubernetes Training - Parallel Jobs"
+   title: "Parallel Jobs"
   }]}
 />
 

@@ -3,17 +3,17 @@ id: introduction
 title: Pods
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/BjXiO0NLO5A",
-   title: "Kubernetes Training - Pods Part 1"
+   title: "Pods Part 1"
 },{
    src: "https://www.youtube-nocookie.com/embed/4-5psDE9tBU",
-   title: "Kubernetes Training - Pods Part 2"
+   title: "Pods Part 2"
 },{
    src: "https://www.youtube-nocookie.com/embed/wiXQkoKM07g",
-   title: "Kubernetes Training - Pods Part 3"
+   title: "Pods Part 3"
   }]}
 />
 

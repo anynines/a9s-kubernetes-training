@@ -3,11 +3,11 @@ id: cron-jobs
 title: CronJobs
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/Lye_qdofqjg",
-   title: "Kubernetes Training - CronJobs"
+   title: "CronJobs"
   }]}
 />
 

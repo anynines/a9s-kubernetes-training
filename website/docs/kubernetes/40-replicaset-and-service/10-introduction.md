@@ -3,11 +3,11 @@ id: introduction
 title: ReplicaSets and Services
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/cUuvb1wy-74",
-   title: "Kubernetes Training - ReplicaSets & Services"
+   title: "ReplicaSets & Services"
   }]}
 />
 

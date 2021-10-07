@@ -3,11 +3,11 @@ id: stateful-sets
 title: StatefulSets
 ---
 
+## Related Videos
 <VideoContainer
-  title="Videomaterial for this Chapter"
   list={[{
    src: "https://www.youtube-nocookie.com/embed/yRMV5pnzcrk",
-   title: "Kubernetes Training - StatefulSets"
+   title: "StatefulSets"
   }]}
 />
 

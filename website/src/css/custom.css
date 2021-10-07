@@ -33,6 +33,10 @@ html[data-theme="dark"] {
   --ifm-footer-background-color: var(--a9s-blue-dark-05);
 }
 
+html[data-theme="dark"] hr {
+  border-color: var(--a9s-blue-dark-03);
+}
+
 html[data-theme=""] {
   --ifm-navbar-background-color: var(--a9s-blue);
   --ifm-navbar-link-color: var(--a9s-gray-light-01);
