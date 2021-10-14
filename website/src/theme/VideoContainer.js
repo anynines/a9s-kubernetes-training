@@ -22,7 +22,7 @@ const Video = ({ src, title, size, faded }) => {
           height: '0',
           borderRadius: 4,
           overflow: 'hidden',
-          marginBottom: 4
+          marginBottom: 14
         }}
       >
         <iframe
@@ -42,7 +42,9 @@ const Video = ({ src, title, size, faded }) => {
           allowFullScreen
         ></iframe>
       </div>
-      <Typography variant='subtitle2'>{title}</Typography>
+      <Typography fontWeight='800' variant='subtitle2'>
+        {title}
+      </Typography>
     </Grid>
   )
 }
@@ -51,11 +53,11 @@ export default function VideoContainer({ title, list }) {
   let size, faded
   switch (list.length) {
     case 1:
-      size = { lg: 6, sm: 12 }
-      faded = false
+      size = { lg: 4, sm: 12 }
+      faded = true
       break
     case 2:
-      size = { lg: 6, sm: 12 }
+      size = { lg: 4, sm: 12 }
       faded = true
       break
     case 3:
