@@ -3,6 +3,14 @@ id: cron-jobs
 title: CronJobs
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/Lye_qdofqjg",
+   title: "CronJobs"
+  }]}
+/>
+
 Cron [1] is a daemon available as a package for most unix/linux operating systems and is a time-based job scheduler.
 
 ## Linux/Unix Cron Jobs and Cron Tab

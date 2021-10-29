@@ -3,6 +3,14 @@ id: container-workflow
 title: The Container Workflow
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
+   title: "Publishing a Container Image & The Workflow"
+  }]}
+/>
+
 To summarize the previous lessons a simple workflow of creating container images may look like this:
 
 1. Login with `docker login <your-dockerhub-username>`

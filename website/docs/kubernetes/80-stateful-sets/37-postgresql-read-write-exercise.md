@@ -3,6 +3,14 @@ id: stateful-set-psql-access-to-postgresql
 title: PSQL Access to PostgreSQL
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM",
+   title: "PSQL Access to Postgres"
+  }]}
+/>
+
 ## Accessing the Database using `psql`
 
 After deploying the PostgreSQL server it's time to verify whether there's actually a database running.
@@ -10,7 +18,7 @@ After deploying the PostgreSQL server it's time to verify whether there's actual
 For the purpose of a brief test it would be nice to have an interactive container running the `psql` command, the command line tool to access PostgreSQL.
 
     kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=tes6Aev8" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U postgres
-  
+
 This starts an interactive container (`-i --tty`) based on the same container image you have used for the database server (`postgres:12.2`). The container shall never restart (`--restart=Never`). The container is not started with the default command configured in the container image. Instead, the option `-- psql` (not the space) replaces the default start command (the PostgreSQL server) with the PostgreSQL command line client. There is no PostgreSQL server running in this container, so that you have to tell `psql` where to connect and how to authenticate. Noete, that `psql` read the password from a different environment variable as the container image does for the server. Details on how to use `psql` can be found in the official PostgreSQL documentation [3]. While it is possible to pass a server host using the `-h` option as well as a user using the `-U` option, the password has to be passed as an environment variable. Among other reasons, this avoids listing the password in a shell history file.
 
 Have a close look at the DNS name used to connect to the PostgreSQL Kubernetes Service we have created earlier:
@@ -51,7 +59,7 @@ Let's create a table by pasting the following SQL command:
     CREATE TABLE COMPANY(
       ID INT PRIMARY KEY     NOT NULL,
       NAME           TEXT    NOT NULL
-    );  
+    );
 
 And also a first record:
 
@@ -91,7 +99,7 @@ And soon after that it has been fully recovered:
     NAME               READY   STATUS    RESTARTS   AGE
     postgresql-sfs-0   1/1     Running   0          35s
 
-Now 
+Now
 
     kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=tes6Aev8" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U postgres
 

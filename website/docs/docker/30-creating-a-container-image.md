@@ -3,6 +3,14 @@ id: creating-images
 title: Creating Container Images
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/AOg8a1z8BIY",
+   title: "Creating Container Images"
+  }]}
+/>
+
 So far we have been using existing container images. This is nice to learn how to use them but in order to run your own workloads in containers, it is necessary to learn how to build container images yourself.
 
 ## From Dockerfile to Container Image
@@ -35,7 +43,7 @@ And run your new image:
 
 This will build a container local container image by the image name `hello-container-world` and tag it with the tag `0.1.0`.
 
-You should see `Hello World of Containers` in your terminal. 
+You should see `Hello World of Containers` in your terminal.
 
 Run it:
 

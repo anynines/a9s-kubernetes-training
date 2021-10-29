@@ -3,6 +3,17 @@ id: namespaces
 title: Namespaces
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
+   title: "Namespaces Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA",
+   title: "Namespaces Part 2"
+  }]}
+/>
+
 In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
 
 By default all operations are executed in the *default* namespace.

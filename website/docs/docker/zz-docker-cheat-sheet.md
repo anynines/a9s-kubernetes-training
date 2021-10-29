@@ -3,6 +3,13 @@ id: docker-cheatsheet
 title: Docker Cheat Sheet
 ---
 
+## Related Videos
+<VideoContainer
+list={[
+{src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk", title: "Publishing a Container Image & The Workflow"},
+]
+}></VideoContainer>
+
 Here is a brief list of frequently used `docker` commands.
 
 ## Building Images
