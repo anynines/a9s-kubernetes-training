@@ -2,6 +2,18 @@
 id: persistent-volumes
 title: Persistent Volumes
 ---
+
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
+   title: "Persistent Volumes Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
+   title: "Persistent Volumes Part 2"
+  }]}
+/>
+
 This lesson covers the theoritical background necessary to understand the Persistent Volume concept in Kubernetes.
 
 Persistent Volumes are introduced in this chapter although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and - although many Kubernetes users do that  applications should be kept as stateless as possible. Therefore, note that state should be managed by stateful data services as proposed in the 12 factor manifest [14].
@@ -45,7 +57,7 @@ The Persistent Volume concept implies two important questions:
 
 ### Persistent Volume Claim (PCV)
 
-Similar to Volumes, Persistent Volumes [2] are also mounted using the `volumeMount` field in the specification of a container. The volume mount basiscally says "mount the persistent volume `x` to the path `y` of my container `z`. But **before a volume mount can happen, the Persistent Volume must be requested using a Persistent Volume Claim**. Think of storage as "territory" and a Persistent Volume Claim as a claim to a particular part of that "territory" or storage. Hence, **a Persistent Volume Claim is a declarative description of a piece of storage requested by the user**. In this sense, a PVC may sound like 
+Similar to Volumes, Persistent Volumes [2] are also mounted using the `volumeMount` field in the specification of a container. The volume mount basiscally says "mount the persistent volume `x` to the path `y` of my container `z`. But **before a volume mount can happen, the Persistent Volume must be requested using a Persistent Volume Claim**. Think of storage as "territory" and a Persistent Volume Claim as a claim to a particular part of that "territory" or storage. Hence, **a Persistent Volume Claim is a declarative description of a piece of storage requested by the user**. In this sense, a PVC may sound like
 
 Give me:
 

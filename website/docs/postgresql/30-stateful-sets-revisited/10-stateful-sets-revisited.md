@@ -5,7 +5,7 @@ title: StatefulSets Revisited
 
 Equipped with a understanding of how PostgreSQL streaming replication works and how it is set up, the next step is to think about its automation. As a preliminary step - to sharpen the knives so to say - a closer look at the behavior of StatefulSets will help to find solutions to upcoming automation challenges quicker.
 
-Note: This chapter connects to the [StatefulSet chapters](/kubernetes/80-stateful-sets/stateful-sets) of the Kubernetes tutorial. **So in case you have deleted these resources go back and re-create the final PostgreSQL StatefulSet presented there in the `pg` namespace.**
+Note: This chapter connects to the [StatefulSet chapters](/kubernetes/stateful-sets/stateful-sets) of the Kubernetes tutorial. **So in case you have deleted these resources go back and re-create the final PostgreSQL StatefulSet presented there in the `pg` namespace.**
 
 ## A StatefulSet with Mulitple Replicas
 
@@ -91,7 +91,7 @@ Output:
 
 ## Cluster Connectivity
 
-As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with eachother. 
+As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with eachother.
 
 A first thought could be to create three headless Services, one for each member of the 3-replica StatefulSet but in fact this isn't necessary. Kubernetes will automatically propagate `SRV` records [1] in its DNS system [2]. Go and see yourself:
 
@@ -123,7 +123,7 @@ Within the utility Pod `nspct` execute:
 
     host -t SRV postgresql-svc.pg.svc.cluster.local
 
-Output: 
+Output:
 
     postgresql-svc.pg.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local.
     postgresql-svc.pg.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-1.postgresql-svc.pg.svc.cluster.local.
