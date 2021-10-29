@@ -75,3 +75,22 @@ code {
   opacity: 1.0;
   transition-duration: 250ms;
 }
+
+
+html[data-theme="light"] a[href="https://github.com/anynines/a9s-kubernetes-training"] {
+  background: rgb(242, 242, 242);
+  border-radius: 8px;
+  color: rgb(228, 131, 62);
+  padding: 4px 8px;
+  margin-right: 5px;
+  transition-duration: 0.2s;
+}
+
+html[data-theme="dark"] a[href="https://github.com/anynines/a9s-kubernetes-training"] {
+  background: #E4833E;
+  border-radius: 8px;
+  color: white;
+  padding: 4px 8px;
+  margin-right: 5px;
+  transition-duration: 0.2s;
+}

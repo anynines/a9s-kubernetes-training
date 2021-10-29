@@ -34,6 +34,11 @@ const siteConfig = {
           position: 'left'
         },
         {
+          href: 'https://github.com/anynines/a9s-kubernetes-training',
+          label: 'Fork me',
+          position: 'right'
+        },
+        {
           href: 'https://github.com/anynines',
           label: 'GitHub',
           position: 'right'
