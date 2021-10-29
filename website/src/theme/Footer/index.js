@@ -23,10 +23,10 @@ function FooterLink({ to, href, label, ...props }) {
         ? {
             target: '_blank',
             rel: 'noopener noreferrer',
-            href,
+            href
           }
         : {
-            to: toUrl,
+            to: toUrl
           })}
       {...props}
     >
@@ -48,18 +48,6 @@ function Footer() {
   const { copyright, links = [], logo = {} } = footer || {}
   const logoUrl = useBaseUrl(logo.src)
 
-  const forkMeUrl = 'https://github.com/anynines/' + siteConfig.projectName
-  const forkMeStyle = {
-    position: 'fixed',
-    zIndex: 500,
-    top: 12,
-    right: 90,
-    background: '#E4833E',
-    borderRadius: 8,
-    color: 'white',
-    padding: '4px 8px',
-  }
-
   if (!footer) {
     return null
   }
@@ -67,12 +55,9 @@ function Footer() {
   return (
     <footer
       className={classnames('footer', {
-        'footer--dark': footer.style === 'dark',
+        'footer--dark': footer.style === 'dark'
       })}
     >
-      <a href={forkMeUrl} style={forkMeStyle}>
-        Fork me on GitHub
-      </a>
       <div className='container'>
         {links && links.length > 0 && (
           <div className='row footer__links'>
@@ -91,7 +76,7 @@ function Footer() {
                           key={key}
                           className='footer__item'
                           dangerouslySetInnerHTML={{
-                            __html: item.html,
+                            __html: item.html
                           }}
                         />
                       ) : (
@@ -110,7 +95,7 @@ function Footer() {
           <div className='text--center'>
             <div
               dangerouslySetInnerHTML={{
-                __html: copyright,
+                __html: copyright
               }}
             />
           </div>
