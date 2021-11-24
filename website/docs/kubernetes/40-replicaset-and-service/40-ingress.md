@@ -2,6 +2,21 @@
 id: ingress
 title: Ingress
 ---
+
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
+   title: "Ingress Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
+   title: "Ingress Part 2"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/0QpZL6NOam4",
+   title: "Ingress Part 3"
+  }]}
+/>
+
 Pods and ReplicaSets can be used to start and operate containers. Services can be handy to provide named access to and distribute and load balance requests across Pods, **internally**.
 
 Most application systems have a public facing interface, too. In order to expose a web service or web application to outside world, an additional Kubernetes resource comes is useful: **the Ingress**.

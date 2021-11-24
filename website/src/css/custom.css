@@ -33,6 +33,10 @@ html[data-theme="dark"] {
   --ifm-footer-background-color: var(--a9s-blue-dark-05);
 }
 
+html[data-theme="dark"] hr {
+  border-color: var(--a9s-blue-dark-03);
+}
+
 html[data-theme=""] {
   --ifm-navbar-background-color: var(--a9s-blue);
   --ifm-navbar-link-color: var(--a9s-gray-light-01);
@@ -60,4 +64,33 @@ h1, h2, h3, h4, h5, h6 {
 code {
   background: var(--a9s-code-block-bg);
   color: var(--a9s-code-block-text); 
+}
+
+.fadedVideo {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
+.fadedVideo:hover {
+  opacity: 1.0;
+  transition-duration: 250ms;
+}
+
+
+html[data-theme="light"] a[href="https://github.com/anynines/a9s-kubernetes-training"] {
+  background: rgb(242, 242, 242);
+  border-radius: 8px;
+  color: rgb(228, 131, 62);
+  padding: 4px 8px;
+  margin-right: 5px;
+  transition-duration: 0.2s;
+}
+
+html[data-theme="dark"] a[href="https://github.com/anynines/a9s-kubernetes-training"] {
+  background: #E4833E;
+  border-radius: 8px;
+  color: white;
+  padding: 4px 8px;
+  margin-right: 5px;
+  transition-duration: 0.2s;
 }

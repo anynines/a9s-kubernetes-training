@@ -3,6 +3,20 @@ id: introduction
 title: Pods
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/BjXiO0NLO5A",
+   title: "Pods Part 1"
+},{
+   src: "https://www.youtube-nocookie.com/embed/4-5psDE9tBU",
+   title: "Pods Part 2"
+},{
+   src: "https://www.youtube-nocookie.com/embed/wiXQkoKM07g",
+   title: "Pods Part 3"
+  }]}
+/>
+
 After making first steps with containers most likely by using Docker on a local machine, it is normal to think in containers as the subject to deployments. Building a container image and starting a container from it is the idea with Docker. Not in Kubernetes.
 
 ## From Containers to Pods

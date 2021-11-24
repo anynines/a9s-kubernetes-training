@@ -3,6 +3,23 @@ id: replicasets
 title: ReplicaSets
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
+   title: "ReplicaSets Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
+   title: "ReplicaSets Part 2"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
+   title: "ReplicaSets Part 3"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
+   title: "ReplicaSets Part 4"
+  }]}
+/>
+
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 
 ## Hello World Web App
@@ -31,7 +48,7 @@ spec:
       labels:
         app: smpl-go-web-a
         version: "1"
-        tier: fontend  
+        tier: fontend
     spec:
       containers:
         - name: smpl-go-web-c
@@ -53,7 +70,7 @@ You should see a running pod names something like `smpl-go-web-rs-pkqwd` where t
 
 In case you seen the *status* `ContainerCreating` you can use:
 
-    kubectl get pods --watch 
+    kubectl get pods --watch
 
 To observe the current Pod state until completion.
 

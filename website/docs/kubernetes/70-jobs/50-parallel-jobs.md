@@ -3,6 +3,14 @@ id: parallel-jobs
 title: Parallel Jobs
 ---
 
+## Related Videos
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/A9c07XS9go4",
+   title: "Parallel Jobs"
+  }]}
+/>
+
 In this lesson you will learn about executing tasks in parallel by running multiple Pods simultaneously.
 
 ## Job Completion Count
