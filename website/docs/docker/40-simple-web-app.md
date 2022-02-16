@@ -56,7 +56,7 @@ The app is then running on port `4567` and can be reached via `http://localhost:
 
 **Create a new `Dockerfile`**.
 
-Again we startwith a container image specification:
+Again we start with a container image specification:
 
     FROM ruby:2.5-alpine
 
@@ -68,13 +68,13 @@ Again we startwith a container image specification:
 
     CMD ["ruby", "simple-sinatra-app.rb"]
 
-Again, the `FROM` statement specifies which container image is to be used as the **base image**. Instead, of going through the hussle of setting up a Ruby environment within the container, it is much easer to earch for a well-maintained Ruby base image, e.g. on DockerHub [3]. The `ruby:2.5-alpine` does the trick. In constrast to the regular `ruby:2.5` image the Alpine [4] version is much smaller. You can try it yourself and remove the `-alpine` at the end of the container image specification and build a container from it. The initial pull will take much longer as the `ruby:2.5` image - based on the Debian image [5] - is much larger.
+Again, the `FROM` statement specifies which container image is to be used as the **base image**. Instead, of going through the hassle of setting up a Ruby environment within the container, it is much easier to search for a well-maintained Ruby base image, e.g. on Docker Hub [3]. The `ruby:2.5-alpine` does the trick. In contrast to the regular `ruby:2.5` image, the Alpine [4] version is much smaller. You can try it yourself and remove the `-alpine` at the end of the container image specification and build a container from it. The initial pull will take much longer than the `ruby:2.5` image - based on the Debian image [5] -, since the latter is much larger.
 
 Within the container we define a working directory `/app`.
 
 Now we face a **challenge: how to get our application into the container**?
 
-That's what the line `COPY simple-sinatra-app.rb /app` does. It's important to understand that the container image during its building interacts with your local filesystem. Copy transfers a file from your container image working directory into the container image and thus - later - into the running container.
+That's what the line `COPY simple-sinatra-app.rb /app` does. It's important to understand that the container image during its build interacts with your local filesystem. Copy transfers a file from your local working directory into the container image and thus - later - into the running container.
 
 The line `CMD ["ruby", "simple-sinatra-app.rb"]` starts the application on container startup.
 
@@ -119,17 +119,17 @@ Now, start the container again with a port mapping:
 
     docker container run -p 8081:4567 simple-web-app:0.1.0
 
-**It still doesn't work!** You may ask yourselve whether the the port mapping wrong but it isn't!
+**It still doesn't work!** You may ask yourself whether the port mapping wrong, but it isn't!
 
-**Excercise**:
+**Exercise**:
 
-1. Determine the container id by using `docker container ps`
-2. Get a shell access into your container with `docker container exec -it <container-id> /bin/sh`. **Obviously, you have to insert your container id**.
+1. Determine the container ID by using `docker container ps`
+2. Get shell access into your container with `docker container exec -it <container-id> /bin/sh`. **Obviously, you have to insert your container ID**.
 3. Within the container execute `wget localhost:4567` and `cat index.html`.
 
-To your surprise the content of `index.html` says `Hello Container World` which means that the app works fine. Which brings us back to the idea that something is wrong with the container mapping. But it still isn't! So what is going on?
+To your surprise the content of `index.html` says `Hello Container World` which means that the app works fine. Which brings us back to the idea that something is wrong with the port mapping. But it still isn't! So what is going on?
 
-Admittedly, there is nothing wrong with neither the container image nor the `container run` command. In fact, **it's an application configuration issue** but the issue is very common and therefore it makes sense to know about it.
+Admittedly, there is nothing wrong with neither the container image nor the `container run` command. In fact, **it's an application configuration issue**, but the issue is very common and therefore it makes sense to know about it.
 
 The current version of our web app binds to the loopback network device [8] referred to by the IP address `127.0.0.1` inside the container. While you are within the container, e.g. using a shell `/bin/sh` and issue a command against the loop device such as `wget localhost:4567` the application responds as you are accessing it through the network device it is bound to.
 
@@ -154,7 +154,7 @@ If you are inside the container (`docker container exec -it <container-id> /bin/
 
 This means that there is the loopback device `lo` but also the device `eth0`. No guess which device needs to be used to make the app available for a port mapping. Exactly, `eth0`.
 
-In the case of the Sintra app this can be achieved with a code change. In a production grade web application, this would be implemented as a configuration option but for our example, the code change will suffice.
+In the case of the Sinatra app this can be achieved with a code change. In a production grade web application, this would be implemented as a configuration option but for our example, the code change will suffice.
 
     require 'sinatra'
 
@@ -164,7 +164,7 @@ In the case of the Sintra app this can be achieved with a code change. In a prod
     '<h1>Hello World!</h1>'
     end
 
-Binding to the special IP address `0.0.0.0` is a general way to bind a process to all IP addresses. While this is convenient, it may be dangerous if the machine had a public IP address and binding to it would be unintended. In this case, there are only two network device and it is ok to bind to both of them, so binding to `0.0.0.0` is acceptable.
+Binding to the special IP address `0.0.0.0` is a general way to bind a process to all IP addresses. While this is convenient, it may be dangerous if the machine had a public IP address and binding to it would be unintended. In this case, there are only two network devices and it is ok to bind to both of them, so binding to `0.0.0.0` is acceptable.
 
 Create a new container image version `0.2.0`:
 
@@ -181,7 +181,7 @@ And run it:
 This section contains a few lessons worth pointing out:
 
 1. By using existing images as base images, it is fairly easy to provide the required runtime environment for an application.
-2. If you want expose a port, ensure that the process to be exposed is bound to the right network interface and not only to the loopback device.
+2. If you want to expose a port, ensure that the process to be exposed is bound to the right network interface and not only to the loopback device.
 
 ## `Dockerfile` Reference
 There are many more instructions allowed in a `Dockerfile`. The Docker documentation contains a Dockerfile Reference section [6] which is worth a read.
@@ -190,9 +190,9 @@ There are many more instructions allowed in a `Dockerfile`. The Docker documenta
 
 1. Computerhope, Linux, Printf, https://www.computerhope.com/unix/uprintf.htm
 2. Ruby, https://www.ruby-lang.org
-3. DockerHub, https://hub.docker.com/
+3. Docker Hub, https://hub.docker.com/
 4. Alpine Linux, https://alpinelinux.org/
-5. Debian on DockerHub, https://hub.docker.com/_/debian
+5. Debian on Docker Hub, https://hub.docker.com/_/debian
 6. Docker Documentation, Dockerfile Reference, https://docs.docker.com/engine/reference/builder/
 7. Docker Desktop, https://www.docker.com/blog/get-to-know-docker-desktop/
 8. Wikipedia, Loopback Device, https://en.wikipedia.org/wiki/Loop_device

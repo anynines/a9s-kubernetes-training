@@ -60,7 +60,3 @@ The Kubernetes training has two major parts:
 The first part *Containerization* covers container basics such as containers, container images, container registries as well as how to build and publish simple container images.
 
 The second part *Kubernetes* then introduces the `kubectl` command followed by core Kubernetes concepts such as Pods, ReplicaSets, Deployments, ConfigMaps, Securities, Jobs and StatefulSets. Practical examples show their basic usage. Additionally, a few common failure scenarios are included illustrating how these issues can be fixed.
-
-## [paas.anynines.com](https://paas.anynines.com)
-
-The training has been written using `a9s Kubernetes` as offered at https://paas.anynines.com. Reach out to the [support](mailto:support@anynines.com) to get an early access.

@@ -15,7 +15,7 @@ In this lesson you will learn about executing tasks in parallel by running multi
 
 ## Job Completion Count
 
-In the previous example using `kubectl get jobs` you may have noticed the field `COMPLETIONS` whose value was `1/1` in case a Job has been completed successfully. More precisely, the count determines the number of successful Pod executions as part of the Job. In case of a failing Job, the failing Pod has been recreated and the completion count has been reached even though the source code describe the task has been very unreliable.
+In the previous example using `kubectl get jobs` you may have noticed the field `COMPLETIONS` whose value was `1/1` in case a Job has been completed successfully. More precisely, the count determines the number of successful Pod executions as part of the Job. In case of a failing Job, the failing Pod has been recreated, and the completion count has been reached even though the source code describing the task has been very unreliable.
 
 There are tasks requiring more than one iteration to fully accomplish the underlying objective. For this purpose Kubernetes Jobs allow to specify the number of desired completions, e.g. 2 completions by adding `completions: 2`.
 
@@ -60,11 +60,11 @@ You should see two Pods. If things happen too fast increase the number of comple
     one-off-job-two-completions-pb44m   0/1     ContainerCreating   0          0s
     one-off-job-two-completions-pb44m   0/1     Completed           0          3s
 
-A close observation also reveals that **the Pods run in sequence**. This may be desired if the task requires ordinality and the execution sequence matters to the the task outcome. However, if there is no ordinality requirement **running the Jobs Pods in sequence is a waste of time**.
+A close observation also reveals that **the Pods run in sequence**. This may be desired if the task requires ordinality and the execution sequence matters to the task outcome. However, if there is no ordinality requirement **running the Jobs Pods in sequence is a waste of time**.
 
 ## Parallel Job Execution
 
-Luckily Kubernets supports parallel Job execution out of the box. Changing the Job definition to enable parallelism is as easy as pie by adding a spec attributed `parallelism: 2`.
+Luckily Kubernetes supports parallel Job execution out of the box. Changing the Job definition to enable parallelism is as easy as pie by adding a spec attributed `parallelism: 2`.
 
 Create the Job description in file `70-simple-job-two-completions-parallel.yaml`:
 

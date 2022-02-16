@@ -121,7 +121,7 @@ At the end of the output a tabular paragraph `Events` tells us about the lifecyc
 
 ## Exercise
 
-Try to fix the above *configmap not found* issue.
+Try to fix the above *ConfigMap not found* issue.
 
 If you have fixed the issue, the container named `busybox-config` should have been started successfully.
 

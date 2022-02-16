@@ -16,7 +16,7 @@ title: Namespaces
 
 In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
 
-By default all operations are executed in the *default* namespace.
+By default, all operations are executed in the *default* namespace.
 
 While namespaces can be used to separate workloads of different users such as different development teams, the level of isolation provided by namespaces is not sufficient for tenant isolation. So in a multi-user environment where there is no trust relationship among the users, the deployment of a dedicated Kubernetes cluster per user or user group is common.
 
@@ -39,7 +39,7 @@ metadata:
   name: k8s-training
 ```
 
-and applied
+and applied using
 
     kubectl apply -f 30-namespace.yaml
 
@@ -51,7 +51,7 @@ In order to avoid the necessity to specify a `--namespace k8s-training` for each
 
     kubectl config set-context k8s-training --namespace k8s-training --cluster=staging.a9s.io --user staging.a9s.io
 
-Note: Your cluster may have a different *clustername* and *username*. You can obtain both pieces of information using the following command:
+Note: Your cluster may have a different *cluster name* and *username*. You can obtain both pieces of information using the following command:
 
     kubectl config view
 

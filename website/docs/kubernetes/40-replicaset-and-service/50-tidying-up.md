@@ -1,17 +1,17 @@
 ---
 id: tidyup
-title: Tyding Up
+title: Tidying Up
 ---
 
 ## Related Videos
 <VideoContainer
   list={[{
    src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
-   title: "Tyding Up"
+   title: "Tidying Up"
   }]}
 />
 
-Removing all artefacts is simple: replace `apply` with `delete` in all `kubectl`-commands and execute them in reverse order:
+Removing all artifacts is simple: replace `apply` with `delete` in all `kubectl`-commands and execute them in reverse order:
 
     kubectl delete -f 40-ingress-hello-world-a9s.yaml
     kubectl delete -f 30-service-hello-world.yaml

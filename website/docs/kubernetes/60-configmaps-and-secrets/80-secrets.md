@@ -41,13 +41,13 @@ Kubernetes offers a tooling to manage TLS Certificates as proposed in the ACME d
 
 Kubernetes:
 
-> lets you provision TLS certificates signed by a Certificate Authority (CA) that you control. These CA and certificates can be used by your workloads to establish trust. [7]
+> Lets you provision TLS certificates signed by a Certificate Authority (CA) that you control. These CA and certificates can be used by your workloads to establish trust. [7]
 
 See [7] to learn more about managing TLS Certificates with Kubernetes as the topic is outside of this lesson.
 
 ### Docker Registry
 
-So far all container images have been pulled from dockerhub[5], the Kubernetes default registry. Often there are reasons to use alternative container registries. One reason may be to chose a registry being within the same network as the Kubernetes cluster so that traffic of pulling container images is contained within the private network.
+So far all container images have been pulled from Docker Hub[5], the Kubernetes default registry. Often there are reasons to use alternative container registries. One reason may be to choose a registry being within the same network as the Kubernetes cluster so that traffic of pulling container images is contained within the private network.
 
 In the case a private registry is to be used Kubernetes has to authenticate requests issued towards the registry. This is the purpose of Docker Registry Secrets.
 
@@ -85,7 +85,7 @@ In order to get more information about the Secret `kubectl describe` helps:
 
     kubectl describe secret area51
 
-This won't print the Secret's values but it will show its metadata and keys.
+This won't print the Secret's values, but it will show its metadata and keys.
 
 **Secret values can be decoded** by issuing:
 
@@ -101,7 +101,7 @@ Secrets can be edited by using:
 
     kubectl edit secrets area51
 
-On most unix/linux computers this will open a local text editor open such as `vim` [8].
+On most Unix/Linux computers this will open a local text editor open such as `nano` or `vim` [8].
 
 Saving the edited Secret will automatically `replace` the secret as if `kubectl replace` had been executed.
 
@@ -113,13 +113,13 @@ Do you receive the following error?
 
     error: secrets "area51" could not be patched: error decoding from json: illegal base64 data at input byte 4
 
-The reason why this command didn't succeed is because **Secret values are base64 encoded by Kubernetes**. This is not encryption but at least it obfuscated values so that a brief look at them doesn't tell the secret. This is not really safe but we'll come back to this later. For now, just be aware that Secret values are base64 encoded and therefore **pasting plain text values won't work** (well it may be possible to store the Secret but you'll have trouble during decoding later).
+The reason why this command didn't succeed is that **Secret values are base64 encoded by Kubernetes**. This is not encryption but at least it obfuscated values so that a brief look at them doesn't tell the secret. This is not really safe, but we'll come back to this later. For now, just be aware that Secret values are base64 encoded and therefore **pasting plain text values won't work** (well it may be possible to store the Secret, but you'll have trouble during decoding later).
 
-So how can a string be base64 encoded? There are plenty of ways but on linux/unix machines this may do the trick:
+So how can a string be base64 encoded? There are plenty of ways but on Unix/Linux machines this may do the trick:
 
     echo "test" | base64
 
-The resulting string can be pasted into the Secret during editting.
+The resulting string can be pasted into the Secret during editing.
 
 As with ConfigMaps changes to Secrets are automatically available in consuming Pods after a few seconds **if the Secret has been mounted as a volume**.
 
@@ -137,7 +137,7 @@ Using Secrets from a Pod is similar to using ConfigMaps.
 
 ### Exercise
 
-Use your new knowledge learned during the the ConfigMap lessons and:
+Use your new knowledge learned during the ConfigMap lessons and:
 
 1. Create a Pod and consume the previously created Secret `area51` as environment variables.
 2. Create a Pod and consume the previously created Secret `area52` as a mounted volume.
@@ -146,15 +146,15 @@ Hints:
 
 1. Use `secretKeyRef` instead of `configKeyRef`.
 2. Use `secret` instead of `configMap` when describing the `volume`. Also change `name` to `secretName` to refer to your Secret.
-3. Read the Kubernetes documentation [3] if you want to see examplary Pod definitions.
+3. Read the Kubernetes documentation [3] if you want to see exemplary Pod definitions.
 
 ## How Secret Secrets are
 
 While Secrets are meant to deal with access credentials such as certificates and passwords, it surprises that - by default - **Kubernetes stores Secrets into its etcd[1] data store without encryption**. However, it is possible to configure a Kubernetes cluster to encrypt Secrets [2].
 
-**Using Secrets makes it easier to apply encryption as a cluster wide setting**. It is also to be expected that the handling of Secrets becomes more secure with future Kubernetes releaes.
+**Using Secrets makes it easier to apply encryption as a cluster wide setting**. It is also to be expected that the handling of Secrets becomes more secure with future Kubernetes releases.
 
-Hence, **even when Secrets are unencrypted, it is a best practise to use them**.
+Hence, **even when Secrets are unencrypted, it is a best practice to use them**.
 
 ## Links
 
@@ -162,7 +162,7 @@ Hence, **even when Secrets are unencrypted, it is a best practise to use them**.
 2. Kubernetes Documentation, Tasks, Encrypting Secret Data at Rest, https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
 3. Kubernetes Documentation, Concepts, Secrets, https://kubernetes.io/docs/concepts/configuration/secret/
 4. Kubernetes Design Document, https://github.com/kubernetes/community/blob/master/contributors/design-proposals/auth/secrets.md
-5. dockerhub, https://hub.docker.com/
+5. Docker Hub, https://hub.docker.com/
 6. ACME - Automatic Certificate Management Environment, https://github.com/ietf-wg-acme/acme/
 7. Kubernetes Documentation, Tasks, Manage TLS Certificates in a Cluster, https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
 8. Vim - The Ubiquitous Text Editor, https://www.vim.org/

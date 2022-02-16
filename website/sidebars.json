@@ -24,6 +24,7 @@
         "type": "category",
         "label": "Basics",
         "items": [
+          "kubernetes/basics/prerequisite",
           "kubernetes/basics/kubectl",
           "kubernetes/basics/namespaces",
           "kubernetes/basics/container-shell"

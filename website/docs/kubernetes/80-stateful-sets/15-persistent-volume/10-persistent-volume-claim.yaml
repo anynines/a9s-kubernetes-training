@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: simple-pv-claim
 spec:
-  storageClassName: default
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:

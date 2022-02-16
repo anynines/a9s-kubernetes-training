@@ -3,13 +3,13 @@ id: streaming-replication-configmaps
 title: Streaming Replication ConfigMaps
 ---
 
-As mentioned previously, the `postgresql.conf` needs refinement to activate the streaming replication. For this purpose we create a local `postgresql.conf` which will be mounted in to the Pods using ConfigMaps. Also we need to setup the authentication in `pg_hba.conf`.
+As mentioned previously, the `postgresql.conf` needs refinement to activate the streaming replication. For this purpose we create a local `postgresql.conf` which will be mounted in to the Pods using ConfigMaps. Also, we need to set up the authentication in `pg_hba.conf`.
 
 ## ConfigMaps and Volume Mounts
 
-Beside of getting the configuration files `postgresql.conf` and `pg_hba.conf` right, it is also necessary to inject these configuration files into the StatefulSet while having the option to update these config files throughout the lifecycle of the StatefulSet. As there can be use cases requiring the modification of config files but do not require a modification of the underlying container, configs should be maintained separately from the container images. Even a dedicated container image would be too inflexible. So as the name implies, the Kubernets ConfigMap is a suitable tool to handle this demand well.
+Beside of getting the configuration files `postgresql.conf` and `pg_hba.conf` right, it is also necessary to inject these configuration files into the StatefulSet while having the option to update these config files throughout the lifecycle of the StatefulSet. As there can be use cases requiring the modification of config files but do not require a modification of the underlying container, configs should be maintained separately from the container images. Even a dedicated container image would be too inflexible. So as the name implies, the Kubernetes ConfigMap is a suitable tool to handle this demand well.
 
-Each ConfigMap may contain a mulitple key value pairs. As seen in previous lessons, it is possible to create such ConfigMaps from files where the filename becomes the key and their contents are turned into the corresponding values.
+Each ConfigMap may contain a multiple key value pairs. As seen in previous lessons, it is possible to create such ConfigMaps from files where the filename becomes the key and their contents are turned into the corresponding values.
 
 Once such a ConfigMap is created, it can be mounted into containers as a Volume. This will expose keys as files. To the container these config files will appear as ordinary files. In the StatefulSet definition we will then mount the ConfigMap into the `/etc/postgresql` directory.
 
@@ -27,11 +27,11 @@ Create the ConfigMap:
 
 The ConfigMap `postgresql-configs` will then be mounted into the StatefulSet as a Volume mount. This will create a directory containing the `postgresql.conf` file.
 
-By default PostgreSQL will search for the `postgresql.conf` file in the `$PGDATA` directory. This is not desired as `$PGDATA` is already a Volume mount. Therefore, it is necessary to point PostgreSQL to the exact filepath of the designated `postgresql.conf` file. The exclusive way to achieve this is by starting PostgreSQL with the following command line option:
+By default, PostgreSQL will search for the `postgresql.conf` file in the `$PGDATA` directory. This is not desired as `$PGDATA` is already a Volume mount. Therefore, it is necessary to point PostgreSQL to the exact file path of the designated `postgresql.conf` file. The exclusive way to achieve this is by starting PostgreSQL with the following command line option:
 
     postgresql -c config_file=/etc/postgresql/postgresql.conf
 
-The final `postgresql.conf` including some adjustements that have yet to be discussed looks like this:
+The final `postgresql.conf` including some adjustments that have yet to be discussed looks like this:
 
 ```conf
 # -----------------------------
@@ -95,7 +95,7 @@ In order to allow secondaries to connect to the master to retrieve replicas, the
 
 As all secondaries should be able to become primaries, it makes sense to configure all nodes right from the beginning.
 
-Similar to `postgres.conf` the `pg_hba.conf` file is assumed to be located in the `$PGDATA` dir. While it is possible to supply the `postgres` startup command with a `pg_hba.conf` location there is a more elegant way: set the location in the `postgres.conf` file.
+Similar to `postgres.conf` the `pg_hba.conf` file is assumed to be located in the `$PGDATA` directory. While it is possible to supply the `postgres` startup command with a `pg_hba.conf` location there is a more elegant way: set the location in the `postgres.conf` file.
 
 Create a `pg_hba.conf` and **recreate the `postgresql-configs` Config Map**:
 
@@ -169,7 +169,7 @@ The required PostgreSQL configuration files `postgresql.conf` and `pg_hba.conf` 
 
 `postgresql.conf` activates write-ahead logging and sets the path to our custom version of `pg_hba.conf` while the latter creates the necessary prerequisites for authenticating the `replication` and `postgres` users.
 
-Both files are stored in the `postgresql-configs` ConfigMap. This way the config files can be updated independently from the PostgreSQL container image.
+Both files are stored in the `postgresql-configs` ConfigMap. This way the config files can be updated independently of the PostgreSQL container image.
 
 In the following we will define the StatefulSet specification and look into how the replication user is created.
 
