@@ -14,9 +14,9 @@ title: Jobs
   }]}
 />
 
-ReplicaSets and Deployments are Kubernetes resources to describe long running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
+ReplicaSets and Deployments are Kubernetes resources to describe long-running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
 
-However, there are also - compared to LRPs - **short lived workloads**. These include **one-off tasks** as well as **tasks requiring recurring execution** both of varying complexity.
+However, there are also - compared to LRPs - **short-lived workloads**. These include **one-off tasks** as well as **tasks requiring recurring execution** both of varying complexity.
 
 **One-Off Tasks** will be covered in this lesson while **recurring tasks will be covered in the CRON Job Lesson**.
 
@@ -59,7 +59,7 @@ Retrieve the corresponding job:
 
     kubectl get jobs
 
-As you can see there is no job because `kubectl run` doesn't create one. It's just a regular Pod. If that gets the (methaphorical) job done `kubectl run` is a way to go.
+As you can see there is no job because `kubectl run` doesn't create one. It's just a regular Pod. If that gets the (metaphorical) job done `kubectl run` is a way to go.
 
 Now proceed with creating a real Job in file `20-simple-job.yaml`:
 
@@ -103,7 +103,7 @@ Let's use this Label obtained from our Job metadata to query the corresponding P
 
     kubectl get pods -l job-name=simple-one-off-job-from-yaml
 
-You should find a completed Pod with a name similar to `simple-one-off-job-from-yaml-bbwkw`. The suffix `bbwkw` is a randon string attached by the JobController. Looking up the Pod of a Job in an environment with many Pods may become tricky so searching by label comes in handy.
+You should find a completed Pod with a name similar to `simple-one-off-job-from-yaml-bbwkw`. The suffix `bbwkw` is a random string attached by the JobController. Looking up the Pod of a Job in an environment with many Pods may become tricky so searching by label comes in handy.
 
 Now we can also have a look at the Pods log:
 

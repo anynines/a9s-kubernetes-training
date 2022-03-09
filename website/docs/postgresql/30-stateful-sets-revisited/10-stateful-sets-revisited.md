@@ -7,9 +7,9 @@ Equipped with a understanding of how PostgreSQL streaming replication works and 
 
 Note: This chapter connects to the [StatefulSet chapters](/kubernetes/stateful-sets/stateful-sets) of the Kubernetes tutorial. **So in case you have deleted these resources go back and re-create the final PostgreSQL StatefulSet presented there in the `pg` namespace.**
 
-## A StatefulSet with Mulitple Replicas
+## A StatefulSet with Multiple Replicas
 
-A highgly available PostgreSQL cluster should have `2n+1 | n>= 1` Pods. These Pods have to discover another as they need to establish network connections as part of the replication and cluster management communication.
+A highly available PostgreSQL cluster should have `2n+1 | n>= 1` Pods. These Pods have to discover another as they need to establish network connections as part of the replication and cluster management communication.
 
 ### The Default is Replicas: 3
 
@@ -58,7 +58,6 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "default"
       resources:
         requests:
           storage: 1Gi
@@ -91,7 +90,7 @@ Output:
 
 ## Cluster Connectivity
 
-As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with eachother.
+As stated earlier, in order to build a replicating PostgreSQL cluster, the individual cluster nodes must be able to communicate with each other.
 
 A first thought could be to create three headless Services, one for each member of the 3-replica StatefulSet but in fact this isn't necessary. Kubernetes will automatically propagate `SRV` records [1] in its DNS system [2]. Go and see yourself:
 
@@ -117,7 +116,7 @@ Output:
 
 Remember that the headless Service uses DNS entries exclusively and does not perform a layer-4 load balancing.
 
-When boostrapping the Pods of the PostgreSQL we will need more control than this as we need to reach out to each Pod by its role or even its name. Reaching to a particular node in the StatefulSet is simple as shown in the following.
+When bootstrapping the Pods of the PostgreSQL we will need more control than this as we need to reach out to each Pod by its role or even its name. Reaching to a particular node in the StatefulSet is simple as shown in the following.
 
 Within the utility Pod `nspct` execute:
 
@@ -154,7 +153,7 @@ Another important fact about the headless Service is that it will reflect upon c
 
 ## Summary
 
-The experiments with the StatefulSet show that the combination with a headless Service provide a stable network identity required for the automation of a PostgreSQL stream replication cluster. The headless Service provides an endpoint that resolves to all Pods of the StatefulSet but also provides endpoints to reach out to specific Pods while being up to date with underlying Pod changes. This is very promising but we have to keep in eye on the timing as propagating DNS entries may take a few seconds. Hence, race conditions may occur during the Pod startup between the assumption about the presence of DNS entry and its actual manifestation.
+The experiments with the StatefulSet show that the combination with a headless Service provides a stable network identity required for the automation of a PostgreSQL stream replication cluster. The headless Service provides an endpoint that resolves to all Pods of the StatefulSet but also provides endpoints to reach out to specific Pods while being up-to-date with underlying Pod changes. This is very promising, but we have to keep in eye on the timing as propagating DNS entries may take a few seconds. Hence, race conditions may occur during the Pod startup between the assumption about the presence of DNS entry and its actual manifestation.
 
 # Links
 

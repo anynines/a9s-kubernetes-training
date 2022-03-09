@@ -26,7 +26,7 @@ The output `Hello World` will appear in your terminal.
 
 Note, Busybox [8] is a tiny bundle of UNIX utilities. Consequently, the official Busybox container image [9] is also very small. Another interesting light-weight Linux container image is Alpine [10][11].
 
-Small container images are beneficial as it reduces the time to distribute new versions across the network. Large images have hundreds of MBs whereas small images comprise a few megabytes only.
+Small container images are beneficial as they reduce the time to distribute new versions across the network. Large images have hundreds of MBs whereas small images comprise a few megabytes only.
 
 ### List Running Containers
 
@@ -44,20 +44,20 @@ In order to see stopped containers execute:
 
     docker container ls --all
 
-This will show you the container along with some meta data such as:
+This will show you the container along with some metadata such as:
 
     CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS                      PORTS               NAMES
     47e4a58fbf81        busybox                           "printf 'Hello World…"   2 minutes ago       Exited (0) 2 minutes ago                        hopeful_hoover
 
 ## Starting and Stopping Containers With a Port Mapping
 
-In case the process to start within the container opens a port, the container port may interfere with a daemon running on your local computer. For this reason a port mapping is required that maps the container port to a vacant port on your machine:
+In case a process within the container opens a port, the container port may interfere with a daemon running on your local computer. For this reason a port mapping is required that maps the container port to a vacant port on your machine:
 
     docker container run -p 8081:8080 fischerjulian/smpl-go-web:1.0.0
 
 This will map the port `8080`of the container to the port `8081`. Open your browser and navigate to `http://localhost:8081`. You should see a simple web app.
 
-As this container starts a long running process, the container will not automatically terminate:
+As this container starts a long-running process, the container will not automatically terminate:
 
     docker container ls
 
@@ -74,7 +74,7 @@ Alternatively you can also use the `CONTAINER ID` interchangeably with the conta
 
     docker container stop a1eecf6fa762
 
-And in case the container doesn't stop you can escalate from SIGTERM to a forcefull SIGKILL which should terminate the container process immediately:
+And in case the container doesn't stop you can escalate from SIGTERM to a forceful SIGKILL which should terminate the container process immediately:
 
     docker container kill dazzling_swanson
 
@@ -92,7 +92,7 @@ You can start a container and detach the terminal from it:
 
     docker container run -d busybox sleep 600
 
-This will start a container that sits there for 10 minutes and return its full `CONTAINER ID`. The container ids you see in most CLI commands such as `docker container ls` is just the a truncated tail of the actual id.
+This will start a container that sits there for 10 minutes and return its full `CONTAINER ID`. The container IDs you see in most CLI commands such as `docker container ls` is just the truncated tail of the actual ID.
 
 ### Obtaining an Interactive Shell to a Detached Container
 
@@ -100,14 +100,14 @@ You can obtain an interactive shell and access the container assuming its `CONTA
 
     docker exec -it affectionate_wright /bin/sh
 
-In the shell you can enter `ps` to list running linux processes and you see something similar to:
+In the shell you can enter `ps` to list running Linux processes, and you see something similar to:
 
     PID   USER     TIME  COMMAND
      1 root      0:00 sleep 600
      6 root      0:00 /bin/sh
     12 root      0:00 ps
 
-The process with `PID 1` is the `sleep 600` command and argumend passed during the container start. This tells you that you actually logged into the existing container and did not start a new one.
+The process with `PID 1` is the `sleep 600` command and argument passed during the container start. This tells you that you actually logged into the existing container and did not start a new one.
 
 While being in the interactive shell, create a new file within the container:
 

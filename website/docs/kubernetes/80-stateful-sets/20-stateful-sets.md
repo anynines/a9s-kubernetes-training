@@ -19,7 +19,7 @@ It is therefore not surprising that with Kubernetes 1.5 StatefulSets have been i
 
 * Pod identities based on sequential numbering (Pod 1, Pod 2, Pod 3, ...)
 * Stable network identities based on Pod identities
-* Orderinality allowing Pods to be created, updated or deleted in their particular order (Pod 1 to Pod 3 and vice versa).
+* Ordinality allowing Pods to be created, updated or deleted in their particular order (Pod 1 to Pod 3 and vice versa).
 
 ## Pod Identities
 
@@ -29,7 +29,7 @@ A stable identity of Pods in a StatefulSet is useful as the Pods may change, e.g
 
 The ordinality requires Pods of a StatefulSet to having associated numbers such as `pod-1`, `pod-2` and `pod-3`. Using numbers it is possible to sort the list of Pods and process them *in order*.
 
-A common scenario where ordinality - or at least individual node identities - are essential is asynchronous replication with a primary node to which all write commands are directed and a set of secondary nodes which replicate all operations beformed on the master and be used as read-only-nodes. In these cases certain administrative tasks need to performed on the primary node only. An example for a more complex workflow involving node identities it the upgrade from PostgreSQL 11.x to 12.x [2] which requires orchestration of actions in a particular sequence applied to indivudal or groups of nodes. Concepts such as ReplicaSets where all Pods are considered equal therefore work for statless apps but not for stateful databases.
+A common scenario where ordinality - or at least individual node identities - are essential is asynchronous replication with a primary node to which all write commands are directed and a set of secondary nodes which replicate all operations performed on the master and be used as read-only-nodes. In these cases certain administrative tasks need to performed on the primary node only. An example for a more complex workflow involving node identities is the upgrade from PostgreSQL 11.x to 12.x [2] which requires orchestration of actions in a particular sequence applied to individual or groups of nodes. Concepts such as ReplicaSets where all Pods are considered equal therefore work for stateless apps but not for stateful databases.
 
 ## When to Use a StatefulSet?
 
@@ -49,7 +49,7 @@ A stable network identity can be provided to a StatefulSet by using a headless S
 
 ## Hands-On
 
-There is more to know about StatefulSet but this is enough theory for now. The next lessons are more hands-on with practical examples and exercies along with additional information about StatefulSets.
+There is more to know about StatefulSet but this is enough theory for now. The next lessons are more hands-on with practical examples and exercises along with additional information about StatefulSets.
 
 ## Links
 1. Kubernetes Documentation, Concepts, StatefulSets, https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/

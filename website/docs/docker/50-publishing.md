@@ -11,15 +11,15 @@ title: Publishing a Container Image
 />
 
 
-So far you have created your own container images and started them, locally. In order to make use of container images in an production environment such as a Kubernetes cluster, it is necessary to distribute container images to those clusters. As described in the introduction, the distribution of container images is supported by so called *container registries*.
+So far you have created your own container images and started them, locally. In order to make use of container images in an production environment such as a Kubernetes cluster, it is necessary to distribute container images to those clusters. As described in the introduction, the distribution of container images is supported by so-called *container registries*.
 
 **In this lesson, you will upload your previously created web app to a public container registry**.
 
-## DockerHub
+## Docker Hub
 
-The widely used DockerHub container registry acts as a community hub to make container images publicly available. So even in case you use a private registry, it is likely that you will also interact with DockerHub, for example during the creation of your images when referring to other base images. Also, in case you want to share a container image publicly, DockerHub is a valid choice.
+The widely used Docker Hub container registry acts as a community hub to make container images publicly available. So even in case you use a private registry, it is likely that you will also interact with Docker Hub, for example during the creation of your images when referring to other base images. Also, in case you want to share a container image publicly, Docker Hub is a valid choice.
 
-Create your own DockerHub account. It is free and you will need it during the following lessons.
+Create your own Docker Hub account. It is free and you will need it during the following lessons.
 
     https://hub.docker.com/signup
 
@@ -31,7 +31,7 @@ Before you can upload anything you need to login:
 
     docker login
 
-There is no need to specify DockerHub as it is docker's default registry. All you have to do is to provide your username and password.
+There is no need to specify Docker Hub as it is docker's default registry. All you have to do is to provide your username and password.
 
 ## Publishing a Container Image
 
@@ -68,7 +68,7 @@ So let's upload the image:
 
     docker push fischerjulian/simple-web-app:0.2.0
 
-Once uploaded you can view the result on the DockerHub website: https://hub.docker.com/r/fischerjulian/simple-web-app or respectively: `https://hub.docker.com/r/<your-dockerhub-username>/simple-web-app`.
+Once uploaded you can view the result on the Docker Hub website: https://hub.docker.com/r/fischerjulian/simple-web-app or respectively: `https://hub.docker.com/r/<your-dockerhub-username>/simple-web-app`.
 
 As the image is already stored locally we can run the image with:
 
@@ -84,9 +84,9 @@ To pull an image from the remote repository execute:
 
 ### The `latest` Tag
 
-Often you will see a tag named `latest` which appears to have a special meaning. In case you have pushed your first container image in the above lesson, go to the DockerHub website and see if there is such a tag. It is not there because `latest` is not a special tag. There is no guarantee that `latest` will point to the most recent version of an image. This is entirely up to the author of a container image or a respective CI/CD pipeline.
+Often you will see a tag named `latest` which appears to have a special meaning. In case you have pushed your first container image in the above lesson, go to the Docker Hub website and see if there is such a tag. It is not there because `latest` is not a special tag. There is no guarantee that `latest` will point to the most recent version of an image. This is entirely up to the author of a container image or a respective CI/CD pipeline.
 
-Additionally, **it is wise to use explicit version numbers**. By using an explicit version, depdencies are declared explicitly. You always know what you get. In the above example the base image was set to `ruby:2.5-alpine`. This way updating Ruby - which may break the contract to Sinatra or the Sintra application - only occurs when you - the developer - explicitly change the version of the base image. Undoubtedly, you should update your software regularly but with explicit version you avoid unexpected upgrades escalations.
+Additionally, **it is wise to use explicit version numbers**. By using an explicit version, dependencies are declared explicitly. You always know what you get. In the above example the base image was set to `ruby:2.5-alpine`. This way updating Ruby - which may break the contract to Sinatra or the Sinatra application - only occurs when you - the developer - explicitly change the version of the base image. Undoubtedly, you should update your software regularly but with explicit version you avoid unexpected upgrades escalations.
 
 ## Links
 

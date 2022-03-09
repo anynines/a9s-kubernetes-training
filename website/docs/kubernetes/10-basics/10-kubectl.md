@@ -15,7 +15,7 @@ In this lesson you will learn how to interact with a Kubernetes cluster using th
 
 ## Identify Your Kubernetes Version
 
-In order to determine the version of both your Kubernetes client (CLI) and Kubernetes servicer (API) issue the following command:
+In order to determine the version of both your Kubernetes client (CLI) and Kubernetes service (API) issue the following command:
 
     kubectl version
 
@@ -29,7 +29,7 @@ It's telling you the API endpoint of the selected Kubernetes cluster which shoul
 
 The Kubernetes documentation explains [how to configure multiple clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
 
-## Use an HTTP Proxy to Access the Kubernets API
+## Use an HTTP Proxy to Access the Kubernetes API
 
 By using
 
@@ -41,7 +41,7 @@ The `kubectl` command takes care of the authentication against the Kubernetes AP
 
 ## Links
 
-* Kubernetes Documentation, Tasks, Use an HTTP Proxy to Access the Kubernets API, https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/
+* Kubernetes Documentation, Tasks, Use an HTTP Proxy to Access the Kubernetes API, https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/
 
 * Kubernetes Documentation, Tasks, Configure Access to Multiple Clusters, https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 

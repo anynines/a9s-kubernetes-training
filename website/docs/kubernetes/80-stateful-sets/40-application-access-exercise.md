@@ -15,25 +15,25 @@ title: Application Access to a StatefulSet
 
 After setting up the database and connecting to it using the `psql` utility, the next step is to access the database with an application running on Kubernetes.
 
-At this point we should rember that Kubernetes is not a fully featured platform but rather platform for building platforms [4]. So in contrast to technologies such as Cloud Foundry [5] there is no such thing as a Service Binding as defined in the Open Service Broker API [6] where application developers can bind apps to service instances such as PostgreSQL with a single command. This will then create a dedicated database user which will be deleted if the application is unbound from the service. This requires a so called Service Broker such as implemented by the a9s Data Services [7] which can then be integrated with Cloud Foundry and Kubernetes. The integration of Service Brokers with Kubernetes requires the Service Catalog extension [8]. However, this lesson is about core Kubernetes so Service Bindings won't be covered in detail.
+At this point we should remember that Kubernetes is not a fully featured platform but rather platform for building platforms [4]. So in contrast to technologies such as Cloud Foundry [5] there is no such thing as a Service Binding as defined in the Open Service Broker API [6] where application developers can bind apps to service instances such as PostgreSQL with a single command. This will then create a dedicated database user which will be deleted if the application is unbound from the service. This requires a so-called Service Broker such as implemented by the a9s Data Services [7] which can then be integrated with Cloud Foundry and Kubernetes. The integration of Service Brokers with Kubernetes requires the Service Catalog extension [8]. However, this lesson is about core Kubernetes, so Service Bindings won't be covered in detail.
 
-With the absense of Service Bindings we fall back to using Kubernetes Secrets as covered in earlier chapters. Hence, with a bare Kubernetes it is up to the user to manage Secrets to grand and/or revoke access to StatefulSets.
+With the absence of Service Bindings we fall back to using Kubernetes Secrets as covered in earlier chapters. Hence, with a bare Kubernetes it is up to the user to manage Secrets to grand and/or revoke access to StatefulSets.
 
 You may ask yourself **why not use the existing `postgres` user**?
 
-In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the *least privilege principle* [9]. According to this principle, the application user should be limited to the minimum set of privileges necesseary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary.
+In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the *least privilege principle* [9]. According to this principle, the application user should be limited to the minimum set of privileges necessary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary.
 Another major drawback of using shared credentials among users is that the credentials have to be changed if a user is removed. Think about a team member who knew the `postgresql` password and then left the team. In order to secure access to the database, the password needs to be changed. If the password is used by ten other users including application machine users, the effort for updating the password is highly wasteful.
-With a dedicated set of credentials - a database username and password - per user is therefore much simpler. It allows revoking access or modifying privileges on a per user level easily.
+With a dedicated set of credentials - a database username and password - per user is therefore much simpler. It allows revoking access or modifying privileges on a per-user level easily.
 
 ## Example
 
-In this example you will create a another Secret, deploy a simple application and gran the application access to the PostgreSQL StatefulSet.
+In this example you will create another Secret, deploy a simple application and gran the application access to the PostgreSQL StatefulSet.
 
 ### The Example Application
 
-The example uses a very [simple web app [1]](https://golang.org/) written in Go [2]. The corresponding container image can be found on [DockerHub [3]](https://hub.docker.com/repository/docker/fischerjulian/smpl-go-pg).
+The example uses a very [simple web app [1]](https://golang.org/) written in Go [2]. The corresponding container image can be found on [Docker Hub [3]](https://hub.docker.com/repository/docker/fischerjulian/smpl-go-pg).
 
-The app is not meant to show state-of-the-art Go code and is soley used for didactic purposes of this training.
+The app is not meant to show state-of-the-art Go code and is solely used for didactic purposes of this training.
 
 The container image can be referenced from a Pod definition as:
 
@@ -53,11 +53,11 @@ connStr := "user=" + postgresUsername + " dbname=postgres sslmode=disable passwo
 
 This reads the environment variables `POSTGRES_USERNAME`, `POSTGRES_PASSWORD` and `POSTGRES_HOST`.
 
-We do not plan to share the PostgreSQL instance so hardcoding the database name `postgresql` is ok, at least for this example.
+We do not plan to share the PostgreSQL instance so hard coding the database name `postgresql` is ok, at least for this example.
 
 Be aware that using environment variables has the drawback that the application needs to be re-deployed in order to update the environment variables, in case the Secret is being changed. As mentioned in an earlier lesson, the alternative would be to mount the Secret as a file and let the application re-read it from time to time. For this example, environment variables will do the trick.
 
-In order to keep the application independent from a particular instance of the PostgreSQL StatefulSet we need a Secret consisting of the following elements:
+In order to keep the application independent of a particular instance of the PostgreSQL StatefulSet we need a Secret consisting of the following elements:
 
 * Username
 * Password
@@ -73,7 +73,7 @@ As this is a machine user, using a cryptic username makes it harder to guess and
 
 The hostname is determined by the headless Service you have created earlier.
 
-The dns hostname of the Service `postgresql-svc` in the Namespace `k8s-training` for a Kubernetes cluster with the cluster domain `cluster.local` is then:
+The DNS hostname of the Service `postgresql-svc` in the Namespace `k8s-training` for a Kubernetes cluster with the cluster domain `cluster.local` is then:
 
     postgresql-svc.k8s-training.svc.cluster.local
 
@@ -81,7 +81,7 @@ In order to bring the username and password to life, you need to create a databa
 
 ### Creating the Database User
 
-In the previous lesson, you have used a separate Pod to connect to the PostgreSQL database to demontrate a remote access. In this case, all you want is to create a database user. The easier way to get to the database is to **start a shell directly on the database Pod**:
+In the previous lesson, you have used a separate Pod to connect to the PostgreSQL database to demonstrate a remote access. In this case, all you want is to create a database user. The easier way to get to the database is to **start a shell directly on the database Pod**:
 
     kubectl exec -it postgresql-sfs-0 -- bash
 
@@ -104,16 +104,16 @@ This needs explanation.
 The `--username=postgres` option is to authenticate the `createuser` command. You don't want anybody with shell access to create users and therefore authentication is necessary. The `postgres` user has sufficient rights to create new users.
 The `-W` makes `psql` prompt for the password to authenticate the `postgresql` user. Use the `tes6Aev8` password - or your version of it - that you used during the creation of the PostgreSQL StatefulSet.
 
-Then the `gaeMo6di` is the `[ROLENAME]` from the command pattern describe above. It's a bit confusing as you may read `-W gaeMo6di` as if `gaeMo6di` is an argument to the option `-W` but this is a false friend. `-W` is an option and `gaeMo6di` a stand-alone argument.
+Then the `gaeMo6di` is the `[ROLENAME]` from the command pattern describe above. It's a bit confusing as you may read `-W gaeMo6di` as if `gaeMo6di` is an argument to the option `-W`, but this is a false friend. `-W` is an option and `gaeMo6di` a stand-alone argument.
 Finally, the `-P` makes the `createuser` command prompt for the password of the `gaeMo6di` user. Use the password `UaGu5chu` - or your alternative for it.
 
-### Grand the New User Acces Privileges
+### Grand the New User Access Privileges
 
-Now, there is a user `gaeMo6di` but it is lacking of appropriate access privileges. If you try to access the `postgres` database, you'll see an error message such as:
+Now, there is a user `gaeMo6di`, but it is lacking of appropriate access privileges. If you try to access the `postgres` database, you'll see an error message such as:
 
     permission denied for table user
 
-Therefore, you need to grand the user `gaeMo6di` privileges to access the `postgres` database which can be done using `psql`.
+Therefore, you need to grant the user `gaeMo6di` privileges to access the `postgres` database which can be done using `psql`.
 
 Execute:
 
@@ -148,7 +148,7 @@ Ok, now that you have collected all pieces of information necessary, you can pro
 
 First, create a separate Secret. As this is an additional Secret a unique name is required: `postgresql-secret-2`.
 
-You can see where this is going if a large number of StatefulSets and a large number of users is necessary. You will have to manage many Secrets.
+You can see where this is going if a large number of StatefulSets and a large number of users are necessary. You will have to manage many Secrets.
 
 To create the Secret `postgresql-secret-2` execute:
 
@@ -183,7 +183,7 @@ With the Secret being ready, it's time to think about the application deployment
 ### Deploying the Application
 
 Before thinking about more complex structures such as ReplicaSets or StatefulSets, you can start with a simple Pod.
-This will allow you to focus on mounting the Secret into the Pod. The idea is to start simple and take little steps. This keeps frustration low. Solving each little challenge also provides a little reward. Later if you are well practices, these little steps may become wasteful and larget steps become more economic.
+This will allow you to focus on mounting the Secret into the Pod. The idea is to start simple and take little steps. This keeps frustration low. Solving each little challenge also provides a little reward. Later if you are well practices, these little steps may become wasteful and larger steps become more economic.
 
 In order to get the Secrets into the Pod you can use the Secret example from an early chapter which you will then modify incrementally.
 
@@ -261,7 +261,7 @@ spec:
 
 ### Application Service
 
-As we have seen in earlier lessons it is useful to have a Service in front of an application. This will provide a stable network entry point in form of a DNS name as well as an IP address. Also it will enable a load balancing if further Pods will be added.
+As we have seen in earlier lessons it is useful to have a Service in front of an application. This will provide a stable network entry point in form of a DNS name as well as an IP address. Also, it will enable a load balancing if further Pods will be added.
 
 Create a file `50-pg-app-svc.yaml` with the following content:
 
@@ -319,4 +319,4 @@ The ReplicaSet will replace your Pod. The Deployment will replace your ReplicaSe
 
 1. Simple Go PostgreSQL Application, Julian Fischer @ Github, https://github.com/fischerjulian/smpl-go-pg
 2. Golang, https://golang.org/
-3. Simple Go PostgreSQL Application Container Image, Julian Fischer @ dockerhub, https://hub.docker.com/repository/docker/fischerjulian/smpl-go-pg
+3. Simple Go PostgreSQL Application Container Image, Julian Fischer @ Docker Hub, https://hub.docker.com/repository/docker/fischerjulian/smpl-go-pg

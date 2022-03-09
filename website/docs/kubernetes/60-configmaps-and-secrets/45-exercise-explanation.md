@@ -67,7 +67,7 @@ If you compare the indentation you may recognize that in `config-example-1` the 
     number-of-requests = 20
     very-import-switch = true
 
-This string is literally put into the ConfigMap value corresponding to the key `20-config-file.conf`. A sign for this is the special annotation `|-` indicating that a multi-line string folllows and that newlines at the end of the string are to be stripped [1]. Consequently, Kubernetes does not parse the value associated with the key `20-config-file.conf`. It doesn't know about its structure although it is obvious to the humand mind. Exactly that's the gotcha.
+This string is put into the ConfigMap value literally corresponding to the key `20-config-file.conf`. A sign for this is the `|-` token indicating that a multi-line string follows and that newlines at the end of the string are to be stripped [1]. Consequently, Kubernetes does not parse the value associated with the key `20-config-file.conf`. It doesn't know about its structure, although it is obvious to the human mind. Exactly that's the gotcha.
 
 In contrast to this, in `config-example-2` the structure is different. There is no top-level key named `20-config-file.conf`. Instead, there are two keys `number-of-requests` and `very-import-switch`. As Kubernetes understands ConfigMap keys and values they can be used as expected in the Pod definition to define environment variables.
 
@@ -98,9 +98,9 @@ spec:
   restartPolicy: Never
 ```
 
-## So why Going Through This Hassle?
+## So why Go Through This Hassle?
 
-Sometimes you want to access several parameters individually. In this case the definition of distinct key-value pairs is necessary. However, if you want to store an entire config file as a value, reading the config file into a ConfigMap associtated with a filename-like key such as `config-file.conf` is helpful.
+Sometimes you want to access several parameters individually. In this case the definition of distinct key-value pairs is necessary. However, if you want to store an entire config file as a value, reading the config file into a ConfigMap associated with a filename-like key such as `config-file.conf` is helpful.
 
 ## Links
 
