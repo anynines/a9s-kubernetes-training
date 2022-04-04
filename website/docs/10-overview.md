@@ -39,6 +39,14 @@ The following changes have been made:
 
 * Added large parts of the StatefulSet section. Still incomplete.
 
+### 2022-03-09
+
+* Adjust information in Docker tutorial to include the fact that Kubernetes moved
+away from Docker
+* Add minikube instructions and remove a9s Paas instructions
+* Update Kubernetes objects to recent API versions
+* Correct spelling and grammar
+
 
 ## Goal
 
