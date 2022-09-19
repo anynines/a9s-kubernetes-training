@@ -147,6 +147,10 @@ const siteConfig = {
     [
       '@docusaurus/preset-classic',
       {
+        gtag: {
+          trackingID: 'GTM-5XSJGVJ',
+          anonymizeIP: true,
+        },
         docs: {
           path: 'docs',
           sidebarCollapsible: true,
