@@ -10,18 +10,23 @@ const siteConfig = {
   projectName: 'a9s-kubernetes-training', // anynines.github.io
   organizationName: 'anynines',
 
-  header: {
-    scripts: [
-      {
-        id: "usercentrics-cmp",
-        src:
-          "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        "data-version": "preview",
-        "data-settings-id": "ptaGMQQHY",
-        async: true,
-      }
-    ]
-  },
+  scripts: [
+    {
+      id: "usercentrics-cmp",
+      src:
+        "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      "data-version": "preview",
+      "data-settings-id": "ptaGMQQHY",
+      async: true,
+    },
+    // {
+    //   id: "usercentrics-cmp",
+    //   src:
+    //     "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+    //   "data-settings-id": "ptaGMQQHY",
+    //   async: true,
+    // },
+  ],
 
   themeConfig: {
     navbar: {
@@ -150,7 +155,7 @@ const siteConfig = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
-        }
+        },
       }
     ]
   ]
