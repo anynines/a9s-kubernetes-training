@@ -114,7 +114,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: postgresql-db
-        image: postgres:12.2        
+        image: postgres:14.5        
         command: ["gosu"]
         args: ["postgres", "bash", "/utils/pg-init.sh"]
         env:
