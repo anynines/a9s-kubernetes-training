@@ -32,7 +32,9 @@ volumes:
 [...]
 ```
 
-Equipped with access to the Pod labels, the following BASH script accomplishes the initialization as described above:
+Equipped with access to the Pod labels, the following BASH script accomplishes the initialization as described above. 
+
+Create the file `pg-init.sh` with the following content:
 
 ```bash
 #!/bin/bash
@@ -69,7 +71,7 @@ then
   else
     echo "  Identified this Pod to a secondary."
     echo "  Executing pg_basebackup..."
-    /usr/lib/postgresql/12/bin/pg_basebackup -h postgresql-primary.pg.svc.cluster.local -U replicator -p 5432 -D $PGDATA -Fp -Xs -R
+    /usr/lib/postgresql/14/bin/pg_basebackup -h postgresql-primary.k8s-training.svc.cluster.local -U replicator -p 5432 -D $PGDATA -Fp -Xs -R
     if [ $? -ne 0 ] 
     then
       echo "  Failed to execute pg_basebackup."
@@ -82,7 +84,7 @@ else
 fi
 
 echo "Starting PostgreSQL..."
-/usr/lib/postgresql/12/bin/postgres -c config_file=/etc/postgresql/postgresql.conf -D $PGDATA
+/usr/lib/postgresql/14/bin/postgres -c config_file=/etc/postgresql/postgresql.conf -D $PGDATA
 ```
 
 The script does not use `su` or `sudo` but will later be invoked with `gosu` - a similar tool - to ensure the script is run as the `postgres` use which ensures the correct ownership of the `$PGDATA` directory.
@@ -200,7 +202,7 @@ Reveals the following failure message:
 
     statefulset.kubernetes.io/pod-name="postgresql-sfs-1"  Identified this Pod to a secondary.
       Executing pg_basebackup...
-    pg_basebackup: error: could not connect to server: could not translate host name "postgresql-primary.pg.svc.cluster.local" to address: Name or service not known
+    pg_basebackup: error: could not connect to server: could not translate host name "postgresql-primary.k8s-training.svc.cluster.local" to address: Name or service not known
       Failed to execute pg_basebackup.
 
 The reason for this is simple: **there is no replication user, yet**.

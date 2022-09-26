@@ -106,6 +106,9 @@ Now
 And in ´psql`:
 
     \c postgres
+
+Then:
+
     SELECT * FROM COMPANIES;
 
 You should see:
