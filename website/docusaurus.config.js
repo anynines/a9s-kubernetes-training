@@ -1,3 +1,32 @@
+const env = process.env.NODE_ENV;
+const usercentrics_live = 
+  [
+    { 
+      id: "usercentrics-cmp",
+      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      "data-settings-id": "ptaGMQQHY",
+      async: true,
+    },
+  ];
+
+const usercentrics_preview = [
+  { 
+    id: "usercentrics-cmp",
+    src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+    "data-version": "preview",
+    "data-settings-id": "ptaGMQQHY",
+    async: true,
+  },
+];
+
+const scripts = () => {
+  if (env == "production") {
+    return usercentrics_live;
+  } else {
+    return usercentrics_preview;
+  }
+};
+
 const siteConfig = {
   title: 'Kubernetes Training', // Title for your website.
   tagline: 'Learn how to containerize and deploy your apps to Kubernetes.',
@@ -10,23 +39,7 @@ const siteConfig = {
   projectName: 'a9s-kubernetes-training', // anynines.github.io
   organizationName: 'anynines',
 
-  scripts: [
-    {
-      id: "usercentrics-cmp",
-      src:
-        "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-      "data-version": "preview",
-      "data-settings-id": "ptaGMQQHY",
-      async: true,
-    },
-    // {
-    //   id: "usercentrics-cmp",
-    //   src:
-    //     "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-    //   "data-settings-id": "ptaGMQQHY",
-    //   async: true,
-    // },
-  ],
+  scripts: scripts(),
 
   themeConfig: {
     navbar: {
