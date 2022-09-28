@@ -1,31 +1,21 @@
-const env = process.env.NODE_ENV;
-const usercentrics_live = 
-  [
-    { 
-      id: "usercentrics-cmp",
-      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-      "data-settings-id": "ptaGMQQHY",
-      async: true,
-    },
-  ];
-
-const usercentrics_preview = [
-  { 
+const usercentricsScript = ({ NODE_ENV }) => {
+  const config = { 
     id: "usercentrics-cmp",
     src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-    "data-version": "preview",
     "data-settings-id": "ptaGMQQHY",
     async: true,
-  },
-];
-
-const scripts = () => {
-  if (env == "production") {
-    return usercentrics_live;
-  } else {
-    return usercentrics_preview;
   }
-};
+  
+  if (NODE_ENV != "production") {
+    config["data-version"] = "preview"  
+  }
+  
+  return config
+}
+
+const scripts = [
+  usercentricsScript(process.env),
+]
 
 const siteConfig = {
   title: 'Kubernetes Training', // Title for your website.
@@ -39,7 +29,7 @@ const siteConfig = {
   projectName: 'a9s-kubernetes-training', // anynines.github.io
   organizationName: 'anynines',
 
-  scripts: scripts(),
+  scripts: scripts,
 
   themeConfig: {
     navbar: {
