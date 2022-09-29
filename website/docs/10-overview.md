@@ -29,7 +29,7 @@ The Kubernetes training has two major parts:
 
 The first part *Containerization* covers container basics such as containers, container images, container registries as well as how to build and publish simple container images.
 
-The second part *Kubernetes* then introduces the `kubectl` command followed by core Kubernetes concepts such as Pods, ReplicaSets, Deployments, ConfigMaps, Securities, Jobs and StatefulSets. Practical examples show their basic usage. Additionally, a few common failure scenarios are included illustrating how these issues can be fixed.
+The second part *Kubernetes* then introduces the `kubectl` command followed by core Kubernetes concepts such as Pods, ReplicaSets, Deployments, ConfigMaps, Securities, Jobs, and StatefulSets. Practical examples show their basic usage. Additionally, a few common failure scenarios are included illustrating how these issues can be fixed.
 
 ## Changelog
 
