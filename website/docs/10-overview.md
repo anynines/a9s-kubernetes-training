@@ -18,7 +18,7 @@ The goal of this training is to enable you with the skills necessary to containe
 
 This training has been created by anynines CEO Julian Fischer for the *Cloud Computing* lecture held together with Prof. Esch at the Saarland University of Applied Sciences (HTWdS).
 
-The training therefore targets at developers entering the world of containerization and Kubernetes. Ever interested person who as mastered the basics of at least one programming language should be able to follow the training.
+The training therefore targets at developers entering the world of containerization and Kubernetes. Every interested person who has mastered the basics of at least one programming language should be able to follow the training.
 
 ## Training Structure
 
