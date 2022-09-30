@@ -70,4 +70,4 @@ If ConfigMap keys become files and ConfigMap values are the contents of these fi
 
 Modify the Pod definition from the previous example to mount the config file contained in the ConfigMap and write its contents to the log (like before).
 
-Can you see how importing the config file goes together with mounting the ConfigMap as a volume? From the container perspective it the config file "feels" like any other config file.
+Can you see how importing the config file goes together with mounting the ConfigMap as a volume? From the container's perspective the config file "feels" like any other config file.

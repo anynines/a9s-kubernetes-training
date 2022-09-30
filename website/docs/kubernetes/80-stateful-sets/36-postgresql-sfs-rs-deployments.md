@@ -11,15 +11,15 @@ title: StatefulSet vs. ReplicaSets
   }]}
 />
 
-In the last lession you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.
+In the last lesson you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.
 
 In this lesson you will conduct more experiments to become familiar with the particularities and similarities of StatefulSets compared to other resource types such as ReplicaSets and Deployments.
 
 ## StatefulSets vs. ReplicaSets
 
-The most obvious similiarity between StatefulSets and ReplicaSets is their name as both contain the word "Set".
+The most obvious similarity between StatefulSets and ReplicaSets is their name as both contain the word "Set".
 
-Just like a ReplicaSet a StatefulSet is more than just a collection of Pods. Similar to a ReplicaSet Controller is watchinv over the Pods of a ReplicaSet, a StatefulSet Controller is watching all Pods of a StatefulSet.
+Just like a ReplicaSet a StatefulSet is more than just a collection of Pods. Similar to a ReplicaSet Controller is watching over the Pods of a ReplicaSet, a StatefulSet Controller is watching all Pods of a StatefulSet.
 
 **Let's see this in action!**
 
@@ -51,7 +51,7 @@ Watch what's happening:
     postgresql-sfs-1   0/1     ContainerCreating   0          0s
     postgresql-sfs-1   1/1     Running             0          1s
 
-**The delete Pod has been recreated**.
+**The deleted Pod has been recreated**.
 
 Check the StatefulSet:
 
@@ -65,7 +65,7 @@ Another takeaway from this example is how the Pod identity in a StatefulSet is r
 
 ## StatefulSets vs. Deployments
 
-In contrast to ReplicaSets but similar to Deployments, StatefulSets support update stragies such as `RollingUpdate` and `OnDelete`.
+In contrast to ReplicaSets but similar to Deployments, StatefulSets support update strategies such as `RollingUpdate` and `OnDelete`.
 
 For this reason, **StatefulSets are neither stateful ReplicaSets nor stateful Deployments. They are entities on their own sharing similarities with both**.
 

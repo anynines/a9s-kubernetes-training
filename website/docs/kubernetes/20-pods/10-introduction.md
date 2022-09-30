@@ -25,20 +25,20 @@ After making first steps with containers most likely by using Docker on a local 
 
 ## What is a Pod
 
-A Pod is a set of containers that will be deployed to the same Kubernetes Node. All containers of a Pod will share the same IP address, ports, hostname, may communicate via IPC (interprocess communication) and share a volume (attachable storage).
+A Pod is a set of containers that will be deployed to the same Kubernetes Node. All containers of a Pod will share the same IP address, ports, hostname, may communicate via IPC (inter-process communication) and share a volume (attachable storage).
 This implies that a different Pod can be placed - along with its containers - on a different Kubernetes Node.
 
 The Pod concept allows the isolation of different co-located processes which closely interact. Prior to this it was rather common to place several processes inside a virtual machine. Without a container isolation between the processes it is possible that one process leaking memory consumes all VM resources causing a VM wide system failure.
-In a Pod each container - ideally with a single purpose - has its well defined resource limits. In case a processes exceeds these limits, the container can be restarted automatically which often helps a system to survive until human intervention fixes the underlying issue.
+In a Pod however each container - ideally with a single purpose - should have a well defined resource limits. In case a process exceeds these limits, the container can might be restarted automatically or throttled, in case it exceeds its CPU limit, which often helps a system to survive until human intervention fixes the underlying issue.
 So much about the theory. It's time to create a Pod.
 
 ## Creating a Pod
 
-A Pod named *busybox* using the container image *busybox* can be created a simply as:
+A Pod named *busybox* using the container image *busybox* can be created as simply as:
 
     kubectl run busybox --image=busybox --restart=Never -- echo "Hello World"
 
-It's status can be obtained with:
+Its status can be obtained with:
 
     kubectl get Pods busybox
 

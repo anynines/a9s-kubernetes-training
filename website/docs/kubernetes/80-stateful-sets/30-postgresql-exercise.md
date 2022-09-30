@@ -11,7 +11,7 @@ title: PostgreSQL StatefulSet
   }]}
 />
 
-In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the databse is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
+In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the database is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
 
 ## Designing the StatefulSet
 
@@ -27,11 +27,11 @@ Start with finding a container image.
 
 ## The Container Image
 
-An essential part of the StatefulSet for PostgreSQL is the database server itself. Luckily, there is no need to containerize PostgreSQL as this as already been done. Hence, use the official PostgreSQL Docker Image found at DockerHub [1]. Pause this tutorial for a second and have a quick look at the [description of the container image](https://hub.docker.com/_/postgres). This is where you'll find how the container image can be parameterized - a major challenge when creating the PostgreSQL StatefulSet. In particular, this is where you find out how to set a proper password. Try to find the corresponding setting yourself so that you understand the structure of the Secret described in the next section.
+An essential part of the StatefulSet for PostgreSQL is the database server itself. Luckily, there is no need to containerize PostgreSQL as this as already been done. Hence, use the official PostgreSQL Docker Image found at Docker Hub [1]. Pause this tutorial for a second and have a quick look at the [description of the container image](https://hub.docker.com/_/postgres). This is where you'll find how the container image can be parameterized - a major challenge when creating the PostgreSQL StatefulSet. In particular, this is where you find out how to set a proper password. Try to find the corresponding setting yourself so that you understand the structure of the Secret described in the next section.
 
 ## Creating a Secret
 
-Starting PostgreSQL requires an administator password which will be stored as a Secret.
+Starting PostgreSQL requires an administrator password which will be stored as a Secret.
 
 Create a PostgreSQL Secret containing the password for the admin user:
 
@@ -89,9 +89,9 @@ Pay attention to the `IP` attribute.
 
 Normally, a Kubernetes Service has a cluster-internal IP address as seen in the [Service example](/kubernetes/replicaset-and-service/services) of the [ReplicaSet lesson](/kubernetes/replicaset-and-service/introduction). Requests to the Service IP are then load balanced across the Service endpoints, e.g. Pods binding to the Service by using matching Labels.
 
-In constrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
+In contrast to a regular Service, **a headless Service does not have a cluster IP address**. This is why it is declared using the `ClusterIP: None` declaration.
 
-So in constrast to a standard Service, **a headless Service does not perform load balancing**. Depending on the selectors defined for the Service cluster-internal **DNS entries will be created**.
+So in contrast to a standard Service, **a headless Service does not perform load balancing**. Depending on the selectors defined for the Service cluster-internal **DNS entries will be created**.
 
 ## Creating the StatefulSet
 
@@ -116,7 +116,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: postgresql-db
-        image: postgres:12.2
+        image: postgres:14.5
         env:
         - name: POSTGRES_PASSWORD
           valueFrom:
@@ -134,14 +134,13 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "default"
       resources:
         requests:
           storage: 1Gi
 ```
 Have you noticed how the Secret is mounted as an environment variable as described in the container image description [1]?
 
-Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified mulitple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
+Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified multiple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
 
 Execute the spec:
 
@@ -181,15 +180,15 @@ And you should see the entry:
     Data page checksums are disabled.
 
     initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
-    It contains a lost+found directory, perhaps due to it being a mount point.
-    Using a mount point directly as the data directory is not recommended.
-    Create a subdirectory under the mount point.
+    It contains a lost+found directory, perhaps due to it being a mountpoint.
+    Using a mountpoint directly as the data directory is not recommended.
+    Create a subdirectory under the mountpoint.
 
 The PostgreSQL Image description [1] says:
 
 > PGDATA This optional variable can be used to define another location - like a subdirectory - for the database files. The default is /var/lib/postgresql/data. If the data volume you're using is a filesystem mountpoint (like with GCE persistent disks) or remote folder that cannot be chowned to the postgres user (like some NFS mounts), Postgres initdb recommends a subdirectory be created to contain the data.
 
-This means we have to tell PostgreSQL to change it's data directory to something like `/var/lib/postgresql/data/pgdata` by passing the path using the `PGDATA` environment variable.
+This means we have to tell PostgreSQL to change its data directory to something like `/var/lib/postgresql/data/pgdata` by passing the path using the `PGDATA` environment variable.
 
 ```yaml
 apiVersion: apps/v1
@@ -210,7 +209,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: postgresql-db
-        image: postgres:12.2
+        image: postgres:14.5
         env:
         - name: POSTGRES_PASSWORD
           valueFrom:
@@ -230,7 +229,6 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "default"
       resources:
         requests:
           storage: 1Gi
@@ -240,7 +238,7 @@ First delete the existing StatefulSet:
 
     kubectl delete statefulset postgresql-sfs
 
-There is no problem with the Peristent Volume as it's empty (beside of the `lost+found` folder). So with the newly introduced environment variable `PGDATA` you can apply the spec again:
+There is no problem with the Persistent Volume as it's empty (beside of the `lost+found` folder). So with the newly introduced environment variable `PGDATA` you can apply the spec again:
 
     kubectl apply -f 30-stateful-set.yaml
 
@@ -253,7 +251,7 @@ You should see the StatefulSet being `RUNNING`.
 Congratulations! You have deployed your first StatefulSet.
 
 ## Links
-1. PostgreSQL Docker Image at DockerHub, https://hub.docker.com/_/postgres
+1. PostgreSQL Docker Image at Docker Hub, https://hub.docker.com/_/postgres
 2. Kubernetes Examples on GitHub, Persistent Volume Provisioning, https://github.com/kubernetes/examples/blob/master/staging/persistent-volume-provisioning/README.md
 3. PostgreSQL Documentation - psql, https://www.postgresql.org/docs/12/app-psql.html
 4. Kelsey Hightower @ Twitter, https://twitter.com/kelseyhightower/status/935252923721793536?lang=en

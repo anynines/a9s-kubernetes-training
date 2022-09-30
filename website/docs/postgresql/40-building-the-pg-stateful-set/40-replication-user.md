@@ -9,7 +9,7 @@ Previously we have created a StatefulSet that now requires a replication user on
 2. Write and test an idempotent script to create the user
 3. Containerize and test the script
 
-This follows the principle *Operational Model First, Automation Second* [1]. Before the automation is written, it must be clear what to achieve and how a sysop would do it. This it the operational model. What needs to be done and which exceptions are to be expected. This it the input for automating the procedure with a script.
+This follows the principle *Operational Model First, Automation Second* [1]. Before the automation is written, it must be clear what to achieve and how a sysop would do it. This is the operational model. What needs to be done and which exceptions are to be expected. This is the input for automating the procedure with a script.
 
 The script should be idempotent so that it can be executed several times causing the desired effect only once. Running the script repeatedly may happen when:
 
@@ -34,7 +34,7 @@ CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'aREPL1C4Ti0NxLI6Eeth
 
 Obviously - as with all passwords in this tutorial - a different password should be chosen.
 
-The replication user `replicator` will be created in a seaparate container. Note, that the usage of initContainers here is tricky as the initContainer is executed before PostgreSQL has been started. This doesn't work as creating a user obviously require the database to be running. Theoretically, PostgreSQL could be started temporarily but this appears to be inelegant. We'll come back to this matter later.
+The replication user `replicator` will be created in a separate container. Note, that the usage of initContainers here is tricky as the initContainer is executed before PostgreSQL has been started. This doesn't work as creating a user obviously require the database to be running. Theoretically, PostgreSQL could be started temporarily, but this appears to be inelegant. We'll come back to this matter later.
 
 In order to prepare each Pod to become the Primary, the replication user will be created in all Pods of the StatefulSet. Before such a container can be instantiated, an idempotent script for creating the replication user needs to be created.
 
@@ -174,7 +174,7 @@ puts "Done executing CreateReplicationUserIfNotExistsAction."
 exit(true)
 ```
 
-Now that the script is ready, it must be injected into the Primary Pod. Previously we have used a ConfigMap to inject a script into a container. This has the disadvantage that the script is duplicated for each service instance to keep instance lifecycles independent from another. While this works at a small scale and during development, it can be doubted whether this approach will hold up at a large scale.
+Now that the script is ready, it must be injected into the Primary Pod. Previously we have used a ConfigMap to inject a script into a container. This has the disadvantage that the script is duplicated for each service instance to keep instance lifecycles independent of another. While this works at a small scale and during development, it can be doubted whether this approach will hold up at a large scale.
 
 We therefore chose a different route for the `create-replication-user.rb` script and will containerize it.
 
@@ -187,7 +187,7 @@ Then a container image must be created and published. Finally, the container ima
 For executing Ruby the official Docker images can be used [2].
 They come in different variants such as the default (`<version>`), slim (`<version>-slim`) and alpine (`<version>-alpine`).
 
-The default and slim variants are based on Debian. They provide many useful tools and the full power of `apt`. However, they are very bug.
+The default and slim variants are based on Debian. They provide many useful tools and the full power of `apt`. However, they are very bugged.
 For this reason the preferred base image variant is `alpine`. Use it whenever possible with meaningful effort.
 
 In order to build the `pg` Gem [3] the regular Debian base image is convenient to use as it ships the necessary dependencies.
@@ -224,13 +224,13 @@ The next decision to be made is: how to execute the script.
 
 So it's worth thinking about what and when a replication user has to be created. For single node databases - that is `replicas: 1` - a replication user **is not needed**. Only if `replicas` is set to a value `2n * 1` with `n>=1` such as `3, 5, ...` a replication user is required. 
 
-If you want to be prepared for automation failovers - where a Primary fails and one of the Secondaries is being elected and promoted to become the new leader - we need to create a replication user on each cluster node.
+If you want to be prepared for automatic failovers - where a Primary fails and one of the Secondaries is being elected and promoted to become the new leader - we need to create a replication user on each cluster node.
 
 This is necessary to turn a Secondary into a primary node. In a `replicas: 3` scenario, this means 3 replica users will have to be created. One on each node.
 
-It would therefore be desirable to have a way to declare wether a replication user is necessary or not. Then - comparing the desired vs. actual state - some kind of *controller* could ensure that the script is run.
+It would therefore be desirable to have a way to declare whether a replication user is necessary or not. Then - comparing the desired vs. actual state - some kind of *controller* could ensure that the script is run.
 
-Withouth such a controller one way to execute the script is using a Job.
+Without such a controller one way to execute the script is using a Job.
 
 The Job description pasted into `70-job-create-replication-user.yaml` looks like this:
 
@@ -258,7 +258,7 @@ spec:
               name: postgresql-secrets
               key: POSTGRES_PASSWORD
         - name: POSTGRES_HOSTNAME
-          value: postgresql-primary.pg.svc.cluster.local
+          value: postgresql-primary.k8s-training.svc.cluster.local
         - name: POSTGRES_REPLICATION_USERNAME
           valueFrom:
             secretKeyRef:
@@ -278,13 +278,13 @@ spec:
       restartPolicy: OnFailure
 ```
 
-For now it will be sufficient to run the Job to target the Primary. Later, when leader election will be implemented, the replication user must be created on all Pods.
+For now, it will be sufficient to run the Job to target the Primary. Later, when leader election will be implemented, the replication user must be created on all Pods.
 
 Create the Job to execute the `create-replication-user.rb` script:
 
     kubectl apply -f 70-job-create-replication-user.yaml
 
-Verfiy this by connecting to the Primary and executing the following SQL command:
+Verify this by connecting to the Primary and executing the following SQL command:
 
 ```SQL
 SELECT rolname FROM pg_catalog.pg_roles;
@@ -311,6 +311,6 @@ With all the work you have invested so far, it is now time to use the streaming 
 
 ## Links
 1. An Introduction to Data Service Automation, Julian Fischer, {LINK TO BE DONE}
-2. Ruby Docker Image on Dockerhub, https://hub.docker.com/_/ruby
+2. Ruby Docker Image on Docker Hub, https://hub.docker.com/_/ruby
 3. Ruby PostgreSQL `pg` Gem, https://rubygems.org/gems/pg
 4. Ruby, https://www.ruby-lang.org/

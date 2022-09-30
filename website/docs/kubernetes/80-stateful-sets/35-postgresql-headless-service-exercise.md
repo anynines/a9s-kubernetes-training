@@ -49,7 +49,7 @@ Which shows `Annotations: Selector:  app=postgresql-a` indicating that the Servi
 
 The output shows that the Pod `postgresql-sfs-0` has the `IP: 172.17.0.5` which means that the Pod is set as the endpoint of the headless Service.
 
-This means that a DNS entry will be created pointing directly to the the Pods associated with the Service.
+This means that a DNS entry will be created pointing directly to the Pods associated with the Service.
 
 Verify this by executing:
 
@@ -92,7 +92,7 @@ First, get inside the cluster by launching a utility Pod:
 
 The `nspct` image provides a few handy tools such as `nslookup` - a utility to query nameservers.
 
-Inside of the `nspct` Pod check wether the resolver can resolve the service url:
+Inside the `nspct` Pod check whether the resolver can resolve the service URL:
 
     nslookup postgresql-svc.k8s-training.svc.cluster.local
 
@@ -104,19 +104,19 @@ Which will produce a response similar to:
     Name:	 postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.5
 
-So the DNS entry has been created and resolves to the IP address of the only Pod inside of the StatefulSet.
+So the DNS entry has been created and resolves to the IP address of the only Pod inside the StatefulSet.
 
 Hence, the headless Service provides a stable network identity for the StatefulSet as the Service couples to the StatefulSet loosely by using a selector in the Service referring to the label `app=postgresql-a` in the StatefulSet.
 
-## Headless Service for StatefulSets with Mulitple Replicas
+## Headless Service for StatefulSets with Multiple Replicas
 
 With a single Pod (`replicas: 1`) in a StatefulSet the mapping from the headless Service to the Pod is unambiguous: `service -> Pod`.
 
-This raises the question **what happens if there are mulitple Pods in the StatefulSet?**
+This raises the question **what happens if there are multiple Pods in the StatefulSet?**
 
 Let's try it!
 
-First, we need a Statefulset with mulitple replicas. So we modify the StatefulSet definition of the previous example by **editing** the file `30-stateful-set.yaml`.
+First, we need a StatefulSet with multiple replicas. So we modify the StatefulSet definition of the previous example by **editing** the file `30-stateful-set.yaml`.
 
 Within `30-stateful-set.yaml` change `replicas: 1` to `replicas: 3`. Save the file and apply it:
 
@@ -126,7 +126,7 @@ This will update the existing StatefulSet `postgresql-sfs` and you should see th
 
     kubectl get statefulsets
 
-Of course, **this StatefulSet does not consitute a functioning PostgreSQL cluster** but that's alright. All that matters here is the number of Pods to see show the relationship between the number of replicas and the headless Service.
+Of course, **this StatefulSet does not constitute a functioning PostgreSQL cluster**, but that's alright. All that matters here is the number of Pods to see show the relationship between the number of replicas and the headless Service.
 
 Now check on the Service again:
 
@@ -171,7 +171,7 @@ Which this time will produce:
 As you can see all StatefulSet Pods are present in the response.
 
 ## Links
-1. PostgreSQL Docker Image at DockerHub, https://hub.docker.com/_/postgres
+1. PostgreSQL Docker Image at Docker Hub, https://hub.docker.com/_/postgres
 2. Kubernetes Examples on GitHub, Persistent Volume Provisioning, https://github.com/kubernetes/examples/blob/master/staging/persistent-volume-provisioning/README.md
 3. PostgreSQL Documentation - psql, https://www.postgresql.org/docs/12/app-psql.html
 4. Kelsey Hightower @ Twitter, https://twitter.com/kelseyhightower/status/935252923721793536?lang=en
