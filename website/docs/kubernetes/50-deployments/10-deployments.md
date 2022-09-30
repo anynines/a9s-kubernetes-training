@@ -16,7 +16,7 @@ title: Deployments
 ]
 }></VideoContainer>
 
-The Kubernetes Deployment resource is designed to support the continous delivery of application releases beyond the abilities of Pods and ReplicaSets.
+The Kubernetes Deployment resource is designed to support the continuos delivery of application releases beyond the abilities of Pods and ReplicaSets.
 
 Using a Deployment, the deployment process is controlled by a deployment controller running within the Kubernetes cluster.
 
@@ -27,7 +27,7 @@ Create the first deployment by deploying the application version **"blue"**.
 Create a file `20-deployment-blue.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -90,7 +90,7 @@ Apply it:
 Create a file `50-ingress.yaml`:
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1 # Kubernetes 1.13+
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-gamma-ingress
@@ -100,16 +100,19 @@ metadata:
 spec:
   tls:
     - hosts:
-      - app-gamma-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu
+      - myapp.example.org
       secretName: k9s-anynines-com-tls
   rules:
-  - host: app-gamma-c9c99a1c-e1d5-4401-8aed-bd54319c7ca7.de.k9s.a9s.eu
+  - host: myapp.example.org
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: app-gamma-service
-          servicePort: 8080
+          service: 
+            name: app-gamma-service
+            port: 
+              number: 8080
 ```
 
 Apply it:
@@ -120,7 +123,13 @@ Obtain the URL with:
 
     kubectl get ingresses
 
-Browse to the url and it should say "**I am blue**".
+Browse to the URL or use 
+
+    curl --insecure https://myapp.example.org
+
+and it should say "**I am blue**".
+
+> Note : We are reusing the DNS entry in `/etc/hosts` so make sure it is still there and valid.
 
 ## Scaling the Deployment
 
@@ -132,7 +141,7 @@ So let's give it a try!
 Create a file `60-deployment-blue-scale-out.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -180,12 +189,12 @@ Change the replica count to 3 and update your deployment using `kubectl apply -f
 
 A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions regularly.
 
-The new software version is delived by creating a new container version. Compare the YAML file `70-deployment-green.yaml` with the previous version and look for differences. You will see that the container name and container image (tag) have changed. Hence, the team had to build a new container version and upload it to the default container registry of the Kubernetes cluster which is https://hub.docker.com/, by default.
+The new software version is delivered by creating a new container version. Compare the YAML file `70-deployment-green.yaml` with the previous version and look for differences. You will see that the container name and container image (tag) have changed. Hence, the team had to build a new container version and upload it to the default container registry of the Kubernetes cluster which is https://hub.docker.com/, by default.
 
 Create a file `70-deployment-green.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -240,7 +249,7 @@ and
 
     kubectl rollout resume deployments app-gamma
 
-which become handy if the rollout produces unpredicated behavior, for example.
+which become handy if the rollout produces unpredicted behavior, for example.
 
 ## Rollout History
 
@@ -299,7 +308,7 @@ For this reason the `Recreate`-strategy is not recommended for productive use. H
 Create a first deployment with a file `80-deployment-blue-recreate.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -331,7 +340,7 @@ Apply it:
 Update the deployment by creating a file `90-deployment-green-recreate.yaml`:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-gamma
@@ -366,7 +375,7 @@ The complete termination of all Pods of one ReplicaSet before creating the new R
 
 The RollingUpdate strategy terminates a number of Pods from the old (blue) ReplicaSet and start a number of new Pods with the new version (green). So gradually the new application version is rolled out.
 
-**Be aware:** The grudual or "rolling" update means that **Pods of both the old (blue) and new (green) versions are being served traffic simultaneously**. This implies that two adjacent application versions need to coexist peacefully.
+**Be aware:** The gradual or "rolling" update means that **Pods of both the old (blue) and new (green) versions are being served traffic simultaneously**. This implies that two adjacent application versions need to coexist peacefully.
 If the new (green) version requires a different database schema, for example, this may become problematic as a schema migration can either be executed or not. The application therefore should be architected in a way that schema migrations happen gradually over multiple versions while maintaining compatibility among adjacent versions.
 
 Engineers must decide yourself whether the increased application availability is worth the increased effort in development.
@@ -375,7 +384,7 @@ Engineers must decide yourself whether the increased application availability is
 
 There are many more possible deployment patterns. They do not represent strategies in the sense that they can be pasted as a `strategy: <my-strategy>` into the deployment specification but rather represent higher level methodologies on how to perform a rollout [3][4]. This includes patterns such as blue-green and canary deployments.
 
-## Tyding Up - Part 2 of 2
+## Tidying Up - Part 2 of 2
 
 All resources of this lesson can be deleted:
 
@@ -383,9 +392,14 @@ All resources of this lesson can be deleted:
     kubectl delete -f 50-ingress.yaml
     kubectl delete -f 40-service.yaml
 
+
+You can also now remove your local DNS entry, by removing it from `/etc/hosts` with
+
+    sudo nano /etc/hosts
+
 ## Links
 
-1. Kuberentes Documentation, Conecepts, Working With Objects, https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/
+1. Kubernetes Documentation, Concepts, Working With Objects, https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/
 2. Kubernetes Up & Running, 2nd Edition, O'Reilly, 2019, https://learning.oreilly.com/library/view/kubernetes-up-and/9781492046523/
 3. Deployment Strategies, ContainerSolutions, https://blog.container-solutions.com/kubernetes-deployment-strategies
 4. Kubernetes Patterns, O'Reilly, 2019, https://learning.oreilly.com/library/view/kubernetes-patterns/9781492050278/

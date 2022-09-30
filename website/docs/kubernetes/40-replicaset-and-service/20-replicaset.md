@@ -37,18 +37,18 @@ metadata:
   name: smpl-go-web-rs
   labels:
       app: smpl-go-web-a
-      tier: fontend
+      tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: fontend
+      tier: frontend
   template:
     metadata:
       labels:
         app: smpl-go-web-a
         version: "1"
-        tier: fontend
+        tier: frontend
     spec:
       containers:
         - name: smpl-go-web-c
@@ -68,7 +68,7 @@ Verify that the Pods has been created successfully:
 
 You should see a running pod names something like `smpl-go-web-rs-pkqwd` where the last part is a random string which will be different for every instance of the replica set.
 
-In case you seen the *status* `ContainerCreating` you can use:
+In case you see the *status* `ContainerCreating` you can use:
 
     kubectl get pods --watch
 
@@ -85,9 +85,9 @@ A straight forward way to access the web app is to directly access the correspon
 * Inside the interactive container use the wget command to access the Pod, e.g. `wget 100.96.14.17:8080`. You can read the returned file using the cat command: `cat index.html`.
 * Don't forget to delete the interactive busybox Pod after using it: `kubectl delete pod busybox`
 
-However, this approach comes with some signficant disadvantages. Possibly the biggest drawback is a client trying to access the app needs to figure out where the Pod is located by obtaining its IP address. This process is also referred to as *service discovery*. Once, the IP address is known, the client can access the Pod but what happens if the Pod fails, e.g. caused by the failure or maintenance of the underlying Kubernetes Node (the VM the Pod is running on)? In this case the ReplicaSet will be rescheduled by Kubernetes and most likely receive a different IP address. The resulting *service discovery*-challenge is non-trivial in a dynamic cluster environment.
+However, this approach comes with some significant disadvantages. Possibly the biggest drawback is a client trying to access the app needs to figure out where the Pod is located by obtaining its IP address. This process is also referred to as *service discovery*. Once, the IP address is known, the client can access the Pod. But what happens if the Pod fails, e.g. caused by the failure or maintenance of the underlying Kubernetes Node (the VM the Pod is running on)? In this case the ReplicaSet will be rescheduled by Kubernetes and most likely receive a different IP address. The resulting *service discovery*-challenge is non-trivial in a dynamic cluster environment.
 
-Kubernetes provides the concept of a `Service` enabling a number of ways to deal with *service discovery*, gracefully.
+to solve this issue Kubernetes provides the concept of a `Service` enabling a number of ways to deal with *service discovery*, gracefully.
 
 ## Pods and Ports
 

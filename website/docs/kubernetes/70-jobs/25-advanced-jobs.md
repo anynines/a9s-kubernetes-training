@@ -47,7 +47,7 @@ As usual a `kubectl describe` is executed to obtain more information:
 
     kubectl describe job simple-one-off-job-from-yaml
 
-Interestingly, this produces an event `SuccessfulCreate` originating from the `job-controller`. Everything seems normal although we know that the Job must have failed. A closer look reveals there is no contradiction. The event informs that the Pod `simple-one-off-job-from-yaml-5x2xt` has been created successfully and in fact it has been. It's just that the container inside the Pod has failed. So a closer look at the pod is necessary:
+Interestingly, this produces an event `SuccessfulCreate` originating from the `job-controller`. Everything seems normal, although we know that the Job must have failed. A closer look reveals there is no contradiction. The event informs that the Pod `simple-one-off-job-from-yaml-5x2xt` has been created successfully and in fact it has been. It's just that the container inside the Pod has failed. So a closer look at the pod is necessary:
 
     kubectl get pods -l job-name=simple-one-off-job-from-yaml
 
@@ -60,7 +60,7 @@ And an even closer look with:
 
     kubectl describe pod simple-one-off-job-from-yaml-547xc
 
-Reveals a warning: `Back-off restarting failed container` which indicated a non-zero return value from starting the container. For those new to linux/unix systems [2]:
+Reveals a warning: `Back-off restarting failed container` which indicated a non-zero return value from starting the container. For those new to Unix/Linux systems [2]:
 
 > For the shell's purposes, a command which exits with a status code of zero has succeeded. A non-zero exit status indicates failure. This seemingly counter-intuitive scheme is used so there is one well-defined way to indicate success and a variety of ways to indicate various failure modes. When a command terminates on a fatal signal whose number is N, Bash uses the value 128+N as the exit status.
 
@@ -72,7 +72,7 @@ But there is more to the previous example. The field `RESTARTS: 4` suggests that
 
 **Consider a Job that sometimes fails and sometimes succeeds**. While such a case calls for a bugfix by the developer, it is also nice if Kubernetes can help so that the developer does not have to get up at night.
 
-We simulate a flaky Job with the folling shell command:
+We simulate a flaky Job with the following shell command:
 
     (( RANDOM%3 == 0 )) && exit 0 || exit 1
 
@@ -111,7 +111,7 @@ While the Job is being created open another terminal and observe the Pods belong
 
     kubectl get pods -l job-name=flaky-job -w
 
-The option `-w` as in "watch" keeps `kubectl` polling for changes. So you are likely to ses a sequence of events such as:
+The option `-w` as in "watch" keeps `kubectl` polling for changes. So you are likely to see a sequence of events such as:
 
     flaky-job-b7nj8   0/1     Pending             0          0s
     flaky-job-b7nj8   0/1     Pending             0          0s
@@ -123,7 +123,7 @@ The option `-w` as in "watch" keeps `kubectl` polling for changes. So you are li
 
 As the containers are failing randomly you may have to delete and create the Job several times to observe a similar sequence. Give it a try.
 
-You can see from the output that the Pod has failed two times before it succeeded. This is free robustness for workloads when using Kubernets Jobs.
+You can see from the output that the Pod has failed two times before it succeeded. This is free robustness for workloads when using Kubernetes Jobs.
 
 ## Links
 

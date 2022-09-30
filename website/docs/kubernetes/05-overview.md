@@ -35,7 +35,7 @@ At the end of the training a final exam is described which provides you with the
 
 The Kubernetes training assumes that you are familiar with **containerization basics**.
 
-In particular you should know:
+In particular, you should know:
 
 * What a container is.
 * What a container images is.
@@ -45,7 +45,7 @@ In particular you should know:
 * How to publish a local container image to a container registry.
 * What a container volume is.
 
-It is therefore recommended to go through the **container-training**, first.
+It is therefore recommended going through the **container-training**, first.
 
 ## Training Didadicts
 
@@ -55,7 +55,7 @@ Consequently, this training does not aim to provide Kubernetes with all its face
 
 When drawing a Koch snowflake fractal [1] the first iteration draws the outer shape. In subsequent iterations more depth is added. Similar to this, the main goal of this training is therefore to draw the outline of what Kubernetes is. More depth can be added with subsequent trainings.
 
-The first iteration also **does not cover the Kubernetes architecture** in-depth. A few comments are made where a concept is relevant to the lesson at hand but the idea is to **focus on providing a learner with a maxium of utility**.
+The first iteration also **does not cover the Kubernetes architecture** in-depth. A few comments are made where a concept is relevant to the lesson at hand, but the idea is to **focus on providing a learner with a maximum of utility**.
 
 **At the end of this training you will be able to deploy and operate a stateful, distributed application system with Kubernetes.**
 
@@ -64,8 +64,6 @@ In order to achieve this goal corners will be cut and nuances be omitted. This w
 The training also contains **exercises** providing you with tiny challenges to avoid falling into a cognitive cut-and-paste paralysis. Solutions to most of the exercises can be found in the training so that you can see how to solve a potential problem yourself.
 
 A few common mistakes are provoked during the training. These mistakes have been selected by observing a few trainings. Be prepared to make your own mistakes though. The more time you spend thinking about something, the more you will learn. Therefore, embrace your mistakes.
-
-The training has been tested on `https://paas.anynines.com` but any Kubernetes distribution will do the trick although minor modifcations may be necessary. Especially in the context of Ingresses this is to be expected.
 
 ## Links
 

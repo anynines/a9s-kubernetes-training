@@ -24,7 +24,7 @@ Here is a brief list of frequently used `docker` commands.
 
 **Delete local image**:
 
-    docker image rm busbox:1.31.1
+    docker image rm busybox:1.31.1
 
 ## Distributing Images
 

@@ -50,9 +50,9 @@ This assumes the Service to be within the `k8s-training` namespace, be reachable
 
 ## What Does the Service do?
 
-In the first step of this lession a **ReplicaSet with one (1)** replica has been deployed. This lead to the creation of a single Pod with a single container running the desired web application.
+In the first step of this lesson a **ReplicaSet with one (1)** replica has been deployed. This lead to the creation of a single Pod with a single container running the desired web application.
 
-By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service has *discovered* the `smpl-go-web-a` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `smpl-go-web` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if mulitple endpoints are available - load balancer.
+By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service should *discover* the `smpl-go-web-a` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `smpl-go-web` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if multiple endpoints are available - load balancer.
 
 You can verify the connection of the Service with its application by:
 
@@ -62,7 +62,7 @@ And (Don't forget to replace the Pod's ID):
 
     kubectl describe pod smpl-go-web-75457966b7-742sr
 
-The `endpoints` section of the service description should contain the Pod's IP address.
+The `endpoints` section of the service description should contain the Pod's IP address
 
 The Service therefore has two major purposes:
 

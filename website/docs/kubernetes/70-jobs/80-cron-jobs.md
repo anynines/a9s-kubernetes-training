@@ -11,11 +11,11 @@ title: CronJobs
   }]}
 />
 
-Cron [1] is a daemon available as a package for most unix/linux operating systems and is a time-based job scheduler.
+Cron [1] is a daemon available as a package for most Unix/Linux operating systems and is a time-based job scheduler.
 
 ## Linux/Unix Cron Jobs and Cron Tab
 
-A so called Cron Job is represented as an entry in a Cron Tab describing when a particular command is to be executed. A Cron Tab entry may look like this [1]:
+A so-called Cron Job is represented as an entry in a Cron Tab describing when a particular command is to be executed. A Cron Tab entry may look like this [1]:
 
     # ┌───────────── minute (0 - 59)
     # │ ┌───────────── hour (0 - 23)
@@ -37,12 +37,12 @@ In Kubernetes a Cron Job is a Kubernetes Job that is executed according to a giv
 
 Respectively, the pattern `1 0 * * *` also schedules a CronJob for daily execution at 00:01 (12:01 a.m.).
 
-The following example runs a CRON Job every 2 minutes. This frequence is most likely inappropriate for a Kubernetes CRON Job but good to observe what CRON Jobs do.
+The following example runs a CRON Job every 2 minutes. This frequency is most likely inappropriate for a Kubernetes CRON Job but good to observe what CRON Jobs do.
 
 Create the file `90-cron-job.yaml`:
 
 ```yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: cron-job-hello-world
@@ -79,7 +79,7 @@ And obtain CRON Job details:
 
     kubectl describe cronjob cron-job-hello-world
 
-The `Events` section will list a number of Jobs. **Appearently, CRON Jobs are used to derive Jobs which in turn create Pods.**
+The `Events` section will list a number of Jobs. **Apparently, CRON Jobs are used to derive Jobs which in turn create Pods.**
 
 The CRON Job should be executed periodically every 2 minutes.
 
@@ -93,7 +93,7 @@ So let's look for the Jobs:
 
 As expected Jobs are created regularly and their names contain a suffix to uniquely distinguish them from another.
 
-You can retrieve the Pods corresonding to a particular Job:
+You can retrieve the Pods corresponding to a particular Job:
 
     kubectl get pods -l job-name=cron-job-hello-world-1583929440
 

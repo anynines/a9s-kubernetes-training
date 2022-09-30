@@ -29,7 +29,7 @@ So with the Ingress concept it is possible to map incoming requests based on the
 
 ## Ingress is not Built-In to Kubernetes
 
-While Ingress is a Kubernetes concept, there is no built-in Kubernetes implementation. In Kubernetes terminology: **Kubernetes does not ship with a default Ingress Controller**. Therefore, each Kubernetes implementation may come with a different Ingress Controller which in turn may offer slightly different features and configuration options but generally they are likely to cover the same core functionality.
+While Ingress is a Kubernetes concept, there is no built-in Kubernetes implementation. In Kubernetes terminology: **Kubernetes does not ship with a default Ingress Controller**. Therefore, each Kubernetes implementation may come with a different Ingress Controller which in turn may offer slightly different features and configuration options, but generally they are likely to cover the same core functionality.
 
 One reason for this is that load balancing is a non-trivial problem to solve. It is used to enable highly available applications and is related to topics such as networking, DNS and SSL certificate management.
 
@@ -39,9 +39,9 @@ As a takeaway, it is worth spending a few minutes on looking at a particular Ing
 
 ### DNS Entries and SSL Certificates
 
-It is easy to use `kubectl proxy` to access Kubernetes workloads as it does not require much configuration. However, exposing an application to the outside world usually requires the configuration of a domain or sub-domain dedicated to the application such as `myapp.example.org`.
+It is easy to use `kubectl proxy` to access Kubernetes workloads as it does not require much configuration. However, exposing an application to the outside world usually requires the configuration of a domain or subdomain dedicated to the application such as `myapp.example.org`.
 
-This is why Kubernetes can't do much for you as controlling DNS entries is out of its scope and so is requesting and issuing SSL certificates.
+This is why Kubernetes can't do much for you as controlling DNS entries is out of its scope and so is requesting and issuing SSL certificates, but in the latter case there are extensions to help you to do so.
 
 For the creation of DNS entries you might want to create:
 
@@ -49,6 +49,34 @@ For the creation of DNS entries you might want to create:
 * A **CNAME-Record** to point a (sub-)domain to the DNS name of your load balancer.
 
 The configuration of DNS entries varies across DNS providers. Their manuals will guide you through the process.
+
+### Creating local DNS entries for minikube
+
+When using minikube you can create a local DNS entry by editing your 
+`/etc/hosts` and pointing it to your minikube IP address. This way a DNS entry is created that is solely present on your computer, which will redirect requests of the specified URL to your running minikube cluster.
+
+If you are running minikube on a hypervisor different from Docker you can get the minikube IP by executing :
+
+    minikube ip 
+
+With Docker, you will have to set up a tunnel, that will expose your cluster at `127.0.0.1`, for that use
+
+    minikube tunnel
+
+Now we have to add the DNS entry to our hosts file, execute 
+
+    sudo nano /etc/hosts
+
+The basic editor `nano` will now be used to open the file (Note: you can only navigate using keyboard inputs), 
+there navigate to the end of the file and create your new entry for `myapp.example.org` by inserting
+    
+    127.0.0.1 myapp.example.org
+
+Substitute `127.0.0.1` by your minikube IP address if you are not using docker. Then press `^X` and `Y` to save & exit.
+
+> Note: The IP of minikube might change if you restart it, so make sure to check your DNS entries if something does not work.
+
+Now if you navigate to `myapp.example.org` in your browser, the traffic will be redirected to minikube.
 
 ## Creating a Self-Signed SSL Certificate
 
@@ -60,9 +88,9 @@ In order to enable the Ingress controller to terminate an SSL certificate, you e
 
 For this example, a self-signed certificate will be good enough as the process of setting up the certificate is the same for trusted certificates.
 
-Assuming you have installed `openssl` creating a self-signed SSL certificate for the domain `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu` can be achieved by issuing the following command:
+Assuming you have installed `openssl` creating a self-signed SSL certificate for the domain `myapp.example.org` can be achieved by issuing the following command:
 
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout k9s.key -out k9s.crt -subj "/CN=smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu/O=smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu"
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout k9s.key -out k9s.crt -subj "/CN=myapp.example.org /O=myapp.example.org"
 
 This will create the files `k9s.key` and `k9s.crt` which you will need during the creation of a TLS Secret.
 
@@ -72,7 +100,7 @@ Creating a TLS Secret is straight forward:
 
     kubectl create secret tls k9s-anynines-com-tls --key k9s.key --cert k9s.crt
 
-This will read the files `k9s.key` and `k9s.crt`. As you can see the TLS Secret is a special type of a Kubernetes Secret. Secrets will be covered in a later lesson in greater detail. For now, it's enough to know that a Secret is a set of key-value pairs managed by the Kubernetes API and stored in the Kubernetes etcd. The TLD Secret is special in so far that its keys are fixed to `key` and `cert`. This ensures that the Ingress knows where to look for both the key and certificate requires to utilize the SSL certificate.
+This will read the files `k9s.key` and `k9s.crt`. As you can see the TLS Secret is a special type of Kubernetes Secret. Secrets will be covered in a later lesson in greater detail. For now, it's enough to know that a Secret is a set of key-value pairs managed by the Kubernetes API and stored in the Kubernetes etcd. The TLD Secret is special in so far that its keys are fixed to `key` and `cert`. This ensures that the Ingress knows where to look for both the key and certificate requires to utilize the SSL certificate.
 
 Check whether the Secret has been created successfully:
 
@@ -105,7 +133,7 @@ Now you are ready to create the actual Ingress object.
 On an a9s Kubernetes cluster creating an Ingress can be done by creating the file `40-ingress-hello-world-a9s.yaml`:
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: smpl-go-web-ingress
@@ -115,23 +143,26 @@ metadata:
 spec:
   tls:
     - hosts:
-      - smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu
+      - myapp.example.org
       secretName: k9s-anynines-com-tls
   rules:
-  - host: smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu
+  - host: myapp.example.org
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: smpl-go-web-s
-          servicePort: 8080
+          service:
+            name: smpl-go-web-s
+            port:
+              number: 8080
 ```
 
 Again: You may have to search the documentation of your Kubernetes cluster as the Ingress may require a different specification.
 
 You can also see that `annotations` contains an element `kubernetes.io/ingress.class: "nginx"` declaring that the `nginx`-Ingress is to be used.
 
-The `tls` section declares a list of hosts, in this case the domain `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu`. Recognized how the SSL certificate for the domain is passed to the Ingress as a Secret with `secretName: k9s-anynines-com-tls`. As the TLS Secret type has a well known structure no further arguments are required.
+The `tls` section declares a list of hosts, in this case the domain `myapp.example.org`. Recognized how the SSL certificate for the domain is passed to the Ingress as a Secret with `secretName: k9s-anynines-com-tls`. As the TLS Secret type has a well known structure no further arguments are required.
 
 Lastly, the actual web application is connected to the Ingress by mounting the application to the path `/`. When using many microservice apps, it can be handy to mount a set of microservices to a domain which will create the impression of a single application to the outside user. In our case, there is only one application. Note that there is no reference to a Pod, ReplicaSet or Deployment. Instead, the reference is to a Service `smpl-go-web-s` and its port `8080`.
 
@@ -145,7 +176,12 @@ In order to verify whether the Ingress has been created list existing Ingresses:
 
     kubectl get ingress
 
-In the output you can obtain the url in the `HOSTS` attribute it may look similar to `smpl-go-web-apps-4fca26e8-2c54-4ad0-9136-542d0789b5c2.de.k9s.a9s.eu`. **Paste the url into your browser and you should see the output from the example web app**.
+In the output you can obtain the URL in the `HOSTS` attribute it may look similar to `myapp.example.org`.
+
+Since our certificate is self-signed, if you navigate to `https://myapp.example.org`, your browser will warn you that you
+are using an insecure site and might not let you visit the page. You can still verify that everything is working by using
+
+    curl --insecure  https://myapp.example.org/
 
 Congratulations! You have successfully deployed a web application.
 

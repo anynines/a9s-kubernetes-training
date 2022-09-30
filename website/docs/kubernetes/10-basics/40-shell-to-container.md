@@ -11,9 +11,9 @@ title: Container Shell Access
   }]}
 />
 
-Sometimes you may want to run commands from within a container and feel how it is to be inside the Kubernetes cluster. This makes it easier to access internal services before anything is exposed to the oustide world, for example.
+Sometimes you may want to run commands from within a container and feel how it is to be inside the Kubernetes cluster. This makes it easier to access internal services before anything is exposed to the outside world, for example.
 
-In order to run a shell we start a Pod with a single container based on a simple container image and remotely attach a tty (terminal) to it:
+In order to run a shell, we start a Pod with a single container based on a simple container image and remotely attach a tty (terminal) to it:
 
     kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
 
