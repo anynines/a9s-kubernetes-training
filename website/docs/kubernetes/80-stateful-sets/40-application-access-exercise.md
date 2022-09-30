@@ -117,7 +117,7 @@ Therefore, you need to grant the user `gaeMo6di` privileges to access the `postg
 
 Execute:
 
-    psql -U postgresql
+    psql -U postgres
 
 Execute the following SQL commands:
 
@@ -131,7 +131,7 @@ Note that, with the default config of PostgreSQL, using `psql` locally to verify
 
 So to test the credentials we need a remote Pod:
 
-    kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=UaGu5chu" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U gaeMo6di -d postgres
+    kubectl run pg-psql -i --tty --image=postgres:14.5 --restart=Never --env="PGPASSWORD=UaGu5chu" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U gaeMo6di -d postgres
 
 You should see a `psql` prompt similar to:
 
@@ -231,6 +231,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: postgresql-application
+  labels: 
+    app: postgresql-app
 spec:
   containers:
     - image: fischerjulian/smpl-go-pg:0.2.0
@@ -257,7 +259,7 @@ spec:
   restartPolicy: Always
 ```
 
-    kubectl apply -f pgapp.yaml
+    kubectl apply -f 40-postgressql-application.yaml
 
 ### Application Service
 
@@ -279,6 +281,10 @@ spec:
   selector:
     app: postgresql-app
 ```
+
+And apply it:
+
+    kubectl apply -f 50-pg-app-svc.yaml
 
 Start the `kubectl proxy`:
 

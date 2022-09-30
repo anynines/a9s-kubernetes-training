@@ -21,26 +21,16 @@ This requires setting values in config files dynamically which is not only requi
 
 As it should later be possible to turn any secondary into a primary, the config files for all nodes in the cluster will structurally be the same.
 
-Create the ConfigMap:
-
-    kubectl create configmap postgresql-configs --from-file=postgresql.conf
-
-The ConfigMap `postgresql-configs` will then be mounted into the StatefulSet as a Volume mount. This will create a directory containing the `postgresql.conf` file.
-
-By default, PostgreSQL will search for the `postgresql.conf` file in the `$PGDATA` directory. This is not desired as `$PGDATA` is already a Volume mount. Therefore, it is necessary to point PostgreSQL to the exact file path of the designated `postgresql.conf` file. The exclusive way to achieve this is by starting PostgreSQL with the following command line option:
-
-    postgresql -c config_file=/etc/postgresql/postgresql.conf
-
-The final `postgresql.conf` including some adjustments that have yet to be discussed looks like this:
+Create the `postgresql.conf` if not already present:
 
 ```conf
 # -----------------------------
 # PostgreSQL configuration file
 # -----------------------------
 
-# a8s-pg
+# t8s
 hba_file = '/etc/postgresql/pg_hba.conf'
-# a8s-pg
+# t8s
 
 #------------------------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION
@@ -56,14 +46,14 @@ listen_addresses = '*'
 
 # - Settings -
 
-# a8s-pg
-wal_level = replica			# minimal, replica, or logical
-# a8s-pg
+# t8s
+wal_level = replica         # minimal, replica, or logical
+# t8s
 
-# a8s-pg
+# t8s
 # Required for pg_rewind capability when standby goes out of sync with master
-wal_log_hints = on			# also do full page writes of non-critical updates
-# a8s-pg
+wal_log_hints = on          # also do full page writes of non-critical updates
+# t8s
 
 #------------------------------------------------------------------------------
 # REPLICATION
@@ -73,21 +63,37 @@ wal_log_hints = on			# also do full page writes of non-critical updates
 
 # Set these on the master and on any standby that will send replication data.
 
-# a8s-pg
+# t8s
 # Sets the maximum number of concurrent connections from the standby servers.
-max_wal_senders = 3		# max number of walsender processes
-# a8s-pg
+max_wal_senders = 3     # max number of walsender processes
+# t8s
 
-# a8s-pg
+# t8s
+# 13+ Depricates wal_keep_segments in favor of wal_keep_size
+# See also: https://www.postgresql.org/docs/13/release-13.html
 # Segments of WAL logs so that they are not deleted before standby consumes them.
-wal_keep_segments = 8	# in logfile segments; 0 disables
-# a8s-pg
+# wal_keep_segments = 8   # in logfile segments; 0 disables
+# If you previously used wal_keep_segments, the following formula will give you an approximately equivalent setting:
+# wal_keep_size = wal_keep_segments * wal_segment_size (typically 16MB)
+wal_keep_size = 152
+# t8s
 
-# a8s-pg
+# t8s
 # Standby role. This is ignored when the server is running as master.
-hot_standby = on			# "off" disallows queries during recovery
-# a8s-pg
+hot_standby = on            # "off" disallows queries during recovery
+# t8s
 ```
+
+Create the ConfigMap:
+
+    kubectl create configmap postgresql-configs --from-file=postgresql.conf
+
+The ConfigMap `postgresql-configs` will then be mounted into the StatefulSet as a Volume mount. This will create a directory containing the `postgresql.conf` file.
+
+By default, PostgreSQL will search for the `postgresql.conf` file in the `$PGDATA` directory. This is not desired as `$PGDATA` is already a Volume mount. Therefore, it is necessary to point PostgreSQL to the exact file path of the designated `postgresql.conf` file. The exclusive way to achieve this is by starting PostgreSQL with the following command line option:
+
+    postgresql -c config_file=/etc/postgresql/postgresql.conf
+
 
 ## `pg_hba.conf`
 
@@ -96,10 +102,6 @@ In order to allow secondaries to connect to the master to retrieve replicas, the
 As all secondaries should be able to become primaries, it makes sense to configure all nodes right from the beginning.
 
 Similar to `postgres.conf` the `pg_hba.conf` file is assumed to be located in the `$PGDATA` directory. While it is possible to supply the `postgres` startup command with a `pg_hba.conf` location there is a more elegant way: set the location in the `postgres.conf` file.
-
-Create a `pg_hba.conf` and **recreate the `postgresql-configs` Config Map**:
-
-    kubectl create configmap postgresql-configs --from-file=postgresql.conf --from-file=pg_hba.conf
 
 The location of the `pg_hba.conf` file will be: `/etc/postgresql/pg_hba.conf`.
 
@@ -118,9 +120,9 @@ Just to remember: the syntax is as follows:
 
 Hence, we need three entries. This will allow a client to connect to itself but a single config can be used across all cluster nodes.
 
-    host    replication  replicator  postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local  md5
-    host    replication  replicator  postgresql-sfs-1.postgresql-svc.pg.svc.cluster.local  md5
-    host    replication  replicator  postgresql-sfs-2.postgresql-svc.pg.svc.cluster.local  md5
+    host    replication  replicator  postgresql-sfs-0.postgresql-svc.k8s-training.svc.cluster.local  md5
+    host    replication  replicator  postgresql-sfs-1.postgresql-svc.k8s-training.svc.cluster.local  md5
+    host    replication  replicator  postgresql-sfs-2.postgresql-svc.k8s-training.svc.cluster.local  md5
 
 Using the DNS names created by the corresponding Kubernetes Service ensures a stable network identity as the underlying Pod IP addresses may change when Pods need to be rescheduled (e.g. during node maintenance).
 
@@ -163,6 +165,12 @@ host    replication  replicator  samenet  md5
 # Allow psql connections from Kubernetes Jobs
 host    all          postgres    samenet  md5
 ```
+
+Create a `pg_hba.conf` and **recreate the `postgresql-configs` Config Map**:
+
+    kubectl delete configmap postgresql-configs
+
+    kubectl create configmap postgresql-configs --from-file=postgresql.conf --from-file=pg_hba.conf
 
 ## Summary
 The required PostgreSQL configuration files `postgresql.conf` and `pg_hba.conf` are ready.

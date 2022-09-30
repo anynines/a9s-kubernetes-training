@@ -32,9 +32,8 @@ wal_log_hints = on
 # sets the maximum number of concurrent connections from the standby servers.
 
 max_wal_senders = 3
-# The below parameter is used to tell the master to keep the minimum number of segments of WAL logs so that they are not deleted before standby consumes them. Each segment is 16MB.
 
-wal_keep_segments = 8
+wal_keep_size = 152
 
 # The below parameter enables read only connection on the node when it is in standby role. This is ignored when the server is running as master.
 hot_standby = on

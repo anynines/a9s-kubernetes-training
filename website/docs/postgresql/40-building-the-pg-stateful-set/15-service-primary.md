@@ -48,6 +48,10 @@ spec:
       statefulset.kubernetes.io/pod-name: postgresql-sfs-0
 ```
 
+Apply it:
+
+    kubectl apply -f 65-service-primary-init.yaml
+
 There are two labels active `app: postgresql-a` which selects the PostgreSQL StatefulSet from other Pods that could be residing in the same namespace as well as the `statefulset.kubernetes.io/pod-name: postgresql-sfs-0` which has been discussed earlier.
 
 ## Subsequent Leader Elections
@@ -122,7 +126,7 @@ You can also verify that the Service now has a endpoint:
     Events:            <none>
 
 
-The Service with a proper backend will create a DNS entry so that the following URL will resolve: `postgresql-primary.pg.svc.cluster.local`.
+The Service with a proper backend will create a DNS entry so that the following URL will resolve: `postgresql-primary.k8s-training.svc.cluster.local`.
 
 ## Summary
 
