@@ -51,6 +51,33 @@ my-docusaurus/
 
 # Editing Content
 
+## Contribute branching and naming convetions
+
+### Base of PR
+
+If you wish to contribute to this project you can do so by Forking this repository and creating a new branch for your changes based on the latest development branch.
+
+Fork the repository via the Fork button, clone the forked repository.
+
+git clone repo-url
+cd repo_name
+git checkout develop
+git checkout -b "prefix/your-cool-new-feature"
+
+or if you have git flow installed you can start a feature by 
+
+git flow feature start "your-feature-description"
+
+### Naming convention
+
+When creating a pull request you should adhere to git-flows branch naming conventions and prefix your branch name accordingly.
+
+| Prefix   | Description             |
+|----------|:-----------------------:|
+| feature/ | your-feature-description|
+| bugfix/  | your-bugfix-description |
+| hotfix/  | your-hotfix-description |
+
 ## Editing an existing docs page
 
 Edit docs by navigating to `docs/` and editing the corresponding document:
