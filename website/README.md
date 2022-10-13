@@ -8,6 +8,60 @@ This website was created with [Docusaurus](https://docusaurus.io/).
 - [Adding Content](#adding-content)
 - [Full Documentation](#full-documentation)
 
+# Contribute
+If you wish to contribute to this project you can do so by Forking this repository and creating a new branch for your changes based on the latest development branch.
+
+```
+  git clone your-forked-repo-url
+  cd repo_name  
+  git checkout develop
+  git checkout -b "prefix/your-cool-new-feature"
+```
+or if you are using [gitflow](https://github.com/petervanderdoes/gitflow-avh)
+
+```
+  git clone your-forked-repo-url
+  cd repo_name 
+  git flow init
+  
+  Which branch should be used for bringing forth production releases?
+    - develop
+    - master
+  Branch name for production releases: [master] 
+
+  Which branch should be used for integration of the "next release"?
+    - develop
+  
+  Branch name for "next release" development: [develop] 
+
+  How to name your supporting branch prefixes?
+  Feature branches? [feature/] 
+  Bugfix branches? [bugfix/] 
+  Release branches? [release/] 
+  Hotfix branches? [hotfix/] 
+  Support branches? [support/] 
+  Version tag prefix? [] v
+
+  git flow feature start "your-feature-description"
+```
+
+When creating a pull request you should adhere to [gitflow](https://github.com/petervanderdoes/gitflow-avh) branch naming conventions and prefix your branch names accordingly.
+
+| Prefix   | Description             |
+|----------|:-----------------------:|
+| feature/ | your-feature-description|
+| bugfix/ | your-bugfix-description |
+| hotfix/  | your-hotfix-description |
+| support/ | your-support-description |
+
+## Creating a Pull Request
+
+Once you've made all the changes you wish to make commit and push your changes into your Github repository.
+If you now visit your fork of this project on github you can click on Pull Request in the top menu, select <br>
+base repository: anynines/a9s-kubernets-training base: develop <br>
+<- <br>
+head repository your-account/a9s-kubernets-training compare: feature/your-feature-description <br>
+
 # Get Started in 5 Minutes
 
 1. Make sure all the dependencies for the website are installed:
@@ -50,33 +104,6 @@ my-docusaurus/
 ```
 
 # Editing Content
-
-## Contribute branching and naming convetions
-
-### Base of PR
-
-If you wish to contribute to this project you can do so by Forking this repository and creating a new branch for your changes based on the latest development branch.
-
-Fork the repository via the Fork button, clone the forked repository.
-
-git clone repo-url
-cd repo_name
-git checkout develop
-git checkout -b "prefix/your-cool-new-feature"
-
-or if you have git flow installed you can start a feature by 
-
-git flow feature start "your-feature-description"
-
-### Naming convention
-
-When creating a pull request you should adhere to git-flows branch naming conventions and prefix your branch name accordingly.
-
-| Prefix   | Description             |
-|----------|:-----------------------:|
-| feature/ | your-feature-description|
-| bugfix/  | your-bugfix-description |
-| hotfix/  | your-hotfix-description |
 
 ## Editing an existing docs page
 
