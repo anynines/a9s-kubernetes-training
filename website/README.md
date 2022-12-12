@@ -9,7 +9,16 @@ This website was created with [Docusaurus](https://docusaurus.io/).
 - [Full Documentation](#full-documentation)
 
 # Contribute
-If you wish to contribute to this project you can do so by Forking this repository and creating a new branch for your changes based on the latest development branch.
+If you wish to contribute to this project you can do so by forking this repository and creating a new branch for your changes based on the latest development branch.
+
+When you contribute you should adhere to [gitflow](https://github.com/petervanderdoes/gitflow-avh) branch naming conventions and prefix your branch names accordingly.
+
+| Prefix   | Description             |
+|----------|:-----------------------:|
+| feature/ | your-feature-description|
+| bugfix/ | your-bugfix-description |
+| hotfix/  | your-hotfix-description |
+| support/ | your-support-description |
 
 ```
   git clone your-forked-repo-url
@@ -17,10 +26,12 @@ If you wish to contribute to this project you can do so by Forking this reposito
   git checkout develop
   git checkout -b "prefix/your-cool-new-feature"
 ```
-or if you are using [gitflow](https://github.com/petervanderdoes/gitflow-avh)
+
+## Internal Contributors
+
+If you are an employee with write access to this repository you can use [gitflow](https://github.com/petervanderdoes/gitflow-avh) to automate the prefix and merging of your branches.
 
 ```
-  git clone your-forked-repo-url
   cd repo_name 
   git flow init
   
@@ -45,19 +56,10 @@ or if you are using [gitflow](https://github.com/petervanderdoes/gitflow-avh)
   git flow feature start "your-feature-description"
 ```
 
-When creating a pull request you should adhere to [gitflow](https://github.com/petervanderdoes/gitflow-avh) branch naming conventions and prefix your branch names accordingly.
-
-| Prefix   | Description             |
-|----------|:-----------------------:|
-| feature/ | your-feature-description|
-| bugfix/ | your-bugfix-description |
-| hotfix/  | your-hotfix-description |
-| support/ | your-support-description |
-
 ## Creating a Pull Request
 
-Once you've made all the changes you wish to make commit and push your changes into your Github repository.
-If you now visit your fork of this project on github you can click on Pull Request in the top menu, select <br>
+Once you've made all the changes you wish to make, commit and push your changes into your GitHub repository.
+If you now visit your fork of this project on GitHub you can click on Pull Request in the top menu, select <br>
 base repository: anynines/a9s-kubernets-training base: develop <br>
 <- <br>
 head repository your-account/a9s-kubernets-training compare: feature/your-feature-description <br>
