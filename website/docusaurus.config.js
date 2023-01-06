@@ -17,7 +17,7 @@ const siteConfig = {
         alt: 'anynines',
         src: 'img/logoLight.svg',
         srcDark: 'img/logo.svg',
-        href: '/training-overview'
+        href: '/'
       },
       items: [
         {
