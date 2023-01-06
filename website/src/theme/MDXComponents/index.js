@@ -1,85 +1,31 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-import React, { isValidElement } from 'react'
-import Head from '@docusaurus/Head'
-import Link from '@docusaurus/Link'
-import CodeBlock from '@theme/CodeBlock'
-import Heading from '@theme/Heading'
-import Details from '@theme/Details'
-
-// NOTE: This copy gives us the posibility to define our own scopes.
-// Keep in mind that this class can have fast breaking changes from updates. so maybe swizzle it again via yarn swizzleMDX
-//
-// https://github.com/facebook/docusaurus/issues/2152#issuecomment-597558963
-import VideoContainer from '../VideoContainer'
-
-// MDX elements are wrapped through the MDX pragma
-// In some cases (notably usage with Head/Helmet) we need to unwrap those elements.
-function unwrapMDXElement(element) {
-  if (element?.props?.mdxType && element?.props?.originalType) {
-    const { mdxType, originalType, ...newProps } = element.props
-    return React.createElement(element.props.originalType, newProps)
-  }
-
-  return element
-}
-
+import React from 'react';
+import MDXHead from '@theme/MDXComponents/Head';
+import MDXCode from '@theme/MDXComponents/Code';
+import MDXA from '@theme/MDXComponents/A';
+import MDXPre from '@theme/MDXComponents/Pre';
+import MDXDetails from '@theme/MDXComponents/Details';
+import MDXHeading from '@theme/MDXComponents/Heading';
+import MDXUl from '@theme/MDXComponents/Ul';
+import MDXImg from '@theme/MDXComponents/Img';
+import Admonition from '@theme/Admonition';
+import Mermaid from '@theme/Mermaid';
+import ReactPlayer from 'react-player'
 const MDXComponents = {
-  VideoContainer: (props) => <VideoContainer {...props} />,
-  head: (props) => {
-    const unwrappedChildren = React.Children.map(props.children, (child) =>
-      unwrapMDXElement(child)
-    )
-    return <Head {...props}>{unwrappedChildren}</Head>
-  },
-  code: (props) => {
-    const { children } = props // For retrocompatibility purposes (pretty rare use case)
-    // See https://github.com/facebook/docusaurus/pull/1584
-
-    if (isValidElement(children)) {
-      return children
-    }
-
-    return !children.includes('\n') ? (
-      <code {...props} />
-    ) : (
-      <CodeBlock {...props} />
-    )
-  },
-  a: (props) => <Link {...props} />,
-  pre: (props) => {
-    const { children } = props // See comment for `code` above
-
-    if (isValidElement(children) && isValidElement(children?.props?.children)) {
-      return children.props.children
-    }
-
-    return (
-      <CodeBlock
-        {...(isValidElement(children) ? children?.props : { ...props })}
-      />
-    )
-  },
-  details: (props) => {
-    const items = React.Children.toArray(props.children) // Split summary item from the rest to pass it as a separate prop to the Detais theme component
-
-    const summary = items.find((item) => item?.props?.mdxType === 'summary')
-    const children = <>{items.filter((item) => item !== summary)}</>
-    return (
-      <Details {...props} summary={summary}>
-        {children}
-      </Details>
-    )
-  },
-  h1: Heading('h1'),
-  h2: Heading('h2'),
-  h3: Heading('h3'),
-  h4: Heading('h4'),
-  h5: Heading('h5'),
-  h6: Heading('h6')
-}
-export default MDXComponents
+  head: MDXHead,
+  code: MDXCode,
+  a: MDXA,
+  pre: MDXPre,
+  details: MDXDetails,
+  ul: MDXUl,
+  img: MDXImg,
+  video: ReactPlayer,
+  h1: (props) => <MDXHeading as="h1" {...props} />,
+  h2: (props) => <MDXHeading as="h2" {...props} />,
+  h3: (props) => <MDXHeading as="h3" {...props} />,
+  h4: (props) => <MDXHeading as="h4" {...props} />,
+  h5: (props) => <MDXHeading as="h5" {...props} />,
+  h6: (props) => <MDXHeading as="h6" {...props} />,
+  admonition: Admonition,
+  mermaid: Mermaid,
+};
+export default MDXComponents;

@@ -4,12 +4,13 @@ title: CronJobs
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/Lye_qdofqjg",
-   title: "CronJobs"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/Lye_qdofqjg"
+  ]}
 />
+
+---
 
 Cron [1] is a daemon available as a package for most Unix/Linux operating systems and is a time-based job scheduler.
 

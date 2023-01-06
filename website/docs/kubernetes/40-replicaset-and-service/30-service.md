@@ -4,15 +4,14 @@ title: Services
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8",
-   title: "Services Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/BEXU7KyXI-U",
-   title: "Services Part 2"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8",
+    "https://www.youtube-nocookie.com/embed/BEXU7KyXI-U",
+  ]}
 />
+
+---
 
 In the ReplicaSet lessons we have encountered *service discovery*, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.
 

@@ -4,12 +4,13 @@ title: Advanced Job Features
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ",
-   title: "Advanced Job Features"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ"
+  ]}
 />
+
+---
 
 Admittedly, running a simple Job as earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
 

@@ -4,15 +4,14 @@ title: Persistent Volumes
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
-   title: "Persistent Volumes Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
-   title: "Persistent Volumes Part 2"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
+    "https://www.youtube-nocookie.com/embed/83RfSH0CrrI"
+  ]}
 />
+
+---
 
 This lesson covers the theoretical background necessary to understand the Persistent Volume concept in Kubernetes.
 

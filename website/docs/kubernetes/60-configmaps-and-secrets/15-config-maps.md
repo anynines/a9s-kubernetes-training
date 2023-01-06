@@ -4,12 +4,13 @@ title: ConfigMaps
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
-   title: "ConfigMaps Part 2"
-  }]}
+<video
+  url={[
+   "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU"
+  ]}
 />
+
+---
 
 ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.
 

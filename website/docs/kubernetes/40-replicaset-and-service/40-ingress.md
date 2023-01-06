@@ -4,18 +4,15 @@ title: Ingress
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
-   title: "Ingress Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
-   title: "Ingress Part 2"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/0QpZL6NOam4",
-   title: "Ingress Part 3"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
+    "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
+    "https://www.youtube-nocookie.com/embed/0QpZL6NOam4"
+  ]}
 />
+
+---
 
 Pods and ReplicaSets can be used to start and operate containers. Services can be handy to provide named access to and distribute and load balance requests across Pods, **internally**.
 

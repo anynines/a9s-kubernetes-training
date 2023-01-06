@@ -5,18 +5,15 @@ title: Containers Basics
 
 ## Related Videos
 
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU",
-   title: "What is a container?"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
-   title: "Container vs. VMs"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
-   title: "Container Images & Container Registry"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU",
+    "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
+    "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
+  ]}
 />
+
+---
 
 Before diving into Kubernetes it is necessary to understand containerization basics. This chapter aims to provide a first mental model about what containers, container images and container registries are.
 

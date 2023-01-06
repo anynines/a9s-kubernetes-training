@@ -4,15 +4,14 @@ title: Jobs
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
-   title: "Jobs Part 1"
-  }, {
-   src: "https://www.youtube-nocookie.com/embed/VgrMcXXon1U",
-   title: "Jobs Part 2"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
+    "https://www.youtube-nocookie.com/embed/VgrMcXXon1U"
+  ]}
 />
+
+---
 
 ReplicaSets and Deployments are Kubernetes resources to describe long-running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
 

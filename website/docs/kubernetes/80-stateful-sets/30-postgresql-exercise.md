@@ -4,12 +4,13 @@ title: PostgreSQL StatefulSet
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A",
-   title: "PostgreSQL StatefulSet"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A"
+  ]}
 />
+
+---
 
 In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the database is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
 

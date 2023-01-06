@@ -4,12 +4,13 @@ title: Headless Service
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y",
-   title: "Headless Services"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y"
+  ]}
 />
+
+---
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 

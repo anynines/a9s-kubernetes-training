@@ -4,12 +4,13 @@ title: Container Shell Access
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/IAEVI559jaA",
-   title: "Container Shell Access"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/IAEVI559jaA"
+  ]}
 />
+
+---
 
 Sometimes you may want to run commands from within a container and feel how it is to be inside the Kubernetes cluster. This makes it easier to access internal services before anything is exposed to the outside world, for example.
 

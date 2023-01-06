@@ -4,17 +4,19 @@ title: Deployments
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[
-{src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", title: "Deployments Part 1"},
-{src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", title: "Deployments Part 2"},
-{src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", title: "Deployments Part 3"},
-{src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", title: "Deployments Part 4"},
-{src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", title: "Deployments Part 5"},
-{src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", title: "Deployments Part 6"},
-{src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", title: "Deployments Part 7"}
-]
-}></VideoContainer>
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0",
+    "https://www.youtube-nocookie.com/embed/cpzs02iu-RE",
+    "https://www.youtube-nocookie.com/embed/l8FrEoibmGE",
+    "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI",
+    "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s",
+    "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw",
+    "https://www.youtube-nocookie.com/embed/VjLheCWpAM8"
+  ]}
+/>
+
+---
 
 The Kubernetes Deployment resource is designed to support the continuos delivery of application releases beyond the abilities of Pods and ReplicaSets.
 

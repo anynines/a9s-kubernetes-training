@@ -4,12 +4,13 @@ title: Kubernetes Training Overview
 ---
 
 ## Related Videos
-<VideoContainer
-list={[
-{src: "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU", title: "Overview"},
-]}></VideoContainer>
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU"
+  ]}
+/>
 
-
+---
 ## Goal
 
 The goal of this training is to enable you with the skills necessary to containerize your applications in order to run them in a Kubernetes cluster.

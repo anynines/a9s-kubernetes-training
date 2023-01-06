@@ -4,12 +4,13 @@ title: kubectl Basics
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ",
-   title: "kubectl Basics"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ"
+  ]}
 />
+
+---
 
 In this lesson you will learn how to interact with a Kubernetes cluster using the Kubernetes CLI called `kubectl`.
 

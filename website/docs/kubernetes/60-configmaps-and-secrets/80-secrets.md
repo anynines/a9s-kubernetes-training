@@ -4,12 +4,13 @@ title: Secrets
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
-   title: "Secrets"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw"
+  ]}
 />
+
+---
 
 Secrets are represented as key value pair and thus are very similar to ConfigMaps. However, ConfigMaps are meant for non-sensitive configuration data aiming at making application code portable across environments. So - analog to ConfigMaps - **Secrets are key value sets but for sensitive data**.
 

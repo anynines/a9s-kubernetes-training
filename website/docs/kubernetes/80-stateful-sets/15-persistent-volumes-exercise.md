@@ -4,15 +4,14 @@ title: Persistent Volumes Excercise
 ---
 
 ## Related Videos
-<VideoContainer
-  list={[{
-   src: "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
-   title: "Persistent Volume Exercise Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw",
-   title: "Persistent Volume Exercise Part 2"
-  }]}
+<video
+  url={[
+    "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
+    "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw"
+  ]}
 />
+
+---
 
 After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this can involve a few preliminary steps. Since the exercise is executed on minikube, we already have a default storage class, but when using for example `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS, storage classes might have to be setup first [1]. 
 
