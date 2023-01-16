@@ -8,6 +8,7 @@ title: CronJobs
   url={[
     "https://www.youtube-nocookie.com/embed/Lye_qdofqjg"
   ]}
+  controls={true}
 />
 
 ---

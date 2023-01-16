@@ -8,6 +8,7 @@ title: PostgreSQL StatefulSet
   url={[
     "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A"
   ]}
+  controls={true}
 />
 
 ---

@@ -8,6 +8,7 @@ title: Application Access to a StatefulSet
   url={[
     "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA"
   ]}
+  controls={true}
 />
 
 ---

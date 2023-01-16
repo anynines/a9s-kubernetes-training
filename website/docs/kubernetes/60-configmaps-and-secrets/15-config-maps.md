@@ -8,6 +8,7 @@ title: ConfigMaps
   url={[
    "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU"
   ]}
+  controls={true}
 />
 
 ---

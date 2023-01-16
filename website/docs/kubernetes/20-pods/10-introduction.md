@@ -10,6 +10,7 @@ title: Pods
     "https://www.youtube-nocookie.com/embed/4-5psDE9tBU",
     "https://www.youtube-nocookie.com/embed/wiXQkoKM07g"
   ]}
+  controls={true}
 />
 
 ---

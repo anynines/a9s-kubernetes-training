@@ -8,6 +8,7 @@ title: Tidying Up
   url={[
     "https://www.youtube-nocookie.com/embed/ss1GDK93qn4"
   ]}
+  controls={true}
 />
 
 ---

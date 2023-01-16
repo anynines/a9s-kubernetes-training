@@ -247,7 +247,7 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@anynines/a9s-design-system@*":
+"@anynines/a9s-design-system@^0.3.23":
   version "0.3.23"
   resolved "https://registry.yarnpkg.com/@anynines/a9s-design-system/-/a9s-design-system-0.3.23.tgz#ca3fb4f0ef52a99d4db32ef10137af88fd38f51b"
   integrity sha512-IbTRft6HiRRNb4h/rRL7Mc+FerydJjlplyY0odDBDSa5c5QZ4uOkBZGLYOrh1MGZcp/bhTAUDkdNQoswL5OHYg==
@@ -2515,7 +2515,7 @@
     "@docsearch/css" "3.3.1"
     algoliasearch "^4.0.0"
 
-"@docusaurus/core@*", "@docusaurus/core@2.2.0":
+"@docusaurus/core@2.2.0", "@docusaurus/core@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/core/-/core-2.2.0.tgz#64c9ee31502c23b93c869f8188f73afaf5fd4867"
   integrity sha512-Vd6XOluKQqzG12fEs9prJgDtyn6DPok9vmUWDR2E6/nV5Fl9SVkhEQOBxwObjk3kQh7OY7vguFaLh0jqdApWsA==
@@ -2752,7 +2752,7 @@
     sitemap "^7.1.1"
     tslib "^2.4.0"
 
-"@docusaurus/preset-classic@*":
+"@docusaurus/preset-classic@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/preset-classic/-/preset-classic-2.2.0.tgz#bece5a043eeb74430f7c6c7510000b9c43669eb7"
   integrity sha512-yKIWPGNx7BT8v2wjFIWvYrS+nvN04W+UameSFf8lEiJk6pss0kL6SG2MRvyULiI3BDxH+tj6qe02ncpSPGwumg==

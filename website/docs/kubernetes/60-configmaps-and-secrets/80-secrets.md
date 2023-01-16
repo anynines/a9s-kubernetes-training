@@ -8,6 +8,7 @@ title: Secrets
   url={[
     "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw"
   ]}
+  controls={true}
 />
 
 ---

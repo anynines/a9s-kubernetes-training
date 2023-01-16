@@ -9,6 +9,7 @@ title: Namespaces
     "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
     "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA"
   ]}
+  controls={true}
 />
 
 ---

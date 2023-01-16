@@ -8,6 +8,7 @@ title: Parallel Jobs
   url={[
     "https://www.youtube-nocookie.com/embed/A9c07XS9go4"
   ]}
+  controls={true}
 />
 
 ---

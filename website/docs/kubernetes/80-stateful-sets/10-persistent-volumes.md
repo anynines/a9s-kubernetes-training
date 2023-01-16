@@ -9,6 +9,7 @@ title: Persistent Volumes
     "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
     "https://www.youtube-nocookie.com/embed/83RfSH0CrrI"
   ]}
+  controls={true}
 />
 
 ---

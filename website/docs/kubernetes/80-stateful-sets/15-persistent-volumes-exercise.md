@@ -9,6 +9,7 @@ title: Persistent Volumes Excercise
     "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
     "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw"
   ]}
+  controls={true}
 />
 
 ---

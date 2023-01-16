@@ -8,6 +8,7 @@ title: Docker Cheat Sheet
   url={[
     "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk"
   ]}
+  controls={true}
 />
 
 ---

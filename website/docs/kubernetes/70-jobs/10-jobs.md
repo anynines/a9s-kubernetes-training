@@ -9,6 +9,7 @@ title: Jobs
     "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
     "https://www.youtube-nocookie.com/embed/VgrMcXXon1U"
   ]}
+  controls={true}
 />
 
 ---

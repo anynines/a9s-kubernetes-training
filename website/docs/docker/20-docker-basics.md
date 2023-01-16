@@ -9,6 +9,7 @@ title: Docker Basics
     "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
     "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y"
   ]}
+  controls={true}
 />
 
 ---

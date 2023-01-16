@@ -11,6 +11,7 @@ title: Containers Basics
     "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
     "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
   ]}
+  controls={true}
 />
 
 ---

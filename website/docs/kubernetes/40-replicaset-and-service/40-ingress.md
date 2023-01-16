@@ -10,6 +10,7 @@ title: Ingress
     "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
     "https://www.youtube-nocookie.com/embed/0QpZL6NOam4"
   ]}
+  controls={true}
 />
 
 ---

@@ -8,6 +8,7 @@ title: kubectl Basics
   url={[
     "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ"
   ]}
+  controls={true}
 />
 
 ---

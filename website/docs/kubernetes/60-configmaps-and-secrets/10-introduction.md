@@ -8,6 +8,7 @@ title: ConfigMaps and Secrets
   url={[
     "https://www.youtube-nocookie.com/embed/6hNC66uImgs",
   ]}
+  controls={true}
 />
 
 ---

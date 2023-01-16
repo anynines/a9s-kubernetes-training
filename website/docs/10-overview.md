@@ -9,6 +9,7 @@ title: Kubernetes Training Overview
   url={[
     "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU"
   ]}
+  controls={true}
 />
 
 ---

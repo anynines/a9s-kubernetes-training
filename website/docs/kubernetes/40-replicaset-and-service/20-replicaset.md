@@ -11,6 +11,7 @@ title: ReplicaSets
     "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
     "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs"
   ]}
+  controls={true}
 />
 
 ---

@@ -8,6 +8,7 @@ title: Creating Container Images
   url={[
     "https://www.youtube-nocookie.com/embed/AOg8a1z8BIY"
   ]}
+  controls={true}
 />
 
 ---

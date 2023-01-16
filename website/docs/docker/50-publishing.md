@@ -7,6 +7,7 @@ title: Publishing a Container Image
   url={[
     "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
   ]}
+  controls={true}
 />
 
 ---

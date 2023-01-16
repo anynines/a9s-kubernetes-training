@@ -8,6 +8,7 @@ title: Headless Service
   url={[
     "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y"
   ]}
+  controls={true}
 />
 
 ---

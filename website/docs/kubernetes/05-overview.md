@@ -8,6 +8,7 @@ title: Kubernetes Overview
   url={[
     "https://www.youtube-nocookie.com/embed/6dTdprPESvw"
   ]}
+  controls={true}
 />
 
 ---

@@ -14,6 +14,7 @@ title: Deployments
     "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw",
     "https://www.youtube-nocookie.com/embed/VjLheCWpAM8"
   ]}
+  controls={true}
 />
 
 ---

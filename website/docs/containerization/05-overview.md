@@ -8,6 +8,7 @@ title: Container Overview
   url={[
     "https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ",
   ]}
+  controls={true}
 />
 
 ---

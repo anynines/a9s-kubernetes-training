@@ -8,6 +8,7 @@ title: StatefulSet vs. ReplicaSets
   url={[
     "https://www.youtube-nocookie.com/embed/YQZJpezPyFQ"
   ]}
+  controls={true}
 />
 
 ---

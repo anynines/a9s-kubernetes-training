@@ -8,6 +8,7 @@ title: Container Shell Access
   url={[
     "https://www.youtube-nocookie.com/embed/IAEVI559jaA"
   ]}
+  controls={true}
 />
 
 ---

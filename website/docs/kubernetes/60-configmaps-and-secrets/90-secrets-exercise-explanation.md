@@ -8,6 +8,7 @@ title: Secrets Exercise Explanation
   url={[
     "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw"
   ]}
+  controls={true}
 />
 
 ---

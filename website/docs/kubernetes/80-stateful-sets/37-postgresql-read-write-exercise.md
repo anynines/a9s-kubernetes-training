@@ -8,6 +8,7 @@ title: PSQL Access to PostgreSQL
   url={[
     "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM"
   ]}
+  controls={true}
 />
 
 ---
