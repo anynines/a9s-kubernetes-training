@@ -140,7 +140,22 @@ const siteConfig = {
         }
       }
     ]
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/',
+            from: '/training-overview',
+          },
+        ],
+      }
+    ]
   ]
+
 }
 
 module.exports = siteConfig

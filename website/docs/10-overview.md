@@ -1,4 +1,5 @@
 ---
+slug: /
 id: training-overview
 title: Kubernetes Training Overview
 ---
