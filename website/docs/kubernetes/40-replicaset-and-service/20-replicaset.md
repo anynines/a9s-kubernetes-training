@@ -4,17 +4,21 @@ title: ReplicaSets
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
-    "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
-    "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
-    "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
+   title: "ReplicaSets Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
+   title: "ReplicaSets Part 2"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
+   title: "ReplicaSets Part 3"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
+   title: "ReplicaSets Part 4"
+  }]}
 />
-
----
 
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 

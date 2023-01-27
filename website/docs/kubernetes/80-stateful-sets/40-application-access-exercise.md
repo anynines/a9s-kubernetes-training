@@ -4,14 +4,12 @@ title: Application Access to a StatefulSet
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA",
+   title: "Application Access to a StatefulSet"
+  }]}
 />
-
----
 
 ## Application Access
 

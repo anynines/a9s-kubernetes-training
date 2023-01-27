@@ -4,13 +4,12 @@ title: StatefulSets
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/yRMV5pnzcrk"
-  ]}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/yRMV5pnzcrk",
+   title: "StatefulSets"
+  }]}
 />
-
----
 
 Now that you have made your first experience with Persistent Volumes, it is time to introduce a closely related Kubernetes concept called StatefulSets.
 

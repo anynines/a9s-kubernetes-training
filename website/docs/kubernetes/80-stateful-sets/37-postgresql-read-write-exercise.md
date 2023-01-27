@@ -4,14 +4,12 @@ title: PSQL Access to PostgreSQL
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM",
+   title: "PSQL Access to Postgres"
+  }]}
 />
-
----
 
 ## Accessing the Database using `psql`
 

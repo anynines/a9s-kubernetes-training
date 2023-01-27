@@ -4,15 +4,15 @@ title: Namespaces
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
-    "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
+   title: "Namespaces Part 1"
+  },{
+   src: "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA",
+   title: "Namespaces Part 2"
+  }]}
 />
-
----
 
 In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
 

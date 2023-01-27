@@ -3,14 +3,13 @@ id: publish-image
 title: Publishing a Container Image
 ---
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
+   title: "Publishing a Container Image & The Workflow"
+  }]}
 />
 
----
 
 So far you have created your own container images and started them, locally. In order to make use of container images in an production environment such as a Kubernetes cluster, it is necessary to distribute container images to those clusters. As described in the introduction, the distribution of container images is supported by so-called *container registries*.
 

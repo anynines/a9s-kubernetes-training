@@ -3,13 +3,12 @@ id: installation
 title: Docker Installation
 ---
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/4KpQOz_rSRc"
-  ]}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/4KpQOz_rSRc",
+   title: "Installation and Basics Part 1"
+  }]}
 />
-
----
 
 In order to learn to create containers we start with a local Docker installation.
 

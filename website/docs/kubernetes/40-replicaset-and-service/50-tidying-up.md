@@ -4,14 +4,12 @@ title: Tidying Up
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/ss1GDK93qn4"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
+   title: "Tidying Up"
+  }]}
 />
-
----
 
 Removing all artifacts is simple: replace `apply` with `delete` in all `kubectl`-commands and execute them in reverse order:
 

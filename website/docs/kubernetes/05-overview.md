@@ -4,14 +4,12 @@ title: Kubernetes Overview
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/6dTdprPESvw"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/6dTdprPESvw",
+   title: "Kubernetes Overview"
+  }]}
 />
-
----
 
 The goal of the Kubernetes training is to enable you to deploy workloads to Kubernetes clusters. The training will guide you through the most frequently used Kubernetes resources and make you familiar with interacting with Kubernetes.
 

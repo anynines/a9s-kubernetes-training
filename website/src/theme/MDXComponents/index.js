@@ -9,7 +9,8 @@ import MDXUl from '@theme/MDXComponents/Ul';
 import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
-import ReactPlayer from 'react-player'
+import VideoContainer from './VideoContainer'
+
 const MDXComponents = {
   head: MDXHead,
   code: MDXCode,
@@ -18,7 +19,7 @@ const MDXComponents = {
   details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
-  video: ReactPlayer,
+  VideoContainer: VideoContainer,
   h1: (props) => <MDXHeading as="h1" {...props} />,
   h2: (props) => <MDXHeading as="h2" {...props} />,
   h3: (props) => <MDXHeading as="h3" {...props} />,

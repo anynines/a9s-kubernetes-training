@@ -4,13 +4,12 @@ title: The Container Workflow
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
-  ]}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk",
+   title: "Publishing a Container Image & The Workflow"
+  }]}
 />
-
----
 
 To summarize the previous lessons a simple workflow of creating container images may look like this:
 

@@ -4,14 +4,12 @@ title: ConfigMap Volume Mounts
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+   title: "ConfigMaps Part 2"
+  }]}
 />
-
----
 
 In the past lesson you have learned how to map ConfigMaps to environment variables. While this is a valid approach to separate configuration information from application source code, it comes with a slight drawback.
 

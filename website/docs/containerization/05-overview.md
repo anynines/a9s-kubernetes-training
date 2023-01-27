@@ -4,14 +4,12 @@ title: Container Overview
 ---
 ## Related Videos
 
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ",
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+    src: "https://www.youtube-nocookie.com/embed/jq9wLQpDtvQ",
+    title: "Container Overview"
+  }]}
 />
-
----
 
 The goal of the Container lessons are to enable developers to create container images as a **preparation for the Kubernetes Training**.
 

@@ -1,18 +1,17 @@
 ---
-slug: /
 id: training-overview
 title: Kubernetes Training Overview
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU"
-  ]}
-  controls={true}
+<VideoContainer
+    list={[{
+      src: "https://www.youtube-nocookie.com/embed/H5OY7IDjPZU", 
+      title: "Overview"
+  }]}
 />
 
----
+
 ## Goal
 
 The goal of this training is to enable you with the skills necessary to containerize your applications in order to run them in a Kubernetes cluster.

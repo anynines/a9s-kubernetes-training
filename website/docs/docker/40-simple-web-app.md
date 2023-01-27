@@ -4,13 +4,12 @@ title: Containerizing a Simple Web App
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
-  ]}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
+   title: "Containerizing a Simple Web App"
+  }]}
 />
-
----
 
 In the previous lesson you have created your first container image. This trivial examples has outlined the workflow on how to create a container image.
 

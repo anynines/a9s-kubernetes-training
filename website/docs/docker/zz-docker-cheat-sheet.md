@@ -4,14 +4,11 @@ title: Docker Cheat Sheet
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk"
-  ]}
-  controls={true}
-/>
-
----
+<VideoContainer
+list={[
+{src: "https://www.youtube-nocookie.com/embed/HQ2pZENTVQk", title: "Publishing a Container Image & The Workflow"},
+]
+}></VideoContainer>
 
 Here is a brief list of frequently used `docker` commands.
 

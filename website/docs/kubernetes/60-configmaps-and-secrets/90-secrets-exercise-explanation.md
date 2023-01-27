@@ -4,14 +4,12 @@ title: Secrets Exercise Explanation
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
+   title: "Secrets"
+  }]}
 />
-
----
 
 Here you can find possible solutions to the previous exercise.
 

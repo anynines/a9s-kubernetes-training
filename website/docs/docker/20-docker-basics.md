@@ -4,15 +4,15 @@ title: Docker Basics
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
-    "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
+   title: "Docker Basics Part 2"
+},{
+   src: "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y",
+   title: "Docker Basics Part 3"
+  }]}
 />
-
----
 
 In this lesson you will start, stop, list and access containers in various ways.
 

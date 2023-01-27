@@ -4,14 +4,12 @@ title: Exercise Explanation
 ---
 
 ## Related Videos
-<video
-  url={[
-    "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU"
-  ]}
-  controls={true}
+<VideoContainer
+  list={[{
+   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+   title: "ConfigMaps Part 2"
+  }]}
 />
-
----
 
 The problem with the ConfigMap described in `40-pod-with-config-map-env.yaml` is not obvious. In fact, it's one of the harder problems to identify as the YAML file seems semantically valid.
 
