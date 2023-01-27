@@ -14,6 +14,7 @@ title: Persistent Volumes Excercise
   }]}
 />
 
+---
 After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this can involve a few preliminary steps. Since the exercise is executed on minikube, we already have a default storage class, but when using for example `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS, storage classes might have to be setup first [1]. 
 
 Storage is one of the places where rubber meets the road in the sense that there is a comparatively large contact surface with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprisingly complicated.

@@ -11,6 +11,7 @@ title: Secrets Exercise Explanation
   }]}
 />
 
+---
 Here you can find possible solutions to the previous exercise.
 
 **Create a Pod and consume the previously created Secret `area51` as environment variables**:

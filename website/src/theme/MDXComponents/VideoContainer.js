@@ -36,7 +36,6 @@ export default function VideoContainer({ title, list }) {
       <Grid container spacing={4}>
         {videos}
       </Grid>
-      <Divider style={{ paddingTop: '1.8em' }} variant='fullWidth'></Divider>
     </div>
   )
 }

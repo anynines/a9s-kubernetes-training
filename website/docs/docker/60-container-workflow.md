@@ -11,6 +11,7 @@ title: The Container Workflow
   }]}
 />
 
+---
 To summarize the previous lessons a simple workflow of creating container images may look like this:
 
 1. Login with `docker login <your-dockerhub-username>`

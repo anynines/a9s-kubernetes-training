@@ -11,6 +11,7 @@ title: Exercise Explanation
   }]}
 />
 
+---
 The problem with the ConfigMap described in `40-pod-with-config-map-env.yaml` is not obvious. In fact, it's one of the harder problems to identify as the YAML file seems semantically valid.
 
 In order to understand the problem it is necessary to remember that ConfigMaps are key value pairs.

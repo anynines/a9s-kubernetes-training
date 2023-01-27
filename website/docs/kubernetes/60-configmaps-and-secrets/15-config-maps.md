@@ -11,6 +11,7 @@ title: ConfigMaps
   }]}
 />
 
+---
 ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.
 
 ## Creating a ConfigMap

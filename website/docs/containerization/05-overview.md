@@ -11,6 +11,7 @@ title: Container Overview
   }]}
 />
 
+---
 The goal of the Container lessons are to enable developers to create container images as a **preparation for the Kubernetes Training**.
 
 Therefore, the training will cover container basics and use Docker as the container image format. However, the training does not aim to enable developers to deploy application workloads to production environments using stand-alone Docker (in contrast to the container runtime in Kubernetes).

@@ -14,6 +14,7 @@ title: Persistent Volumes
   }]}
 />
 
+---
 This lesson covers the theoretical background necessary to understand the Persistent Volume concept in Kubernetes.
 
 Persistent Volumes are introduced in this chapter, although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and - although many Kubernetes users do that applications should be kept as stateless as possible. Therefore, note that state should be managed by stateful data services as proposed in the 12 factor manifest [14].

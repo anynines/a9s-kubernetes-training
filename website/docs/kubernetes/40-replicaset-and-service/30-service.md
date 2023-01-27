@@ -14,6 +14,7 @@ title: Services
   }]}
 />
 
+---
 In the ReplicaSet lessons we have encountered *service discovery*, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.
 
 ## Creating a Service

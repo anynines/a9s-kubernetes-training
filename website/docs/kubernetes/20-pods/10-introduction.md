@@ -17,6 +17,7 @@ title: Pods
   }]}
 />
 
+---
 After making first steps with containers most likely by using Docker on a local machine, it is normal to think in containers as the subject to deployments. Building a container image and starting a container from it is the idea with Docker. Not in Kubernetes.
 
 ## From Containers to Pods

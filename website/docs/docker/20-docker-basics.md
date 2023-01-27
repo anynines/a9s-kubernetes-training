@@ -14,6 +14,7 @@ title: Docker Basics
   }]}
 />
 
+---
 In this lesson you will start, stop, list and access containers in various ways.
 
 ## Starting a Container

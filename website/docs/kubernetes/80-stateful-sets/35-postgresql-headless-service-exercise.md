@@ -11,6 +11,7 @@ title: Headless Service
   }]}
 />
 
+---
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
 ## The StatefulSet and its Headless Service

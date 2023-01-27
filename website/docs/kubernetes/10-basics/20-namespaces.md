@@ -14,6 +14,7 @@ title: Namespaces
   }]}
 />
 
+---
 In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
 
 By default, all operations are executed in the *default* namespace.

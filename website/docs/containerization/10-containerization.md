@@ -18,6 +18,7 @@ title: Containers Basics
   }]}
 />
 
+---
 Before diving into Kubernetes it is necessary to understand containerization basics. This chapter aims to provide a first mental model about what containers, container images and container registries are.
 
 ## What is a Container

@@ -20,6 +20,7 @@ title: ReplicaSets
   }]}
 />
 
+---
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 
 ## Hello World Web App

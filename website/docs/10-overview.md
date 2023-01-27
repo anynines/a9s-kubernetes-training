@@ -12,7 +12,7 @@ title: Kubernetes Training Overview
   }]}
 />
 
-
+---
 ## Goal
 
 The goal of this training is to enable you with the skills necessary to containerize your applications in order to run them in a Kubernetes cluster.

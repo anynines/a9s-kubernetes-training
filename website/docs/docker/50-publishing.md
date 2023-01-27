@@ -10,7 +10,7 @@ title: Publishing a Container Image
   }]}
 />
 
-
+---
 So far you have created your own container images and started them, locally. In order to make use of container images in an production environment such as a Kubernetes cluster, it is necessary to distribute container images to those clusters. As described in the introduction, the distribution of container images is supported by so-called *container registries*.
 
 **In this lesson, you will upload your previously created web app to a public container registry**.

@@ -11,6 +11,7 @@ title: Application Access to a StatefulSet
   }]}
 />
 
+---
 ## Application Access
 
 After setting up the database and connecting to it using the `psql` utility, the next step is to access the database with an application running on Kubernetes.

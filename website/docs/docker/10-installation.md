@@ -10,6 +10,7 @@ title: Docker Installation
   }]}
 />
 
+---
 In order to learn to create containers we start with a local Docker installation.
 
 ## Installation

@@ -11,6 +11,7 @@ title: kubectl Basics
   }]}
 />
 
+---
 In this lesson you will learn how to interact with a Kubernetes cluster using the Kubernetes CLI called `kubectl`.
 
 ## Identify Your Kubernetes Version

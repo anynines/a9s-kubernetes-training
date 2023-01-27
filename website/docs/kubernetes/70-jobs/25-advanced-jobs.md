@@ -11,6 +11,7 @@ title: Advanced Job Features
   }]}
 />
 
+---
 Admittedly, running a simple Job as earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
 
 ## Automatic Retry-Logic

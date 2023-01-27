@@ -11,6 +11,7 @@ title: Containerizing a Simple Web App
   }]}
 />
 
+---
 In the previous lesson you have created your first container image. This trivial examples has outlined the workflow on how to create a container image.
 
 In this lesson you will containerize a simple web application to illustrate essential aspects of the `Dockerfile` notation.

@@ -11,6 +11,7 @@ title: Creating Container Images
   }]}
 />
 
+---
 So far we have been using existing container images. This is nice to learn how to use them but in order to run your own workloads in containers, it is necessary to learn how to build container images yourself.
 
 ## From Dockerfile to Container Image

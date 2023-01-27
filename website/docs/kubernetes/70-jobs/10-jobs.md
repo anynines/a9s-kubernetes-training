@@ -14,6 +14,7 @@ title: Jobs
   }]}
 />
 
+---
 ReplicaSets and Deployments are Kubernetes resources to describe long-running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
 
 However, there are also - compared to LRPs - **short-lived workloads**. These include **one-off tasks** as well as **tasks requiring recurring execution** both of varying complexity.

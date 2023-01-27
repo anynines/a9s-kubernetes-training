@@ -11,6 +11,7 @@ title: PSQL Access to PostgreSQL
   }]}
 />
 
+---
 ## Accessing the Database using `psql`
 
 After deploying the PostgreSQL server it's time to verify whether there's actually a database running.
