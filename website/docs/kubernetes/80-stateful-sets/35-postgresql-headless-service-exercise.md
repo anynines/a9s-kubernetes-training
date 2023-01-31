@@ -126,7 +126,7 @@ This will update the existing StatefulSet `postgresql-sfs` and you should see th
 
     kubectl get statefulsets
 
-Of course, **this StatefulSet does not constitute a functioning PostgreSQL cluster**, but that's alright. All that matters here is the number of Pods to see show the relationship between the number of replicas and the headless Service.
+Of course, **this StatefulSet does not constitute a functioning PostgreSQL cluster**, but that's alright. All that matters here is the number of Pods to show the relationship between the number of replicas and the headless Service.
 
 Now check on the Service again:
 
