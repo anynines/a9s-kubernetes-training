@@ -4,14 +4,16 @@ title: PSQL Access to PostgreSQL
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM",
-   title: "PSQL Access to Postgres"
+    src: "https://www.youtube-nocookie.com/embed/tjZCX4wU0VM",
+    title: "PSQL Access to Postgres"
   }]}
 />
 
 ---
+
 ## Accessing the Database using `psql`
 
 After deploying the PostgreSQL server it's time to verify whether there's actually a database running.
@@ -123,6 +125,7 @@ You should see:
 Which means that the data stored in the PostgreSQL container has survived the failure of it's Pod although the Pod itself is stateless. This is possible as you have mounted the data directory of PostgreSQL to the mounted Persistent Volume whose lifecycle goes beyond that of a Pod. When you manually deleted the Pod, **the actual state of the StatefulSet** has been changed and caused a deviation from **the desired state of the StatefulSet**. This deviation has been noticed by the StatefulSet controller which has then taken corrective measures and told the Kubernetes system to create another Pod - with the same identity and the mounting the same Persistent Volume. **Welcome to the world of declarative configuration**! The description of the StatefulSet is declarative as a user declares how the StatefulSet should look like rather than that Kubernetes should create a Pod and a Persistent Volume. The StatefulSet controller is put in charge of taking all actions necessary to ensure a minimum deviation from the desired state. **This way your database gets self-healing capabilities with a disaster recovery time of a few seconds**!
 
 ## Links
+
 1. PostgreSQL Docker Image at Docker Hub, https://hub.docker.com/_/postgres
 2. Kubernetes Examples on GitHub, Persistent Volume Provisioning, https://github.com/kubernetes/examples/blob/master/staging/persistent-volume-provisioning/README.md
 3. PostgreSQL Documentation - psql, https://www.postgresql.org/docs/12/app-psql.html

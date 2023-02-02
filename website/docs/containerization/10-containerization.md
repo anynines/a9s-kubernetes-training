@@ -7,18 +7,21 @@ title: Containers Basics
 
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU",
-   title: "What is a container?"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
-   title: "Container vs. VMs"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
-   title: "Container Images & Container Registry"
-  }]}
+    src: "https://www.youtube-nocookie.com/embed/eZ-kbmLVDDU",
+    title: "What is a container?"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/rtJ-Rgi7kzU",
+    title: "Container vs. VMs"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
+    title: "Container Images & Container Registry"
+  }]}>
 />
 
 ---
+
 Before diving into Kubernetes it is necessary to understand containerization basics. This chapter aims to provide a first mental model about what containers, container images and container registries are.
 
 ## What is a Container
@@ -57,7 +60,7 @@ A container specification contains a reference to the container image to be used
 
 While there are multiple container image formats, the most popular one is the Docker [7] container image format. Docker is - at the time of this writing - still one of the most popular container engines, therefore it's worth spending some time with it. But recently vendor independent container formats such as the OCI Image Format Specification [8], which has also been adopted for Kubernetes, have become more popular. Fortunately, the Docker images are also OCI compliant.
 
-In the following the term *container image* is used equivalent to *Docker Container Image*.
+In the following the term _container image_ is used equivalent to _Docker Container Image_.
 
 **A container image contains a read-only filesystem with instruction for starting a container**.
 A container image is based on a layered filesystem. When a container is started the uppermost layer is a volatile filesystem. It is possible to read and write to the container filesystem as usually, but **changes will be lost on container restart**.
@@ -65,6 +68,7 @@ A container image is based on a layered filesystem. When a container is started 
 **Container images can be based on other container images**. As container images are based on layers it is possible to inherit from a base image, apply changes to it and store these changes as a separate filesystem layer. Each layer can add, modify and even delete files from the underlying layer. The combination of a base image and its modification are then turned into a new image which can then be used as a new base layer to create further images.
 
 ## Container Registry
+
 Once a container image is locally created, there must be a path to the container runtime where containers should be started from it. Simply speaking, **the purpose of a container registry is to store container images and distribute them to a container runtime upon request**.
 
 There are many container registry implementations. They can be offered by public infrastructure providers, commercial vendors or be open source projects such as Harbor[9].

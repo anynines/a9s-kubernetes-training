@@ -4,14 +4,16 @@ title: ConfigMaps
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
-   title: "ConfigMaps Part 2"
+    src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+    title: "ConfigMaps Part 2"
   }]}
 />
 
 ---
+
 ConfigMaps are used to store non-sensitive application configuration parameters. Think of config files managed by Kubernetes and you are already close.
 
 ## Creating a ConfigMap
@@ -60,8 +62,8 @@ Deleting a ConfigMap is simple:
 
 Once a ConfigMap is created Kubernetes offers several access mechanisms to applications.
 
-  * Env Variable
-  * Filesystem
+- Env Variable
+- Filesystem
 
 In order to grant an application access to a ConfigMap it must be told which ConfigMap to access and which mechanism is to be used. This is done in the Pod spec:
 
@@ -77,7 +79,7 @@ spec:
     - image: busybox
       name: busybox-config-container
       command:
-        - "env"
+        - 'env'
       env:
         - name: NUMBER_OF_REQUESTS
           valueFrom:
@@ -122,7 +124,7 @@ At the end of the output a tabular paragraph `Events` tells us about the lifecyc
 
 ## Exercise
 
-Try to fix the above *ConfigMap not found* issue.
+Try to fix the above _ConfigMap not found_ issue.
 
 If you have fixed the issue, the container named `busybox-config` should have been started successfully.
 

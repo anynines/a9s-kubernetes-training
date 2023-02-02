@@ -44,5 +44,3 @@ export default function Video({ src, title, size, faded }) {
     </Grid>
   )
 }
-
-Video.isMDXComponent = true

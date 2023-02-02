@@ -4,20 +4,24 @@ title: Pods
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/BjXiO0NLO5A",
-   title: "Pods Part 1"
-},{
-   src: "https://www.youtube-nocookie.com/embed/4-5psDE9tBU",
-   title: "Pods Part 2"
-},{
-   src: "https://www.youtube-nocookie.com/embed/wiXQkoKM07g",
-   title: "Pods Part 3"
+    src: "https://www.youtube-nocookie.com/embed/BjXiO0NLO5A",
+    title: "Pods Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/4-5psDE9tBU",
+    title: "Pods Part 2"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/wiXQkoKM07g",
+    title: "Pods Part 3"
   }]}
 />
 
 ---
+
 After making first steps with containers most likely by using Docker on a local machine, it is normal to think in containers as the subject to deployments. Building a container image and starting a container from it is the idea with Docker. Not in Kubernetes.
 
 ## From Containers to Pods
@@ -35,7 +39,7 @@ So much about the theory. It's time to create a Pod.
 
 ## Creating a Pod
 
-A Pod named *busybox* using the container image *busybox* can be created as simply as:
+A Pod named _busybox_ using the container image _busybox_ can be created as simply as:
 
     kubectl run busybox --image=busybox --restart=Never -- echo "Hello World"
 
@@ -70,8 +74,8 @@ spec:
   containers:
     - image: busybox
       name: busybox
-      command: ["echo"]
-      args: ["Hello World"]
+      command: ['echo']
+      args: ['Hello World']
   restartPolicy: Never
 ```
 
@@ -89,7 +93,7 @@ Or use the command from above:
 
 ### Declarative vs. Imperative Configuration
 
-The usage of a Manifest file is part of a central Kubernetes paradigm of *declarative configuration*. With the declarative approach the *desired state* of a system is described. In this case the desired state is that a Pod should be running. Notice that it is not specified where the Pod should be running as this is up to Kubernetes to decide. All we care is that the Pod is running.
-In contrast to the declarative configuration an *imperative approach* would be to tell the cluster to start a Pod on Node XY which means more responsibility for the client than the server.
+The usage of a Manifest file is part of a central Kubernetes paradigm of _declarative configuration_. With the declarative approach the _desired state_ of a system is described. In this case the desired state is that a Pod should be running. Notice that it is not specified where the Pod should be running as this is up to Kubernetes to decide. All we care is that the Pod is running.
+In contrast to the declarative configuration an _imperative approach_ would be to tell the cluster to start a Pod on Node XY which means more responsibility for the client than the server.
 
 In Kubernetes the idea is: declare how the system should look like and have a server side controller take care of the rest. We'll encounter this concept many times throughout this training.

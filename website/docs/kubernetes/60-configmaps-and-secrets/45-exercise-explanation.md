@@ -4,14 +4,16 @@ title: Exercise Explanation
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
-   title: "ConfigMaps Part 2"
+    src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+    title: "ConfigMaps Part 2"
   }]}
 />
 
 ---
+
 The problem with the ConfigMap described in `40-pod-with-config-map-env.yaml` is not obvious. In fact, it's one of the harder problems to identify as the YAML file seems semantically valid.
 
 In order to understand the problem it is necessary to remember that ConfigMaps are key value pairs.
@@ -25,19 +27,19 @@ The output is something like:
 ```yaml
 apiVersion: v1
 data:
-    20-config-file.conf: |-
-        # This is an exemplary config file
+  20-config-file.conf: |-
+    # This is an exemplary config file
 
-        number-of-requests = 20
-        very-import-switch = true
+    number-of-requests = 20
+    very-import-switch = true
 kind: ConfigMap
 metadata:
-    creationTimestamp: "2020-03-04T17:54:19Z"
-    name: config-example-1
-    namespace: k8s-training
-    resourceVersion: "6128955"
-    selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-1
-    uid: 2ef0fc0d-e128-47d7-be57-766d2b023612
+  creationTimestamp: '2020-03-04T17:54:19Z'
+  name: config-example-1
+  namespace: k8s-training
+  resourceVersion: '6128955'
+  selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-1
+  uid: 2ef0fc0d-e128-47d7-be57-766d2b023612
 ```
 
 Now compare it to the output of `config-example-2`. Can you see the subtle difference?
@@ -49,16 +51,16 @@ The output looks like this:
 ```yaml
 apiVersion: v1
 data:
-    number-of-requests: "20"
-    very-import-switch: "true"
+  number-of-requests: '20'
+  very-import-switch: 'true'
 kind: ConfigMap
 metadata:
-    creationTimestamp: "2020-03-04T17:40:48Z"
-    name: config-example-2
-    namespace: k8s-training
-    resourceVersion: "6126817"
-    selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-2
-    uid: 3366244e-da8e-4ac8-8cf4-dc21fca7ff56
+  creationTimestamp: '2020-03-04T17:40:48Z'
+  name: config-example-2
+  namespace: k8s-training
+  resourceVersion: '6126817'
+  selfLink: /api/v1/namespaces/k8s-training/configmaps/config-example-2
+  uid: 3366244e-da8e-4ac8-8cf4-dc21fca7ff56
 ```
 
 If you compare the indentation you may recognize that in `config-example-1` the section `data` contains only one key: `20-config-file.conf`. This implies that for Kubernetes this ConfigMap has one key and its value is a string:
@@ -84,7 +86,7 @@ spec:
     - image: busybox
       name: busybox-config-container
       command:
-        - "env"
+        - 'env'
       env:
         - name: NUMBER_OF_REQUESTS
           valueFrom:

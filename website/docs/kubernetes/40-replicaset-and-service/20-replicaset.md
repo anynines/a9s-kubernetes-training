@@ -4,23 +4,28 @@ title: ReplicaSets
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
-   title: "ReplicaSets Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
-   title: "ReplicaSets Part 2"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
-   title: "ReplicaSets Part 3"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
-   title: "ReplicaSets Part 4"
+    src: "https://www.youtube-nocookie.com/embed/JP-YsSCpBlg",
+    title: "ReplicaSets Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/EBN7w-ZR4Og",
+    title: "ReplicaSets Part 2"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/irPUCRGY8k4",
+    title: "ReplicaSets Part 3"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/wSPb_TWGIfs",
+    title: "ReplicaSets Part 4"
   }]}
 />
 
 ---
+
 This lesson covers how to run a stateless app in Kubernetes using a Replica Set.
 
 ## Hello World Web App
@@ -37,8 +42,8 @@ kind: ReplicaSet
 metadata:
   name: smpl-go-web-rs
   labels:
-      app: smpl-go-web-a
-      tier: frontend
+    app: smpl-go-web-a
+    tier: frontend
 spec:
   replicas: 1
   selector:
@@ -48,12 +53,12 @@ spec:
     metadata:
       labels:
         app: smpl-go-web-a
-        version: "1"
+        version: '1'
         tier: frontend
     spec:
       containers:
         - name: smpl-go-web-c
-          image: "fischerjulian/smpl-go-web:1.0.0"
+          image: 'fischerjulian/smpl-go-web:1.0.0'
           ports:
             - containerPort: 8080
 ```
@@ -69,7 +74,7 @@ Verify that the Pods has been created successfully:
 
 You should see a running pod names something like `smpl-go-web-rs-pkqwd` where the last part is a random string which will be different for every instance of the replica set.
 
-In case you see the *status* `ContainerCreating` you can use:
+In case you see the _status_ `ContainerCreating` you can use:
 
     kubectl get pods --watch
 
@@ -81,14 +86,14 @@ Now the application is deployed. However, it can only be accessed from within th
 
 A straight forward way to access the web app is to directly access the corresponding Pod:
 
-* Run `kubectl describe pod smpl-go-web-rs-pkqwd` (replace *pkqwd* with your Pod's suffix) and extract the IP address of the `smpl-go-web-rs-pkqwd`-Pod, e.g. 100.96.14.17
-* Start a container running a shell as described in one of the previous lessons.
-* Inside the interactive container use the wget command to access the Pod, e.g. `wget 100.96.14.17:8080`. You can read the returned file using the cat command: `cat index.html`.
-* Don't forget to delete the interactive busybox Pod after using it: `kubectl delete pod busybox`
+- Run `kubectl describe pod smpl-go-web-rs-pkqwd` (replace _pkqwd_ with your Pod's suffix) and extract the IP address of the `smpl-go-web-rs-pkqwd`-Pod, e.g. 100.96.14.17
+- Start a container running a shell as described in one of the previous lessons.
+- Inside the interactive container use the wget command to access the Pod, e.g. `wget 100.96.14.17:8080`. You can read the returned file using the cat command: `cat index.html`.
+- Don't forget to delete the interactive busybox Pod after using it: `kubectl delete pod busybox`
 
-However, this approach comes with some significant disadvantages. Possibly the biggest drawback is a client trying to access the app needs to figure out where the Pod is located by obtaining its IP address. This process is also referred to as *service discovery*. Once, the IP address is known, the client can access the Pod. But what happens if the Pod fails, e.g. caused by the failure or maintenance of the underlying Kubernetes Node (the VM the Pod is running on)? In this case the ReplicaSet will be rescheduled by Kubernetes and most likely receive a different IP address. The resulting *service discovery*-challenge is non-trivial in a dynamic cluster environment.
+However, this approach comes with some significant disadvantages. Possibly the biggest drawback is a client trying to access the app needs to figure out where the Pod is located by obtaining its IP address. This process is also referred to as _service discovery_. Once, the IP address is known, the client can access the Pod. But what happens if the Pod fails, e.g. caused by the failure or maintenance of the underlying Kubernetes Node (the VM the Pod is running on)? In this case the ReplicaSet will be rescheduled by Kubernetes and most likely receive a different IP address. The resulting _service discovery_-challenge is non-trivial in a dynamic cluster environment.
 
-to solve this issue Kubernetes provides the concept of a `Service` enabling a number of ways to deal with *service discovery*, gracefully.
+to solve this issue Kubernetes provides the concept of a `Service` enabling a number of ways to deal with _service discovery_, gracefully.
 
 ## Pods and Ports
 
@@ -98,7 +103,7 @@ Have you noticed that the container specification of the app contains an explici
 spec:
   containers:
     - name: smpl-go-web-c
-      image: "fischerjulian/smpl-go-web:1.0.0"
+      image: 'fischerjulian/smpl-go-web:1.0.0'
       ports:
         - containerPort: 8080
 ```
@@ -111,5 +116,5 @@ By owning a private IP address within your cluster network each Pod can use the 
 
 ## Links
 
-* Kubernetes Documentation, Concepts, ReplicaSet, https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
-* Kubernetes v1.12 Documentation, API Reference, ReplicaSet, https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#replicaset-v1-apps
+- Kubernetes Documentation, Concepts, ReplicaSet, https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
+- Kubernetes v1.12 Documentation, API Reference, ReplicaSet, https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#replicaset-v1-apps

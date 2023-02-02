@@ -4,14 +4,16 @@ title: Parallel Jobs
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/A9c07XS9go4",
-   title: "Parallel Jobs"
+    src: "https://www.youtube-nocookie.com/embed/A9c07XS9go4",
+    title: "Parallel Jobs"
   }]}
 />
 
 ---
+
 In this lesson you will learn about executing tasks in parallel by running multiple Pods simultaneously.
 
 ## Job Completion Count
@@ -32,12 +34,12 @@ spec:
   template:
     spec:
       containers:
-      - name: simple-one-off-job-container
-        image: busybox
-        imagePullPolicy: Always
-        command: ["echo"]
-        args:
-        - "I represent a very important maintenance task"
+        - name: simple-one-off-job-container
+          image: busybox
+          imagePullPolicy: Always
+          command: ['echo']
+          args:
+            - 'I represent a very important maintenance task'
       restartPolicy: OnFailure
 ```
 
@@ -80,12 +82,12 @@ spec:
   template:
     spec:
       containers:
-      - name: simple-one-off-job-container
-        image: busybox
-        imagePullPolicy: Always
-        command: ["echo"]
-        args:
-        - "I represent a very important maintenance task"
+        - name: simple-one-off-job-container
+          image: busybox
+          imagePullPolicy: Always
+          command: ['echo']
+          args:
+            - 'I represent a very important maintenance task'
       restartPolicy: OnFailure
 ```
 
@@ -109,10 +111,10 @@ The output looks similar to:
     one-off-job-two-completions-parallel-s2j5k   0/1     Completed           0          3s
     one-off-job-two-completions-parallel-qknz4   0/1     Completed           0          3s
 
-Compare the outputs of the *first non-parallel* and *second parallel* run.
+Compare the outputs of the _first non-parallel_ and _second parallel_ run.
 
-The *first run* the sequence was: `Pending, Pending, ContainerCreating, Completed, ContainerCreating, Completed` which implies sequential execution.
+The _first run_ the sequence was: `Pending, Pending, ContainerCreating, Completed, ContainerCreating, Completed` which implies sequential execution.
 
-The *second run* shows parallel execution with the sequence: `Pending, Pending, ContainerCreating, ContainerCreating, Completed, Completed`.
+The _second run_ shows parallel execution with the sequence: `Pending, Pending, ContainerCreating, ContainerCreating, Completed, Completed`.
 
 As you can see **it is fairly easy to define iterative, parallel Jobs using Kubernetes**.

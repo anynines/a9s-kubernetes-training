@@ -39,5 +39,3 @@ export default function VideoContainer({ title, list }) {
     </div>
   )
 }
-
-VideoContainer.isMDXComponent = true

@@ -4,14 +4,16 @@ title: Secrets Exercise Explanation
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
-   title: "Secrets"
+    src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
+    title: "Secrets"
   }]}
 />
 
 ---
+
 Here you can find possible solutions to the previous exercise.
 
 **Create a Pod and consume the previously created Secret `area51` as environment variables**:
@@ -26,7 +28,7 @@ spec:
     - image: busybox
       name: busybox-secrets-container
       command:
-        - "env"
+        - 'env'
       env:
         - name: USERNAME
           valueFrom:
@@ -53,10 +55,10 @@ spec:
     - image: busybox
       name: busybox-secrets-files-container
       command:
-        - "sh"
-        - "-c"
+        - 'sh'
+        - '-c'
       args:
-        - "ls /secrets; cat /secrets/90-username.txt; echo \" \"; cat /secrets/AA-password.txt"
+        - 'ls /secrets; cat /secrets/90-username.txt; echo " "; cat /secrets/AA-password.txt'
       volumeMounts:
         - name: secrets-volume
           mountPath: /secrets

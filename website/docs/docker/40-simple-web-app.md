@@ -4,14 +4,16 @@ title: Containerizing a Simple Web App
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
-   title: "Containerizing a Simple Web App"
+    src: "https://www.youtube-nocookie.com/embed/12c8ziarCqE",
+    title: "Containerizing a Simple Web App"
   }]}
 />
 
 ---
+
 In the previous lesson you have created your first container image. This trivial examples has outlined the workflow on how to create a container image.
 
 In this lesson you will containerize a simple web application to illustrate essential aspects of the `Dockerfile` notation.
@@ -185,6 +187,7 @@ This section contains a few lessons worth pointing out:
 2. If you want to expose a port, ensure that the process to be exposed is bound to the right network interface and not only to the loopback device.
 
 ## `Dockerfile` Reference
+
 There are many more instructions allowed in a `Dockerfile`. The Docker documentation contains a Dockerfile Reference section [6] which is worth a read.
 
 ## Links

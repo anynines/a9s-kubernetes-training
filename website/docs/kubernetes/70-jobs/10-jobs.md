@@ -4,17 +4,20 @@ title: Jobs
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
-   title: "Jobs Part 1"
-  }, {
-   src: "https://www.youtube-nocookie.com/embed/VgrMcXXon1U",
-   title: "Jobs Part 2"
+    src: "https://www.youtube-nocookie.com/embed/-I8z8RTAa5I",
+    title: "Jobs Part 1"
+  }, 
+  {
+    src: "https://www.youtube-nocookie.com/embed/VgrMcXXon1U",
+    title: "Jobs Part 2"
   }]}
 />
 
 ---
+
 ReplicaSets and Deployments are Kubernetes resources to describe long-running processes (LRPs). For web applications, for example, application instances, once started, are often running continuously and keeping them alive is a major goal.
 
 However, there are also - compared to LRPs - **short-lived workloads**. These include **one-off tasks** as well as **tasks requiring recurring execution** both of varying complexity.
@@ -27,10 +30,10 @@ Whenever it's not a long-running process but still needs to run code from a cont
 
 A few examples include running tasks such as
 
-* database schema migrations
-* administrative one-off tasks in general
-* Analytic workflows
-* in general batch jobs which are run (partially) in sequence and/or (partially) in parallel.
+- database schema migrations
+- administrative one-off tasks in general
+- Analytic workflows
+- in general batch jobs which are run (partially) in sequence and/or (partially) in parallel.
 
 Note that these tasks may be "long" running in dimension of hours or even days but compared to the average web application's lifecycle this is still comparatively short.
 
@@ -73,12 +76,12 @@ spec:
   template:
     spec:
       containers:
-      - name: simple-one-off-job-container
-        image: busybox
-        imagePullPolicy: Always
-        command: ["echo"]
-        args:
-        - "I represent a very important maintenance task"
+        - name: simple-one-off-job-container
+          image: busybox
+          imagePullPolicy: Always
+          command: ['echo']
+          args:
+            - 'I represent a very important maintenance task'
       restartPolicy: OnFailure
 ```
 

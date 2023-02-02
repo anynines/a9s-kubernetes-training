@@ -4,10 +4,11 @@ title: ConfigMap Volume Mounts
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
-   title: "ConfigMaps Part 2"
+    src: "https://www.youtube-nocookie.com/embed/7iU4uz-oaAU",
+    title: "ConfigMaps Part 2"
   }]}
 />
 
@@ -29,10 +30,10 @@ spec:
     - image: busybox
       name: busybox-config-container
       command:
-        - "sh"
-        - "-c"
+        - 'sh'
+        - '-c'
       args:
-        - "ls /config; cat /config/number-of-requests; echo \" \"; cat /config/very-important-switch"
+        - 'ls /config; cat /config/number-of-requests; echo " "; cat /config/very-important-switch'
       volumeMounts:
         - name: config-volume
           mountPath: /config

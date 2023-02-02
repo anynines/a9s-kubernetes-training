@@ -4,14 +4,16 @@ title: Tidying Up
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
-   title: "Tidying Up"
+    src: "https://www.youtube-nocookie.com/embed/ss1GDK93qn4",
+    title: "Tidying Up"
   }]}
 />
 
 ---
+
 Removing all artifacts is simple: replace `apply` with `delete` in all `kubectl`-commands and execute them in reverse order:
 
     kubectl delete -f 40-ingress-hello-world-a9s.yaml

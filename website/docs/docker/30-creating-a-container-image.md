@@ -4,14 +4,16 @@ title: Creating Container Images
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/AOg8a1z8BIY",
-   title: "Creating Container Images"
+    src: "https://www.youtube-nocookie.com/embed/AOg8a1z8BIY",
+    title: "Creating Container Images"
   }]}
 />
 
 ---
+
 So far we have been using existing container images. This is nice to learn how to use them but in order to run your own workloads in containers, it is necessary to learn how to build container images yourself.
 
 ## From Dockerfile to Container Image
