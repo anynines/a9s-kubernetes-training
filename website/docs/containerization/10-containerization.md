@@ -17,7 +17,7 @@ title: Containers Basics
   {
     src: "https://www.youtube-nocookie.com/embed/0k-0GB8Mu7U",
     title: "Container Images & Container Registry"
-  }]}>
+  }]}
 />
 
 ---
