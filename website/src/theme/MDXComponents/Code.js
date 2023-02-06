@@ -1,5 +1,5 @@
-import React, {isValidElement} from 'react';
-import CodeBlock from '@theme/CodeBlock';
+import React, { isValidElement } from 'react'
+import CodeBlock from '@theme/CodeBlock'
 export default function MDXCode(props) {
   const inlineElements = [
     'a',
@@ -31,12 +31,12 @@ export default function MDXCode(props) {
     'time',
     'u',
     'var',
-    'wbr',
-  ];
+    'wbr'
+  ]
   const shouldBeInline = React.Children.toArray(props.children).every(
     (el) =>
       (typeof el === 'string' && !el.includes('\n')) ||
-      (isValidElement(el) && inlineElements.includes(el.props?.mdxType)),
-  );
-  return shouldBeInline ? <code {...props} /> : <CodeBlock {...props} />;
+      (isValidElement(el) && inlineElements.includes(el.props?.mdxType))
+  )
+  return shouldBeInline ? <code {...props} /> : <CodeBlock {...props} />
 }

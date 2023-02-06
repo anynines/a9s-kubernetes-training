@@ -1,5 +1,5 @@
-import React, {isValidElement} from 'react';
-import CodeBlock from '@theme/CodeBlock';
+import React, { isValidElement } from 'react'
+import CodeBlock from '@theme/CodeBlock'
 export default function MDXPre(props) {
   return (
     <CodeBlock
@@ -7,7 +7,7 @@ export default function MDXPre(props) {
       {...(isValidElement(props.children) &&
       props.children.props?.originalType === 'code'
         ? props.children.props
-        : {...props})}
+        : { ...props })}
     />
-  );
+  )
 }
