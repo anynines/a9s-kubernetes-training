@@ -4,12 +4,15 @@ title: kubectl Basics
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ",
-   title: "kubectl Basics"
+    src: "https://www.youtube-nocookie.com/embed/xKCa8ZENCJQ",
+    title: "kubectl Basics"
   }]}
 />
+
+---
 
 In this lesson you will learn how to interact with a Kubernetes cluster using the Kubernetes CLI called `kubectl`.
 
@@ -41,8 +44,8 @@ The `kubectl` command takes care of the authentication against the Kubernetes AP
 
 ## Links
 
-* Kubernetes Documentation, Tasks, Use an HTTP Proxy to Access the Kubernetes API, https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/
+- Kubernetes Documentation, Tasks, Use an HTTP Proxy to Access the Kubernetes API, https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/
 
-* Kubernetes Documentation, Tasks, Configure Access to Multiple Clusters, https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+- Kubernetes Documentation, Tasks, Configure Access to Multiple Clusters, https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 
-* Kubectl Book, https://kubectl.docs.kubernetes.io/
+- Kubectl Book, https://kubectl.docs.kubernetes.io/

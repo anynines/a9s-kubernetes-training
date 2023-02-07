@@ -258,7 +258,7 @@ spec:
               name: postgresql-secrets
               key: POSTGRES_PASSWORD
         - name: POSTGRES_HOSTNAME
-          value: postgresql-primary.pg.svc.cluster.local
+          value: postgresql-primary.k8s-training.svc.cluster.local
         - name: POSTGRES_REPLICATION_USERNAME
           valueFrom:
             secretKeyRef:

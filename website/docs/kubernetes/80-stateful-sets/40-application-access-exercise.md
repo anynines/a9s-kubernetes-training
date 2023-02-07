@@ -4,12 +4,15 @@ title: Application Access to a StatefulSet
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA",
-   title: "Application Access to a StatefulSet"
+    src: "https://www.youtube-nocookie.com/embed/fR-DKkvhLRA",
+    title: "Application Access to a StatefulSet"
   }]}
 />
+
+---
 
 ## Application Access
 
@@ -21,7 +24,7 @@ With the absence of Service Bindings we fall back to using Kubernetes Secrets as
 
 You may ask yourself **why not use the existing `postgres` user**?
 
-In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the *least privilege principle* [9]. According to this principle, the application user should be limited to the minimum set of privileges necessary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary.
+In non-production applications - where security is not a concern - using the `postgresql` is possible. However, for production grade applications, it makes sense to stick to the _least privilege principle_ [9]. According to this principle, the application user should be limited to the minimum set of privileges necessary to carry out the application's tasks. Consequently, an application user should not be granted admin privileges unless absolutely necessary.
 Another major drawback of using shared credentials among users is that the credentials have to be changed if a user is removed. Think about a team member who knew the `postgresql` password and then left the team. In order to secure access to the database, the password needs to be changed. If the password is used by ten other users including application machine users, the effort for updating the password is highly wasteful.
 With a dedicated set of credentials - a database username and password - per user is therefore much simpler. It allows revoking access or modifying privileges on a per-user level easily.
 
@@ -59,16 +62,16 @@ Be aware that using environment variables has the drawback that the application 
 
 In order to keep the application independent of a particular instance of the PostgreSQL StatefulSet we need a Secret consisting of the following elements:
 
-* Username
-* Password
-* Hostname
+- Username
+- Password
+- Hostname
 
 The username and password can be created along with the Secret.
 
 As this is a machine user, using a cryptic username makes it harder to guess and the application doesn't care about the password complexity.
 
 | Username | Password |
-|----------|----------|
+| -------- | -------- |
 | gaeMo6di | UaGu5chu |
 
 The hostname is determined by the headless Service you have created earlier.
@@ -117,7 +120,7 @@ Therefore, you need to grant the user `gaeMo6di` privileges to access the `postg
 
 Execute:
 
-    psql -U postgresql
+    psql -U postgres
 
 Execute the following SQL commands:
 
@@ -131,7 +134,7 @@ Note that, with the default config of PostgreSQL, using `psql` locally to verify
 
 So to test the credentials we need a remote Pod:
 
-    kubectl run pg-psql -i --tty --image=postgres:12.2 --restart=Never --env="PGPASSWORD=UaGu5chu" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U gaeMo6di -d postgres
+    kubectl run pg-psql -i --tty --image=postgres:14.5 --restart=Never --env="PGPASSWORD=UaGu5chu" -- psql -h postgresql-svc.k8s-training.svc.cluster.local -U gaeMo6di -d postgres
 
 You should see a `psql` prompt similar to:
 
@@ -140,6 +143,7 @@ You should see a `psql` prompt similar to:
     ----+---------------
       1 | anynines GmbH
     (1 row)
+
 Done.
 
 Ok, now that you have collected all pieces of information necessary, you can proceed with creating the Secret.
@@ -199,7 +203,7 @@ spec:
     - image: busybox
       name: busybox-secrets-container
       command:
-        - "env"
+        - 'env'
       env:
         - name: USERNAME
           valueFrom:
@@ -231,6 +235,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: postgresql-application
+  labels:
+    app: postgresql-app
 spec:
   containers:
     - image: fischerjulian/smpl-go-pg:0.2.0
@@ -257,7 +263,7 @@ spec:
   restartPolicy: Always
 ```
 
-    kubectl apply -f pgapp.yaml
+    kubectl apply -f 40-postgressql-application.yaml
 
 ### Application Service
 
@@ -274,11 +280,15 @@ metadata:
     app: postgresql-app
 spec:
   ports:
-  - port: 8080
-    name: http-port
+    - port: 8080
+      name: http-port
   selector:
     app: postgresql-app
 ```
+
+And apply it:
+
+    kubectl apply -f 50-pg-app-svc.yaml
 
 Start the `kubectl proxy`:
 

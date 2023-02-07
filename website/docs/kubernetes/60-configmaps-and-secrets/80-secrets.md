@@ -4,12 +4,15 @@ title: Secrets
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
-   title: "Secrets"
+    src: "https://www.youtube-nocookie.com/embed/vFGlpm1ctYw",
+    title: "Secrets"
   }]}
 />
+
+---
 
 Secrets are represented as key value pair and thus are very similar to ConfigMaps. However, ConfigMaps are meant for non-sensitive configuration data aiming at making application code portable across environments. So - analog to ConfigMaps - **Secrets are key value sets but for sensitive data**.
 
@@ -25,9 +28,9 @@ Secrets have an additional `type`-field that tells other Kubernetes components t
 
 The following Secret Types are often supported:
 
-* Generic (Opaque)
-* Docker Registry
-* TLS
+- Generic (Opaque)
+- Docker Registry
+- TLS
 
 ### Generic
 

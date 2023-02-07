@@ -4,12 +4,15 @@ title: StatefulSet vs. ReplicaSets
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/YQZJpezPyFQ",
-   title: "StatefulSets vs ReplicaSets"
+    src: "https://www.youtube-nocookie.com/embed/YQZJpezPyFQ",
+    title: "StatefulSets vs ReplicaSets"
   }]}
 />
+
+---
 
 In the last lesson you have scaled the PostgreSQL StatefulSet to 3 replicas so that it now consists of 3 Pods.
 

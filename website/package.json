@@ -7,14 +7,16 @@
     "swizzleMDX": "docusaurus swizzle @docusaurus/theme-classic MDXComponents --danger"
   },
   "dependencies": {
-    "@anynines/a9s-design-system": "^0.2.2",
-    "@docusaurus/core": "^2.0.0-beta.6",
-    "@docusaurus/preset-classic": "^2.0.0-beta.6",
+    "@anynines/a9s-design-system": "^0.3.23",
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/preset-classic": "^2.2.0",
+    "@docusaurus/plugin-client-redirects": "^2.2.0",
     "classnames": "^2.2.6",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-gtm-module": "^2.0.8",
     "react-helmet": "^6.0.0",
+    "react-player": "^2.11.0",
     "yarn": "^1.22.4"
   },
   "browserslist": {
@@ -32,5 +34,5 @@
   "resolutions": {
     "terser": "4.8.0"
   },
-  "version": "0.1.0"
+  "version": "1.1.1"
 }

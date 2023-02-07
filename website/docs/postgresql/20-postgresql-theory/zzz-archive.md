@@ -88,7 +88,7 @@ This is only necessary when a node joins the cluster for the first time.
 
 **This step needs to be performed on each Secondary**.
 
-The Service `postgresql-primary` can be used to refer to the Primary node as it provides the following, stable DNS entry: `postgresql-primary.pg.svc.cluster.local`.
+The Service `postgresql-primary` can be used to refer to the Primary node as it provides the following, stable DNS entry: `postgresql-primary.k8s-training.svc.cluster.local`.
 
 Remove existing data:
 
@@ -96,4 +96,4 @@ Remove existing data:
 
 Perform the pg_basebackup:
 
-    pg_basebackup -h postgresql-primary.pg.svc.cluster.local -U replicator -p 5432 -D $PGDATA -Fp -Xs -P -R
+    pg_basebackup -h postgresql-primary.k8s-training.svc.cluster.local -U replicator -p 5432 -D $PGDATA -Fp -Xs -P -R

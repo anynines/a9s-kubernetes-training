@@ -4,12 +4,15 @@ title: Kubernetes Overview
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/6dTdprPESvw",
-   title: "Kubernetes Overview"
+    src: "https://www.youtube-nocookie.com/embed/6dTdprPESvw",
+    title: "Kubernetes Overview"
   }]}
 />
+
+---
 
 The goal of the Kubernetes training is to enable you to deploy workloads to Kubernetes clusters. The training will guide you through the most frequently used Kubernetes resources and make you familiar with interacting with Kubernetes.
 
@@ -19,15 +22,15 @@ Areas covered in this training:
 
 How to run a distributed application system in Kubernetes covering topics such as:
 
-* Kubectl basics
-* Pods
-* ReplicaSets
-* Deployments
-* Services
-* Ingresses
-* ConfigMaps and Secrets
-* Jobs and CRONJobs
-* StatefulSets
+- Kubectl basics
+- Pods
+- ReplicaSets
+- Deployments
+- Services
+- Ingresses
+- ConfigMaps and Secrets
+- Jobs and CRONJobs
+- StatefulSets
 
 At the end of the training a final exam is described which provides you with the opportunity to test your freshly learned skills.
 
@@ -37,13 +40,13 @@ The Kubernetes training assumes that you are familiar with **containerization ba
 
 In particular, you should know:
 
-* What a container is.
-* What a container images is.
-* How to start a container.
-* How to build a container image.
-* What a container registry is.
-* How to publish a local container image to a container registry.
-* What a container volume is.
+- What a container is.
+- What a container images is.
+- How to start a container.
+- How to build a container image.
+- What a container registry is.
+- How to publish a local container image to a container registry.
+- What a container volume is.
 
 It is therefore recommended going through the **container-training**, first.
 

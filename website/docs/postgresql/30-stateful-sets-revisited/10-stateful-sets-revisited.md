@@ -38,7 +38,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: postgresql-db
-        image: postgres:12.2
+        image: postgres:14.5
         env:
         - name: POSTGRES_PASSWORD
           valueFrom:
@@ -100,18 +100,18 @@ Start a utility Pod:
 
 As you already know you can lookup the Pod IP addresses of the StatefulSet using a DNS query such as:
 
-    nslookup postgresql-svc.pg.svc.cluster.local
+    nslookup postgresql-svc.k8s-training.svc.cluster.local
 
 Output:
 
     Server:		10.96.0.10
     Address:	10.96.0.10#53
 
-    Name:	postgresql-svc.pg.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.13
-    Name:	postgresql-svc.pg.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.14
-    Name:	postgresql-svc.pg.svc.cluster.local
+    Name:	postgresql-svc.k8s-training.svc.cluster.local
     Address: 172.17.0.10
 
 Remember that the headless Service uses DNS entries exclusively and does not perform a layer-4 load balancing.
@@ -120,19 +120,19 @@ When bootstrapping the Pods of the PostgreSQL we will need more control than thi
 
 Within the utility Pod `nspct` execute:
 
-    host -t SRV postgresql-svc.pg.svc.cluster.local
+    host -t SRV postgresql-svc.k8s-training.svc.cluster.local
 
 Output:
 
-    postgresql-svc.pg.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local.
-    postgresql-svc.pg.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-1.postgresql-svc.pg.svc.cluster.local.
-    postgresql-svc.pg.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-2.postgresql-svc.pg.svc.cluster.local.
+    postgresql-svc.k8s-training.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-0.postgresql-svc.k8s-training.svc.cluster.local.
+    postgresql-svc.k8s-training.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-1.postgresql-svc.k8s-training.svc.cluster.local.
+    postgresql-svc.k8s-training.svc.cluster.local has SRV record 0 33 5432 postgresql-sfs-2.postgresql-svc.k8s-training.svc.cluster.local.
 
 This means that each Pod of the StatefulSet has a stable unique network identifier depending on the name of the headless Service as well as the namespace:
 
-1. `postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local` -> Pod 0
-2. `postgresql-sfs-1.postgresql-svc.pg.svc.cluster.local` -> Pod 1
-3. `postgresql-sfs-2.postgresql-svc.pg.svc.cluster.local` -> Pod 2
+1. `postgresql-sfs-0.postgresql-svc.k8s-training.svc.cluster.local` -> Pod 0
+2. `postgresql-sfs-1.postgresql-svc.k8s-training.svc.cluster.local` -> Pod 1
+3. `postgresql-sfs-2.postgresql-svc.k8s-training.svc.cluster.local` -> Pod 2
 
 Knowing that each node runs a PostgreSQL on port `5432` this means that **you can connect to each Pod's PostgreSQL using a reliable and predictable URL**, here using `telnet` in the `nspct` Pod:
 
@@ -140,11 +140,11 @@ Knowing that each node runs a PostgreSQL on port `5432` this means that **you ca
 
 And within the `nspct` Pod:
 
-    telnet postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local 5432
+    telnet postgresql-sfs-0.postgresql-svc.k8s-training.svc.cluster.local 5432
 
 Output:
 
-    Connected to postgresql-sfs-0.postgresql-svc.pg.svc.cluster.local.
+    Connected to postgresql-sfs-0.postgresql-svc.k8s-training.svc.cluster.local.
     Escape character is '^]'
 
 Hence, **it is also possible to reach out from one StatefulSet Pod to another Pod using these SRV records**.

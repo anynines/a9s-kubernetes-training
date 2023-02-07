@@ -4,21 +4,25 @@ title: Persistent Volumes
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
-   title: "Persistent Volumes Part 1"
+    src: "https://www.youtube-nocookie.com/embed/yKHC8Mhzra4",
+    title: "Persistent Volumes Part 1"
   },{
-   src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
-   title: "Persistent Volumes Part 2"
+    src: "https://www.youtube-nocookie.com/embed/83RfSH0CrrI",
+    title: "Persistent Volumes Part 2"
   }]}
 />
+
+---
 
 This lesson covers the theoretical background necessary to understand the Persistent Volume concept in Kubernetes.
 
 Persistent Volumes are introduced in this chapter, although they can also be used with familiar Kubernetes resources such as Pods and ReplicaSets and - although many Kubernetes users do that applications should be kept as stateless as possible. Therefore, note that state should be managed by stateful data services as proposed in the 12 factor manifest [14].
 
 ## Volumes
+
 **Volumes bring persistency to containers**. Containers are stateless in so far as changes to their filesystem will be lost if a container is restarted - more precisely rescheduled. Rescheduling means that the container is destroyed, but a new container of the same kind is started somewhere in the cluster. This freshly created container will be derived from the given container image and hence won't reflect any changes made in prior existing containers.
 
 **Volumes allow sharing information among containers**. At least some types of Volumes allow sharing of information among containers. A NFS Volume, for example, can be used to share assets such as photos uploaded by application users and store them on a shared filesystem. Be aware that this is an antipattern for cloud native applications which will store assets in an object store such as OpenStack Swift [3], Amazon S3 [4] or the alike. Object stores scale horizontally for both load and capacity. In addition to that their availability and durability is usually higher than those of shared filesystems. However, for some legacy applications this may be a valid choice.
@@ -31,7 +35,7 @@ Within a Pod-definition volumes can be mounted to containers by using a so-calle
 
 ### Docker Volumes vs. Kubernetes Volumes
 
-If you are familiar with Docker Volumes you may already recognize the difference between Kubernetes and Docker Volumes. In Kubernetes there are many more types of Volumes and the way to use them is more flexible. For example, in Kubernetes it is possible to mount multiple containers of multiple types into a single container. Additionally, the lifecycle of Volumes is clearly defined in Kubernetes. Volumes share the lifecycle of their Pods. They are created with their Pods and cease to exist when their Pods cease to exist. You will see that there are concepts such as the *Persistent Volume* with lifetimes exceeding the lifetime of their Pods.
+If you are familiar with Docker Volumes you may already recognize the difference between Kubernetes and Docker Volumes. In Kubernetes there are many more types of Volumes and the way to use them is more flexible. For example, in Kubernetes it is possible to mount multiple containers of multiple types into a single container. Additionally, the lifecycle of Volumes is clearly defined in Kubernetes. Volumes share the lifecycle of their Pods. They are created with their Pods and cease to exist when their Pods cease to exist. You will see that there are concepts such as the _Persistent Volume_ with lifetimes exceeding the lifetime of their Pods.
 
 ## Persistent Volumes (PV)
 
@@ -41,10 +45,10 @@ As mentioned before, the **major difference of Volumes and Persistent Volumes is
 
 Persistent Volumes are not storage implementation but rather a storage abstraction. The Persistent Volume subsystem comprises resource types for creating and attaching volumes. In order to use Persistent Volumes you need to be familiar with the following concepts:
 
-* Persistent Volume (PV)
-* Persistent Volume Claim (PVC)
-* Storage Class
-* Storage Provisioner
+- Persistent Volume (PV)
+- Persistent Volume Claim (PVC)
+- Storage Class
+- Storage Provisioner
 
 ### Persistent Volume
 
@@ -61,18 +65,20 @@ Similar to Volumes, Persistent Volumes [2] are also mounted using the `volumeMou
 
 Give me:
 
-* *"3 gigabytes of fast SSD storage"*
-* *"500 gigabytes of cheap hard disk drive storage. You know the old rotating magnetic drives."*
-* *"50 gigabytes of very reliable SSD storage"*
+- _"3 gigabytes of fast SSD storage"_
+- _"500 gigabytes of cheap hard disk drive storage. You know the old rotating magnetic drives."_
+- _"50 gigabytes of very reliable SSD storage"_
 
-As you can see these requests may include different **quantities** and **qualities** of storage. While quantities are measures in bytes, qualities can be anything from *availability*, *durability* to *speed*.
+As you can see these requests may include different **quantities** and **qualities** of storage. While quantities are measures in bytes, qualities can be anything from _availability_, _durability_ to _speed_.
 
 ### Storage Class
-Storage Classes [13] are there to reflect the above-mentioned qualities such as *availability*, *durability*, *speed*, *backup policies* etc.
 
-This leads to the question of where the difference of Persistent Volumes by Storage Class is actually manifested. Simply speaking, a Storage Class represents a configuration that is passed into a so-called *Storage Provisioner*.
+Storage Classes [13] are there to reflect the above-mentioned qualities such as _availability_, _durability_, _speed_, _backup policies_ etc.
+
+This leads to the question of where the difference of Persistent Volumes by Storage Class is actually manifested. Simply speaking, a Storage Class represents a configuration that is passed into a so-called _Storage Provisioner_.
 
 ### Storage Provisioner
+
 The Storage Provisioner is where Persistent Volumes of a particular Storage Classes are actually created.
 
 **A Storage Provisioner is responsible for dynamically creating storage volumes corresponding to Persistent Volume Claims requested by users**.
@@ -84,6 +90,7 @@ The underlying storage system can be anything from a software defined storage (S
 The documentation [2] also mentions manual provisioning. In this case Persistent Volumes are pre-created by the cluster administrator. Applications then use Persistent Volume Claims to request a Persistent Volume from the pool of PVs. While this use case may make sense in legacy use cases, such a Stone Age methodology should be avoided whenever possible. The absence of dynamic volume provisioning is likely to block the workflow of application developers during deployment when Persistent Volume Claims can't be fulfilled as the cluster ran out of Persistent Volumes.
 
 ## Links
+
 1. Kubernetes Documentation, Concepts, Storage, Volumes, https://kubernetes.io/docs/concepts/storage/volumes/
 2. Kubernetes Documentation, Concepts, Storage, Persistent Volumes, https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 3. OpenStack Swift, https://github.com/openstack/swift

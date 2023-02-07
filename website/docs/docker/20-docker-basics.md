@@ -4,15 +4,19 @@ title: Docker Basics
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
-   title: "Docker Basics Part 2"
-},{
-   src: "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y",
-   title: "Docker Basics Part 3"
+    src: "https://www.youtube-nocookie.com/embed/5L_i-WxhQr8",
+    title: "Docker Basics Part 2"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/8SsTh3kC7-Y",
+    title: "Docker Basics Part 3"
   }]}
 />
+
+---
 
 In this lesson you will start, stop, list and access containers in various ways.
 
@@ -126,6 +130,7 @@ Docker supports so called `volumes` [7] to persist files if no data service such
 However, as this training does not aim to use Docker but Kubernetes, **persistency will be covered in the subsequent Kubernetes Training**.
 
 ## Links
+
 1. iTerm2, https://www.iterm2.com/
 2. GNU Bash, https://www.gnu.org/software/bash/
 3. Zsh, https://www.zsh.org/

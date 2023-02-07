@@ -48,6 +48,8 @@ Within `psql` run:
 
     \c postgres
 
+Then:
+
     SELECT * FROM COMPANY;
 
 The output should look like this:
