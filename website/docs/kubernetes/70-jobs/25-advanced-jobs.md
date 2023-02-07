@@ -4,12 +4,15 @@ title: Advanced Job Features
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ",
-   title: "Advanced Job Features"
+    src: "https://www.youtube-nocookie.com/embed/VZB9eGUeJpQ",
+    title: "Advanced Job Features"
   }]}
 />
+
+---
 
 Admittedly, running a simple Job as earlier has little advantage over running a single Pod but there is more to Jobs than meets the eye as you will see in the following lessons.
 
@@ -30,12 +33,12 @@ spec:
   template:
     spec:
       containers:
-      - name: simple-one-off-job-container
-        image: busybox
-        imagePullPolicy: Always
-        command: ["/bin/sh","-c"]
-        args:
-        - "echo \"I represent a failing maintenance task\"; exit 1"
+        - name: simple-one-off-job-container
+          image: busybox
+          imagePullPolicy: Always
+          command: ['/bin/sh', '-c']
+          args:
+            - 'echo "I represent a failing maintenance task"; exit 1'
       restartPolicy: OnFailure
 ```
 
@@ -53,8 +56,8 @@ Interestingly, this produces an event `SuccessfulCreate` originating from the `j
 
 This time we see a clear indication that something went wrong:
 
-* `STATUS` is `CrashLoopBackOff`
-* `RESTARTS` is `4`
+- `STATUS` is `CrashLoopBackOff`
+- `RESTARTS` is `4`
 
 And an even closer look with:
 
@@ -94,12 +97,12 @@ spec:
   template:
     spec:
       containers:
-      - name: flaky-job-container
-        image: ubuntu
-        imagePullPolicy: Always
-        command: ["/bin/bash","-c"]
-        args:
-        - "echo \"I represent a flaky maintenance task\"; (( RANDOM%3 == 0 )) && exit 0 || exit 1"
+        - name: flaky-job-container
+          image: ubuntu
+          imagePullPolicy: Always
+          command: ['/bin/bash', '-c']
+          args:
+            - 'echo "I represent a flaky maintenance task"; (( RANDOM%3 == 0 )) && exit 0 || exit 1'
       restartPolicy: OnFailure
 ```
 

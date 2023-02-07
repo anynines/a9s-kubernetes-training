@@ -4,12 +4,15 @@ title: PostgreSQL StatefulSet
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A",
-   title: "PostgreSQL StatefulSet"
+    src: "https://www.youtube-nocookie.com/embed/ewku1iuQQ-A",
+    title: "PostgreSQL StatefulSet"
   }]}
 />
+
+---
 
 In the following set of exercises StatefulSets are presented in a practical manner. The PostgreSQL [11] RDBMS is used as an example as the database is both widely known and of great utility to any developer. The goal of the exercises are not to build a production grade automation for PostgreSQL but to illustrate StatefulSet concepts.
 
@@ -17,11 +20,11 @@ In the following set of exercises StatefulSets are presented in a practical mann
 
 In order to create the PostgreSQL StatefulSet we proceed with the following steps:
 
-* Identify or build (a) container image(s)
-* Specify a headless Service
-* Specify a StatefulSet
-* Provision the Service and StatefulSet
-* Conduct simple experiments
+- Identify or build (a) container image(s)
+- Specify a headless Service
+- Specify a StatefulSet
+- Provision the Service and StatefulSet
+- Conduct simple experiments
 
 Start with finding a container image.
 
@@ -54,11 +57,11 @@ metadata:
     app: postgresql-a
 spec:
   ports:
-  - port: 5432
-    name: postgresql-port
+    - port: 5432
+      name: postgresql-port
   clusterIP: None
   selector:
-      app: postgresql-a
+    app: postgresql-a
 ```
 
 The attribute `clusterIP: None` of the Service specification denotes that this is a **headless Service**.
@@ -106,7 +109,7 @@ spec:
   selector:
     matchLabels:
       app: postgresql-a # has to match .spec.template.metadata.labels
-  serviceName: "postgresql-svc"
+  serviceName: 'postgresql-svc'
   replicas: 1 # by default is 1
   template:
     metadata:
@@ -115,32 +118,33 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-      - name: postgresql-db
-        image: postgres:14.5
-        env:
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgresql-secrets
-              key: POSTGRES_PASSWORD
-        ports:
-        - containerPort: 5432
-          name: postgresql-port
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/postgresql/data
+        - name: postgresql-db
+          image: postgres:14.5
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secrets
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 5432
+              name: postgresql-port
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 1Gi
 ```
+
 Have you noticed how the Secret is mounted as an environment variable as described in the container image description [1]?
 
-Also notice the `volumeClaimTemplates` section. The term *Volume Claim Template* indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified multiple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
+Also notice the `volumeClaimTemplates` section. The term _Volume Claim Template_ indicates that this is not a Persistent Volume Claim (PVC). Consider the StatefulSet has specified multiple `replicas`, three (3) for instance. In this case three Persistent Volume Claims need to be created. As each PVC is then parameterized with the individual replica's Pod identity, the actual Persistent Volume Claims are similar but not identical. The Persistent Volume Claim Template describes their commonalities.
 
 Execute the spec:
 
@@ -199,7 +203,7 @@ spec:
   selector:
     matchLabels:
       app: postgresql-a # has to match .spec.template.metadata.labels
-  serviceName: "postgresql-svc"
+  serviceName: 'postgresql-svc'
   replicas: 1 # by default is 1
   template:
     metadata:
@@ -208,30 +212,30 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-      - name: postgresql-db
-        image: postgres:14.5
-        env:
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgresql-secrets
-              key: POSTGRES_PASSWORD
-        - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata
-        ports:
-        - containerPort: 5432
-          name: postgresql-port
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/postgresql/data
+        - name: postgresql-db
+          image: postgres:14.5
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secrets
+                  key: POSTGRES_PASSWORD
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          ports:
+            - containerPort: 5432
+              name: postgresql-port
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 1Gi
 ```
 
 First delete the existing StatefulSet:
@@ -251,6 +255,7 @@ You should see the StatefulSet being `RUNNING`.
 Congratulations! You have deployed your first StatefulSet.
 
 ## Links
+
 1. PostgreSQL Docker Image at Docker Hub, https://hub.docker.com/_/postgres
 2. Kubernetes Examples on GitHub, Persistent Volume Provisioning, https://github.com/kubernetes/examples/blob/master/staging/persistent-volume-provisioning/README.md
 3. PostgreSQL Documentation - psql, https://www.postgresql.org/docs/12/app-psql.html

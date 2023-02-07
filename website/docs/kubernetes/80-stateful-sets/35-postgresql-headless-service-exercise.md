@@ -4,12 +4,15 @@ title: Headless Service
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y",
-   title: "Headless Services"
+    src: "https://www.youtube-nocookie.com/embed/6IoZCGSxI7Y",
+    title: "Headless Services"
   }]}
 />
+
+---
 
 Once you have create the PostgreSQL StatefulSet you may want to access it with an application. The next lessons will therefore evolve towards application access, step by step.
 
@@ -20,7 +23,6 @@ In the previous chapter you have learned that a StatefulSet has a stable network
 Have a look at what you have created in the previous lesson:
 
     kubectl describe service postgresql-svc
-
 
 Shows that the headless Service `postgresql-svc` has the label `Labels: app=postgresql-a`.
 
@@ -41,7 +43,6 @@ Produces an output similar to:
     Endpoints:         172.17.0.5:5432
     Session Affinity:  None
     Events:            <none>
-
 
 Which shows `Annotations: Selector:  app=postgresql-a` indicating that the Service is connected to the StatefulSet through the Label `app=postgresql-a`. You can see that in the `Endpoints: 172.17.0.5:5432` line which refers to the Pod `postgresql-sfs-0` of the StatefulSet `postgresql-sfs`.
 
@@ -74,7 +75,6 @@ Produces an output similar to:
     Endpoints:         172.17.0.5:5432
     Session Affinity:  None
     Events:            <none>
-
 
 This shows `Annotations: Selector:  app=postgresql-a` indicating that the Service is connected to the StatefulSet through the Label `app=postgresql-a`. You can see that in the `Endpoints: 172.17.0.5:5432` line which refers to the Pod `postgresql-sfs-0` of the StatefulSet `postgresql-sfs`.
 
@@ -171,6 +171,7 @@ Which this time will produce:
 As you can see all StatefulSet Pods are present in the response.
 
 ## Links
+
 1. PostgreSQL Docker Image at Docker Hub, https://hub.docker.com/_/postgres
 2. Kubernetes Examples on GitHub, Persistent Volume Provisioning, https://github.com/kubernetes/examples/blob/master/staging/persistent-volume-provisioning/README.md
 3. PostgreSQL Documentation - psql, https://www.postgresql.org/docs/12/app-psql.html

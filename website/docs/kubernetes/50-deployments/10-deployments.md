@@ -4,17 +4,37 @@ title: Deployments
 ---
 
 ## Related Videos
+
 <VideoContainer
-  list={[
-{src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", title: "Deployments Part 1"},
-{src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", title: "Deployments Part 2"},
-{src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", title: "Deployments Part 3"},
-{src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", title: "Deployments Part 4"},
-{src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", title: "Deployments Part 5"},
-{src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", title: "Deployments Part 6"},
-{src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", title: "Deployments Part 7"}
-]
-}></VideoContainer>
+  list={[{
+    src: "https://www.youtube-nocookie.com/embed/DoQIvm8dBw0", 
+    title: "Deployments Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/cpzs02iu-RE", 
+    title: "Deployments Part 2"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/l8FrEoibmGE", 
+    title: "Deployments Part 3"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/sd_dmHCTfrI", 
+    title: "Deployments Part 4"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/VYlC2yK2r7s", 
+    title: "Deployments Part 5"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/zXLsl-4l0yw", 
+    title: "Deployments Part 6"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/VjLheCWpAM8", 
+    title: "Deployments Part 7"
+  }]}
+/>
 
 The Kubernetes Deployment resource is designed to support the continuos delivery of application releases beyond the abilities of Pods and ReplicaSets.
 
@@ -32,7 +52,7 @@ kind: Deployment
 metadata:
   name: app-gamma
   labels:
-      app: app-gamma
+    app: app-gamma
 spec:
   selector:
     matchLabels:
@@ -44,9 +64,9 @@ spec:
         run: app-gamma
     spec:
       containers:
-      - name: app-gamma-blue
-        image: fischerjulian/smpl-go-web:blue
-        ports:
+        - name: app-gamma-blue
+          image: fischerjulian/smpl-go-web:blue
+          ports:
             - containerPort: 8080
 ```
 
@@ -80,7 +100,7 @@ spec:
   selector:
     run: app-gamma
   ports:
-  - port: 8080
+    - port: 8080
 ```
 
 Apply it:
@@ -96,23 +116,23 @@ metadata:
   name: app-gamma-ingress
   annotations:
     # use the shared ingress-nginx
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: 'nginx'
 spec:
   tls:
     - hosts:
-      - myapp.example.org
+        - myapp.example.org
       secretName: k9s-anynines-com-tls
   rules:
-  - host: myapp.example.org
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service: 
-            name: app-gamma-service
-            port: 
-              number: 8080
+    - host: myapp.example.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-gamma-service
+                port:
+                  number: 8080
 ```
 
 Apply it:
@@ -123,7 +143,7 @@ Obtain the URL with:
 
     kubectl get ingresses
 
-Browse to the URL or use 
+Browse to the URL or use
 
     curl --insecure https://myapp.example.org
 
@@ -132,7 +152,6 @@ and it should say "**I am blue**".
 > Note : We are reusing the DNS entry in `/etc/hosts` so make sure it is still there and valid.
 
 ## Scaling the Deployment
-
 
 So far we have declared the desired state of our resources such as ReplicaSets, Services and Deployments using YAML files and applied them use `kubectl apply -f <filename>`. So this is what we will try again. A copy of the file `20-deployment-blue.yaml` with an increased `replicas` setting can be found in `60-deployment-blue-scale-out.yaml`. All it does is to set `replicas: 2` indicating we desire two application instances to be running.
 
@@ -146,7 +165,7 @@ kind: Deployment
 metadata:
   name: app-gamma
   labels:
-      app: app-gamma
+    app: app-gamma
 spec:
   selector:
     matchLabels:
@@ -158,9 +177,9 @@ spec:
         run: app-gamma
     spec:
       containers:
-      - name: app-gamma-blue
-        image: fischerjulian/smpl-go-web:blue
-        ports:
+        - name: app-gamma-blue
+          image: fischerjulian/smpl-go-web:blue
+          ports:
             - containerPort: 8080
 ```
 
@@ -186,7 +205,6 @@ Change the replica count to 3 and update your deployment using `kubectl apply -f
 
 ## Updating the Deployment with a new Application Version
 
-
 A successful real world application is likely to be under constant development. Subsequently, the application team has to deploy new software versions regularly.
 
 The new software version is delivered by creating a new container version. Compare the YAML file `70-deployment-green.yaml` with the previous version and look for differences. You will see that the container name and container image (tag) have changed. Hence, the team had to build a new container version and upload it to the default container registry of the Kubernetes cluster which is https://hub.docker.com/, by default.
@@ -199,7 +217,7 @@ kind: Deployment
 metadata:
   name: app-gamma
   labels:
-      app: app-gamma
+    app: app-gamma
 spec:
   selector:
     matchLabels:
@@ -211,9 +229,9 @@ spec:
         run: app-gamma
     spec:
       containers:
-      - name: app-gamma-green
-        image: fischerjulian/smpl-go-web:green
-        ports:
+        - name: app-gamma-green
+          image: fischerjulian/smpl-go-web:green
+          ports:
             - containerPort: 8080
 ```
 
@@ -236,10 +254,9 @@ Which will provide you with a brief success message such as `deployment "app-gam
 
 Reloading the app in your browser should now tell you `"I am green."`.
 
-**Note, if you reload your browser repeatedly you may see both blue and green application versions alternating.** This is due to the default *Deployment Strategy* which will be covered later in detail.
+**Note, if you reload your browser repeatedly you may see both blue and green application versions alternating.** This is due to the default _Deployment Strategy_ which will be covered later in detail.
 
 ## Controlling a Rollout
-
 
 More control is offered with commands such as
 
@@ -253,7 +270,6 @@ which become handy if the rollout produces unpredicted behavior, for example.
 
 ## Rollout History
 
-
 Deployments also collect metadata on which rollouts have been performed in the past:
 
     kubectl rollout history deployment app-gamma
@@ -265,7 +281,6 @@ This allows you to dig into a particular revision:
 And provides you information about the structure and annotation of the ReplicaSet corresponding to the given revision.
 
 ## Ups, Kaputt! Undoing a Rollout
-
 
 While it is possible to pause and resume a rollout, sometimes it may be necessary to undo it. **Undoing a rollout is another major advantage of using a Deployment over plain ReplicaSets**. As the Deployment knows which ReplicaSets have been representing previous versions it's easy to bring them back to "life".
 
@@ -285,7 +300,6 @@ Check the status of the deployment:
 
 ## Tidying Up - Part 1 of 2
 
-
 Remove the Deployment:
 
     kubectl delete -f 20-deployment-blue.yaml
@@ -296,8 +310,8 @@ The deployment strategy determines how the Kubernetes deployment controller star
 
 Two strategies are provided by default:
 
-* Recreate
-* RollingUpgrade
+- Recreate
+- RollingUpgrade
 
 ### Recreate Strategy
 
@@ -313,7 +327,7 @@ kind: Deployment
 metadata:
   name: app-gamma
   labels:
-      app: app-gamma
+    app: app-gamma
 spec:
   selector:
     matchLabels:
@@ -327,9 +341,9 @@ spec:
         run: app-gamma
     spec:
       containers:
-      - name: app-gamma-blue
-        image: fischerjulian/smpl-go-web:blue
-        ports:
+        - name: app-gamma-blue
+          image: fischerjulian/smpl-go-web:blue
+          ports:
             - containerPort: 8080
 ```
 
@@ -345,7 +359,7 @@ kind: Deployment
 metadata:
   name: app-gamma
   labels:
-      app: app-gamma
+    app: app-gamma
 spec:
   selector:
     matchLabels:
@@ -359,9 +373,9 @@ spec:
         run: app-gamma
     spec:
       containers:
-      - name: app-gamma-green
-        image: fischerjulian/smpl-go-web:green
-        ports:
+        - name: app-gamma-green
+          image: fischerjulian/smpl-go-web:green
+          ports:
             - containerPort: 8080
 ```
 
@@ -391,7 +405,6 @@ All resources of this lesson can be deleted:
     kubectl delete deployment app-gamma
     kubectl delete -f 50-ingress.yaml
     kubectl delete -f 40-service.yaml
-
 
 You can also now remove your local DNS entry, by removing it from `/etc/hosts` with
 

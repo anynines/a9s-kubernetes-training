@@ -4,18 +4,23 @@ title: Ingress
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
-   title: "Ingress Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
-   title: "Ingress Part 2"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/0QpZL6NOam4",
-   title: "Ingress Part 3"
+    src: "https://www.youtube-nocookie.com/embed/7MmJQpoPr4s",
+    title: "Ingress Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/KV3XheQDRuk",
+    title: "Ingress Part 2"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/0QpZL6NOam4",
+    title: "Ingress Part 3"
   }]}
 />
+
+---
 
 Pods and ReplicaSets can be used to start and operate containers. Services can be handy to provide named access to and distribute and load balance requests across Pods, **internally**.
 
@@ -45,31 +50,31 @@ This is why Kubernetes can't do much for you as controlling DNS entries is out o
 
 For the creation of DNS entries you might want to create:
 
-* An **A-Record** to point a (sub-)domain to the IP address of your load balancer.
-* A **CNAME-Record** to point a (sub-)domain to the DNS name of your load balancer.
+- An **A-Record** to point a (sub-)domain to the IP address of your load balancer.
+- A **CNAME-Record** to point a (sub-)domain to the DNS name of your load balancer.
 
 The configuration of DNS entries varies across DNS providers. Their manuals will guide you through the process.
 
 ### Creating local DNS entries for minikube
 
-When using minikube you can create a local DNS entry by editing your 
+When using minikube you can create a local DNS entry by editing your
 `/etc/hosts` and pointing it to your minikube IP address. This way a DNS entry is created that is solely present on your computer, which will redirect requests of the specified URL to your running minikube cluster.
 
 If you are running minikube on a hypervisor different from Docker you can get the minikube IP by executing :
 
-    minikube ip 
+    minikube ip
 
 With Docker, you will have to set up a tunnel, that will expose your cluster at `127.0.0.1`, for that use
 
     minikube tunnel
 
-Now we have to add the DNS entry to our hosts file, execute 
+Now we have to add the DNS entry to our hosts file, execute
 
     sudo nano /etc/hosts
 
-The basic editor `nano` will now be used to open the file (Note: you can only navigate using keyboard inputs), 
+The basic editor `nano` will now be used to open the file (Note: you can only navigate using keyboard inputs),
 there navigate to the end of the file and create your new entry for `myapp.example.org` by inserting
-    
+
     127.0.0.1 myapp.example.org
 
 Substitute `127.0.0.1` by your minikube IP address if you are not using docker. Then press `^X` and `Y` to save & exit.
@@ -139,23 +144,23 @@ metadata:
   name: smpl-go-web-ingress
   annotations:
     # use the shared ingress-nginx
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: 'nginx'
 spec:
   tls:
     - hosts:
-      - myapp.example.org
+        - myapp.example.org
       secretName: k9s-anynines-com-tls
   rules:
-  - host: myapp.example.org
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: smpl-go-web-s
-            port:
-              number: 8080
+    - host: myapp.example.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: smpl-go-web-s
+                port:
+                  number: 8080
 ```
 
 Again: You may have to search the documentation of your Kubernetes cluster as the Ingress may require a different specification.

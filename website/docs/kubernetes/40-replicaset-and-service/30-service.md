@@ -4,17 +4,21 @@ title: Services
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8",
-   title: "Services Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/BEXU7KyXI-U",
-   title: "Services Part 2"
+    src: "https://www.youtube-nocookie.com/embed/2hdv-ZpYIj8",
+    title: "Services Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/BEXU7KyXI-U",
+    title: "Services Part 2"
   }]}
 />
 
-In the ReplicaSet lessons we have encountered *service discovery*, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.
+---
+
+In the ReplicaSet lessons we have encountered _service discovery_, the challenge of reliably and predictably finding and accessing workloads running in a Kubernetes cluster.
 
 ## Creating a Service
 
@@ -31,7 +35,7 @@ spec:
   selector:
     app: smpl-go-web-a-cant-work
   ports:
-  - port: 8080
+    - port: 8080
 ```
 
 Apply it:
@@ -52,7 +56,7 @@ This assumes the Service to be within the `k8s-training` namespace, be reachable
 
 In the first step of this lesson a **ReplicaSet with one (1)** replica has been deployed. This lead to the creation of a single Pod with a single container running the desired web application.
 
-By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service should *discover* the `smpl-go-web-a` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `smpl-go-web` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if multiple endpoints are available - load balancer.
+By creating a Service matching the ReplicaSet with annotations using `selector` and `label`, the created service should _discover_ the `smpl-go-web-a` app and uses it as an endpoint. Consequently, requests to the service will be routed to the `smpl-go-web` Pod. This is what a Service does: it's a layer 4 (ISO OSI: transport layer) router and - if multiple endpoints are available - load balancer.
 
 You can verify the connection of the Service with its application by:
 
@@ -66,8 +70,8 @@ The `endpoints` section of the service description should contain the Pod's IP a
 
 The Service therefore has two major purposes:
 
-1. *Service Discovery*: Acting as a stable entry point to access your apps.
-2. *Load Balancing*: Distributing requests among instances of your app in case there are multiple of them.
+1. _Service Discovery_: Acting as a stable entry point to access your apps.
+2. _Load Balancing_: Distributing requests among instances of your app in case there are multiple of them.
 
 ### Error: No Endpoints Available
 
@@ -98,5 +102,5 @@ spec:
   selector:
     app: smpl-go-web-a
   ports:
-  - port: 8080
+    - port: 8080
 ```

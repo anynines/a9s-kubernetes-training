@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Grid } from '@anynines/a9s-design-system'
+import { Divider, Grid } from '@mui/material'
 import Video from './Video.js'
 
 export default function VideoContainer({ title, list }) {
@@ -36,9 +36,6 @@ export default function VideoContainer({ title, list }) {
       <Grid container spacing={4}>
         {videos}
       </Grid>
-      <Divider style={{ paddingTop: '1.8em' }} variant='fullWidth'></Divider>
     </div>
   )
 }
-
-VideoContainer.isMDXComponent = true

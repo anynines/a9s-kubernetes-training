@@ -17,7 +17,7 @@ const siteConfig = {
         alt: 'anynines',
         src: 'img/logoLight.svg',
         srcDark: 'img/logo.svg',
-        href: '/training-overview'
+        href: '/'
       },
       items: [
         {
@@ -140,7 +140,22 @@ const siteConfig = {
         }
       }
     ]
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/',
+            from: '/training-overview',
+          },
+        ],
+      }
+    ]
   ]
+
 }
 
 module.exports = siteConfig
