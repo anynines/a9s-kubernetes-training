@@ -13,8 +13,20 @@ const usercentricsScript = ({ NODE_ENV }) => {
   return config
 }
 
+
+const googleTagScript = () => {
+  const config = {
+    type: "text/plain",
+    src: "https://www.googletagmanager.com/gtag/js?id=GTM-5XSJGVJ",
+    'data-usercentrics': "Google Tag Manager",
+    async: true,
+  }
+  return config
+}
+
 const scripts = [
   usercentricsScript(process.env),
+  googleTagScript(),
 ]
 
 const siteConfig = {
@@ -150,10 +162,6 @@ const siteConfig = {
     [
       '@docusaurus/preset-classic',
       {
-        gtag: {
-          trackingID: 'GTM-5XSJGVJ',
-          anonymizeIP: true,
-        },
         docs: {
           path: 'docs',
           sidebarCollapsible: true,
