@@ -1,3 +1,34 @@
+const usercentricsScript = ({ NODE_ENV }) => {
+  const config = { 
+    id: "usercentrics-cmp",
+    src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+    "data-settings-id": "ptaGMQQHY",
+    async: true,
+  }
+  
+  if (NODE_ENV != "production") {
+    config["data-version"] = "preview"  
+  }
+  
+  return config
+}
+
+
+const googleTagScript = () => {
+  const config = {
+    type: "text/plain",
+    src: "https://www.googletagmanager.com/gtag/js?id=GTM-5XSJGVJ",
+    'data-usercentrics': "Google Tag Manager",
+    async: true,
+  }
+  return config
+}
+
+const scripts = [
+  usercentricsScript(process.env),
+  googleTagScript(),
+]
+
 const siteConfig = {
   title: 'Kubernetes Training', // Title for your website.
   tagline: 'Learn how to containerize and deploy your apps to Kubernetes.',
@@ -10,6 +41,8 @@ const siteConfig = {
   projectName: 'a9s-kubernetes-training', // anynines.github.io
   organizationName: 'anynines',
 
+  scripts: scripts,
+
   themeConfig: {
     navbar: {
       title: 'Kubernetes Training',
@@ -17,7 +50,7 @@ const siteConfig = {
         alt: 'anynines',
         src: 'img/logoLight.svg',
         srcDark: 'img/logo.svg',
-        href: '/training-overview'
+        href: '/'
       },
       items: [
         {
@@ -137,10 +170,25 @@ const siteConfig = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
-        }
+        },
+      }
+    ]
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/',
+            from: '/training-overview',
+          },
+        ],
       }
     ]
   ]
+
 }
 
 module.exports = siteConfig

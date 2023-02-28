@@ -4,17 +4,20 @@ title: Persistent Volumes Excercise
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
-   title: "Persistent Volume Exercise Part 1"
+    src: "https://www.youtube-nocookie.com/embed/uSXqAr83ljs",
+    title: "Persistent Volume Exercise Part 1"
   },{
-   src: "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw",
-   title: "Persistent Volume Exercise Part 2"
+    src: "https://www.youtube-nocookie.com/embed/bM3ZtKN1BSw",
+    title: "Persistent Volume Exercise Part 2"
   }]}
 />
 
-After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this can involve a few preliminary steps. Since the exercise is executed on minikube, we already have a default storage class, but when using for example `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS, storage classes might have to be setup first [1]. 
+---
+
+After going through the theory of Volumes and Persistent Volumes it's time to get your hands down. In this exercise you will create a stateful Pod using Persistent Volumes. As you will see this can involve a few preliminary steps. Since the exercise is executed on minikube, we already have a default storage class, but when using for example `paas.anynines.com` which is the `a9s Kubernetes` automation deployed on AWS, storage classes might have to be setup first [1].
 
 Storage is one of the places where rubber meets the road in the sense that there is a comparatively large contact surface with infrastructure. This is why - similar to Ingresses in an earlier lesson - Persistent Volumes involve vendor specific configuration. If you look closer at the exercise you will also recognize that the Kubernetes abstraction from volume Provisioners, Storage Classes, Persistent Volume Claims, Persistent Volumes to Volumes helps to maintain the tie to a specific Kubernetes distribution to a minimum. This counteracts the initial impression why dealing with persistency in Kubernetes is so surprisingly complicated.
 
@@ -28,10 +31,10 @@ For that you would create a file `05-storage-class.yaml`:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-    name: default
+  name: default
 parameters:
-    encrypted: "false"
-    type: gp2
+  encrypted: 'false'
+  type: gp2
 provisioner: kubernetes.io/aws-ebs
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
@@ -51,7 +54,7 @@ So you would then just have to apply the Storage Class by executing:
 ## Creating a Persistent Volume Claim
 
 Create a file `10-persistent-volume-claim.yaml`:
-    
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -115,9 +118,9 @@ The output should look like this:
 
 This provides you with the information that:
 
-* The provisioner `k8s.io/minikube-hostpath` has created a Persistent Volume with the id `pvc-802aa3a1-1d0d-4f9a-81bb-84ecce66b5cc`.
-* The Persistent Volume is a filesystem (`VolumeMode: Filesystem`).
-* The Persistent Volume is currently not mounted.
+- The provisioner `k8s.io/minikube-hostpath` has created a Persistent Volume with the id `pvc-802aa3a1-1d0d-4f9a-81bb-84ecce66b5cc`.
+- The Persistent Volume is a filesystem (`VolumeMode: Filesystem`).
+- The Persistent Volume is currently not mounted.
 
 Hence, it's time to create a Pod and mount the Persistent Volume.
 
@@ -207,5 +210,6 @@ And it's gone.
 You have learned how to create a Persistent Volume using a Persistent Volume Claim. Although this example uses a Pod for illustration purposes, you are more likely to use Persistent Volumes as part of StatefulSets.
 
 ## Links
+
 1. Amazon Web Services, http://aws.amazon.com/
 2. Kubernetes Documentation, Concepts, Cluster-Administration, Cloud Providers, https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws

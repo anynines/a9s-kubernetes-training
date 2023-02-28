@@ -4,12 +4,15 @@ title: CronJobs
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/Lye_qdofqjg",
-   title: "CronJobs"
+    src: "https://www.youtube-nocookie.com/embed/Lye_qdofqjg",
+    title: "CronJobs"
   }]}
 />
+
+---
 
 Cron [1] is a daemon available as a package for most Unix/Linux operating systems and is a time-based job scheduler.
 
@@ -47,10 +50,9 @@ kind: CronJob
 metadata:
   name: cron-job-hello-world
 spec:
-
   # See https://crontab.guru/
   # At every 2nd minute.
-  schedule: "*/2 * * * *"
+  schedule: '*/2 * * * *'
 
   # See https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#writing-a-job-spec
   jobTemplate:
@@ -58,12 +60,12 @@ spec:
       template:
         spec:
           containers:
-          - name: simple-one-off-job-container
-            image: busybox
-            imagePullPolicy: Always
-            command: ["echo"]
-            args:
-            - "I represent a very important maintenance task"
+            - name: simple-one-off-job-container
+              image: busybox
+              imagePullPolicy: Always
+              command: ['echo']
+              args:
+                - 'I represent a very important maintenance task'
           restartPolicy: OnFailure
 ```
 

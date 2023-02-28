@@ -4,23 +4,27 @@ title: Namespaces
 ---
 
 ## Related Videos
+
 <VideoContainer
   list={[{
-   src: "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
-   title: "Namespaces Part 1"
-  },{
-   src: "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA",
-   title: "Namespaces Part 2"
+    src: "https://www.youtube-nocookie.com/embed/YcCFGmVdwAQ",
+    title: "Namespaces Part 1"
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/ZGzvUQgJyGA",
+    title: "Namespaces Part 2"
   }]}
 />
 
-In Kubernetes *namespaces* allow a separation of Kubernetes objects in a cluster.
+---
 
-By default, all operations are executed in the *default* namespace.
+In Kubernetes _namespaces_ allow a separation of Kubernetes objects in a cluster.
+
+By default, all operations are executed in the _default_ namespace.
 
 While namespaces can be used to separate workloads of different users such as different development teams, the level of isolation provided by namespaces is not sufficient for tenant isolation. So in a multi-user environment where there is no trust relationship among the users, the deployment of a dedicated Kubernetes cluster per user or user group is common.
 
-The practical usage of namespaces is often to isolate different workloads running within a cluster or separate different development environments such as *staging* and *testing*.
+The practical usage of namespaces is often to isolate different workloads running within a cluster or separate different development environments such as _staging_ and _testing_.
 
 ## Creating a Namespace
 
@@ -51,7 +55,7 @@ In order to avoid the necessity to specify a `--namespace k8s-training` for each
 
     kubectl config set-context k8s-training --namespace k8s-training --cluster=staging.a9s.io --user staging.a9s.io
 
-Note: Your cluster may have a different *cluster name* and *username*. You can obtain both pieces of information using the following command:
+Note: Your cluster may have a different _cluster name_ and _username_. You can obtain both pieces of information using the following command:
 
     kubectl config view
 
@@ -63,4 +67,4 @@ From now on all kubectl commands will be executed within the `k8s-training` name
 
 ## Links
 
-* Kubernetes Documentation, Tasks, Share a Cluster with Namespaces, https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+- Kubernetes Documentation, Tasks, Share a Cluster with Namespaces, https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
