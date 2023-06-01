@@ -7,13 +7,17 @@ The following changes have been made:
 
 ## 2023-06-01: Changelog and Fixes
 
-### The Container Workflow
+### [Changed] Changelog
+
+- Moved the changelog to a separate page.
+
+### [Fixed] The Container Workflow
 
 - On page **The Container Workflow**: Fixes incorrect command which correctly must be `docker image build -t <your-image> .` instead of `docker -t <your-image> .`.
 
-### Changelog
+### [Fixed] 
 
-- Moved the changelog to a separate page.
+- On page *Namespaces*: Fixed the command for creating a context using `minikube`.
 
 ## 2022-09-26: PostgreSQL 14.5
 
