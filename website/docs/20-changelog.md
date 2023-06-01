@@ -5,7 +5,13 @@ title: Changelog
 
 The following changes have been made:
 
-## 2023-06-01: Changelog
+## 2023-06-01: Changelog and Fixes
+
+### The Container Workflow
+
+- On page **The Container Workflow**: Fixes incorrect command which correctly must be `docker image build -t <your-image> .` instead of `docker -t <your-image> .`.
+
+### Changelog
 
 - Moved the changelog to a separate page.
 
