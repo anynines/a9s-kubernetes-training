@@ -53,7 +53,7 @@ While it is possible to specify namespaces explicitly this would obstruct the po
 
 In order to avoid the necessity to specify a `--namespace k8s-training` for each kubectl command, it is handy to create a so called `context`.
 
-    kubectl config set-context k8s-training --namespace k8s-training --cluster=staging.a9s.io --user staging.a9s.io
+    kubectl config set-context k8s-training --namespace k8s-training --cluster=minikube --user minikube
 
 Note: Your cluster may have a different _cluster name_ and _username_. You can obtain both pieces of information using the following command:
 
