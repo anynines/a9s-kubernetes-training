@@ -1,5 +1,5 @@
 {
-  "docs": {
+  "docs": {    
     "Introduction": ["training-overview"],
     "Containerization": [
       "containerization/container-overview",
@@ -114,6 +114,7 @@
         ]
       },
       "postgresql/postgresql-outro"
-    ]
+    ],
+    "About": ["changelog"]
   }
 }
