@@ -29,7 +29,7 @@ When you contribute you should adhere to [gitflow](https://github.com/petervande
 
 ## Internal Contributors
 
-If you are an employee with write access to this repository you can use [gitflow](https://github.com/petervanderdoes/gitflow-avh) to automate the prefix and merging of your branches.
+If you are an employee with write access to this repository you can use [gitflow](https://github.com/petervanderdoes/gitflow-avh) with [git_flow_hooks](https://github.com/avarteqgmbh/git_flow_hooks) to automate the prefix and merging of your branches.
 
 ```
   cd repo_name 
@@ -56,6 +56,20 @@ If you are an employee with write access to this repository you can use [gitflow
   git flow feature start "your-feature-description"
 ```
 
+### Creating a release
+
+
+Once all changes for a release have been merged into develop you can start a release with:
+
+```
+git flow release start
+```
+
+Once you verified all your changes and wish to proceed with the release:
+
+```
+git flow release finish -m "your release message here"
+```
 ## Creating a Pull Request
 
 Once you've made all the changes you wish to make, commit and push your changes into your GitHub repository.
