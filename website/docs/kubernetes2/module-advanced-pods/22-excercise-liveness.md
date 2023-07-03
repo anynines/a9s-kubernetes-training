@@ -9,9 +9,7 @@ In this exercise you'll have a look at the application's default behavior.
 
 Per default, the application starts without a delay and enters a healthy state. It offers a simple UI showing the IP address of the particular Pod which served the request. Furthermore, it provides a simple form to set the health state to either *Healthy*  or *Unhealthy*. HTTP response codes to the `/healthz` endpoint depend on this health state. The response code will be `200` if set to *Healthy* and some HTTP error code if set to *Unhealthy*. This allows us to simulate failing pods by changing their health state. The health state is stored in the pod's ephemeral file system. When using with a Service load-balancing across several replicas of a Deployment, the health state affects only the particular pod which served the request. In other words, you can make a particular pod of a Deployment's ReplicaSet fail.
 
-<!--
 ![Advance Pod Configuration Demo App Screenshot](/img/apc-demo-app.png)
--->
 
 In a real world example, the purpose of the `/healthz` would be to make an educated guess about the application's true health. An application which still runs the application server process but lost its ability to serve requests, for example.
 
