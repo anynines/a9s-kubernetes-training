@@ -117,7 +117,8 @@
     ],
     "Kubernetes Part 2": [
       "kubernetes2/overview",
-      "kubernetes2/module-advanced-pods/intro"
+      "kubernetes2/module-advanced-pods/intro",
+      "kubernetes2/module-advanced-pods/pod-health"
     ],
     "About": ["changelog"]
   }

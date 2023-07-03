@@ -1,5 +1,5 @@
 ---
-slug: /advanced-pod-settings
+slug: /advanced-kubernetes/advanced-pod-settings
 id: intro
 title: Advanced Pod Settings
 ---

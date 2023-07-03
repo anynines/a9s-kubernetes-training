@@ -1,6 +1,14 @@
+---
+slug: /advanced-kubernetes/pod-health
+id: pod-health
+title: Pod Health
+---
+
+
 # Pod Health
 
-In previous section, you have learned that Kubernetes has the ability to detect pods failures and pods even come with self-healing capabilities as Kubernetes restarts failed pods.
+In previous section, you have learned that Kubernetes has the ability to detect pods failures.
+More than that, pods even come with self-healing capabilities as Kubernetes has the ability to restart failed pods.
 
 In this section, pod health is investigated even closer and questions such as the following are answered:
 
