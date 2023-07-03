@@ -21,7 +21,7 @@ The following changes have been made:
 
 ## 2022-09-26: PostgreSQL 14.5
 
-- Updated PostgreSQL Chapters to PostgreSQL 14.5.
+- Updated PostgreSQL sections to PostgreSQL 14.5.
 - Fixed several inconsistencies in the tutorial.
 
 ## 2022-03-09: Docker and Kubernetees Updates
