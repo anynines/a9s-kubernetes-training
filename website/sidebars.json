@@ -18,7 +18,7 @@
         ]
       }
     ],
-    "Kubernetes": [
+    "Kubernetes Part 1": [
       "kubernetes/kubernetes-overview",
       {
         "type": "category",
@@ -114,6 +114,9 @@
         ]
       },
       "postgresql/postgresql-outro"
+    ],
+    "Kubernetes Part 2": [
+      "kubernetes2/overview"
     ],
     "About": ["changelog"]
   }
