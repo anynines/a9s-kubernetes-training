@@ -22,11 +22,7 @@ In this section, pod health is investigated even closer and questions such as th
     * What do they have to do with determining a Pod's health status?
 * What happens to unhealthy Pods?
 
-## Pod Restart Policy
 
-
-
-Whenever a Pod fails, e.g. due to a failed probe, the restart policy applies ...
 
 ## Container Probes
 
@@ -88,3 +84,5 @@ In many cases, the code is identical for both the Startup and Liveness Probe but
 
 2. Kubernetes Documentation - Concepts - Workloads - Pods,
 Pod Lifecycle, https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+
+3. Kubernetes Documentation - Concepts - Workloads - Pods Pod Lifecycle, https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
