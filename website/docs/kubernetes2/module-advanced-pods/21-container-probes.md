@@ -23,7 +23,6 @@ The liveness probe doesn't wait for the Readiness Probe to succeed.
 
 **The liveness probe is used to restart failed containers und thus their surrounding Pods**.
 
-
 ## Readiness Probe
 
 While the **Liveness Probe** is about **restarting** an unresponsive Pod, the **Readiness Probe** is about **controlling incoming traffic from the corresponding Service**. In other words, **a Readiness Probe prevents sending traffic to unresponsive Pods**.
@@ -43,13 +42,19 @@ Liveness and readiness probes can be used simultaneously. Therefore, it is quite
 If, during a Pod startup, a time consuming, mandatory procedure accidentally causes the Liveness Probe to fail, a Startup Probe can be used. Only after the Startup Probe has been successfully passed, Liveness Probes will take over and subsequently be executed on a recurring basis.
 
 
-* Use startup probes to know when a container application has started
-* If a startup probe is configured, it disables liveness and readiness checks until the startup probe succeeds
-    * This ensures that liveness and readiness probes don't prevent  application startup, e.g. in case the application's startup time is relatively long. A long startup procedure may otherwise cause the Kubelet to kill the Pod bevore the application could have been started.
+Use startup probes to know when a container application has started.
 
-* After the startup probe has been passed once, the liveness probe takes over. The liveness probe then ensures a faster response to failures, compared to leaving out the startup probe while setting a higher liveness threshold.
+If a startup probe is configured, it disables liveness and readiness checks until the startup probe succeeds. This ensures that liveness and readiness probes don't prevent  application startup, e.g. in case the application's startup time is relatively long. A long startup procedure may otherwise cause the Kubelet to kill the Pod before the application has been started.
+
+After the startup probe has been passed once, the liveness probe takes over. The liveness probe then ensures a faster response to failures, compared to leaving out the startup probe while setting a higher liveness threshold.
 
 In many cases, the code is identical for both the Startup and Liveness Probe but with different threshold values in seconds.
+
+## Container Probe Summary
+
+Often a single probe command is used for Startup, Liveness and Readiness Probes but with different thresholds. The Startup Probe's threshold value is likely to be higher than the Liveness Probe's value which is probably higher than the Readiness Probe's threshold. A lower readiness threshold removes a Pod from the Service's load balancing will providing it a tolerance to recover before the Liveness Probe will restart the Pod which will cause a certain delay on its own.
+
+The Startup Probe allows a container startup slowly tightening the monitoring interval with the Liveness Probe once the startup has completed. While Startup and Liveness Probes trigger a Pod restart, the Readiness Probe ensures that requests to a Service aren't routed to non-ready Pods. 
 
 Note that restarting a Pod upon a failed probe requires that the Pod's `restartPolicy` is set to `Always` or `OnFailure`. See also section [Restart Policy](/advanced-kubernetes/pod-restart-policy)
 
