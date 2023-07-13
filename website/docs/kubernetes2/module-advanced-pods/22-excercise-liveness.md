@@ -1,9 +1,13 @@
-# Exercise: Liveness Probe
+---
+slug: /advanced-kubernetes/liveness-probe-exercise
+id: liveness-probe-exercise
+title: Liveness Probe Exercise
+---
 
 In this exercise a simple demo application is used. The demo app allows
-you to simulate application states such as being healthy or unhealthy as well as behavior such as long startup durations.
+the simulation application states such as being healthy or unhealthy as well as behavior such as long startup durations.
 
-In this exercise you'll have a look at the application's default behavior.
+First, the application's default behavior is examined.
 
 `60-deployment-lvn.yml`
 
@@ -11,7 +15,7 @@ Per default, the application starts without a delay and enters a healthy state. 
 
 ![Advance Pod Configuration Demo App Screenshot](/img/apc-demo-app.png)
 
-In a real world example, the purpose of the `/healthz` would be to make an educated guess about the application's true health. An application which still runs the application server process but lost its ability to serve requests, for example.
+In a real world example, the purpose of the `/healthz` would be to make an educated guess about the application's true health. An application still running application server process but which lost its ability to serve requests, for example.
 
 An `httpGet` Liveness Probe to poll the `/healthz` endpoint can be used:
 
@@ -27,7 +31,7 @@ livenessProbe:
 This Liveness Probe will wait for `3s` as configured with `initialDelaySeconds` before executing the first probe. This allows the application to set up and start serving requests. After the initial delay, the Liveness Probe will be repeated every `periodSeconds`, in this case every `3s`.
 
 Whenever the Liveness Probe fails, Kubernetes (the Kubelet on the Node) will consider the corresponding pod to have failed. Depending on the pod's `restartPolicy` [1], the pod will be restarted. 
-While a restart may not resolve the underlying issue, in many cases it will recover a failed Pod by replacing it with a functioning one. This may buy the time for the engineers to sleep through the night and take of the issues as a regular work item rather than an expedited one.
+While a restart may not resolve the underlying issue, in many cases it will recover a failed Pod by replacing it with a functioning one. This may buy the time for the engineers to sleep through the night and take care of the issues as a regular work item rather than an expedited one.
 
 ## Exercise: Mark a Pod as Unhealthy
 
