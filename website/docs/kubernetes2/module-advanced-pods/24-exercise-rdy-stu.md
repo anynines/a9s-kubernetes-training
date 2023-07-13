@@ -1,6 +1,11 @@
-# Exercise: Readiness and Startup Probes
+---
+slug: /advanced-kubernetes/readines-startup-probe-exercise
+id: readines-startup-probe-exercise
+title: Readiness and Startup Probes Exercise
+---
 
-In the last section you've learned about the Liveness Probe and the ability to extend Kubernetes' default detection of failed pods. Furthermore, you've observed the self-healing behavior replacing pods with a failed Liveness Probe to recover from simple application failures.
+
+In the last section you've learned about the Liveness Probe and the ability to extend Kubernetes' default detection of failed pods. Furthermore, you've observed self-healing behavior: Pods with a failing Liveness Probe are being replaced and thus automatically recover from simple application failures.
 
 In this section experiments with two more Container Probes are conducted: Readiness and Startup Probes. 
 

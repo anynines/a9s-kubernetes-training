@@ -121,6 +121,7 @@
       "kubernetes2/module-advanced-pods/pod-health",
       "kubernetes2/module-advanced-pods/container-probes",
       "kubernetes2/module-advanced-pods/liveness-probe-exercise",
+      "kubernetes2/module-advanced-pods/readines-startup-probe-exercise",
       "kubernetes2/module-advanced-pods/pod-restart-policy"
     ],
     "About": ["changelog"]

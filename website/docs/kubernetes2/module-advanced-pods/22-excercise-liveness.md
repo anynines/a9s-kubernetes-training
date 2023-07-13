@@ -9,7 +9,40 @@ the simulation application states such as being healthy or unhealthy as well as 
 
 First, the application's default behavior is examined.
 
-`60-deployment-lvn.yml`
+`60-deployment-lvn.yml`:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: adv-pod-conf-depl
+      labels:
+          app: adv-pod-conf
+    spec:
+      selector:
+        matchLabels:
+          app: adv-pod-conf
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: adv-pod-conf
+        spec:
+          containers:
+          - name: adv-pod-conf-con
+            image: fischerjulian/apc-demo-app:0.6.0
+            ports:
+              - containerPort: 4567
+            env:
+              - name: MY_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 3
+              periodSeconds: 3
 
 Per default, the application starts without a delay and enters a healthy state. It offers a simple UI showing the IP address of the particular Pod which served the request. Furthermore, it provides a simple form to set the health state to either *Healthy*  or *Unhealthy*. HTTP response codes to the `/healthz` endpoint depend on this health state. The response code will be `200` if set to *Healthy* and some HTTP error code if set to *Unhealthy*. This allows us to simulate failing pods by changing their health state. The health state is stored in the pod's ephemeral file system. When using with a Service load-balancing across several replicas of a Deployment, the health state affects only the particular pod which served the request. In other words, you can make a particular pod of a Deployment's ReplicaSet fail.
 
