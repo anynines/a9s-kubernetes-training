@@ -17,9 +17,44 @@ In the following, the previously introduced demo app will be used to simulate a 
 
 ### Exercise: `initialDelaySeconds` 
 
-`70-deployment-lvn2.yaml`
+`70-deployment-lvn2.yaml`:
 
-The demo app is now configured using the `SLEEP_ON_STARTUP` environment variable to become a slow starting application. The environment variable makes the application wait for `30s` before starting the webserver. However, the liveness probe is configured with `initialDelaySeconds: 3` so that the Kubelet waits for three seconds before performing the first liveness probe. As this probe will never succeed (`3 < 30`), corresponding containers will fail and enter a crash loop. The application will never become operational.
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: adv-pod-conf-depl
+      labels:
+          app: adv-pod-conf
+    spec:
+      selector:
+        matchLabels:
+          app: adv-pod-conf
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: adv-pod-conf
+        spec:
+          containers:
+          - name: adv-pod-conf-con
+            image: fischerjulian/apc-demo-app:0.7.0
+            ports:
+              - containerPort: 4567
+            env:
+              - name: MY_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              - name: SLEEP_ON_STARTUP
+                value: "30"
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 35
+              periodSeconds: 3
+
+The demo app is now configured using the `SLEEP_ON_STARTUP` environment variable to become a slow starting application. The environment variable makes the application wait for `30s` before starting the webserver. However, the Liveness Probe is configured with `initialDelaySeconds: 3` so that the Kubelet waits for three seconds before performing the first Liveness Probe. As this probe will never succeed (`3 < 30`), corresponding containers will fail and enter a crash loop. The application will never become operational.
 
 Setting `initialDelaySeconds` to let's say `35` solves the crashloop problem and the application eventually starts. However, during the startup the corresponding Service already routes traffic to the application although it isn't ready, yet. You may encounter error messages such as:
 
@@ -37,7 +72,48 @@ Setting `initialDelaySeconds` to let's say `35` solves the crashloop problem and
 
 **A mechanism is required that will also tell the Service to wait routing incoming traffic until the application instances become ready**. This is the purpose of the **Readiness Probe**.
 
-`80-deployment-rdy.yaml`
+`80-deployment-rdy.yaml`:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: adv-pod-conf-depl
+      labels:
+          app: adv-pod-conf
+    spec:
+      selector:
+        matchLabels:
+          app: adv-pod-conf
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: adv-pod-conf
+        spec:
+          containers:
+          - name: adv-pod-conf-con
+            image: fischerjulian/apc-demo-app:0.7.0
+            ports:
+              - containerPort: 4567
+            env:
+              - name: MY_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              - name: SLEEP_ON_STARTUP
+                value: "30"
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 35
+              periodSeconds: 3
+            readinessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 3
+              periodSeconds: 3
 
 With the readiness probe in place, simulating a failing application instance won't show the above error message. Due to the long startup time, the self-healing process takes a while. Hence, striving for short startup periods is desirable.
 
@@ -45,9 +121,50 @@ With the readiness probe in place, simulating a failing application instance won
 
 ## Startup Probe
 
-`90-deployment-stup.yaml`
+`90-deployment-stup.yaml`:
 
-The `initialDelaySeconds` setting of live and readiness probes postpone the execution of the first probe execution. For a known, fixed delay this may be handy. However, if the startup delay is unknown and varies in broader range, it would be desired to detect live and ready pods as quickly as possible rather than waiting for a long time, even if the Pod has started quicker than anticipated.
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: adv-pod-conf-depl
+      labels:
+          app: adv-pod-conf
+    spec:
+      selector:
+        matchLabels:
+          app: adv-pod-conf
+      replicas: 5
+      template:
+        metadata:
+          labels:
+            app: adv-pod-conf
+        spec:
+          containers:
+          - name: adv-pod-conf-con
+            image: fischerjulian/apc-demo-app:0.8.1
+            ports:
+              - containerPort: 4567
+            env:
+              - name: MY_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              - name: SLEEP_ON_STARTUP
+                value: "random"
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 30
+              periodSeconds: 3
+            readinessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 30
+              periodSeconds: 3
+
+The `initialDelaySeconds` setting of Live and Readiness Probes postpone the execution of the first probe. For a known, fixed delay this may be handy. However, if the startup delay is unknown and varies in broader range, detecting live and ready pods as quickly as possible would be more desirable  than waiting for a fixed amount of time.
 
 **Exercise**:
 
@@ -55,7 +172,56 @@ By setting the environment variable `SLEEP_ON_STARTUP` to `random` the startup d
 
 The goal is to set a startup probe so that each pod will be considered live and ready as soon as the randon startup delay has passed. Setting a fixed, rather long `initialDelaySeconds` is therefore not a good idea as this fixes the startup delay to the maximum possible duration for each pod.
 
-`91-deployment-stup.yaml`
+`91-deployment-stup.yaml`:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: adv-pod-conf-depl
+      labels:
+          app: adv-pod-conf
+    spec:
+      selector:
+        matchLabels:
+          app: adv-pod-conf
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: adv-pod-conf
+        spec:
+          containers:
+          - name: adv-pod-conf-con
+            image: fischerjulian/apc-demo-app:0.8.1
+            ports:
+              - containerPort: 4567
+            env:
+              - name: MY_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              - name: SLEEP_ON_STARTUP
+                value: "random"
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 30
+              periodSeconds: 3
+            readinessProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              initialDelaySeconds: 30
+              periodSeconds: 3
+            startupProbe:
+              httpGet:
+                path: /healthz
+                port: 4567            
+              failureThreshold: 61 # 61*5 = 305s max startup time
+              periodSeconds: 5
+
+Have a closer lock at this section of the YAML file:
 
 ```YAML
 startupProbe:
