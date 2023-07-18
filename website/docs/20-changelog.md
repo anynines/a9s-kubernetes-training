@@ -5,6 +5,19 @@ title: Changelog
 
 The following changes have been made:
 
+## 2023-07-18: Kubernetes Part 2
+
+### [Added] Kubernetes Part 2
+
+The following chapters have been added in Kubernetes Part 2. The chapter is not finished, yet.
+
+* Advanced Pod Settings
+* Pod Health
+* Container Probes
+* Livness Probe Exercise
+* Readiness and Startup Probes Exercise
+* Pod Restart Policy
+
 ## 2023-06-01: Changelog and Fixes
 
 ### [Changed] Changelog
