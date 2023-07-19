@@ -27,11 +27,14 @@ The training therefore targets at developers entering the world of containerizat
 
 ## Training Structure
 
-The Kubernetes training has two major parts:
+The Kubernetes training has the following parts:
 
 1. Containerization
 2. Kubernetes
+3. PostgreSQL
 
 The first part _Containerization_ covers container basics such as containers, container images, container registries as well as how to build and publish simple container images.
 
 The second part _Kubernetes_ then introduces the `kubectl` command followed by core Kubernetes concepts such as Pods, ReplicaSets, Deployments, ConfigMaps, Securities, Jobs, and StatefulSets. Practical examples show their basic usage. Additionally, a few common failure scenarios are included illustrating how these issues can be fixed.
+
+The third part _PostgreSQL on Kubernetes_ shows how to develop a simplistic PostgreSQL StatefulSet with mulitple PostgreSQL syncing data among its Pods using asynchronous streaming replication.
